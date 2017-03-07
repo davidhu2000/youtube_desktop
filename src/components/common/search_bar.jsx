@@ -19,7 +19,7 @@ class SearchBar extends React.Component {
 
   submit(e) {
     e.preventDefault();
-    this.props.receiveQuery(e.target.value);
+    this.props.receiveQuery(this.state.query);
   }
 
   render() {
@@ -27,7 +27,7 @@ class SearchBar extends React.Component {
       <div>
         <input type='text' onChange={ this.update }></input>
         <button type='submit' onClick={ this.submit }>
-          <i class="fa fa-search" aria-hidden="true"></i>
+          <i className="fa fa-search" aria-hidden="true"></i>
         </button>
       </div>
     );

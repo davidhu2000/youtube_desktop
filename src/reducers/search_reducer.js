@@ -6,7 +6,7 @@ import {
 let _defaultState = null;
 
 const searchReducer = (state = _defaultState, action) => {
-
+  console.log(action);
   switch(action.type) {
     case RECEIVE_QUERY:
       return action.query;
