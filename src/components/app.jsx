@@ -2,9 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router';
 
-import { SearchBar } from './common';
-
-import { receiveQuery } from '../actions/search_actions';
+import Navbar from './navbar';
 
 class App extends React.Component {
   constructor(props){
@@ -14,7 +12,7 @@ class App extends React.Component {
   render() {
       return(
         <div>
-          <SearchBar receiveQuery={this.props.receiveQuery}/>
+          <Navbar />
           Test App
           <br/>
           <Link to="/player">Player</Link>
@@ -25,11 +23,9 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  // your code here...
 });
 
 const mapDispatchToProps = dispatch => ({
-  receiveQuery: query => dispatch(receiveQuery(query))
 });
 
 export default connect(
