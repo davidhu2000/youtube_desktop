@@ -3,15 +3,15 @@ import {
   RECEIVE_QUERY,
   CLEAR_QUERY } from "../actions/search_actions.js"
 
-let _defaultState = {};
+let _defaultState = null;
 
 const searchReducer = (state = _defaultState, action) => {
-  Object.freeze(state);
+
   switch(action.type) {
     case RECEIVE_QUERY:
-      // your code here
+      return action.query;
     case CLEAR_QUERY:
-      // your code here
+      return null;
     default:
       return state;
   }
