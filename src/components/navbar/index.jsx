@@ -13,7 +13,10 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='navbar'>
+        <button>
+          <i className='fa fa-bars'></i>
+        </button>
         <SearchBar receiveQuery={ this.props.receiveQuery }/>
       </div>
     );
