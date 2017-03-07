@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router'
+import { withRouter, Link } from 'react-router'
 
 class App extends React.Component {
 
@@ -7,6 +7,8 @@ class App extends React.Component {
       return(
         <div>
           Test App
+          <br/>
+          <Link to="/player">Player</Link>
         </div>
       );
   }
