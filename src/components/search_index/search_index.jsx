@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
+import { SearchBar } from '../common';
+
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +12,7 @@ class Search extends React.Component {
   render() {
     return (
       <div>
-        // your code here...
+        <SearchBar />
       </div>
     );
   }
