@@ -4,7 +4,7 @@ module.exports = {
   context: __dirname,
   entry: "./src/electron.jsx",
   output: {
-    path: path.join(__dirname, 'app'),
+    path: path.join(__dirname, 'app', 'javascripts'),
     filename: 'bundle.js',
   },
   module: {
