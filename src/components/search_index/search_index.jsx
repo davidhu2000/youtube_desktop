@@ -4,6 +4,8 @@ import { withRouter } from 'react-router';
 
 import { SearchBar } from '../common';
 
+import { receiveQuery } from '../../actions/search_actions';
+
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +14,7 @@ class Search extends React.Component {
   render() {
     return (
       <div>
-        <SearchBar />
+        <SearchBar receiveQuery={ this.props.receiveQuery }/>
       </div>
     );
   }
@@ -23,7 +25,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // your code here...
+  receiveQuery: query => dispatch(receiveQuery(query))
 });
 
 export default connect(

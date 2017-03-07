@@ -19,7 +19,7 @@ class SearchBar extends React.Component {
 
   submit(e) {
     e.preventDefault();
-    console.log(this.state);
+    this.props.receiveQuery(e.target.value);
   }
 
   render() {
