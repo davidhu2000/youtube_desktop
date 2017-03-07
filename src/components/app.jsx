@@ -13,9 +13,7 @@ class App extends React.Component {
       return(
         <div>
           <Navbar />
-          Test App
-          <br/>
-          <Link to="/player">Player</Link>
+          { this.props.children }
         </div>
       );
   }

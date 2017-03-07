@@ -1,14 +1,16 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+
 import App from './app';
-import Player from './player/player';
+import SearchIndex from './search_index';
 
 const Root = ({ store }) => (
   <Provider store={ store }>
     <Router history={ hashHistory }>
-      <Route path='/' component={ App }/>
-      <Route path='/player' component={ Player }/>
+      <Route path='/' component={ App }>
+        <Route path='/search' componet={ SearchIndex } />
+      </Route>
     </Router>
   </Provider>
 );
