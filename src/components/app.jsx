@@ -1,14 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router';
 
-import SearchIndex from './search_index/search_index';
+import { SearchBar } from './common';
+
+import { receiveQuery } from '../actions/search_actions';
 
 class App extends React.Component {
+  constructor(props){
+    super(props);
+  }
 
   render() {
       return(
         <div>
-          <SearchIndex />
+          <SearchBar receiveQuery={this.props.receiveQuery}/>
           Test App
           <br/>
           <Link to="/player">Player</Link>
@@ -18,4 +24,15 @@ class App extends React.Component {
 
 }
 
-export default withRouter(App);
+const mapStateToProps = (state, ownProps) => ({
+  // your code here...
+});
+
+const mapDispatchToProps = dispatch => ({
+  receiveQuery: query => dispatch(receiveQuery(query))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(App));
