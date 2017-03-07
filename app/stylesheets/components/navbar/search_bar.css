@@ -17,6 +17,7 @@
   padding: 2px 6px;
   box-sizing: border-box;
   border: solid 1px #d3d3d3;
+  min-width: 245px;
 }
 
 .search-bar button {
@@ -31,9 +32,9 @@
   cursor: pointer;
   vertical-align: center;
   font-weight: 500;
-  opacity: 0.8;
   width: 10%;
   text-align: center;
+  min-width: 36px;
 }
 
 .search-bar button:hover {
