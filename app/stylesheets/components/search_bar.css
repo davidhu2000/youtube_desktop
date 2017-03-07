@@ -1,0 +1,18 @@
+.search-bar {
+  width: 100%;
+  font-size: 16px;
+}
+
+.search-bar input {
+  width: 95%;
+  font-size: 15px;
+}
+
+.search-bar button {
+  height: 60px;
+  width: 100px;
+}
+
+.seach-bar button i {
+  height: 60px;
+}
