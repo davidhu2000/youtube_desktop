@@ -27,7 +27,7 @@ class SearchBar extends React.Component {
       <div className="search-bar">
         <input type='text' placeholder="Search" onChange={ this.update }></input>
         <button type='submit' onClick={ this.submit }>
-          <i className="fa fa-search" aria-hidden="true"></i>
+          <i className="material-icons">search</i>
         </button>
       </div>
     );
