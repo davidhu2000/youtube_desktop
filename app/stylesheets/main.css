@@ -1,3 +1,7 @@
 @import url('base/reset.css');
 
 @import url('components/navbar/navbar_main.css');
+
+html {
+  font-family: "Roboto", arial, sans-serif
+}
