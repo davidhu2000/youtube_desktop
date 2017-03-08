@@ -1,4 +1,5 @@
 import React from 'react';
+import { hashHistory } from 'react-router';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class SearchBar extends React.Component {
   submit(e) {
     e.preventDefault();
     this.props.receiveQuery(this.state.query);
+    this.props.router.push('/search');
   }
 
   render() {

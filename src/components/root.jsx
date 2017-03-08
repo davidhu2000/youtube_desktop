@@ -9,7 +9,7 @@ const Root = ({ store }) => (
   <Provider store={ store }>
     <Router history={ hashHistory }>
       <Route path='/' component={ App }>
-        <Route path='/search' componet={ SearchIndex } />
+        <Route path='/search' component={ SearchIndex } />
       </Route>
     </Router>
   </Provider>

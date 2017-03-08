@@ -19,7 +19,9 @@ class Navbar extends React.Component {
         </div>
 
         <div className='navbar-center-menu'>
-          <SearchBar receiveQuery={ this.props.receiveQuery }/>
+          <SearchBar
+            receiveQuery={ this.props.receiveQuery }
+            router={ this.props.router } />
         </div>
 
         <div className='navbar-right-menu'>
