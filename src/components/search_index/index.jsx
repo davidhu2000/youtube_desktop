@@ -14,18 +14,18 @@ class SearchIndex extends React.Component {
   render() {
     return (
       <div>
-        <h1>The Search is {this.props.search}</h1>
+        <h1>The Query is {this.props.query}</h1>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  search: state.search
+  query: state.query
 });
 
 const mapDispatchToProps = dispatch => ({
-  receiveQuery: search => dispatch(receiveQuery(search))
+  receiveQuery: query => dispatch(receiveQuery(query))
 });
 
 export default connect(
