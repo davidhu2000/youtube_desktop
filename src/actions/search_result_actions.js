@@ -12,10 +12,12 @@ export const clearVideos = () => ({
   type: CLEAR_VIDEOS
 });
 
-export const searchVideos = query => dispatch => (
-  SearchResultAPI.fetchVideos(query).then(
-    res => dispatch(receiveVideos(res))
+export const searchVideos = query => dispatch => {
+  return SearchResultAPI.fetchVideos(query).then(
+    res => res.json()
+  ).then(
+    videos => dispatch(receiveVideos(videos.items))
   ).catch(
-    err => console.log(err.responseJSON)
+    err => console.log(err)
   )
-)
+}
