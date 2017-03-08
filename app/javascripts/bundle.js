@@ -13388,13 +13388,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Video = function (_React$Component) {
   _inherits(Video, _React$Component);
 
-  function Video() {
+  function Video(props) {
     _classCallCheck(this, Video);
 
-    return _possibleConstructorReturn(this, (Video.__proto__ || Object.getPrototypeOf(Video)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Video.__proto__ || Object.getPrototypeOf(Video)).call(this, props));
   }
 
   _createClass(Video, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
