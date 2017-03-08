@@ -1,0 +1,23 @@
+@import url('./search_bar.css');
+@import url('./center_menu.css');
+@import url('./right_menu.css');
+@import url('./left_menu.css');
+
+.navbar {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  margin: 10px 20px;
+}
+
+.navbar div i {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.navbar div i:hover {
+  opacity: 1;
+}
