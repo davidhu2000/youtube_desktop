@@ -7,8 +7,10 @@
   display: flex;
   width: 100%;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
+  height: 30px;
+  margin: 10px 20px;
 }
 
 .navbar div i {
