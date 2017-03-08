@@ -16,14 +16,13 @@ class SearchIndex extends React.Component {
     let query = this.props.query;
 
     if(query !== null) {
-      console.log('not null');
       let base_url = `https://www.googleapis.com/youtube/v3/search`;
       let part ='snippet';
       let type = 'video';
 
       let full_url = `${base_url}?part=${part}&q=${query}&type=${type}&key=${YT_API_KEY.publicDataKey}`;
 
-      fetch(full_url);
+      // fetch(full_url);
     }
 
   }
