@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 
 import { SearchBar } from '../common';
 
-import { receiveQuery } from '../../actions/search_actions';
+import { receiveQuery } from '../../actions/query_actions';
 
 class SearchIndex extends React.Component {
   constructor(props) {
