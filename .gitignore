@@ -1,4 +1,4 @@
 node_modules
 bundle.js
 bundle.js.map
-api_key.js
+config/api_key.js
