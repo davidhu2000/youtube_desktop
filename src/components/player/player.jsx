@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import Video from './video';
 import Details from './details';
-import Recommended from './recommended';
+import Related from './related';
 import Comments from './comments';
 
 
@@ -19,7 +19,7 @@ class Player extends React.Component {
         <Video/>
         <Details/>
         <Comments/>
-        <Recommended/>
+        <Related/>
       </div>
     );
   }

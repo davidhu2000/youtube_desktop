@@ -20,9 +20,9 @@ class Video extends React.Component {
 
   render() {
     return (
-      <div>
+      <span>
         <div id="video-player"></div>
-      </div>
+      </span>
     );
   }
 }
