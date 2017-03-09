@@ -1,0 +1,7 @@
+@import url('./index_item.css');
+
+.search-index {
+  min-height: 1000px;
+  width: 100%;
+  background-color: #f1f1f1;
+}
