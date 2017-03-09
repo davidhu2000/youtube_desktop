@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router';
 
 import Navbar from './navbar';
+import Sidebar from './sidebar';
 
 class App extends React.Component {
   constructor(props){
@@ -13,6 +14,7 @@ class App extends React.Component {
       return(
         <div>
           <Navbar />
+          <Sidebar />
           { this.props.children }
         </div>
       );
