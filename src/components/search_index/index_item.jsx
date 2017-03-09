@@ -7,11 +7,13 @@ class SearchIndexItem extends React.Component {
   }
 
   render () {
-  const { kind } = this.props.vid;
+  const { description, title } = this.props.vid.snippet;
+  const { url } = this.props.vid.snippet.thumbnails.high;
 
   return (
     <div className="index_item">
-      <h1>test</h1>
+      <img className="index_item_thumb" src={url} />
+      <h1>{title}</h1>
     </div>
   );
 
