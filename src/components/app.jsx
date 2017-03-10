@@ -1,18 +1,34 @@
 import React from 'react';
-import { withRouter, Link } from 'react-router'
+import { connect } from 'react-redux';
+import { withRouter, Link } from 'react-router';
+
+import Navbar from './navbar';
+import Footer from './footer';
 
 class App extends React.Component {
+  constructor(props){
+    super(props);
+  }
 
   render() {
       return(
         <div>
-          Test App
-          <br/>
-          <Link to="/player">Player</Link>
+          <Navbar />
+          { this.props.children }
+          <Footer />
         </div>
       );
   }
 
 }
 
-export default withRouter(App);
+const mapStateToProps = (state, ownProps) => ({
+});
+
+const mapDispatchToProps = dispatch => ({
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(App));
