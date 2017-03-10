@@ -11,11 +11,17 @@ class Navbar extends React.Component {
     super(props);
   }
 
+  toggleSidebar() {
+    let sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle('hidden');
+
+  }
+
   render() {
     return (
       <div className='navbar'>
         <div className='navbar-left-menu'>
-          <i className="material-icons">menu</i>
+          <i onClick={this.toggleSidebar} className="material-icons">menu</i>
         </div>
 
         <div className='navbar-center-menu'>
