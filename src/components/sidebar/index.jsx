@@ -8,7 +8,7 @@ class Sidebar extends React.Component {
 
   render() {
     return (
-      <div className='sidebar'>
+      <div id="sidebar" className='sidebar'>
         <Link to=''>
           <i className='material-icons'>home</i>
           <span>Home</span>

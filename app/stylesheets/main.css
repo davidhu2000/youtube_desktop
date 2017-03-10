@@ -11,3 +11,11 @@
 html {
   font-family: "Roboto", arial, sans-serif
 }
+
+.relative-content {
+  position: relative;
+}
+
+.hidden {
+  display: none;
+}
