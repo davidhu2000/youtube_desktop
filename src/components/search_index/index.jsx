@@ -37,12 +37,23 @@ class SearchIndex extends React.Component {
     }
   }
 
+  addSearchVolume() {
+      if (this.props.searchResult) {
+        let volume = Object.keys(this.props.searchResult).length;
+        return <p>About {volume} results</p>;
+      }
+  }
+
 
   render() {
     return (
       <div className="search-index">
-        <h1>The Query is {this.props.query}</h1>
+        <div className="search-index-container">
+          <div className="search-index-container-top">
+            {this.addSearchVolume()}
+          </div>
         {this.addSearchResults()}
+        </div>
       </div>
     );
   }

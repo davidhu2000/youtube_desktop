@@ -7,13 +7,19 @@ class SearchIndexItem extends React.Component {
   }
 
   render () {
-  const { description, title } = this.props.vid.snippet;
-  const { url } = this.props.vid.snippet.thumbnails.high;
+  const { description, title, channelTitle, publishedAt } = this.props.vid.snippet;
+  const { url } = this.props.vid.snippet.thumbnails.medium;
 
   return (
-    <div className="index_item">
-      <img className="index_item_thumb" src={url} />
-      <h1>{title}</h1>
+    <div className="index-item">
+      <div className="index-item-left">
+        <img src={url} />
+      </div>
+      <div className="index-item-right">
+          <h1>{title}</h1>
+          <p>{channelTitle}</p>
+          <p>{description}</p>
+      </div>
     </div>
   );
 
