@@ -1,5 +1,10 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router';
+import { withRouter } from 'react-router';
+import Video from './video';
+import Details from './details';
+import Related from './related';
+import Comments from './comments';
+
 
 class Player extends React.Component {
 
@@ -9,7 +14,13 @@ class Player extends React.Component {
 
   render() {
     return (
-      <div>player</div>
+      <div className="player-container">
+        Player
+        <Video/>
+        <Details/>
+        <Comments/>
+        <Related/>
+      </div>
     );
   }
 
