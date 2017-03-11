@@ -11,4 +11,6 @@ Create a branch of the same name as the remote branch.
 
 This will set your local branch to track the remote branch of the same name.
 
-4) `git pull` to pull down the branch information. 
+4) `git pull` to pull down the branch information.
+
+5) `git push origin <branchName>` to push up changes.  
