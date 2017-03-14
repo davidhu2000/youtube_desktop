@@ -17,10 +17,15 @@ class LoginPassword extends React.Component {
     }
   }
 
+  back() {
+    hashHistory.goBack();
+  }
+
   render() {
       return(
         <div className='form'>
-          <div className='profile-icon'></div>
+          <div className='back-button' onClick={this.back}><i className="material-icons">keyboard_backspace</i></div>
+          <div className='profile-icon colored'></div>
           <span>{this.props.email}</span>
 
           <input

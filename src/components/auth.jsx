@@ -14,6 +14,7 @@ class Auth extends React.Component {
       password: ''
     };
     console.log(props);
+    
   }
 
   update(field) {

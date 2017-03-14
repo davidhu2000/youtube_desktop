@@ -56,6 +56,10 @@
   margin: 0 auto;
 }
 
+.colored {
+  filter: grayscale(0%);
+}
+
 .login-input {
   margin-top: 16px;
   font-size: 16px;
