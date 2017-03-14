@@ -1,11 +1,12 @@
 @import url('base/reset.css');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 
 @import url('components/navbar/navbar_main.css');
-
 @import url('components/sidebar/sidebar_main.css');
-
 @import url('components/searchindex/searchindex_main.css');
 @import url('components/footer/footer_main.css');
+@import url('components/auth/auth_main.css');
 
 
 html {

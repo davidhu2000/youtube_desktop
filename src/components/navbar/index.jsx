@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import { withRouter, Link } from 'react-router';
 
 import { SearchBar } from '../common';
 
@@ -33,7 +33,9 @@ class Navbar extends React.Component {
         <div className='navbar-right-menu'>
           <i className="material-icons">file_upload</i>
           <i className="material-icons">notifications_none</i>
-          <i className="material-icons">person</i>
+          <Link to='/login'>
+            <i className="material-icons">person</i>
+          </Link>
         </div>
       </div>
     );
