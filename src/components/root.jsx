@@ -16,7 +16,7 @@ const Root = ({ store }) => (
         <Route path='/search' component={ SearchIndex } />
       </Route>
 
-      <Route path='/login' component={ Auth } />
+      <Route path='/login-email' component={ Auth } />
     </Router>
   </Provider>
 );

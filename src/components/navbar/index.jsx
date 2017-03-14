@@ -33,7 +33,7 @@ class Navbar extends React.Component {
         <div className='navbar-right-menu'>
           <i className="material-icons">file_upload</i>
           <i className="material-icons">notifications_none</i>
-          <Link to='/login'>
+          <Link to='/login-email'>
             <i className="material-icons">person</i>
           </Link>
         </div>

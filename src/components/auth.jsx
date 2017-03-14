@@ -24,7 +24,7 @@ class Auth extends React.Component {
   }
 
   renderCard() {
-    if(this.props.router.location.pathname === '/login') {
+    if(this.props.router.location.pathname === '/login-email') {
       return <LoginEmail email={this.state.email} update={this.update.bind(this)}/>
     } else {
       return <div>Testing</div>
