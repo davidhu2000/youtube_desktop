@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 import trendingIndex from './trending_index';
-import fetchTrending from '../../actions/search_result_actions';
+import { fetchTrending } from '../../actions/search_result_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   trendingResults: state.searchResult

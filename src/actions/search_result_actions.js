@@ -23,7 +23,7 @@ export const searchVideos = query => dispatch => {
   );
 };
 
-export const trendingVideos = () => dispatch => {
+export const fetchTrending = () => dispatch => {
   return TrendingAPI.fetchTrending().then(
     res => res.json()
   ).then(

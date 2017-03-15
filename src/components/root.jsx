@@ -11,7 +11,7 @@ const Root = ({ store }) => (
     <Router history={ hashHistory }>
       <Route path='/' component={ App }>
         <Route path='/search' component={ SearchIndex } />
-        <Route path='/trending' component={ TrendingIndexContainer} />
+        <Route path='/trending' component={ TrendingIndexContainer } />
       </Route>
     </Router>
   </Provider>
