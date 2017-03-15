@@ -12,8 +12,7 @@ class LoginPassword extends React.Component {
       document.getElementById('login-password-error').classList.remove('hidden');
       document.getElementById('login-password-input').classList.add('red-border');
     } else {
-      // hashHistory.push('/login-password');
-      console.log('logging in');
+      this.props.login();
     }
   }
 
@@ -33,7 +32,7 @@ class LoginPassword extends React.Component {
             onChange={this.props.update('password')}
             value={this.props.password}
             className='login-input'
-            type='text'
+            type='password'
             placeholder='Password' />
 
           <span id='login-password-error' className='error-message hidden'>{"Please enter your password."}</span>
