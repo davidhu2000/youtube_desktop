@@ -18,7 +18,7 @@ class SearchIndexItem extends React.Component {
       <div className="index-item-right">
           <h1>{title}</h1>
           <p>{channelTitle}</p>
-          <p>{description}</p>
+          <p>{description.slice(0, 350) + '...'}</p>
       </div>
     </div>
   );

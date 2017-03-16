@@ -1,3 +1,11 @@
 .navbar-right-menu {
-  width: 100px;
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.sign-in-text {
+  color: red;
+  font-size: 15px;
 }
