@@ -15,7 +15,14 @@ class Navbar extends React.Component {
   toggleSidebar() {
     let sidebar = document.getElementById("sidebar");
     sidebar.classList.toggle('hidden');
+  }
 
+  toggleAuthPage() {
+    // let authPage = document.getElementById('authPage');
+    // authPage.classList.toggle('hidden');
+    // window.child.loadURL(authenticateUser())
+    // window.child.show();
+    authenticateUser();
   }
 
   render() {
@@ -34,7 +41,7 @@ class Navbar extends React.Component {
         <div className='navbar-right-menu'>
           <i className="material-icons">file_upload</i>
           <i className="material-icons">notifications_none</i>
-          <i className="material-icons" onClick={authenticateUser}>person</i>
+          <i className="material-icons" onClick={this.toggleAuthPage}>person</i>
         </div>
       </div>
     );
