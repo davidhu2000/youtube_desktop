@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import YT_API_KEY from '../../../config/api_key';
 
 import { SearchBar } from '../common';
-import SearchIndexItem from './index_item';
+import VideoSearchItem from '../common/video_search_item';
 
 import { receiveQuery } from '../../actions/query_actions';
 import { searchVideos } from '../../actions/search_result_actions';
@@ -33,7 +33,7 @@ class SearchIndex extends React.Component {
   addSearchResults() {
     if (this.props.searchResult) {
       let vids = this.props.searchResult;
-      return vids.map(vid => <SearchIndexItem key={vid.etag} vid={vid} />);
+      return vids.map(vid => <VideoSearchItem key={vid.etag} vid={vid} />);
     }
   }
 

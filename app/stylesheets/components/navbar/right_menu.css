@@ -6,6 +6,13 @@
 }
 
 .sign-in-text {
-  color: red;
-  font-size: 15px;
+  color: hsl(3, 81.8%, 49.6%);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.beads-image {
+  height: 30px;
+  width: 30px;
+  opacity: .5;
 }

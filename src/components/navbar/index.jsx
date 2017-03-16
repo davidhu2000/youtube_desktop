@@ -34,7 +34,7 @@ class Navbar extends React.Component {
 
         <div className='navbar-right-menu'>
           <i className="material-icons">file_upload</i>
-          <i className="material-icons">more_vert</i>
+          <img className='beads-image' src="./app/assets/ic_more_vert_black_24px.svg"/>
           <Link to='/login-email'>
             <p className="sign-in-text">SIGN IN</p>
           </Link>
