@@ -7,11 +7,15 @@ export const authenticateUser = () => {
 
   let requestUrl = `${baseUrl}?client_id=${YT_API_KEY.clientId}&redirect_uri=${redirectUrl}&scope=${scope}&response_type=code&access_type=offline`
 
-  window.open(requestUrl);
+  // window.open(requestUrl);
 
   let webView = document.createElement('webview');
   webView.addEventListener('new-window', e => {
     webView.src = requestUrl;
   });
+
+  document.appendChild(webView);
+
+  console.log(webView);
 
 }
