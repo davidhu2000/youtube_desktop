@@ -21,8 +21,11 @@ const createWindow = () => {
   win.on('closed', () => {
     win = null;
   });
-
 }
+
+
+
+// window.child = child;
 
 app.on('ready', createWindow);
 

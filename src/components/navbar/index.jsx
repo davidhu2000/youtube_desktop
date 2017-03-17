@@ -2,9 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router';
 
-import { SearchBar } from '../common';
+import { SearchBar, AuthPage } from '../common';
 
 import { receiveQuery } from '../../actions/query_actions';
+import { authenticateUser } from '../../util/oauth_util';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -14,7 +15,14 @@ class Navbar extends React.Component {
   toggleSidebar() {
     let sidebar = document.getElementById("sidebar");
     sidebar.classList.toggle('hidden');
+  }
 
+  toggleAuthPage() {
+    // let authPage = document.getElementById('authPage');
+    // authPage.classList.toggle('hidden');
+    // window.child.loadURL(authenticateUser())
+    // window.child.show();
+    authenticateUser();
   }
 
   render() {
@@ -34,10 +42,12 @@ class Navbar extends React.Component {
 
         <div className='navbar-right-menu'>
           <i className="material-icons">file_upload</i>
+
           <img className='beads-image' src="./app/assets/ic_more_vert_black_24px.svg"/>
-          <Link to='/login-email'>
+          <a onClick={authenticateUser} style={{cursor: 'pointer'}}>
             <p className="sign-in-text">SIGN IN</p>
-          </Link>
+          </a>
+
         </div>
       </div>
     );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router';
+import YT_API_KEY from '../../config/api_key';
 
 import LoginEmail from './auth/login_email';
 import LoginPassword from './auth/login_password';
@@ -13,8 +14,6 @@ class Auth extends React.Component {
       email: '',
       password: ''
     };
-    console.log(props);
-    
   }
 
   update(field) {
@@ -25,6 +24,21 @@ class Auth extends React.Component {
     }
   }
 
+  login() {
+    let baseUrl = 'https://accounts.google.com/o/oauth2/auth';
+    let redirectUrl = 'http://localhost:5000/oauth2callback';
+    let scope = 'https://gdata.youtube.com';
+
+    let requestUrl = `${baseUrl}?client_id=${YT_API_KEY.clientId}&redirect_uri=${redirectUrl}&scope=${scope}&response_type=code&access_type=offline`
+
+    window.open(requestUrl);
+
+    let webView = document.createElement('webview');
+    webView.addEventListener('new-window', e => {
+      webView.src = requestUrl;
+    })
+  }
+
   renderCard() {
     if(this.props.router.location.pathname === '/login-email') {
       return <LoginEmail email={this.state.email} update={this.update.bind(this)}/>
@@ -32,6 +46,7 @@ class Auth extends React.Component {
       return (
         <LoginPassword
           email={this.state.email}
+          login={this.login}
           password={this.state.password}
           update={this.update.bind(this)} />
       )

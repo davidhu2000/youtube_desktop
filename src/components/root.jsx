@@ -7,8 +7,6 @@ import App from './app';
 import SearchIndex from './search_index';
 import TrendingIndex from './trending';
 
-// session components
-import Auth from './auth';
 
 const Root = ({ store }) => (
   <Provider store={ store }>
@@ -17,9 +15,6 @@ const Root = ({ store }) => (
         <Route path='/search' component={ SearchIndex } />
         <Route path='/trending' component={ TrendingIndex } />
       </Route>
-      
-      <Route path='/login-email' component={ Auth } />
-      <Route path='/login-password' component={ Auth } />
     </Router>
   </Provider>
 );
