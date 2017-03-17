@@ -1,8 +1,7 @@
 import React from 'react';
 import YT_API_KEY from '../../../config/api_key';
 
-import TrendingIndexItem from './trending_index_item';
-import VideoSearchItem from '../common/video_search_item';
+import { VideoSearchItem } from '../common';
 
 class TrendingIndex extends React.Component {
   constructor(props) {
