@@ -4,13 +4,13 @@
 @import url('./left_menu.css');
 
 .navbar {
-  display: flex;
   width: 100%;
-  flex-direction: row;
+  height: 56px;
+  padding: 0px 20px;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 30px;
-  margin: 10px 20px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .navbar div i {

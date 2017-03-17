@@ -1,7 +1,7 @@
 import React from 'react';
 import YT_API_KEY from '../../../config/api_key';
 
-import TrendingIndexItem from './trending_index_item';
+import { VideoSearchItem } from '../common';
 
 class TrendingIndex extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class TrendingIndex extends React.Component {
   addSearchResults() {
     if (this.props.trendingResults) {
       let vids = this.props.trendingResults;
-      return vids.map(vid => <TrendingIndexItem key={vid.etag} vid={vid} />);
+      return vids.map(vid => <VideoSearchItem key={vid.etag} vid={vid} />);
     }
   }
 

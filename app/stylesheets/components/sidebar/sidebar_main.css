@@ -3,13 +3,11 @@
   /*display: none;*/
   position: absolute;
   width: 230px;
-  padding: 13px 22px;
+  margin-top: 10px;
+  padding: 0px 22px;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.05);
-  border: solid 1px #e2e2e2;
-  border-radius: 2px;
   font-size: 13px;
   color: #333;
   background-color: white;
