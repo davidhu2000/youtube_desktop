@@ -5,8 +5,7 @@ const { BrowserWindow } = window.require('electron').remote;
 const request = window.require('superagent');
 
 const requestGoogleToken = (options, code) => {
-  console.log(code);
-  console.log(options);
+
   request
     .post('https://accounts.google.com/o/oauth2/token', {
       client_id: options.client_id,
@@ -20,12 +19,10 @@ const requestGoogleToken = (options, code) => {
       console.log(response);
       if (response && response.ok) {
         // Success - Received Token.
-        // Store it in localStorage maybe?
-        console.log('success');
-        window.localStorage.setItem('googletoken', response.body.access_token);
+        window.localStorage.setItem('google-access-token', response.body.access_token);
+        window.localStorage.setItem('google-refresh-token', response.body.refresh_token);
       } else {
         // Error - Show messages.
-        console.log('error');
         console.log(err);
       }
     });
@@ -48,17 +45,17 @@ export const authenticateUser = () => {
   var authWindow = new BrowserWindow({ width: 800, height: 600, show: false, 'node-integration': false });
   authWindow.loadURL(requestUrl);
   authWindow.show();
-
+  console.log(requestUrl);
   function handleCallback (url) {
     var raw_code = /code=([^&]*)/.exec(url) || null;
     var code = (raw_code && raw_code.length > 1) ? raw_code[1] : null;
     var error = /\?error=(.+)$/.exec(url);
 
-    // if (code || error)  authWindow.destroy();
+    if (code || error)  authWindow.destroy();
 
     if (code) {
       requestGoogleToken(options, code);
-      // authWindow.destroy();
+      authWindow.destroy();
     } else if (error) {
       alert('Oops! Something went wrong and we couldn\'t' +
         'log you in using Google. Please try again.');
@@ -72,10 +69,12 @@ export const authenticateUser = () => {
     handleCallback(url);
   });
 
-  // authWindow.webContents.on('did-get-redirect-request', function (event, oldUrl, newUrl) {
-  //   // handleCallback(newUrl);
-  //   console.log('id-get-redirect-request');
-  // });
+  authWindow.webContents.on('did-get-redirect-request', function (event, oldUrl, newUrl) {
+    // handleCallback(newUrl);
+    console.log('id-get-redirect-request');
+    console.log(oldUrl);
+    console.log(newUrl);
+  });
 
   // Reset the authWindow on close
   authWindow.on('close', function() {
