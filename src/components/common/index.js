@@ -1,2 +1,2 @@
 export * from './search_bar';
-export * from './auth_page';
+export * from './video_search_item';

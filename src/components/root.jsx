@@ -5,6 +5,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 // main app components
 import App from './app';
 import SearchIndex from './search_index';
+import TrendingIndex from './trending';
 
 
 const Root = ({ store }) => (
@@ -12,6 +13,7 @@ const Root = ({ store }) => (
     <Router history={ hashHistory }>
       <Route path='/' component={ App }>
         <Route path='/search' component={ SearchIndex } />
+        <Route path='/trending' component={ TrendingIndex } />
       </Route>
     </Router>
   </Provider>

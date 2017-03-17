@@ -30,7 +30,9 @@ class Navbar extends React.Component {
       <div className='navbar'>
         <div className='navbar-left-menu'>
           <i onClick={this.toggleSidebar} className="material-icons">menu</i>
+            <img className='youtube-logo' src="./app/assets/Youtube-logo.png"/>
         </div>
+
 
         <div className='navbar-center-menu'>
           <SearchBar
@@ -40,8 +42,12 @@ class Navbar extends React.Component {
 
         <div className='navbar-right-menu'>
           <i className="material-icons">file_upload</i>
-          <i className="material-icons">notifications_none</i>
-          <i className="material-icons" onClick={this.toggleAuthPage}>person</i>
+
+          <img className='beads-image' src="./app/assets/ic_more_vert_black_24px.svg"/>
+          <Link to='/login-email'>
+            <p className="sign-in-text">SIGN IN</p>
+          </Link>
+
         </div>
       </div>
     );

@@ -1,3 +1,18 @@
 .navbar-right-menu {
-  width: 100px;
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.sign-in-text {
+  color: hsl(3, 81.8%, 49.6%);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.beads-image {
+  height: 30px;
+  width: 30px;
+  opacity: .5;
 }
