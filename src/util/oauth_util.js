@@ -70,10 +70,11 @@ export const authenticateUser = () => {
   });
 
   authWindow.webContents.on('did-get-redirect-request', function (event, oldUrl, newUrl) {
-    // handleCallback(newUrl);
+    handleCallback(newUrl);
     console.log('id-get-redirect-request');
     console.log(oldUrl);
     console.log(newUrl);
+
   });
 
   // Reset the authWindow on close
