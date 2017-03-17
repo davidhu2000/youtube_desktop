@@ -19,6 +19,7 @@ const requestGoogleToken = (options, code) => {
         // Success - Received Token.
         window.localStorage.setItem('google-access-token', response.body.access_token);
         window.localStorage.setItem('google-refresh-token', response.body.refresh_token);
+        window.localStorage.setItem('google-token-start-time', Date.now())
       } else {
         // Error - Show messages.
         console.log("err");
