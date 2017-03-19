@@ -15,7 +15,7 @@ class Player extends React.Component {
 
   createPlayer() {
     this.player = YouTubePlayer('video-player');
-    this.player.loadVideoById('M7lc1UVf-VE');
+    this.player.loadVideoById(this.props.videoId);
   }
 
   render() {
