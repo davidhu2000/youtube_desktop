@@ -23,10 +23,6 @@ const createWindow = () => {
   });
 }
 
-
-
-// window.child = child;
-
 app.on('ready', createWindow);
 
 app.on('window-all-closed', () => {
