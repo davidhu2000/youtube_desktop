@@ -6,7 +6,7 @@ import Related from './related';
 import Comments from './comments';
 
 
-class Player extends React.Component {
+class VideoDetail extends React.Component {
 
   constructor(props) {
     super(props);
@@ -26,4 +26,4 @@ class Player extends React.Component {
 
 }
 
-export default withRouter(Player);
+export default withRouter(VideoDetail);

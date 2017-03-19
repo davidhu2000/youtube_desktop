@@ -3,6 +3,7 @@ import React from 'react';
 class VideoSearchItem extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
   }
 
   render () {
