@@ -1,29 +1,30 @@
 import React from 'react';
-import { withRouter } from 'react-router';
-import Video from './video';
-import Details from './details';
-import Related from './related';
-import Comments from './comments';
-
+import YouTubePlayer from 'youtube-player';
 
 class Player extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.player = null;
+  }
+
+  componentDidMount() {
+    this.createPlayer();
+  }
+
+  createPlayer() {
+    this.player = YouTubePlayer('video-player');
+    this.player.loadVideoById('M7lc1UVf-VE');
   }
 
   render() {
     return (
-      <div className="player-container">
-        Player
-        <Video/>
-        <Details/>
-        <Comments/>
-        <Related/>
-      </div>
+      <span>
+        <div id="video-player"></div>
+      </span>
     );
   }
-
 }
 
 export default Player;
