@@ -14,7 +14,8 @@ module.exports = env => {
     },
     output: {
       path: path.join(__dirname, 'app', 'javascripts'),
-      filename: '[name].[hash].js',
+      publicPath: path.join(__dirname, 'app', 'javascripts/'),
+      filename: '[name].[hash].js'
     },
     module: {
       loaders: [
