@@ -3,3 +3,4 @@ bundle.js
 bundle.js.map
 config
 frontend
+app/javascripts/*

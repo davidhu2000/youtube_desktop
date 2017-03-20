@@ -4,6 +4,10 @@
   "description": "Youtube Desktop Application",
   "main": "main.js",
   "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "build": "rm -Rf app/javascripts/* | NODE_ENV=production webpack --progress --env.prod"
+  },
   "dependencies": {
     "electron": "^1.6.1",
     "lodash": "^4.17.4",
