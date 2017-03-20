@@ -5,7 +5,7 @@
   "main": "main.js",
   "license": "MIT",
   "scripts": {
-    "start": "electron .",
+    "start": "NODE_ENV=development webpack --env.dev | electron .",
     "build": "rm -Rf app/javascripts/* | rm index.html | NODE_ENV=production webpack --progress --env.prod"
   },
   "dependencies": {

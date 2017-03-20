@@ -45,6 +45,11 @@ module.exports = env => {
         filename: '../../index.html',
         inject: 'body'
       }),
+      isProduction(new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: JSON.stringify('production')
+        }
+      })),
       isProduction(new webpack.optimize.UglifyJsPlugin({
         compress: {
           'screw_ie8': true,
