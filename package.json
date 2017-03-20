@@ -23,7 +23,6 @@
     "babel-preset-react": "^6.23.0",
     "html-webpack-plugin": "^2.24.1",
     "redux-file-gen": "^1.2.1",
-    "webpack": "^2.2.1",
-    "webpack-dev-server": "2.2.0"
+    "webpack": "^2.2.1"
   }
 }
