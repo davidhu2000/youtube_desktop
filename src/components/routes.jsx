@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Route } from 'react-router';
 import App from './app';
 
 const errorLoading = error => {
@@ -10,25 +10,13 @@ const loadRoute = callback => {
   return module => callback(null, module.default);
 }
 
-export default {
-  path: '/',
-  component: App,
-  childRoutes: [
-    {
-      path: 'search',
-      getComponent(location, cb) {
-        System.import('./search_index')
-          .then(loadRoute(cb))
-          .catch(errorLoading)
-      }
-    },
-    {
-      path: 'trending',
-      getComponent(location, cb) {
-        System.import('./trending')
-          .then(loadRoute(cb))
-          .catch(errorLoading)
-      }
-    }
-  ]
-}
+const routes = (
+  <Route path='/' getComponent={ (location, cb) => { System.import('./app').then(loadRoute(cb)).catch(errorLoading) } } >
+
+    <Route path='search' getComponent={ (location, cb) =>  { System.import('./search_index').then(loadRoute(cb)).catch(errorLoading) } } />
+    <Route path='trending' getComponent={ (location, cb) =>  { System.import('./trending').then(loadRoute(cb)).catch(errorLoading) } } />
+
+  </Route>
+);
+
+export default routes;
