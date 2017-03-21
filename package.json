@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "electron .",
-    "dev": "rm -Rf app/javascripts/* | rm index.html | NODE_ENV=development webpack --env.dev ",
+    "dev": "rm -Rf app/javascripts/* | rm index.html | NODE_ENV=development webpack -w --env.dev ",
     "build": "rm -Rf app/javascripts/* | rm index.html | NODE_ENV=production webpack --progress --env.prod"
   },
   "dependencies": {
