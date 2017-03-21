@@ -11,7 +11,7 @@ const loadRoute = callback => {
 }
 
 const routes = (
-  <Route path='/' getComponent={ (location, cb) => { System.import('./app').then(loadRoute(cb)).catch(errorLoading) } } >
+  <Route path='/' component={ App } >
 
     <Route path='search' getComponent={ (location, cb) =>  { System.import('./search_index').then(loadRoute(cb)).catch(errorLoading) } } />
     <Route path='trending' getComponent={ (location, cb) =>  { System.import('./trending').then(loadRoute(cb)).catch(errorLoading) } } />

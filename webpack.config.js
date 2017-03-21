@@ -14,7 +14,7 @@ module.exports = env => {
     },
     output: {
       path: path.join(__dirname, 'app', 'javascripts'),
-      publicPath: path.join(__dirname, 'app', 'javascripts/'),
+      publicPath: path.join('app', 'javascripts/'),
       filename: '[name].[hash].js'
     },
     module: {
