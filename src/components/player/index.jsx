@@ -18,7 +18,7 @@ class VideoDetail extends React.Component {
         <Player videoId={this.props.router.params.videoId}/>
         <Details/>
         <Comments/>
-        <Related/>
+        <Related videoId={this.props.router.params.videoId}/>
       </div>
     );
   }
