@@ -19,3 +19,11 @@ html {
 .hidden {
   display: none;
 }
+
+.redish {
+  color: #e62117;
+}
+
+.greyscale {
+  filter: grayscale(100%);
+}
