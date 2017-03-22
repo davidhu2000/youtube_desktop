@@ -1,0 +1,11 @@
+.navbar-left-menu {
+  width: 200px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.youtube-logo {
+  height: 56px;
+  width: 112px;
+}

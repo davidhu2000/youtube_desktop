@@ -17,7 +17,7 @@ class Sidebar extends React.Component {
           <i className='material-icons'>account_circle</i>
           <span>My Channel</span>
         </Link>
-        <Link to=''>
+        <Link to='/trending'>
           <i className='material-icons'>whatshot</i>
           <span>Trending</span>
         </Link>

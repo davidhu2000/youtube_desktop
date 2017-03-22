@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import { withRouter, Link } from 'react-router';
 
-import { SearchBar } from '../common';
+import { SearchBar, AuthPage } from '../common';
 
 import { receiveQuery } from '../../actions/query_actions';
+import { authenticateUser } from '../../util/oauth_util';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -14,7 +15,14 @@ class Navbar extends React.Component {
   toggleSidebar() {
     let sidebar = document.getElementById("sidebar");
     sidebar.classList.toggle('hidden');
+  }
 
+  toggleAuthPage() {
+    // let authPage = document.getElementById('authPage');
+    // authPage.classList.toggle('hidden');
+    // window.child.loadURL(authenticateUser())
+    // window.child.show();
+    authenticateUser();
   }
 
   render() {
@@ -22,7 +30,9 @@ class Navbar extends React.Component {
       <div className='navbar'>
         <div className='navbar-left-menu'>
           <i onClick={this.toggleSidebar} className="material-icons">menu</i>
+            <img className='youtube-logo' src="./app/assets/Youtube-logo.png"/>
         </div>
+
 
         <div className='navbar-center-menu'>
           <SearchBar
@@ -32,8 +42,12 @@ class Navbar extends React.Component {
 
         <div className='navbar-right-menu'>
           <i className="material-icons">file_upload</i>
-          <i className="material-icons">notifications_none</i>
-          <i className="material-icons">person</i>
+
+          <img className='beads-image' src="./app/assets/ic_more_vert_black_24px.svg"/>
+          <a onClick={authenticateUser} style={{cursor: 'pointer'}}>
+            <p className="sign-in-text">SIGN IN</p>
+          </a>
+
         </div>
       </div>
     );
