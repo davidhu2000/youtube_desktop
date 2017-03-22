@@ -1,4 +1,5 @@
 import React from 'react';
+import RelatedListItem from './related_list_item';
 import YT_API_KEY from '../../../config/api_key';
 
 class Related extends React.Component {
@@ -24,11 +25,20 @@ class Related extends React.Component {
       })
   }
 
+  renderRelatedVideos() {
+    if (this.state.vids.length !== 0) {
+      let vids = this.state.vids;
+      return vids.map(vid => <RelatedListItem vid={vid} />)
+    }
+  }
+
   render() {
     console.log(this.state);
     return (
-      <div>
-        Related
+      <div className="related-container">
+        <div className="related-list">
+          {this.renderRelatedVideos()}
+        </div>
       </div>
     );
   }
