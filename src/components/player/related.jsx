@@ -28,7 +28,7 @@ class Related extends React.Component {
   renderRelatedVideos() {
     if (this.state.vids.length !== 0) {
       let vids = this.state.vids;
-      return vids.map(vid => <RelatedListItem vid={vid} />)
+      return vids.map(vid => <RelatedListItem key={vid.etag} vid={vid} />)
     }
   }
 

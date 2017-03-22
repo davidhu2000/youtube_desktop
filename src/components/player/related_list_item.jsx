@@ -1,24 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { hashHistory } from 'react-router';
 
 class RelatedListItem extends React.Component {
   constructor(props) {
     super(props);
+
+    this.linkVideo = this.linkVideo.bind(this);
+  }
+
+  linkVideo() {
+    let videoId = this.props.vid.id.videoId;
+    hashHistory.replace(`watch/${videoId}`);
+    location.reload();
   }
 
   render () {
     const vid = this.props.vid;
     const { description, title, channelTitle, publishedAt } = vid.snippet;
-    const { url } = vid.snippet.thumbnails.medium;
+    const { url } = vid.snippet.thumbnails.default;
     const { videoId } = vid.id.videoId;
 
     return (
       <div className="related-item">
-        <Link to={`watch/${videoId}`} className="related-item-left">
-          <img src={url} />
-        </Link>
+        <img src={url} onClick={this.linkVideo}/>
 
-        <div className="related-item-right">
+        <div className="related-item-info">
             <h1>{title}</h1>
             <p>{channelTitle}</p>
         </div>
