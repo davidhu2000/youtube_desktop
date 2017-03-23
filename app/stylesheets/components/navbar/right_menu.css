@@ -3,8 +3,12 @@
   min-width: 200px;
   padding-left: 5%;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
+}
+
+.navbar-right-menu i,img {
+  margin-right: 20px;
 }
 
 .sign-in-text {

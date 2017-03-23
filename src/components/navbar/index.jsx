@@ -48,7 +48,6 @@ class Navbar extends React.Component {
 
         <div className='navbar-right-menu'>
           <i className="material-icons">file_upload</i>
-
           <img className='beads-image' src="./app/assets/ic_more_vert_black_24px.svg"/>
           <a onClick={authenticateUser} style={{cursor: 'pointer'}}>
             <p className="sign-in-text">SIGN IN</p>
