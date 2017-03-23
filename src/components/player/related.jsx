@@ -18,7 +18,7 @@ class Related extends React.Component {
     return fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&relatedToVideoId=${this.props.videoId}&key=${YT_API_KEY.publicDataKey}`)
       .then(response => response.json())
       .then(responseJson => {
-        this.setState({ vids: responseJson.items});
+        this.setState({ vids: responseJson.items });
       })
       .catch(error => {
         console.error(error);
