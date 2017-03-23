@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router';
-
 import { SearchBar, AuthPage } from '../common';
 
 import { receiveQuery } from '../../actions/query_actions';

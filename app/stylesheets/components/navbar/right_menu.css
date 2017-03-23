@@ -1,7 +1,7 @@
 .navbar-right-menu {
-  /*width: 200px;*/
+  width: 25%;
+  min-width: 200px;
   padding-left: 5%;
-  min-width: 25%;
   display: flex;
   justify-content: space-around;
   align-items: center;
