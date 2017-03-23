@@ -1,13 +1,35 @@
 .navbar-left-menu {
-  /*width: 200px;*/
   min-width: 25%;
-  padding-right: 5%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
+.navbar-left-menu i {
+  line-height: 56px;
+}
+
 .youtube-logo {
+  padding: 0px;
+  margin-right: 50%;
   height: 56px;
   width: 112px;
+}
+
+.grey_shift {
+  animation: grey_shift 1s 1;
+  animation-fill-mode: forwards;
+}
+
+.greyscale {
+  filter: grayscale(100%);
+}
+
+@keyframes grey_shift{
+  50% {
+    filter: grayscale(50%);
+  }
+  100% {
+    filter: grayscale(100%);
+  }
 }
