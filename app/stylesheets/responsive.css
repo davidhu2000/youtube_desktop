@@ -1,0 +1,41 @@
+@media screen and (max-width: 1134px) {
+
+  .navbar {
+    justify-content: center;
+  }
+
+  .navbar-center-menu {
+    min-width: 248px;
+  }
+
+  .navbar-left-menu {
+    min-width: 80px;
+  }
+
+  .navbar-right-menu {
+    min-width: 80px;
+  }
+
+  .upload-icon {
+    display: none;
+  }
+
+  .beads-image {
+    display: none;
+  }
+
+  .youtube-logo {
+    display: none;
+  }
+
+  #sidebar-menu{
+    display: none;
+  }
+
+  #sidebar-carrot{
+    display: none;
+  }
+
+
+
+}
