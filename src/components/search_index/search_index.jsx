@@ -1,6 +1,6 @@
 import React from 'react';
-import { withRouter } from 'react-router'; 
-import { SearchBar, VideoSearchItem } from '../common';
+import { withRouter } from 'react-router';
+import { SearchBar, VideoSearchItem, SmlVideoSearchItem } from '../common';
 
 class SearchIndex extends React.Component {
   constructor(props) {
@@ -30,13 +30,19 @@ class SearchIndex extends React.Component {
     }
   }
 
+  addSmlSearchResults() {
+    if (this.props.searchResult) {
+      let vids = this.props.searchResult;
+      return vids.map(vid => <SmlVideoSearchItem key={vid.etag} vid={vid} />);
+    }
+  }
+
   addSearchVolume() {
       if (this.props.searchResult) {
         let volume = Object.keys(this.props.searchResult).length;
         return <p>About {volume} results</p>;
       }
   }
-
 
   render() {
     return (
@@ -46,6 +52,7 @@ class SearchIndex extends React.Component {
             {this.addSearchVolume()}
           </div>
         {this.addSearchResults()}
+        {this.addSmlSearchResults()}
         </div>
       </div>
     );

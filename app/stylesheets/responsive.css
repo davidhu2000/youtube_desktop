@@ -12,13 +12,13 @@
 
   .navbar-left-menu {
     min-width: 80px;
+    padding-right: 10px;
     justify-content: flex-end;
-    padding-right: 1%;
   }
 
   .navbar-right-menu {
     min-width: 80px;
-    padding-left: 1%;
+    padding-left: 10px;
     justify-content: flex-start;
   }
 
@@ -41,7 +41,12 @@
 /*search index*/
 
   .index-item {
-    width: 438px;
+    display: none;
+  }
+
+  .sml-index-item {
+    display: flex;
+    align-items: center;
   }
 
   .search-index-container {

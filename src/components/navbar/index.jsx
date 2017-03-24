@@ -16,7 +16,9 @@ class Navbar extends React.Component {
     let sidebarcarrot =  document.getElementById("sidebar-carrot");
     let sidebarmenu = document.getElementById("sidebar-menu");
     let logo = document.getElementById("sidebar-logo");
+    let burger = document.getElementById("burger");
 
+    burger.classList.toggle('grey_shift');
     logo.classList.toggle('grey_shift');
     sidebar.classList.toggle('hidden');
     sidebarcarrot.classList.toggle('hidden');
@@ -37,7 +39,7 @@ class Navbar extends React.Component {
         <div className='navbar-left-menu'>
           <i onClick={this.toggleSidebar} id="sidebar-menu" className="material-icons">menu</i>
           <i onClick={this.toggleSidebar} id="sidebar-carrot" className="material-icons hidden">keyboard_arrow_down</i>
-          <img className='burger' id="sidebar-logo" src="./app/assets/burger.png"/>
+          <img className='burger' id="burger" src="./app/assets/burger.png"/>
           <img className='youtube-logo' id="sidebar-logo" src="./app/assets/Youtube-logo.png"/>
         </div>
 

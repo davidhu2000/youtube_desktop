@@ -1,6 +1,7 @@
 .navbar-left-menu {
   width: 25%;
   min-width: 200px;
+  padding: 0px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,7 +9,7 @@
 
 .navbar-left-menu i {
   line-height: 56px;
-  padding: 0px 10px;
+  margin: 0px 10px;
 }
 
 .youtube-logo {

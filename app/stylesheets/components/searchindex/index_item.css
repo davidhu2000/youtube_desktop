@@ -32,3 +32,39 @@
   color: grey;
   font-size: 12px;
 }
+
+/*SmlIndexItem*/
+
+.sml-index-item {
+  display: none;
+  padding: 10px;
+  width: 438px;
+  height: 158px;
+}
+
+.sml-index-item-left img {
+  height: 138px;
+  width: 246px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.sml-index-item-right {
+  height: 100%;
+  padding: 0px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.sml-index-item-right h1 {
+  color: #167AC6;
+  font-size: 16px;
+}
+
+.sml-index-item-right p {
+  margin-top: 5px;
+  color: grey;
+  font-size: 12px;
+}
