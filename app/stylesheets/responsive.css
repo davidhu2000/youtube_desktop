@@ -1,4 +1,6 @@
-@media screen and (max-width: 1134px) {
+@media screen and (max-width: 750px) {
+
+/*navbar*/
 
   .navbar {
     justify-content: center;
@@ -36,16 +38,14 @@
     display: inherit;
   }
 
+/*search index*/
 
+  .index-item {
+    width: 438px;
+  }
 
-  /*#sidebar-menu{
-    display: none;
-  }*/
-
-  /*#sidebar-carrot{
-    display: none;
-  }*/
-
-
+  .search-index-container {
+    width: 440px;
+  }
 
 }

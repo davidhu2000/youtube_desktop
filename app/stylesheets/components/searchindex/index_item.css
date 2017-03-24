@@ -9,6 +9,8 @@
 .index-item-left img {
   height: 138px;
   width: 246px;
+  padding: 0px;
+  margin: 0px;
 }
 
 .index-item-right {
