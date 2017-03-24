@@ -1,4 +1,5 @@
 import React from 'react';
+import CommentsItem from './comments_item'
 import YT_API_KEY from '../../../config/api_key';
 
 class Comments extends React.Component {
@@ -27,7 +28,7 @@ class Comments extends React.Component {
   renderComments() {
     if (this.state.comments.length !== 0) {
       let comments = this.state.comments;
-      return
+      return comments.map(comment => <CommentsItem key={comment.etag} comment={comment} />)
     }
   }
 
@@ -35,7 +36,7 @@ class Comments extends React.Component {
     return (
       <div className="comments-container">
         <div className="comments-list">
-
+          {this.renderComments()}
         </div>
       </div>
     );
