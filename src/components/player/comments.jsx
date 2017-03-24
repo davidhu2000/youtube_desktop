@@ -17,17 +17,26 @@ class Comments extends React.Component {
     return fetch(`https://www.googleapis.com/youtube/v3/commentThreads?part=snippet,replies&videoId=${this.props.videoId}&key=${YT_API_KEY.publicDataKey}`)
       .then(response => response.json())
       .then(responseJson => {
-        console.log(responseJson);
+        this.setState({ comments: responseJson.items });
       })
       .catch(error => {
         console.error(error);
       })
   }
 
+  renderComments() {
+    if (this.state.comments.length !== 0) {
+      let comments = this.state.comments;
+      return
+    }
+  }
+
   render() {
     return (
-      <div>
-        Comments
+      <div className="comments-container">
+        <div className="comments-list">
+
+        </div>
       </div>
     );
   }
