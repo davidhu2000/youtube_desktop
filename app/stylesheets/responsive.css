@@ -10,10 +10,14 @@
 
   .navbar-left-menu {
     min-width: 80px;
+    justify-content: flex-end;
+    padding-right: 1%;
   }
 
   .navbar-right-menu {
     min-width: 80px;
+    padding-left: 1%;
+    justify-content: flex-start;
   }
 
   .upload-icon {
@@ -28,13 +32,19 @@
     display: none;
   }
 
+  .burger {
+    display: inherit;
+  }
+
+
+
   /*#sidebar-menu{
     display: none;
   }*/
 
-  #sidebar-carrot{
+  /*#sidebar-carrot{
     display: none;
-  }
+  }*/
 
 
 
