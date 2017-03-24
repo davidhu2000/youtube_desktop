@@ -33,7 +33,6 @@ class Related extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="related-container">
         <div className="related-list">
