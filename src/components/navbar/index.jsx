@@ -14,7 +14,14 @@ class Navbar extends React.Component {
 
   toggleSidebar() {
     let sidebar = document.getElementById("sidebar");
+    let sidebarcarrot =  document.getElementById("sidebar-carrot");
+    let sidebarmenu = document.getElementById("sidebar-menu");
+    let logo = document.getElementById("sidebar-logo");
+
+    logo.classList.toggle('grey_shift');
     sidebar.classList.toggle('hidden');
+    sidebarcarrot.classList.toggle('hidden');
+    sidebarmenu.classList.toggle('hidden');
   }
 
   toggleAuthPage() {
@@ -29,10 +36,10 @@ class Navbar extends React.Component {
     return (
       <div className='navbar'>
         <div className='navbar-left-menu'>
-          <i onClick={this.toggleSidebar} className="material-icons">menu</i>
-            <img className='youtube-logo' src="./app/assets/Youtube-logo.png"/>
+          <i onClick={this.toggleSidebar} id="sidebar-menu" className="material-icons">menu</i>
+          <i onClick={this.toggleSidebar} id="sidebar-carrot" className="material-icons hidden">keyboard_arrow_down</i>
+          <img className='youtube-logo' id="sidebar-logo" src="./app/assets/Youtube-logo.png"/>
         </div>
-
 
         <div className='navbar-center-menu'>
           <SearchBar

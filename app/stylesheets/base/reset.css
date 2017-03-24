@@ -21,9 +21,8 @@ ol, ul {
 }
 
 img {
-  display: block;
-  width: 100%;
-  height: auto;
+  /*width: 100%;
+  height: auto;*/
 }
 
 input,
