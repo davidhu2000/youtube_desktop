@@ -5,9 +5,9 @@ import YT_API_KEY from '../../../config/api_key';
 class Comments extends React.Component {
 
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.state = { comments: [] }
+    this.state = { comments: [] };
   }
 
   componentDidMount() {
