@@ -1,5 +1,7 @@
 .navbar-left-menu {
-  min-width: 25%;
+  width: 25%;
+  min-width: 200px;
+  padding: 0px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -7,13 +9,22 @@
 
 .navbar-left-menu i {
   line-height: 56px;
+  margin: 0px 10px;
 }
 
 .youtube-logo {
   padding: 0px;
+  margin: 0px;
   margin-right: 50%;
   height: 56px;
   width: 112px;
+}
+
+.burger {
+  height: 36px;
+  padding: 0px;
+  margin: 0px;
+  display: none;
 }
 
 .grey_shift {

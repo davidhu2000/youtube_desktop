@@ -1,0 +1,56 @@
+@media screen and (max-width: 750px) {
+
+/*navbar*/
+
+  .navbar {
+    justify-content: center;
+  }
+
+  .navbar-center-menu {
+    min-width: 248px;
+  }
+
+  .navbar-left-menu {
+    min-width: 80px;
+    padding-right: 10px;
+    justify-content: flex-end;
+  }
+
+  .navbar-right-menu {
+    min-width: 80px;
+    padding-left: 10px;
+    justify-content: flex-start;
+  }
+
+  .upload-icon {
+    display: none;
+  }
+
+  .beads-image {
+    display: none;
+  }
+
+  .youtube-logo {
+    display: none;
+  }
+
+  .burger {
+    display: inherit;
+  }
+
+/*search index*/
+
+  .index-item {
+    display: none;
+  }
+
+  .sml-index-item {
+    display: flex;
+    align-items: center;
+  }
+
+  .search-index-container {
+    width: 440px;
+  }
+
+}

@@ -1,12 +1,6 @@
 .search-bar {
-  /*width: 100%;*/
   font-size: 16px;
-  /*max-width: 650px;*/
   display: flex;
-  /*flex-direction: row;*/
-  /*justify-content: flex-start;*/
-  /*align-items: center;*/
-  /*flex-grow: 3;*/
 }
 
 .search-bar input {
@@ -34,7 +28,6 @@
   font-weight: 500;
   width: 10%;
   text-align: center;
-
 }
 
 /*.search-bar button:hover {

@@ -6,6 +6,8 @@ let win;
 
 const createWindow = () => {
   win = new BrowserWindow({
+    minWidth: 440,
+    minHeight: 330,
     width: 800,
     height: 600
   });
