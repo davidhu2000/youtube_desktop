@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router';
-import { SearchBar, VideoSearchItem, SmlVideoSearchItem } from '../common';
+import { VideoSearchItem, SmlVideoSearchItem } from '../common';
 
 class SearchIndex extends React.Component {
   constructor(props) {
