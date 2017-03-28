@@ -1,5 +1,6 @@
 import React from 'react';
 import CommentsItem from './comments_item'
+import { fetchComments } from '../../util/youtube_video_util';
 import YT_API_KEY from '../../../config/api_key';
 
 class Comments extends React.Component {
@@ -11,18 +12,8 @@ class Comments extends React.Component {
   }
 
   componentDidMount() {
-    this._fetchComments();
-  }
-
-  _fetchComments() {
-    return fetch(`https://www.googleapis.com/youtube/v3/commentThreads?part=snippet,replies&videoId=${this.props.videoId}&key=${YT_API_KEY.publicDataKey}`)
-      .then(response => response.json())
-      .then(responseJson => {
-        this.setState({ comments: responseJson.items });
-      })
-      .catch(error => {
-        console.error(error);
-      })
+    debugger
+    fetchComments(this.props.videoId, this);
   }
 
   renderComments() {
