@@ -12,7 +12,6 @@ class Comments extends React.Component {
   }
 
   componentDidMount() {
-    debugger
     fetchComments(this.props.videoId, this);
   }
 

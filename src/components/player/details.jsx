@@ -1,4 +1,5 @@
 import React from 'react';
+import { fetchDetails } from '../../util/youtube_video_util';
 import YT_API_KEY from '../../../config/api_key';
 
 class Details extends React.Component {
@@ -10,18 +11,7 @@ class Details extends React.Component {
   }
 
   componentDidMount() {
-    this._fetchDetails();
-  }
-
-  _fetchDetails() {
-    return fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${this.props.videoId}&key=${YT_API_KEY.publicDataKey}`)
-      .then(response => response.json())
-      .then(responseJson => {
-        this.setState({ details: responseJson.items[0].snippet });
-      })
-      .catch(error => {
-        console.error(error);
-      })
+    fetchDetails(this.props.videoId, this);
   }
 
   parseDate() {
@@ -38,7 +28,7 @@ class Details extends React.Component {
       9: "Oct",
       10: "Nov",
       11: "Dec"
-    }
+    };
     let date = new Date(this.state.details.publishedAt);
     let newDate = "";
 
