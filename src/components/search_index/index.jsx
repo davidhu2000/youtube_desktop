@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import SearchIndex from './search_index';
 
 import { receiveQuery } from '../../actions/query_actions';
-import { searchVideos } from '../../actions/search_result_actions';
+import { searchVideos } from '../../actions/youtube_video_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   query: state.query,
