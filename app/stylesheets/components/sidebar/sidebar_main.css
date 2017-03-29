@@ -1,32 +1,36 @@
 
 .sidebar {
-  /*display: none;*/
   position: absolute;
-  width: 230px;
-  margin-top: 10px;
-  padding: 0px 22px;
+  width: 200px;
+  margin-top: 20px;
   height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
   font-size: 13px;
   color: #333;
   background-color: white;
 }
 
 .sidebar a {
-  line-height: 20px;
+  height: 50px;
+  width: 200px;
+  padding: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  height: 28px;
 }
 
 .sidebar a i {
-  font-size: 100%;
-  padding: 3px;
+  padding: 10px;
 }
 
 .sidebar a span {
-  margin-left: 6px;
+  margin-left: 10px;
 }
+
+/*.sidebarcarrot {
+
+}*/
