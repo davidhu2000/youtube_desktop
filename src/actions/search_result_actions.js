@@ -1,5 +1,6 @@
 import * as SearchResultAPI from '../util/search_result_util';
-import * as TrendingAPI from '../util/trending_util';
+
+import * as YoutubeVideoAPI from '../util/youtube_video_util';
 
 export const RECEIVE_VIDEOS = 'RECEIVE_VIDEOS';
 export const CLEAR_VIDEOS = 'CLEAR_VIDEOS';
@@ -24,7 +25,7 @@ export const searchVideos = query => dispatch => {
 };
 
 export const fetchTrending = () => dispatch => {
-  return TrendingAPI.fetchTrending().then(
+  return YoutubeVideoAPI.fetchTrending().then(
     res => res.json()
   ).then(
     videos => dispatch(receiveVideos(videos.items))
