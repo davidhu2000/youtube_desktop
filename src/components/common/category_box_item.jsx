@@ -25,17 +25,17 @@ class CategoryBoxItem extends React.Component {
           <img src={url} />
         </Link>
 
-        <Link to={`watch/${videoId}`} className="">
+        <Link to={`watch/${videoId}`} className="category-box-item-title">
           <h1>{title}</h1>
         </Link>
 
-        <Link to='#' className=''>
+        <Link to='#' className='category-box-item-channel'>
           <p>{channelTitle}</p>
         </Link>
 
-        <div className="">
-          <span>{ '####'} views</span>
-          <span>{ 'some time ago'} </span>
+        <div className="category-box-item-info">
+          <span>{ '####'} views</span> *
+          <span>{ ' some time ago'} </span>
         </div>
       </div>
     );
