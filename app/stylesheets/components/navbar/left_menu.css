@@ -28,7 +28,7 @@
 }
 
 .grey_shift {
-  animation: grey_shift 1s 1;
+  animation: grey_shift .5s 1;
   animation-fill-mode: forwards;
 }
 
