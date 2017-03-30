@@ -1,7 +1,7 @@
 import merge  from 'lodash/merge';
 import {
   RECEIVE_VIDEOS,
-  CLEAR_VIDEOS } from "../actions/search_result_actions.js";
+  CLEAR_VIDEOS } from "../actions/youtube_video_actions.js";
 
 let _defaultState = [];
 
