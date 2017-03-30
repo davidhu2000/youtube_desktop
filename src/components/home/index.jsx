@@ -2,12 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Home from './home.jsx';
 
+import { fetchTrending } from '../../actions/youtube_video_actions';
+
 const mapStateToProps = (state, ownProps) => ({
-  // your code here...
+  searchResult: state.searchResult
 });
 
 const mapDispatchToProps = dispatch => ({
-  // your code here...
+  fetchTrending: () => dispatch(fetchTrending())
 });
 
 export default connect(
