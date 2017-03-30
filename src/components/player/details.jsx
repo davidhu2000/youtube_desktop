@@ -39,6 +39,13 @@ class Details extends React.Component {
     return newDate;
   }
 
+  addDescription() {
+    if (this.state.details.description){
+      let descript = this.state.details.description.slice(0,300);
+      return <p className="description">{descript + "..."}</p>;
+    }
+  }
+
   render() {
     return (
       <div className="details-container">
@@ -46,7 +53,7 @@ class Details extends React.Component {
           Published on {this.parseDate()}
         </h5>
         <p className="description">
-          {this.state.details.description}
+          {this.addDescription()}
         </p>
       </div>
     );

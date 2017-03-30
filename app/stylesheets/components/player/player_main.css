@@ -1,0 +1,21 @@
+@import url('./details.css');
+@import url('./related.css');
+
+.player-container {
+  /*width: 1280px;*/
+  padding-top: 20px;
+  display: flex;
+}
+
+.left-frame {
+  width: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.right-frame {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+}
