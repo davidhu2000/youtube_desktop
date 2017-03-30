@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Navbar from './navbar';
 import { receiveQuery } from '../../actions/query_actions';
 
 const mapStateToProps = (state, ownProps) => ({

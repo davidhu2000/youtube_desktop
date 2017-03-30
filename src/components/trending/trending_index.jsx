@@ -1,7 +1,6 @@
 import React from 'react';
-import YT_API_KEY from '../../../config/api_key';
-
-import { VideoSearchItem } from '../common';
+import { withRouter } from 'react-router';
+import { VideoSearchItem, SmlVideoSearchItem } from '../common';
 
 class TrendingIndex extends React.Component {
   constructor(props) {
@@ -19,11 +18,18 @@ class TrendingIndex extends React.Component {
     }
   }
 
+  addSmlSearchResults() {
+    if (this.props.trendingResults) {
+      let vids = this.props.trendingResults;
+      return vids.map(vid => <SmlVideoSearchItem key={vid.etag} vid={vid} />);
+    }
+  }
+
   addSearchVolume() {
-      if (this.props.trendingResults) {
-        let volume = Object.keys(this.props.trendingResults).length;
-        return <p>About {volume} results</p>;
-      }
+    if (this.props.trendingResults) {
+      let volume = Object.keys(this.props.trendingResults).length;
+      return <p>About {volume} results</p>;
+    }
   }
 
   render() {
@@ -34,10 +40,11 @@ class TrendingIndex extends React.Component {
             {this.addSearchVolume()}
           </div>
         {this.addSearchResults()}
+        {this.addSmlSearchResults()}
         </div>
       </div>
     );
   }
 }
 
-export default TrendingIndex;
+export default withRouter(TrendingIndex);
