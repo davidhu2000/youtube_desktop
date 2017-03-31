@@ -1,8 +1,9 @@
 .related-container {
-  padding: 0px 5px;
+  padding: 20px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: white;
 }
 
 .related-title {
