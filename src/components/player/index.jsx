@@ -13,6 +13,7 @@ class VideoDetail extends React.Component {
   }
 
   render() {
+    console.log(this.props.router.params.videoId);
     return (
       <div className="player-container">
         <div className="left-frame">

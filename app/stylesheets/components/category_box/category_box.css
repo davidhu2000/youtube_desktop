@@ -16,4 +16,6 @@
 .category-box-videos {
   display: flex;
   justify-content: space-between;
+  min-width: 0;
+  min-height: 0;
 }

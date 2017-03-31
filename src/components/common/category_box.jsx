@@ -1,4 +1,5 @@
 import React from 'react';
+import Slider from 'react-slick';
 import { CategoryBoxItem } from './category_box_item';
 
 class CategoryBox extends React.Component {
@@ -13,12 +14,20 @@ class CategoryBox extends React.Component {
 
   render() {
 
+    let settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 3,
+      slidesToScroll: 1
+    }
+
     return (
       <div className='category-box'>
         <h1 className='category-box-title'>{this.props.title}</h1>
-        <div className='category-box-videos'>
+        <Slider className='category-box-videos' {...settings}>
           { this.renderVideos() }
-        </div>
+        </Slider>
       </div>
     )
   }

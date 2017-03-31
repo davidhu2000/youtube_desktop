@@ -15,6 +15,12 @@ class Related extends React.Component {
     fetchRelated(this.props.videoId, this);
   }
 
+  componentWillReceiveProps(newProps) {
+    if(newProps.videoId !== this.props.videoId) {
+      fetchRelated(this.props.videoId, this);
+    }
+  }
+
   renderRelatedVideos() {
     if (this.state.vids.length !== 0) {
       let vids = this.state.vids;

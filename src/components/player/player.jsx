@@ -10,14 +10,20 @@ class Player extends React.Component {
   }
 
   componentDidMount() {
-    this.createPlayer();
+    this.createPlayer(this.props.videoId);
   }
 
-  createPlayer() {
+  componentWillReceiveProps(newProps) {
+    if(newProps.videoId !== this.props.videoId) {
+      this.createPlayer(newProps.videoId);
+    }
+  }
+
+  createPlayer(videoId) {
     this.player = YouTubePlayer('video-player', {
       playerVars: { rel: 0, modestbranding: 1, showinfo: 0 }
     });
-    this.player.loadVideoById(this.props.videoId);
+    this.player.loadVideoById(videoId);
   }
 
   render() {
