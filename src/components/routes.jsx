@@ -13,8 +13,33 @@ const loadRoute = callback => {
 const routes = (
   <Route path='/' component={ App } >
 
-    <Route path='search' getComponent={ (location, cb) =>  { System.import('./search_index').then(loadRoute(cb)).catch(errorLoading) } } />
-    <Route path='trending' getComponent={ (location, cb) =>  { System.import('./trending').then(loadRoute(cb)).catch(errorLoading) } } />
+    <Route
+      path='search'
+      getComponent={ (location, cb) =>  {
+        System.import('./search_index').then(loadRoute(cb)).catch(errorLoading)
+      } }
+    />
+
+    <Route
+      path='trending'
+      getComponent={ (location, cb) =>  {
+        System.import('./trending').then(loadRoute(cb)).catch(errorLoading)
+      } }
+    />
+
+    <Route
+      path='video/:videoId'
+      getComponent={ (location, cb) =>  {
+        System.import('./player').then(loadRoute(cb)).catch(errorLoading)
+      } }
+    />
+
+    <Route
+      path='home'
+      getComponent={ (location, cb) =>  {
+        System.import('./home').then(loadRoute(cb)).catch(errorLoading)
+      } }
+    />
 
   </Route>
 );
