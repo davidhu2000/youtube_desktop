@@ -14,20 +14,13 @@ class CategoryBox extends React.Component {
 
   render() {
 
-    let settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 3,
-      slidesToScroll: 1
-    }
-
     return (
       <div className='category-box'>
         <h1 className='category-box-title'>{this.props.title}</h1>
-        <Slider className='category-box-videos' {...settings}>
+        <div className='category-box-videos'>
           { this.renderVideos() }
-        </Slider>
+        </div>
+
       </div>
     )
   }

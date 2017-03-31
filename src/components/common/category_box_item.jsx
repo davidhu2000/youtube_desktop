@@ -6,10 +6,25 @@ class CategoryBoxItem extends React.Component {
     super(props);
   }
 
+  parseTitle(title) {
+    if (title.length >  60) {
+      let idx = 57;
+      title = title.slice(0, idx);
+
+      while(title[idx] !== ' ') {
+        idx -= 1;
+      }
+      idx -= 1;
+      title = title.slice(0, idx) + '...';
+    }
+    return title;
+  }
+
   render () {
     const vid = this.props.vid;
-    const { description, title, channelTitle, publishedAt } = vid.snippet;
+    const { channelTitle, publishedAt } = vid.snippet;
     const { url } = vid.snippet.thumbnails.medium;
+    const title = this.parseTitle(vid.snippet.title);
 
     let videoId;
     if (typeof vid.id === 'string') {
@@ -17,6 +32,8 @@ class CategoryBoxItem extends React.Component {
     } else {
       videoId = vid.id.videoId;
     }
+
+
 
     return (
       <div className="category-box-item">
