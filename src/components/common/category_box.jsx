@@ -5,7 +5,7 @@ import { CategoryBoxItem } from './category_box_item';
 class CategoryBox extends React.Component {
 
   renderVideos() {
-    return this.props.vids.slice(0, 6).map( vid => (
+    return this.props.vids.slice(0, 1).map( vid => (
       <CategoryBoxItem
         key={vid.etag}
         vid={vid} />
