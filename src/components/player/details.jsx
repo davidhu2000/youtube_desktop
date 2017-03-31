@@ -41,7 +41,7 @@ class Details extends React.Component {
 
   addDescription() {
     if (this.state.details.description){
-      let descript = this.state.details.description.slice(0,300);
+      let descript = this.state.details.description.slice(0,200);
       return <p className="description">{descript + "..."}</p>;
     }
   }

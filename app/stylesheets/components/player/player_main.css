@@ -1,8 +1,8 @@
 @import url('./details.css');
 @import url('./related.css');
+@import url('./comments.css');
 
 .player-container {
-  /*width: 1280px;*/
   padding-top: 20px;
   display: flex;
 }

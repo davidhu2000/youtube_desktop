@@ -1,5 +1,5 @@
 import React from 'react';
-import CommentsItem from './comments_item'
+import CommentsItem from './comments_item';
 import { fetchComments } from '../../util/youtube_video_util';
 import YT_API_KEY from '../../../config/api_key';
 
@@ -25,6 +25,10 @@ class Comments extends React.Component {
   render() {
     return (
       <div className="comments-container">
+        <div className="top-comments">
+          <p>Top Comments</p>
+          <i className="material-icons arrow-down">keyboard_arrow_down</i>
+        </div>
         <div className="comments-list">
           {this.renderComments()}
         </div>

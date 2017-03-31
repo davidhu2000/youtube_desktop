@@ -1,0 +1,25 @@
+.comments-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.top-comments {
+  padding: 4px 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid;
+  border-width: 1px;
+  border-color: rgba(51, 51, 51,.2);
+  font-size: 12px;
+}
+
+.arrow-down {
+  padding-top: 2px;
+}
+
+.comments-list {
+  padding: 10px 0px;
+}
