@@ -25,7 +25,11 @@ class Related extends React.Component {
   render() {
     return (
       <div className="related-container">
-        <h2 className="related-title">Related Videos</h2>
+        <div className="related-title">
+          <h2>Up Next</h2>
+          <h2>autoplay</h2>
+        </div>
+
         <div className="related-list">
           {this.renderRelatedVideos()}
         </div>

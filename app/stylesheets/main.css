@@ -5,6 +5,7 @@
 @import url('components/searchindex/searchindex_main.css');
 @import url('components/footer/footer_main.css');
 @import url('./responsive.css');
+@import url('components/player/player_main.css');
 
 html {
   font-family: "Roboto", arial, sans-serif
@@ -12,6 +13,10 @@ html {
 
 .relative-content {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F1F1F1;
 }
 
 .hidden {
