@@ -13,15 +13,16 @@ class VideoDetail extends React.Component {
   }
 
   render() {
+    let videoId = this.props.router.params.videoId;
     return (
       <div className="player-container">
         <div className="left-frame">
-          <Player videoId={this.props.router.params.videoId}/>
-          <Details videoId={this.props.router.params.videoId}/>
-          <Comments videoId={this.props.router.params.videoId}/>
+          <Player   videoId={videoId}/>
+          <Details  videoId={videoId}/>
+          <Comments videoId={videoId}/>
         </div>
         <div className="right-frame">
-          <Related videoId={this.props.router.params.videoId}/>
+          <Related  videoId={videoId}/>
         </div>
       </div>
     );
