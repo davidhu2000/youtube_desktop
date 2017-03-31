@@ -33,8 +33,6 @@ class CategoryBoxItem extends React.Component {
       videoId = vid.id.videoId;
     }
 
-
-
     return (
       <div className="category-box-item">
 

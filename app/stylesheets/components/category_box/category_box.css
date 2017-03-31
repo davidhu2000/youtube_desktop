@@ -9,6 +9,7 @@
 
 .category-box {
   background: #fff;
+  min-width: 438px;
   padding: 15px 18px;
   height: 254px;
   border: 1px solid #e2e2e2;
