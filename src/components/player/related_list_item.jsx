@@ -16,7 +16,6 @@ class RelatedListItem extends React.Component {
 
   render () {
     const vid = this.props.vid;
-    console.log(vid);
     const { description, title, channelTitle, publishedAt } = vid.snippet;
     const { url } = vid.snippet.thumbnails.default;
     const { videoId } = vid.id;
