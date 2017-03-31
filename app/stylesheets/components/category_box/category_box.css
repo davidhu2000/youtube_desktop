@@ -1,0 +1,19 @@
+.category-box-title {
+  line-height: 18px;
+  color: #333;
+  cursor: pointer;
+  font-weight: 500;
+  padding-bottom: 10px;
+  font-size: 15px;
+}
+
+.category-box {
+  max-width: 1262px;
+  min-width: 438px;
+  width: 90%;
+}
+
+.category-box-videos {
+  display: flex;
+  justify-content: space-between;
+}

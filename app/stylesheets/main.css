@@ -4,7 +4,7 @@
 @import url('components/sidebar/sidebar_main.css');
 @import url('components/searchindex/searchindex_main.css');
 @import url('components/footer/footer_main.css');
-@import url('components/category_box/category_box_main.css');
+@import url('components/category_box/_.css');
 @import url('./responsive.css');
 
 html {

@@ -11,13 +11,10 @@ class Home extends React.Component {
   }
 
   render() {
-    let vid = this.props.searchResult[1];
-    console.log(vid);
-
     if(this.props.searchResult[0]) {
        return (
          <div className='search-index'>
-           <CategoryBox vid={vid}/>
+           <CategoryBox title='Trending' vids={this.props.searchResult}/>
          </div>
        );
     } else {
