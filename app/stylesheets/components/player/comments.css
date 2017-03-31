@@ -27,3 +27,31 @@
 .comments-list {
   padding: 10px 0px;
 }
+
+.comment-item {
+  width: 600px;
+  margin: 20px 0px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.comment-item img {
+  width: 48px;
+  height: 48px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.comment-right {
+  width: 552px;
+  padding: 0px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.comment-right h4 {
+  color: #008BEC;
+}
