@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import moment from 'moment';
+import { formatViews } from '../../helpers';
 
 class CategoryBoxItem extends React.Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class CategoryBoxItem extends React.Component {
   render () {
     const vid = this.props.vid;
     const { channelTitle, publishedAt } = vid.snippet;
+    const { viewCount } = vid.statistics;
     const { url } = vid.snippet.thumbnails.medium;
     const title = this.parseTitle(vid.snippet.title);
 
@@ -50,7 +52,7 @@ class CategoryBoxItem extends React.Component {
         </Link>
 
         <div className="category-box-item-info">
-          <span>{ '####'} views</span>
+          <span>{ formatViews(viewCount) } views</span>
           <span className='category-box-item-date'>{ moment(publishedAt).fromNow() } </span>
         </div>
       </div>
