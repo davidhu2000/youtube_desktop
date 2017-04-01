@@ -44,16 +44,16 @@ class CategoryBoxItem extends React.Component {
         </Link>
 
         <Link to={`watch/${videoId}`} className="category-box-item-title">
-          <h1>{title}</h1>
+          <h1 className='video-title'>{title}</h1>
         </Link>
 
         <Link to='#' className='category-box-item-channel'>
-          <p>{channelTitle}</p>
+          <p className='basic-text'>{channelTitle}</p>
         </Link>
 
         <div className="category-box-item-info">
-          <span>{ formatViews(viewCount) } views</span>
-          <span className='category-box-item-date'>{ moment(publishedAt).fromNow() } </span>
+          <span className='basic-text'>{ formatViews(viewCount) } views</span>
+          <span className='category-box-item-date basic-text'>{ moment(publishedAt).fromNow() } </span>
         </div>
       </div>
     );

@@ -12,21 +12,19 @@ export const formatViews = views => {
 
 
 export const toggleTheme = () => {
-  let ruleName = '*';
-  var result = null;
-  var find = Array.prototype.find;
+  let ruleName = ':root';
+  let result = null;
+  let find = Array.prototype.find;
 
-  find.call(document.styleSheets, styleSheet => {
-      result = find.call(styleSheet.cssRules, cssRule => {
-          return cssRule instanceof CSSStyleRule
-              && cssRule.selectorText.toLowerCase() == ruleName;
-      });
-      return result != null;
+  let colorSheet = document.styleSheets[2].cssRules[1].styleSheet;
+
+  result = find.call(colorSheet.cssRules, cssRule => {
+      return cssRule instanceof CSSStyleRule
+          && cssRule.selectorText.toLowerCase() == ruleName;
   });
 
-  if(result.style.filter === 'invert(100%)') {
-    result.style.filter = 'invert(0%)';
-  } else {
-    result.style.filter = 'invert(100%)';
-  }
+
+  // result.style.cssText = '--video-title: #000';
+
+
 }

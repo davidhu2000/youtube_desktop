@@ -9,7 +9,7 @@
 }
 
 .category-box-item h1 {
-  color: #167ac6;
+  color: var(--video-title);
   font-weight: 500;
   font-size: 13px;
 }
@@ -25,12 +25,12 @@
 .category-box-item-channel {
   width: 196px;
   font-size: 11px;
-  color: #767676;
+  color: var(--basic-text);
   display: block;
 }
 
 .category-box-item-channel:hover {
-  color: #167ab6;
+  color: var(--video-title);
 }
 
 .category-box-item-channel > p {
@@ -43,7 +43,7 @@
 
 .category-box-item-info {
   font-size: 11px;
-  color: #767676;
+  color: var(--basic-text);
 }
 
 .category-box-item-date::before {
