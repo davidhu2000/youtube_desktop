@@ -50,9 +50,22 @@ class CategoryBox extends React.Component {
   slideVideos(dir) {
     let numVideos = this.numberVideosToShow();
 
+    let startIndex = this.state.startIndex + dir * numVideos;
+    let endIndex   = this.state.endIndex + dir * numVideos;
+
+    if(startIndex < 0) {
+      startIndex = 0;
+      endIndex = numVideos;
+    }
+
+    if(endIndex > 15) {
+      endIndex = 15;
+      startIndex = endIndex - numVideos;
+    }
+
     this.setState({
-      startIndex: this.state.startIndex + dir * numVideos,
-      endIndex: this.state.endIndex + dir * numVideos
+      startIndex,
+      endIndex
     });
   }
 
