@@ -5,8 +5,9 @@
 @import url('components/searchindex/searchindex_main.css');
 @import url('components/footer/footer_main.css');
 @import url('components/category_box/_.css');
-@import url('./responsive.css');
 @import url('components/player/player_main.css');
+
+@import url('./responsive.css');
 
 html {
   font-family: "Roboto", arial, sans-serif
