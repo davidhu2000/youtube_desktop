@@ -40,6 +40,10 @@ class CategoryBox extends React.Component {
     this.setState({ endIndex });
   }
 
+  slideVideos() {
+
+  }
+
   render() {
 
     return (
@@ -47,6 +51,8 @@ class CategoryBox extends React.Component {
         <h1 className='category-box-title'>{this.props.title}</h1>
         <div className='category-box-videos'>
           { this.renderVideos() }
+          <a className="prev" onClick={this.slideVideos(1) }>&#10094;</a>
+          <a className="next" onClick={this.slideVideos(-1)}>&#10095;</a>
         </div>
 
       </div>
