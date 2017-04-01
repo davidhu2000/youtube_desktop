@@ -83,7 +83,7 @@
   opacity: 1;
 
   border: 1px solid var(--border);
-  background: (var(--background));
+  background: var(--background);
   width: 40px;
 }
 
