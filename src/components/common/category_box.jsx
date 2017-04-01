@@ -8,8 +8,10 @@ class CategoryBox extends React.Component {
     super(props);
     this.state = {
       startIndex: 0,
-      endIndex: 0
+      endIndex: this.numberVideosToShow()
     }
+
+    this.slideVideos = this.slideVideos.bind(this);
   }
 
   renderVideos() {
@@ -21,8 +23,14 @@ class CategoryBox extends React.Component {
   }
 
   componentDidMount() {
-    this.numberVideosToShow();
-    window.onresize = this.numberVideosToShow.bind(this);
+    window.onresize = this.updateEndIndex.bind(this);
+  }
+
+  updateEndIndex() {
+    let numVideos = this.numberVideosToShow();
+    this.setState({
+      endIndex: this.state.startIndex + numVideos
+    });
   }
 
   numberVideosToShow() {
@@ -36,23 +44,27 @@ class CategoryBox extends React.Component {
     } else if(window.innerWidth > 694) {
       endIndex = 3;
     }
-
-    this.setState({ endIndex });
+    return endIndex;
   }
 
-  slideVideos() {
+  slideVideos(dir) {
+    let numVideos = this.numberVideosToShow();
 
+    this.setState({
+      startIndex: this.state.startIndex + dir * numVideos,
+      endIndex: this.state.endIndex + dir * numVideos
+    });
   }
 
   render() {
-
+    console.log(this.state);
     return (
       <div className='category-box'>
         <h1 className='category-box-title'>{this.props.title}</h1>
         <div className='category-box-videos'>
           { this.renderVideos() }
-          <a className="prev" onClick={this.slideVideos(1) }>&#10094;</a>
-          <a className="next" onClick={this.slideVideos(-1)}>&#10095;</a>
+          <a className="prev" onClick={() => this.slideVideos(-1)}>&#10094;</a>
+          <a className="next" onClick={() => this.slideVideos(1) }>&#10095;</a>
         </div>
 
       </div>

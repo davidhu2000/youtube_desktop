@@ -60,11 +60,9 @@
   width: 15px;
   height: 60px;
   margin-top: -22px;
-  /*padding: 16px;*/
   color: #333;
   font-weight: bold;
   font-size: 13px;
-  border-radius: 0 3px 3px 0;
   opacity: 0.5;
   vertical-align: center;
   text-align: center;
@@ -73,13 +71,11 @@
 
 .next {
   right: 0;
-  border-radius: 3px 0 0 3px;
   margin-right: -15px;
 }
 
 .prev {
   left: 0;
-  border-radius: 3px 0 0 3px;
   margin-left: -15px;
 }
 
@@ -99,4 +95,14 @@
 .next:hover {
   transform: translateX(25px);
   box-shadow: 2px 2px 3px #e2e2e2;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
 }
