@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import moment from 'moment';
 
 class CategoryBoxItem extends React.Component {
   constructor(props) {
@@ -49,8 +50,8 @@ class CategoryBoxItem extends React.Component {
         </Link>
 
         <div className="category-box-item-info">
-          <span>{ '####'} views</span> *
-          <span>{ ' some time ago'} </span>
+          <span>{ '####'} views</span>
+          <span className='category-box-item-date'>{ moment(publishedAt).fromNow() } </span>
         </div>
       </div>
     );

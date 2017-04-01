@@ -45,3 +45,8 @@
   font-size: 11px;
   color: #767676;
 }
+
+.category-box-item-date::before {
+  content: '\002022';
+  margin: 0 5px;
+}
