@@ -70,14 +70,13 @@ class CategoryBox extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className='category-box'>
         <h1 className='category-box-title'>{this.props.title}</h1>
         <div className='category-box-videos'>
           { this.renderVideos() }
-          <a className="prev" onClick={() => this.slideVideos(-1)}>&#10094;</a>
-          <a className="next" onClick={() => this.slideVideos(1) }>&#10095;</a>
+          { this.state.startIndex === 0 ? '' : <a className="prev" onClick={() => this.slideVideos(-1)}>&#10094;</a> }
+          { this.state.endIndex  === 15 ? '' : <a className="next" onClick={() => this.slideVideos(1) }>&#10095;</a> }
         </div>
 
       </div>
