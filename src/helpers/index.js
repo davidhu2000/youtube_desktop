@@ -9,3 +9,24 @@ export const formatViews = views => {
   }
   return formattedViews
 }
+
+
+export const toggleTheme = () => {
+  let ruleName = '*';
+  var result = null;
+  var find = Array.prototype.find;
+
+  find.call(document.styleSheets, styleSheet => {
+      result = find.call(styleSheet.cssRules, cssRule => {
+          return cssRule instanceof CSSStyleRule
+              && cssRule.selectorText.toLowerCase() == ruleName;
+      });
+      return result != null;
+  });
+
+  if(result.style.filter === 'invert(100%)') {
+    result.style.filter = 'invert(0%)';
+  } else {
+    result.style.filter = 'invert(100%)';
+  }
+}

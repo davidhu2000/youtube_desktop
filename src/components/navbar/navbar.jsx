@@ -3,6 +3,7 @@ import { withRouter, Link } from 'react-router';
 
 import { SearchBar } from '../common';
 import { authenticateUser } from '../../util/oauth_util';
+import { toggleTheme } from '../../helpers';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -41,7 +42,9 @@ class Navbar extends React.Component {
 
         <div className='navbar-right-menu'>
           <i className="material-icons">file_upload</i>
-          <img className='beads-image' src="./app/assets/ic_more_vert_black_24px.svg"/>
+          <button onClick={toggleTheme}>
+            <img className='beads-image' src="./app/assets/ic_more_vert_black_24px.svg"/>
+          </button>
           <a onClick={authenticateUser} style={{cursor: 'pointer'}}>
             <p className="sign-in-text">SIGN IN</p>
           </a>
