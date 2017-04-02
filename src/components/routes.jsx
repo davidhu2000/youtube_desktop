@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 import App from './app';
 
 const errorLoading = error => {
@@ -12,6 +12,11 @@ const loadRoute = callback => {
 
 const routes = (
   <Route path='/' component={ App } >
+    <IndexRoute
+       getComponent={ (location, cb) =>  {
+         System.import('./trending').then(loadRoute(cb)).catch(errorLoading)
+       } }
+    />
 
     <Route
       path='search'
@@ -37,7 +42,7 @@ const routes = (
     <Route
       path='home'
       getComponent={ (location, cb) =>  {
-        System.import('./home').then(loadRoute(cb)).catch(errorLoading)
+        System.import('./trending').then(loadRoute(cb)).catch(errorLoading)
       } }
     />
 
