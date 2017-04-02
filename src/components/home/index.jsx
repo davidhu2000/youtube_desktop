@@ -5,7 +5,8 @@ import Home from './home.jsx';
 import { fetchTrending } from '../../actions/youtube_video_actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  trending: state.trending
+  trendingVideos: state.trending.videos,
+  trendingDate: state.trending.date
 });
 
 const mapDispatchToProps = dispatch => ({

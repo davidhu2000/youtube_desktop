@@ -32,6 +32,7 @@ export const receiveTrending = videos => ({
 });
 
 export const fetchTrending = () => dispatch => {
+  console.log('calling api');
   return YoutubeVideoAPI.fetchTrending().then(
     res => res.json()
   ).then(

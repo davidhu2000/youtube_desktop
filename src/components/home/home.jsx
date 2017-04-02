@@ -7,14 +7,17 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchTrending();
+    let ms = 24 * 3600 * 1000;
+    if(Date.now() - this.props.date > ms || !this.props.trendingVideos) {
+      this.props.fetchTrending();
+    }
   }
 
   render() {
-    if(this.props.trending[0]) {
+    if(this.props.trendingVideos) {
        return (
          <div className='search-index'>
-           <CategoryBox title='Trending' vids={this.props.trending}/>
+           <CategoryBox title='Trending' vids={this.props.trendingVideos}/>
          </div>
        );
     } else {

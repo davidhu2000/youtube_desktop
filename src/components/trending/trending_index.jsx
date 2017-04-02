@@ -8,26 +8,29 @@ class TrendingIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchTrending();
+    let ms = 24 * 3600 * 1000;
+    if(Date.now() - this.props.date > ms || !this.props.trendingVideos) {
+      this.props.fetchTrending();
+    }
   }
 
   addSearchResults() {
-    if (this.props.trendingResults) {
-      let vids = this.props.trendingResults;
+    if (this.props.trendingVideos) {
+      let vids = this.props.trendingVideos;
       return vids.map(vid => <VideoSearchItem key={vid.etag} vid={vid} />);
     }
   }
 
   addSmlSearchResults() {
-    if (this.props.trendingResults) {
-      let vids = this.props.trendingResults;
+    if (this.props.trendingVideos) {
+      let vids = this.props.trendingVideos;
       return vids.map(vid => <SmlVideoSearchItem key={vid.etag} vid={vid} />);
     }
   }
 
   addSearchVolume() {
-    if (this.props.trendingResults) {
-      let volume = Object.keys(this.props.trendingResults).length;
+    if (this.props.trendingVideos) {
+      let volume = Object.keys(this.props.trendingVideos).length;
       return <p>About {volume} results</p>;
     }
   }
