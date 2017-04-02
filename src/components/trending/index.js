@@ -6,7 +6,7 @@ import trendingIndex from './trending_index';
 import { fetchTrending } from '../../actions/youtube_video_actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  trendingResults: state.searchResult
+  trendingResults: state.trending
 });
 
 const mapDispatchToProps = dispatch => ({

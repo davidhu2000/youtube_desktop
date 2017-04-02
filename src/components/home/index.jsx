@@ -5,7 +5,7 @@ import Home from './home.jsx';
 import { fetchTrending } from '../../actions/youtube_video_actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  searchResult: state.searchResult
+  trending: state.trending
 });
 
 const mapDispatchToProps = dispatch => ({
