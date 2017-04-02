@@ -14,6 +14,7 @@ export const clearVideos = () => ({
 });
 
 export const searchVideos = query => dispatch => {
+  console.log('calling search api');
   return YoutubeVideoAPI.fetchVideos(query).then(
     res => res.json()
   ).then(
@@ -32,7 +33,6 @@ export const receiveTrending = videos => ({
 });
 
 export const fetchTrending = () => dispatch => {
-  console.log('calling api');
   return YoutubeVideoAPI.fetchTrending().then(
     res => res.json()
   ).then(
