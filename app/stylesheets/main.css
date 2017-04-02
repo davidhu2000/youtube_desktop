@@ -1,12 +1,11 @@
 @import url('base/reset.css');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
-
 @import url('components/navbar/navbar_main.css');
 @import url('components/sidebar/sidebar_main.css');
 @import url('components/searchindex/searchindex_main.css');
 @import url('components/footer/footer_main.css');
-
+@import url('./responsive.css');
+@import url('components/player/player_main.css');
 
 html {
   font-family: "Roboto", arial, sans-serif
@@ -14,8 +13,20 @@ html {
 
 .relative-content {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F1F1F1;
 }
 
 .hidden {
   display: none;
+}
+
+.redish {
+  color: #e62117;
+}
+
+.greyscale {
+  filter: grayscale(100%);
 }

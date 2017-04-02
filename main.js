@@ -6,6 +6,8 @@ let win;
 
 const createWindow = () => {
   win = new BrowserWindow({
+    minWidth: 440,
+    minHeight: 330,
     width: 800,
     height: 600
   });
@@ -21,7 +23,9 @@ const createWindow = () => {
   win.on('closed', () => {
     win = null;
   });
-}
+
+};
+
 
 app.on('ready', createWindow);
 
@@ -29,8 +33,8 @@ app.on('window-all-closed', () => {
   if(process.platform !== 'darwin') {
     app.quit();
   }
-})
+});
 
 app.on('activate', () => {
   if (win === null) createWindow();
-})
+});

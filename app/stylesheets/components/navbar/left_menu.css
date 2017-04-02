@@ -1,11 +1,46 @@
 .navbar-left-menu {
-  width: 200px;
+  width: 25%;
+  min-width: 200px;
+  padding: 0px 10px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
 }
 
+.navbar-left-menu i {
+  line-height: 56px;
+  margin: 0px 10px;
+}
+
 .youtube-logo {
+  padding: 0px;
+  margin: 0px;
+  margin-right: 50%;
   height: 56px;
   width: 112px;
+}
+
+.burger {
+  height: 36px;
+  padding: 0px;
+  margin: 0px;
+  display: none;
+}
+
+.grey_shift {
+  animation: grey_shift .5s 1;
+  animation-fill-mode: forwards;
+}
+
+.greyscale {
+  filter: grayscale(100%);
+}
+
+@keyframes grey_shift{
+  50% {
+    filter: grayscale(50%);
+  }
+  100% {
+    filter: grayscale(100%);
+  }
 }
