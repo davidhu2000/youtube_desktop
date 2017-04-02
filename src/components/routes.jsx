@@ -14,7 +14,7 @@ const routes = (
   <Route path='/' component={ App } >
     <IndexRoute
        getComponent={ (location, cb) =>  {
-         System.import('./trending').then(loadRoute(cb)).catch(errorLoading)
+         System.import('./home').then(loadRoute(cb)).catch(errorLoading)
        } }
     />
 
@@ -42,7 +42,7 @@ const routes = (
     <Route
       path='home'
       getComponent={ (location, cb) =>  {
-        System.import('./trending').then(loadRoute(cb)).catch(errorLoading)
+        System.import('./home').then(loadRoute(cb)).catch(errorLoading)
       } }
     />
 
