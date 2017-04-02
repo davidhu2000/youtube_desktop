@@ -35,7 +35,7 @@ export const fetchRelated = (videoId, context) => {
 
 export const fetchTrending = () => {
   let baseUrl = `https://www.googleapis.com/youtube/v3/videos`;
-  let part ='snippet';
+  let part ='statistics,snippet';
   let chart = 'mostPopular';
   // let regionCode = '';
   let maxResults = 25;
@@ -46,11 +46,12 @@ export const fetchTrending = () => {
 };
 
 export const fetchVideos = query => {
-  let base_url = `https://www.googleapis.com/youtube/v3/search`;
+  let baseUrl = `https://www.googleapis.com/youtube/v3/search`;
   let part ='snippet';
   let type = 'video';
+  let maxResults = 25;
 
-  let full_url = `${base_url}?part=${part}&q=${query}&type=${type}&key=${YT_API_KEY.publicDataKey}`;
+  let fullUrl = `${baseUrl}?part=${part}&q=${query}&type=${type}&maxResults=${maxResults}&key=${YT_API_KEY.publicDataKey}`;
 
-  return fetch(full_url);
+  return fetch(fullUrl);
 };

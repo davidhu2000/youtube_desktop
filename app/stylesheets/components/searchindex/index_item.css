@@ -23,7 +23,7 @@
 }
 
 .index-item-right h1 {
-  color: #167AC6;
+  color: var(--video-title);
   font-size: 16px;
 }
 
@@ -59,7 +59,7 @@
 }
 
 .sml-index-item-right h1 {
-  color: #167AC6;
+  color: var(--video-title);
   font-size: 16px;
 }
 

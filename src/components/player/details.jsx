@@ -14,6 +14,12 @@ class Details extends React.Component {
     fetchDetails(this.props.videoId, this);
   }
 
+  componentWillReceiveProps(newProps) {
+    if(newProps.videoId !== this.props.videoId) {
+      fetchDetails(this.props.videoId, this);
+    }
+  }
+
   parseDate() {
     const months = {
       0: "Jan",
