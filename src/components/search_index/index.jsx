@@ -6,9 +6,9 @@ import SearchIndex from './search_index';
 import { receiveQuery } from '../../actions/query_actions';
 import { searchVideos, clearVideos } from '../../actions/youtube_video_actions';
 
-const mapStateToProps = (state, ownProps) => ({
-  query: state.query,
-  searchResult: state.searchResult
+const mapStateToProps = ({ query, searchResult }) => ({
+  query,
+  searchResult
 });
 
 const mapDispatchToProps = dispatch => ({

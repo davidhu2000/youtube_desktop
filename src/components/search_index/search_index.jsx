@@ -24,8 +24,16 @@ class SearchIndex extends React.Component {
   }
 
   render() {
+    let volume;
+    let pageInfo = this.props.searchResult.pageInfo;
+    if(pageInfo) {
+      volume = pageInfo.totalResults;
+    }
+
     return (
-      <VideoList videos={this.props.searchResult.videos} />
+      <VideoList
+        volume={volume}
+        videos={this.props.searchResult.videos} />
     );
   }
 }

@@ -1,13 +1,13 @@
-export const formatViews = views => {
-  let formattedViews = '';
-
-  for(let i = views.length-1; i>=0; i--) {
-    formattedViews = views[i] + formattedViews;
-    if ((views.length - i) % 3 === 0 && i !== 0) {
-      formattedViews = ',' + formattedViews
+export const formatNumber = number => {
+  let formattedNumber = '';
+  number = number.toString();
+  for(let i = number.length-1; i>=0; i--) {
+    formattedNumber = number[i] + formattedNumber;
+    if ((number.length - i) % 3 === 0 && i !== 0) {
+      formattedNumber = ',' + formattedNumber
     }
   }
-  return formattedViews
+  return formattedNumber
 }
 
 
