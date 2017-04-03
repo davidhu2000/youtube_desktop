@@ -5,6 +5,7 @@ import { VideoSearchItem, SmlVideoSearchItem } from '../common';
 class VideoList extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
   }
 
   addSearchResults() {
@@ -22,10 +23,18 @@ class VideoList extends React.Component {
   }
 
   addSearchVolume() {
-    if (this.props.volume) {
-      console.log(this.props.volume);
-      console.log(formatNumber(this.props.volume));
+    if (this.props.volume && this.props.shouldShowVolume) {
       return <p>About {formatNumber(this.props.volume)} results</p>;
+    }
+  }
+
+  renderPageNumbers() {
+    if(this.props.shouldShowPageNumber) {
+      return (
+        <div className='page-numbers'>
+          { ['next'].map( num => <div key={num}>{num}</div>) }
+        </div>
+      );
     }
   }
 
@@ -38,10 +47,16 @@ class VideoList extends React.Component {
           </div>
         {this.addSearchResults()}
         {this.addSmlSearchResults()}
+        {this.renderPageNumbers()}
         </div>
       </div>
     );
   }
+}
+
+VideoList.defaultProps = {
+  shouldShowPageNumber: true,
+  shouldShowVolume: true
 }
 
 export { VideoList };
