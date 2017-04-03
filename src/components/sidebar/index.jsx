@@ -9,7 +9,7 @@ class Sidebar extends React.Component {
   render() {
     return (
       <div id="sidebar" className='sidebar hidden'>
-        <Link to=''>
+        <Link to='/home'>
           <i className='material-icons'>home</i>
           <span>Home</span>
         </Link>

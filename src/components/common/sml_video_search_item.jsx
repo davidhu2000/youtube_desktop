@@ -17,7 +17,7 @@ class SmlVideoSearchItem extends React.Component {
         <div className="sml-index-item-right">
             <h1>{title}</h1>
             <p>{channelTitle}</p>
-            <p>{description.slice(0, 60) + '...'}</p>
+            <p>{description.slice(0, 40) + '...'}</p>
         </div>
       </div>
     );

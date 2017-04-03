@@ -1,11 +1,15 @@
 @import url('base/reset.css');
+@import url('base/color.css');
+
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 @import url('components/navbar/navbar_main.css');
 @import url('components/sidebar/sidebar_main.css');
 @import url('components/searchindex/searchindex_main.css');
 @import url('components/footer/footer_main.css');
-@import url('./responsive.css');
+@import url('components/category_box/_.css');
 @import url('components/player/player_main.css');
+
+@import url('./responsive.css');
 
 html {
   font-family: "Roboto", arial, sans-serif
@@ -30,3 +34,7 @@ html {
 .greyscale {
   filter: grayscale(100%);
 }
+
+/** {
+  filter: invert(0%);
+}*/

@@ -16,6 +16,12 @@ class Comments extends React.Component {
     fetchComments(this.props.videoId, this);
   }
 
+  componentWillReceiveProps(newProps) {
+    if(newProps.videoId !== this.props.videoId) {
+      fetchComments(this.props.videoId, this);
+    }
+  }
+
   renderComments() {
     if (this.state.comments.length !== 0) {
       let comments = this.state.comments;

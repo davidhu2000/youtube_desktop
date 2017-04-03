@@ -25,9 +25,11 @@ class VideoSearchItem extends React.Component {
         </Link>
 
         <div className="index-item-right">
+          <Link to={`watch/${videoId}`}>
             <h1>{title}</h1>
-            <p>{channelTitle}</p>
-            <p>{description.slice(0, 350) + '...'}</p>
+          </Link>
+          <p>{channelTitle}</p>
+          <p>{description.slice(0, 120) + '...'}</p>
         </div>
       </div>
     );

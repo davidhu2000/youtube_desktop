@@ -22,14 +22,18 @@
   justify-content: flex-start;
 }
 
+.index-item-right a:hover {
+  text-decoration: underline;
+}
+
 .index-item-right h1 {
-  color: #167AC6;
+  color: var(--video-title);
   font-size: 16px;
 }
 
 .index-item-right p {
   margin-top: 5px;
-  color: grey;
+  color: var(--basic-text);
   font-size: 12px;
 }
 
@@ -59,12 +63,12 @@
 }
 
 .sml-index-item-right h1 {
-  color: #167AC6;
+  color: var(--video-title);
   font-size: 16px;
 }
 
 .sml-index-item-right p {
   margin-top: 5px;
-  color: grey;
+  color: var(--basic-text);
   font-size: 12px;
 }

@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import Home from './home.jsx';
 
-import trendingIndex from './trending_index';
 import { fetchTrending } from '../../actions/youtube_video_actions';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -17,4 +16,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(trendingIndex));
+)(Home);
