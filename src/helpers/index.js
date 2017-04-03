@@ -28,5 +28,9 @@ export const toggleTheme = () => {
 }
 
 export const createUrlParams = obj => (
-  Object.keys(obj).map( key => `${key}=${encodeURI(obj[key])}`).join('&')
+  Object.keys(obj).map( key => {
+  	if(obj[key] && obj[key].length > 0) {
+  		return `${key}=${encodeURI(obj[key])}`
+  	}
+  }).filter( str => str !== undefined ).join('&')
 );

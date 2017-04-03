@@ -25,7 +25,7 @@ class SearchIndex extends React.Component {
 
   render() {
     return (
-      <VideoList videos={this.props.searchResult} />
+      <VideoList videos={this.props.searchResult.videos} />
     );
   }
 }

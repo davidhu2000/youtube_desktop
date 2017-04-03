@@ -18,7 +18,10 @@ export const searchVideos = query => dispatch => {
   return YoutubeVideoAPI.fetchVideos(query).then(
     res => res.json()
   ).then(
-    videos => dispatch(receiveVideos(videos.items))
+    videos => {
+      videos['query'] = query;
+      return dispatch(receiveVideos(videos))
+    }
   ).catch(
     err => console.log(err)
   );

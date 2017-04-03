@@ -9,6 +9,7 @@ class VideoList extends React.Component {
   addSearchResults() {
     if (this.props.videos) {
       let vids = this.props.videos;
+      console.log(vids);
       return vids.map(vid => <VideoSearchItem key={vid.etag} vid={vid} />);
     }
   }
@@ -21,10 +22,10 @@ class VideoList extends React.Component {
   }
 
   addSearchVolume() {
-      if (this.props.videos) {
-        let volume = Object.keys(this.props.videos).length;
-        return <p>About {volume} results</p>;
-      }
+    if (this.props.videos) {
+      let volume = Object.keys(this.props.videos).length;
+      return <p>About {volume} results</p>;
+    }
   }
 
   render() {
