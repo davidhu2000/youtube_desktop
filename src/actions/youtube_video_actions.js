@@ -13,9 +13,9 @@ export const clearVideos = () => ({
   type: CLEAR_VIDEOS
 });
 
-export const searchVideos = query => dispatch => {
-  console.log('calling search api');
-  return YoutubeVideoAPI.fetchVideos(query).then(
+export const searchVideos = (query, nextPageToken, prevPageToken) => dispatch => {
+
+  return YoutubeVideoAPI.fetchVideos(query, nextPageToken, prevPageToken).then(
     res => res.json()
   ).then(
     videos => {
