@@ -1,4 +1,5 @@
 import YT_API_KEY from '../../config/api_key';
+import { createUrlParams } from '../helpers';
 
 export const fetchComments = (videoId, context) => {
   return fetch(`https://www.googleapis.com/youtube/v3/commentThreads?part=snippet,replies&videoId=${videoId}&key=${YT_API_KEY.publicDataKey}`)
@@ -47,11 +48,18 @@ export const fetchTrending = () => {
 
 export const fetchVideos = query => {
   let baseUrl = `https://www.googleapis.com/youtube/v3/search`;
-  let part ='snippet';
-  let type = 'video';
-  let maxResults = 25;
 
-  let fullUrl = `${baseUrl}?part=${part}&q=${query}&type=${type}&maxResults=${maxResults}&key=${YT_API_KEY.publicDataKey}`;
+  let params = {
+    part: 'snippet',
+    query,
+    type: 'video',
+    maxResults: 25,
+    key: YT_API_KEY.publicDataKey
+  }
+
+  let urlParams = createUrlParams(params);
+
+  let fullUrl = `${baseUrl}?${urlParams}`;
 
   return fetch(fullUrl);
 };

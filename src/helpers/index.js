@@ -25,6 +25,8 @@ export const toggleTheme = () => {
 
 
   // result.style.cssText = '--video-title: #000';
-
-
 }
+
+export const createUrlParams = obj => (
+  Object.keys(obj).map( key => `${key}=${encodeURI(obj[key])}`).join('&')
+);
