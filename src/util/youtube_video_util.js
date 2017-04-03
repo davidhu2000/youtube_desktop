@@ -41,7 +41,16 @@ export const fetchTrending = () => {
   // let regionCode = '';
   let maxResults = 25;
 
-  let fullUrl = `${baseUrl}?part=${part}&chart=${chart}&maxResults=${maxResults}&key=${YT_API_KEY.publicDataKey}`;
+  let params = {
+    part: 'statistics,snippet',
+    chart: 'mostPopular',
+    maxResults: 25,
+    key: YT_API_KEY.publicDataKey
+  }
+
+  let urlParams = createUrlParams(params);
+
+  let fullUrl = `${baseUrl}?${urlParams}`;
 
   return fetch(fullUrl);
 };
