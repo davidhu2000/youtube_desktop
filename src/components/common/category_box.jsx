@@ -26,6 +26,10 @@ class CategoryBox extends React.Component {
     window.onresize = this.updateEndIndex.bind(this);
   }
 
+  componentWillUnmount() {
+    window.onresize = null;
+  }
+
   updateEndIndex() {
     let numVideos = this.numberVideosToShow();
     this.setState({
