@@ -14,8 +14,7 @@ export const clearVideos = () => ({
 });
 
 export const searchVideos = (query, nextPageToken, pageNumber = 1) => dispatch => {
-  console.log(pageNumber);
-  console.log(nextPageToken);
+
   return YoutubeVideoAPI.fetchVideos(query, nextPageToken).then(
     res => res.json()
   ).then(

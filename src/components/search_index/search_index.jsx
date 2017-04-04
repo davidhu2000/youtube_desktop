@@ -30,8 +30,7 @@ class SearchIndex extends React.Component {
       if(pageInfo) {
         volume = pageInfo.totalResults;
       }
-      console.log('search index');
-      console.log(this.props.searchResult);
+
       return (
         <VideoList
           pageNumber={this.props.searchResult.pageNumber}

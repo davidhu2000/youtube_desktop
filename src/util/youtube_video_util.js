@@ -92,6 +92,6 @@ export const fetchVideos = (query, nextPageToken = null) => {
   }
 
   let urlParams = createUrlParams(params);
-  console.log(urlParams);
+
   return fetch(`${baseUrl}?${urlParams}`);
 };
