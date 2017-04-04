@@ -40,15 +40,13 @@ class SearchIndex extends React.Component {
       if(maxPageNumber > pageNumber) {
         nextAction = nextPage;
       } else {
-        nextAction = searchVideos;
+        nextAction = () => searchVideos(query, nextPageToken, pageNumber+1);
       }
 
       return (
         <VideoList
           pageNumber={pageNumber}
-          nextPageToken={nextPageToken}
           volume={volume}
-          query={query}
           nextAction={nextAction}
           previousPage={previousPage}
           videos={videos[pageNumber]} />
