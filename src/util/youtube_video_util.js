@@ -76,7 +76,6 @@ export const fetchTrending = () => {
   }
 
   let urlParams = createUrlParams(params);
-
   return fetch(`${baseUrl}?${urlParams}`);
 };
 
@@ -93,6 +92,31 @@ export const fetchVideos = (query, nextPageToken = null) => {
   }
 
   let urlParams = createUrlParams(params);
-
   return fetch(`${baseUrl}?${urlParams}`);
 };
+
+export const fetchChannelInfo = channelId => {
+  let baseUrl = 'https://www.googleapis.com/youtube/v3/channels';
+  let params = {
+    part: 'snippet,snippet',
+    id: channelId,
+    key: YT_API_KEY.publicDataKey
+  }
+
+  let urlParams = createUrlParams(params);
+  return fetch(`${baseUrl}?${urlParams}`);
+}
+
+export const fetchChannelVideos = channelId => {
+  let baseUrl = 'https://www.googleapis.com/youtube/v3/search';
+  let params = {
+    part: 'snippet',
+    channelId,
+    maxResult: 15,
+    type: 'video',
+    key: YT_API_KEY.publicDataKey
+  }
+
+  let urlParams = createUrlParams(params);
+  return fetch(`${baseUrl}?${urlParams}`);
+}
