@@ -16,13 +16,14 @@ class Home extends React.Component {
   render() {
     if(this.props.trendingVideos) {
        return (
-         <div className='search-index'>
+         <div className='home-page'>
+           <CategoryBox title='Trending' vids={this.props.trendingVideos}/>
            <CategoryBox title='Trending' vids={this.props.trendingVideos}/>
          </div>
        );
     } else {
       return (
-        <div className='search-index'></div>
+        <div className='home-page'></div>
       )
     }
 
