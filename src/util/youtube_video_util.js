@@ -81,12 +81,13 @@ export const fetchTrending = () => {
 };
 
 export const fetchVideos = (query, nextPageToken = null) => {
+  console.log('calling api');
   let baseUrl = `https://www.googleapis.com/youtube/v3/search`;
   let params = {
     part: 'snippet',
     q: query,
     type: 'video',
-    maxResults: 25,
+    maxResults: 5,
     pageToken: nextPageToken,
     key: YT_API_KEY.publicDataKey
   }

@@ -4,7 +4,11 @@ import { connect } from 'react-redux';
 import SearchIndex from './search_index';
 
 import { receiveQuery } from '../../actions/query_actions';
-import { searchVideos, clearVideos } from '../../actions/youtube_video_actions';
+import {
+  searchVideos,
+  clearVideos,
+  previousPage,
+  nextPage } from '../../actions/youtube_video_actions';
 
 const mapStateToProps = ({ query, searchResult }) => ({
   query,
@@ -14,7 +18,9 @@ const mapStateToProps = ({ query, searchResult }) => ({
 const mapDispatchToProps = dispatch => ({
   receiveQuery: query => dispatch(receiveQuery(query)),
   searchVideos: (query, nextPageToken, pageNumber) => dispatch(searchVideos(query, nextPageToken, pageNumber)),
-  clearVideos: () => dispatch(clearVideos())
+  clearVideos: () => dispatch(clearVideos()),
+  previousPage: () => dispatch(previousPage()),
+  nextPage: () => dispatch(nextPage())
 });
 
 export default connect(

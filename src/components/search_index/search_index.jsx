@@ -31,14 +31,27 @@ class SearchIndex extends React.Component {
         volume = pageInfo.totalResults;
       }
 
+      let { pageNumber, nextPageToken, query, videos } = this.props.searchResult;
+      let { nextPage, previousPage, searchVideos } = this.props;
+
+      let nextAction;
+      let maxPageNumber = Math.max(...Object.keys(videos).map( num => parseInt(num)));
+
+      if(maxPageNumber > pageNumber) {
+        nextAction = nextPage;
+      } else {
+        nextAction = searchVideos;
+      }
+
       return (
         <VideoList
-          pageNumber={this.props.searchResult.pageNumber}
-          nextPageToken={this.props.searchResult.nextPageToken}
+          pageNumber={pageNumber}
+          nextPageToken={nextPageToken}
           volume={volume}
-          query={this.props.searchResult.query}
-          next={this.props.searchVideos}
-          videos={this.props.searchResult.videos[this.props.searchResult.pageNumber]} />
+          query={query}
+          nextAction={nextAction}
+          previousPage={previousPage}
+          videos={videos[pageNumber]} />
       );
     } else {
       // add spinner

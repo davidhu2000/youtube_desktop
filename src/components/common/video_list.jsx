@@ -30,12 +30,15 @@ class VideoList extends React.Component {
   }
 
   renderPageNumbers() {
-
     if(this.props.shouldShowPageNumber) {
-      let { query, nextPageToken, pageNumber, next } = this.props;
+      let { query, nextPageToken, pageNumber, previousPage, nextAction } = this.props;
+
       return (
         <div className='page-numbers'>
-          <button onClick={() => next(query, nextPageToken, (pageNumber || 1) + 1)}>
+          <button onClick={previousPage}>
+            {"Previous"}
+          </button>
+          <button onClick={() => nextAction(query, nextPageToken, (pageNumber || 1) + 1)}>
             {"Next"}
           </button>
         </div>

@@ -1,7 +1,9 @@
 import merge from 'lodash/merge';
 import {
   RECEIVE_VIDEOS,
-  CLEAR_VIDEOS } from "../actions/youtube_video_actions.js";
+  CLEAR_VIDEOS,
+  PREVIOUS_PAGE,
+  NEXT_PAGE } from "../actions/youtube_video_actions.js";
 
 let _defaultState = {
   videos: null,
@@ -27,6 +29,14 @@ const searchResultReducer = (state = _defaultState, action) => {
       });
     case CLEAR_VIDEOS:
       return _defaultState;
+    case PREVIOUS_PAGE:
+      return merge({}, state, {
+        pageNumber: state.pageNumber - 1
+      });
+    case NEXT_PAGE:
+      return merge({}, state, {
+        pageNumber: state.pageNumber + 1
+      });
     default:
       return state;
   }
