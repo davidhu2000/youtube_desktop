@@ -30,6 +30,16 @@ class VideoList extends React.Component {
   }
 
   renderPageNumbers() {
+    return this.props.allPages.map(num => {
+      if (num == this.props.pageNumber) {
+        return <button key={Math.random()} disabled={true}>{num}</button>
+      } else {
+        return <button key={Math.random()}>{num}</button>
+      }
+    });
+  }
+
+  renderPageNavigtion() {
     if(this.props.shouldShowPageNumber) {
       let { pageNumber, previousPage, nextAction } = this.props;
 
@@ -39,6 +49,7 @@ class VideoList extends React.Component {
             <button onClick={previousPage}>
               {"« Previous"}
             </button>) : '' }
+          { this.renderPageNumbers() }
           <button onClick={nextAction}>
             {"Next »"}
           </button>
@@ -48,6 +59,7 @@ class VideoList extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="search-index">
         <div className="search-index-container">
@@ -56,7 +68,7 @@ class VideoList extends React.Component {
           </div>
           {this.addSearchResults()}
           {this.addSmlSearchResults()}
-          {this.renderPageNumbers()}
+          {this.renderPageNavigtion()}
         </div>
       </div>
     );

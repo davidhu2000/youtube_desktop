@@ -41,7 +41,7 @@ class SearchIndex extends React.Component {
       if(pageInfo) {
         volume = pageInfo.totalResults;
       }
-      
+
       let nextAction;
       let maxPageNumber = Math.max(...Object.keys(videos).map( num => parseInt(num)));
 
@@ -54,6 +54,7 @@ class SearchIndex extends React.Component {
       return (
         <VideoList
           pageNumber={pageNumber}
+          allPages={Object.keys(videos)}
           volume={volume}
           nextAction={nextAction}
           previousPage={previousPage}
