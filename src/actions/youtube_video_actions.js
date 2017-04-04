@@ -13,13 +13,15 @@ export const clearVideos = () => ({
   type: CLEAR_VIDEOS
 });
 
-export const searchVideos = (query, nextPageToken, prevPageToken) => dispatch => {
-
-  return YoutubeVideoAPI.fetchVideos(query, nextPageToken, prevPageToken).then(
+export const searchVideos = (query, nextPageToken, pageNumber = 1) => dispatch => {
+  console.log(pageNumber);
+  console.log(nextPageToken);
+  return YoutubeVideoAPI.fetchVideos(query, nextPageToken).then(
     res => res.json()
   ).then(
     videos => {
       videos['query'] = query;
+      videos['pageNumber'] = pageNumber;
       return dispatch(receiveVideos(videos))
     }
   ).catch(

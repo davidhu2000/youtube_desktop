@@ -5,7 +5,8 @@ import { VideoSearchItem, SmlVideoSearchItem } from '../common';
 class VideoList extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
+
+    this.renderPageNumbers = this.renderPageNumbers.bind(this);
   }
 
   addSearchResults() {
@@ -29,25 +30,29 @@ class VideoList extends React.Component {
   }
 
   renderPageNumbers() {
+
     if(this.props.shouldShowPageNumber) {
       return (
         <div className='page-numbers'>
-          { ['next'].map( num => <div key={num}>{num}</div>) }
+          <button onClick={() => this.props.next(this.props.query, this.props.nextPageToken, (this.props.pageNumber || 1) + 1)}>
+            {"Next"}
+          </button>
         </div>
       );
     }
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="search-index">
         <div className="search-index-container">
           <div className="search-index-container-top">
             {this.addSearchVolume()}
           </div>
-        {this.addSearchResults()}
-        {this.addSmlSearchResults()}
-        {this.renderPageNumbers()}
+          {this.addSearchResults()}
+          {this.addSmlSearchResults()}
+          {this.renderPageNumbers()}
         </div>
       </div>
     );

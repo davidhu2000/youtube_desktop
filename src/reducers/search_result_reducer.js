@@ -1,30 +1,29 @@
-import merge  from 'lodash/merge';
+import merge from 'lodash/merge';
 import {
   RECEIVE_VIDEOS,
   CLEAR_VIDEOS } from "../actions/youtube_video_actions.js";
 
 let _defaultState = {
   videos: null,
+  pageTokens: null,
   nextPageToken: null,
-  prevPageToken: null,
-  pageInfo: null,
-  query: null
+  query: null,
+  pageNumber: null
 };
 
 const searchResultReducer = (state = _defaultState, action) => {
   Object.freeze(state);
-  // console.log(action);
+  console.log(action);
   switch(action.type) {
     case RECEIVE_VIDEOS:
       let res = action.videos;
-      let videos = (state.videos || []).concat(res.items);
 
       return merge({}, state, {
-        videos: videos,
+        videos: { [res.pageNumber]: res.items },
         nextPageToken: res.nextPageToken,
-        prevPageToken: res.prevPageToken,
         pageInfo: res.pageInfo,
-        query: res.query
+        query: res.query,
+        pageNumber: res.pageNumber
       });
     case CLEAR_VIDEOS:
       return _defaultState;

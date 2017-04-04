@@ -80,20 +80,18 @@ export const fetchTrending = () => {
   return fetch(`${baseUrl}?${urlParams}`);
 };
 
-export const fetchVideos = (query, nextPageToken = null, prevPageToken = null) => {
+export const fetchVideos = (query, nextPageToken = null) => {
   let baseUrl = `https://www.googleapis.com/youtube/v3/search`;
-
   let params = {
     part: 'snippet',
-    query,
+    q: query,
     type: 'video',
     maxResults: 25,
-    nextPageToken,
-    prevPageToken,
+    pageToken: nextPageToken,
     key: YT_API_KEY.publicDataKey
   }
 
   let urlParams = createUrlParams(params);
-
+  console.log(urlParams);
   return fetch(`${baseUrl}?${urlParams}`);
 };

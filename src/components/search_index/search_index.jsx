@@ -24,17 +24,28 @@ class SearchIndex extends React.Component {
   }
 
   render() {
-    let volume;
-    let pageInfo = this.props.searchResult.pageInfo;
-    if(pageInfo) {
-      volume = pageInfo.totalResults;
+    console.log(this.props.searchResult.videos);
+    if(this.props.searchResult.videos) {
+      let volume;
+      let pageInfo = this.props.searchResult.pageInfo;
+      if(pageInfo) {
+        volume = pageInfo.totalResults;
+      }
+
+      return (
+        <VideoList
+          pageNumber={this.props.searchResult.pageNumber}
+          nextPageToken={this.props.searchResult.nextPageToken}
+          volume={volume}
+          query={this.props.searchResult.query}
+          next ={this.props.searchVideos}
+          videos={this.props.searchResult.videos[this.props.searchResult.pageNumber]} />
+      );
+    } else {
+      // add spinner
+      return <div>Loading</div>
     }
 
-    return (
-      <VideoList
-        volume={volume}
-        videos={this.props.searchResult.videos} />
-    );
   }
 }
 
