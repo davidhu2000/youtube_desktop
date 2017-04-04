@@ -13,7 +13,7 @@ const mapStateToProps = ({ query, searchResult }) => ({
 
 const mapDispatchToProps = dispatch => ({
   receiveQuery: query => dispatch(receiveQuery(query)),
-  searchVideos: query => dispatch(searchVideos(query)),
+  searchVideos: (query, nextPageToken, pageNumber) => dispatch(searchVideos(query, nextPageToken, pageNumber)),
   clearVideos: () => dispatch(clearVideos())
 });
 

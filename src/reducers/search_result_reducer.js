@@ -5,7 +5,7 @@ import {
 
 let _defaultState = {
   videos: null,
-  pageTokens: null,
+  pageInfo: null,
   nextPageToken: null,
   query: null,
   pageNumber: null

@@ -32,6 +32,7 @@ class VideoList extends React.Component {
   renderPageNumbers() {
 
     if(this.props.shouldShowPageNumber) {
+      console.log(this.props.next);
       return (
         <div className='page-numbers'>
           <button onClick={() => this.props.next(this.props.query, this.props.nextPageToken, (this.props.pageNumber || 1) + 1)}>
@@ -43,6 +44,7 @@ class VideoList extends React.Component {
   }
 
   render() {
+    console.log('video index');
     console.log(this.props);
     return (
       <div className="search-index">
