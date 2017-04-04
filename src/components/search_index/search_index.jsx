@@ -9,12 +9,15 @@ class SearchIndex extends React.Component {
 
   _fetchResult(query) {
     if(query !== null) {
+      this.props.clearVideos();
       this.props.searchVideos(query);
     }
   }
 
   componentDidMount() {
-    this._fetchResult(this.props.query);
+    if(this.props.query !== this.props.searchResult.query) {
+      this._fetchResult(this.props.query);
+    }
   }
 
   componentWillReceiveProps(newProps) {
