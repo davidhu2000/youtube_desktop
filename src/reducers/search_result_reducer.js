@@ -3,7 +3,8 @@ import {
   RECEIVE_VIDEOS,
   CLEAR_VIDEOS,
   PREVIOUS_PAGE,
-  NEXT_PAGE } from "../actions/youtube_video_actions.js";
+  NEXT_PAGE,
+  GO_TO_PAGE } from "../actions/youtube_video_actions.js";
 
 let _defaultState = {
   videos: null,
@@ -31,11 +32,15 @@ const searchResultReducer = (state = _defaultState, action) => {
       return _defaultState;
     case PREVIOUS_PAGE:
       return merge({}, state, {
-        pageNumber: state.pageNumber - 1
+        pageNumber: parseInt(state.pageNumber) - 1
       });
     case NEXT_PAGE:
       return merge({}, state, {
-        pageNumber: state.pageNumber + 1
+        pageNumber: parseInt(state.pageNumber) + 1
+      });
+    case GO_TO_PAGE:
+      return merge({}, state, {
+        pageNumber: action.pageNumber
       });
     default:
       return state;

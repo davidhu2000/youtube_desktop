@@ -35,7 +35,7 @@ class SearchIndex extends React.Component {
         videos,
         pageInfo } = this.props.searchResult;
 
-      let { nextPage, previousPage, searchVideos } = this.props;
+      let { nextPage, previousPage, searchVideos, goToPage } = this.props;
 
       let volume;
       if(pageInfo) {
@@ -57,6 +57,7 @@ class SearchIndex extends React.Component {
           allPages={Object.keys(videos)}
           volume={volume}
           nextAction={nextAction}
+          goToPage={goToPage}
           previousPage={previousPage}
           videos={videos[pageNumber]} />
       );

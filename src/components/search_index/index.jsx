@@ -8,7 +8,8 @@ import {
   searchVideos,
   clearVideos,
   previousPage,
-  nextPage } from '../../actions/youtube_video_actions';
+  nextPage,
+  goToPage } from '../../actions/youtube_video_actions';
 
 const mapStateToProps = ({ query, searchResult }) => ({
   query,
@@ -20,7 +21,8 @@ const mapDispatchToProps = dispatch => ({
   searchVideos: (query, nextPageToken, pageNumber) => dispatch(searchVideos(query, nextPageToken, pageNumber)),
   clearVideos: () => dispatch(clearVideos()),
   previousPage: () => dispatch(previousPage()),
-  nextPage: () => dispatch(nextPage())
+  nextPage: () => dispatch(nextPage()),
+  goToPage: (pageNumber) => dispatch(goToPage(pageNumber))
 });
 
 export default connect(
