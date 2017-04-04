@@ -29,3 +29,29 @@
   font-size: 12px;
   color: grey;
 }
+
+.page-numbers {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 15px;
+}
+
+.page-numbers button {
+  border: 1px solid #d3d3d3;
+  background: #f8f8f8;
+  color: #333;
+  height: 28px;
+  padding: 0 10px;
+  font-weight: bolder;
+  vertical-align: center;
+  cursor: pointer;
+  border-radius: 2px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+  font-size: 11px;
+  margin: 1px 1px;
+}
+
+.page-numbers button:hover {
+  background: #f0f0f0;
+}

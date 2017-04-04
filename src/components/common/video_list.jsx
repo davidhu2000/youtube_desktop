@@ -37,10 +37,10 @@ class VideoList extends React.Component {
         <div className='page-numbers'>
           { pageNumber > 1 ? (
             <button onClick={previousPage}>
-              {"Previous"}
+              {"« Previous"}
             </button>) : '' }
           <button onClick={nextAction}>
-            {"Next"}
+            {"Next »"}
           </button>
         </div>
       );

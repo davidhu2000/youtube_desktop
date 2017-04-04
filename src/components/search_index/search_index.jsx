@@ -28,15 +28,20 @@ class SearchIndex extends React.Component {
 
   render() {
     if(this.props.searchResult.videos) {
+      let {
+        pageNumber,
+        nextPageToken,
+        query,
+        videos,
+        pageInfo } = this.props.searchResult;
+
+      let { nextPage, previousPage, searchVideos } = this.props;
+
       let volume;
-      let pageInfo = this.props.searchResult.pageInfo;
       if(pageInfo) {
         volume = pageInfo.totalResults;
       }
-
-      let { pageNumber, nextPageToken, query, videos } = this.props.searchResult;
-      let { nextPage, previousPage, searchVideos } = this.props;
-
+      
       let nextAction;
       let maxPageNumber = Math.max(...Object.keys(videos).map( num => parseInt(num)));
 
