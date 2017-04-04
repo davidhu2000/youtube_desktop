@@ -61,3 +61,44 @@ export const fetchTrending = () => dispatch => {
     err => console.log(err)
   );
 };
+
+// Channel Actions
+
+export const RECEIVE_CHANNEL = 'RECEIVE_CHANNEL';
+export const RECEIVE_CHANNELS = 'RECEIVE_CHANNELS';
+export const RECEIVE_CHANNEL_VIDEOS = 'RECEIVE_CHANNEL_VIDEOS';
+
+export const receiveChannel = channel => ({
+  type: RECEIVE_CHANNEL,
+  channel
+});
+
+export const receiveChannels = channels => ({
+  type: RECEIVE_CHANNELS,
+  channels
+});
+
+export const receiveChannelVideos = videos => ({
+  type: RECEIVE_CHANNEL,
+  videos
+});
+
+export const fetchChannel = channelId => dispatch => {
+  return YoutubeVideoAPI.fetchChannel(channelId).then(
+    res => res.json()
+  ).then(
+    channels => dispatch(receiveChannel(channels.items[0]))
+  ).catch(
+    err => console.log(err)
+  );
+};
+
+export const fetchChannelVideos = channelId => dispatch => {
+  return YoutubeVideoAPI.fetchChannelVideos(channelId).then(
+    res => res.json()
+  ).then(
+    videos => dispatch(receiveChannelVideos(videos.items))
+  ).catch(
+    err => console.log(err)
+  );
+};
