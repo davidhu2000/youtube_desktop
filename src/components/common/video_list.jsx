@@ -30,9 +30,15 @@ class VideoList extends React.Component {
   }
 
   renderPageNumbers() {
-    let count = this.props.allPages.length - 7;
-    if(count < 0) count = 0;
-    return this.props.allPages.slice(count).map(num => {
+    let count = this.props.pageNumber - 4;
+
+    if(count < 0 || this.props.allPages.length <= 7) {
+      count = 0;
+    } else if (this.props.pageNumber > this.props.allPages.length - 4) {
+      count = this.props.allPages.length - 8;
+    }
+
+    return this.props.allPages.slice(count, count + 7).map(num => {
       if (num == this.props.pageNumber) {
         return <button key={Math.random()} disabled={true}>{num}</button>
       } else {
