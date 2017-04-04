@@ -1,6 +1,6 @@
 import React from 'react';
 import { formatNumber } from '../../helpers';
-import { VideoSearchItem, SmlVideoSearchItem } from '../common';
+import { VideoSearchItem } from '../common';
 
 class VideoList extends React.Component {
   constructor(props) {
@@ -19,7 +19,14 @@ class VideoList extends React.Component {
   addSmlSearchResults() {
     if (this.props.videos) {
       let vids = this.props.videos;
-      return vids.map(vid => <SmlVideoSearchItem key={vid.etag} vid={vid} />);
+      return vids.map(vid => (
+        <VideoSearchItem
+          key={vid.etag}
+          vid={vid}
+          cssPrefix='sml-'
+          maxTitleLength={33}
+          maxDescriptionLength={40} />)
+      );
     }
   }
 
@@ -67,7 +74,6 @@ class VideoList extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="search-index">
         <div className="search-index-container">

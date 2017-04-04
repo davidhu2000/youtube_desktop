@@ -57,8 +57,8 @@ class SearchIndex extends React.Component {
           allPages={Object.keys(videos)}
           volume={volume}
           nextAction={nextAction}
-          goToPage={goToPage}
           previousPage={previousPage}
+          goToPage={goToPage}
           videos={videos[pageNumber]} />
       );
     } else {
