@@ -97,3 +97,23 @@ export const fetchChannelVideos = channelId => dispatch => {
     err => console.log(err)
   );
 };
+
+export const fetchCategories = () => dispatch => {
+  // TODO: store in state;
+
+  YoutubeVideoAPI.fetchCategories().then(
+    res => res.json()
+  ).then (
+    responseJson => {
+      let channels = responseJson.items;
+      console.log(channels);
+      for(let i = 0; i < channels.length; i++) {
+        let id = channels[i].snippet.channelId;
+        console.log(id);
+        // dispatch(fetchChannelVideos(id));
+      }
+    }
+  ).catch(
+    err => console.log(err)
+  );
+}

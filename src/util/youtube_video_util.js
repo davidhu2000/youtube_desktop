@@ -98,7 +98,7 @@ export const fetchVideos = (query, nextPageToken = null) => {
 export const fetchChannelInfo = channelId => {
   let baseUrl = 'https://www.googleapis.com/youtube/v3/channels';
   let params = {
-    part: 'snippet,snippet',
+    part: 'snippet',
     id: channelId,
     key: YT_API_KEY.publicDataKey
   }
@@ -112,11 +112,22 @@ export const fetchChannelVideos = channelId => {
   let params = {
     part: 'snippet',
     channelId,
-    maxResult: 15,
-    type: 'video',
+    maxResults: 15,
     key: YT_API_KEY.publicDataKey
   }
 
   let urlParams = createUrlParams(params);
   return fetch(`${baseUrl}?${urlParams}`);
+}
+
+export const fetchCategories = () => {
+  let baseUrl = 'https://www.googleapis.com/youtube/v3/guideCategories';
+  let params = {
+    part: 'snippet',
+    regionCode: 'US',
+    key: YT_API_KEY.publicDataKey
+  }
+
+  let urlParams = createUrlParams(params);
+  return fetch(`${baseUrl}?${urlParams}`)
 }

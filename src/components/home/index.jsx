@@ -4,15 +4,21 @@ import Home from './home.jsx';
 
 import {
   fetchTrending,
-  fetchChannel, } from '../../actions/youtube_video_actions';
+  fetchCategories,
+  fetchChannelInfo,
+  fetchChannelVideos } from '../../actions/youtube_video_actions';
 
-const mapStateToProps = (state, ownProps) => ({
-  trendingVideos: state.trending.videos,
-  trendingDate: state.trending.date
+const mapStateToProps = ({ trending, channels }) => ({
+  trendingVideos: trending.videos,
+  trendingDate: trending.date,
+  channels
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchTrending: () => dispatch(fetchTrending())
+  fetchTrending: () => dispatch(fetchTrending()),
+  fetchChannelInfo: id => dispatch(fetchChannelInfo(id)),
+  fetchChannelVideos: id => dispatch(fetchChannelVideos(id)),
+  fetchCategories: () => dispatch(fetchCategories()),
 });
 
 export default connect(

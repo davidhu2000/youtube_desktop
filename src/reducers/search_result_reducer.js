@@ -16,7 +16,7 @@ let _defaultState = {
 
 const searchResultReducer = (state = _defaultState, action) => {
   Object.freeze(state);
-  console.log(action);
+  // console.log(action);
   switch(action.type) {
     case RECEIVE_VIDEOS:
       let res = action.videos;
