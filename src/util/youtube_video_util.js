@@ -86,7 +86,7 @@ export const fetchVideos = (query, nextPageToken = null) => {
     part: 'snippet',
     q: query,
     type: 'video',
-    maxResults: 5,
+    maxResults: 25,
     pageToken: nextPageToken,
     key: YT_API_KEY.publicDataKey
   }

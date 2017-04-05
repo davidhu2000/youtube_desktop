@@ -17,7 +17,6 @@ class Home extends React.Component {
       'UCEgdi0XIXXZ-qJOFPf4JSKw',
       'UCOpNcN46UbXVtpKMrmU4Abg',
       'UClgRkhTL3_hImCAmdLfDE4g',
-      'UCl8dMTqDrJQ0c8y23UBu4kQ',
       'UCYfdidRxbB8Qhf0Nx7ioOYw',
       'UCBR8-60-B28hp2BmDPdntcQ',
     ];
