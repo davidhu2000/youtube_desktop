@@ -11,6 +11,8 @@ class VideoSearchItem extends React.Component {
     const { description, title, channelTitle, publishedAt } = vid.snippet;
     const { url } = vid.snippet.thumbnails.medium;
 
+    const { cssPrefix, maxTitleLength, maxDescriptionLength } = this.props;
+
     let videoId;
     if (typeof vid.id === 'string') {
       videoId = vid.id;
@@ -19,21 +21,29 @@ class VideoSearchItem extends React.Component {
     }
 
     return (
-      <div className="index-item">
-        <Link to={`watch/${videoId}`} className="index-item-left">
+      <div className={`${cssPrefix}index-item`}>
+        <Link to={`watch/${videoId}`} className={`${cssPrefix}index-item-left`}>
           <img src={url} />
         </Link>
 
-        <div className="index-item-right">
+        <div className={`${cssPrefix}index-item-right`}>
           <Link to={`watch/${videoId}`}>
-            <h1>{title}</h1>
+            <h1>{title.length > maxTitleLength ?
+                title.slice(0, maxTitleLength - 3)+'...' : title}</h1>
           </Link>
           <p>{channelTitle}</p>
-          <p>{description.slice(0, 120) + '...'}</p>
+          <p>{description.length > maxDescriptionLength ?
+              description.slice(0, maxDescriptionLength - 3) + '...' : description}</p>
         </div>
       </div>
     );
   }
+}
+
+VideoSearchItem.defaultProps = {
+  cssPrefix: '',
+  maxTitleLength: 80,
+  maxDescriptionLength: 123
 }
 
 export { VideoSearchItem };

@@ -4,16 +4,25 @@ import { connect } from 'react-redux';
 import SearchIndex from './search_index';
 
 import { receiveQuery } from '../../actions/query_actions';
-import { searchVideos } from '../../actions/youtube_video_actions';
+import {
+  searchVideos,
+  clearVideos,
+  previousPage,
+  nextPage,
+  goToPage } from '../../actions/youtube_video_actions';
 
-const mapStateToProps = (state, ownProps) => ({
-  query: state.query,
-  searchResult: state.searchResult
+const mapStateToProps = ({ query, searchResult }) => ({
+  query,
+  searchResult
 });
 
 const mapDispatchToProps = dispatch => ({
   receiveQuery: query => dispatch(receiveQuery(query)),
-  searchVideos: query => dispatch(searchVideos(query))
+  searchVideos: (query, nextPageToken, pageNumber) => dispatch(searchVideos(query, nextPageToken, pageNumber)),
+  clearVideos: () => dispatch(clearVideos()),
+  previousPage: () => dispatch(previousPage()),
+  nextPage: () => dispatch(nextPage()),
+  goToPage: (pageNumber) => dispatch(goToPage(pageNumber))
 });
 
 export default connect(

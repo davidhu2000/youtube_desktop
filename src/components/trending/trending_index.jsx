@@ -17,7 +17,10 @@ class TrendingIndex extends React.Component {
 
   render() {
     return (
-      <VideoList videos={this.props.trendingVideos} />
+      <VideoList
+        shouldShowVolume={false}
+        shouldShowPageNumber={false}
+        videos={this.props.trendingVideos} />
     );
   }
 }

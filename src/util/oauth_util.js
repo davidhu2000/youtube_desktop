@@ -41,14 +41,20 @@ export const authenticateUser = () => {
     scope: scope
   }
 
-  var authWindow = new BrowserWindow({ width: 800, height: 600, show: false, 'node-integration': false });
+  let authWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    show: false,
+    'node-integration': false
+  });
+
   authWindow.loadURL(requestUrl);
   authWindow.show();
 
   const handleCallback = url => {
-    var raw_code = /code=([^&]*)/.exec(url) || null;
-    var code = (raw_code && raw_code.length > 1) ? raw_code[1] : null;
-    var error = /\?error=(.+)$/.exec(url);
+    let raw_code = /code=([^&]*)/.exec(url) || null;
+    let code = (raw_code && raw_code.length > 1) ? raw_code[1] : null;
+    let error = /\?error=(.+)$/.exec(url);
 
     if (code || error)  authWindow.destroy();
 
@@ -68,7 +74,6 @@ export const authenticateUser = () => {
 
   authWindow.webContents.on('did-get-redirect-request', function (event, oldUrl, newUrl) {
     handleCallback(newUrl);
-
   });
 
   // Reset the authWindow on close

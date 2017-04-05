@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import moment from 'moment';
-import { formatViews } from '../../helpers';
+import { formatNumber } from '../../helpers';
 
 class CategoryBoxItem extends React.Component {
   constructor(props) {
@@ -25,7 +25,8 @@ class CategoryBoxItem extends React.Component {
   render () {
     const vid = this.props.vid;
     const { channelTitle, publishedAt } = vid.snippet;
-    const { viewCount } = vid.statistics;
+    // const { viewCount } = vid.statistics;
+    const viewCount = Math.floor(Math.random() * 10000000);
     const { url } = vid.snippet.thumbnails.medium;
     const title = this.parseTitle(vid.snippet.title);
 
@@ -52,7 +53,7 @@ class CategoryBoxItem extends React.Component {
         </Link>
 
         <div className="category-box-item-info">
-          <span className='basic-text'>{ formatViews(viewCount) } views</span>
+          <span className='basic-text'>{ formatNumber(viewCount) } views</span>
           <span className='category-box-item-date basic-text'>{ moment(publishedAt).fromNow() } </span>
         </div>
       </div>

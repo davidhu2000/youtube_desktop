@@ -23,6 +23,7 @@ class CategoryBox extends React.Component {
   }
 
   componentDidMount() {
+    // TODO: fix error whenever there are multiple boxes.
     window.onresize = this.updateEndIndex.bind(this);
   }
 
