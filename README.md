@@ -58,17 +58,7 @@ Please click [here](https://github.com/davidhu2000/youtube_desktop/issues/new) t
 
 # Team
 
-<table>
-  <tr>
-    <td>![David Hu](https://avatars2.githubusercontent.com/u/15827041?v=3&s=460)</td>
-    <td>![Alex Sherman](https://avatars0.githubusercontent.com/u/19175984?v=3&s=460)</td>
-    <td>![Carson Judge](https://avatars3.githubusercontent.com/u/22506482?v=3&s=460)</td>
-    <td>![Kevin Nguyen](https://avatars0.githubusercontent.com/u/15253174?v=3&s=460)</td>
-  </tr>
-  <tr>
-    <td>[David Hu](https://github.com/davidhu2000/)</td>
-    <td>[Alex Sherman](https://github.com/asherman-ca)</td>
-    <td>[Carson Judge](https://github.com/cjudge1337)</td>
-    <td>[Kevin Nguyen](https://github.com/nguyenkevin16)</td>
-  </tr>
-</table>
+
+| ![David Hu](https://avatars2.githubusercontent.com/u/15827041?v=3&s=460) | ![Alex Sherman](https://avatars0.githubusercontent.com/u/19175984?v=3&s=460) | ![Carson Judge](https://avatars3.githubusercontent.com/u/22506482?v=3&s=460) | ![Kevin Nguyen](https://avatars0.githubusercontent.com/u/15253174?v=3&s=460) |                                                  |
+|--------------------------------------------------------------------------|------------------------------------------------------------------------------|------------------------------------------------------------------------------|------------------------------------------------------------------------------|--------------------------------------------------|
+|                                                                          | [David Hu](https://github.com/davidhu2000/)                                  | [Alex Sherman](https://github.com/asherman-ca)                               | [Carson Judge](https://github.com/cjudge1337)                                | [Kevin Nguyen](https://github.com/nguyenkevin16) |
