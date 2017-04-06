@@ -2,7 +2,7 @@
 
 # Youtube Desktop
 
-A desktop client of [youtube](https://www.youtube.com) that allows the user to browse Youtube with the need of a browser.
+A desktop client of [youtube](https://www.youtube.com) that allows the user to browse Youtube without the need of a browser.
 
 ## Demo
 
