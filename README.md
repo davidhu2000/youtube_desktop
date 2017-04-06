@@ -58,6 +58,8 @@ Please click [here](https://github.com/davidhu2000/youtube_desktop/issues/new) t
 
 # Team
 
+## Core Members
+
 ![David Hu][pic_dh] | ![Alex Sherman][pic_as] | ![Carson Judge][pic_cj] | ![Kevin Nguyen][pic_kn]
 :------------------:|:-----------------------:|:-----------------------:|:----------------------:
 [David Hu][git_dh]  | [Alex Sherman][git_as]  | [Carson Judge][git_cj]  | [Kevin Nguyen][git_kn]
@@ -70,3 +72,7 @@ Please click [here](https://github.com/davidhu2000/youtube_desktop/issues/new) t
 [git_as]: https://github.com/asherman-ca
 [git_cj]: https://github.com/cjudge1337
 [git_kn]: https://github.com/nguyenkevin16
+
+### Contributors
+
+[kuldeepsidhu88](https://github.com/kuldeepsidhu88)
