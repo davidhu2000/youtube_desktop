@@ -46,46 +46,90 @@ body {
 /****************************/
 .second {
   height: 740px;
-  padding: 20px;
+  padding: 75px 0px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   background-color: #C32326;
+
 }
 .second h1 {
   color: white;
   font-size: 42px;
 }
 .image-box{
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: relative;
 }
 .image-box img{
   height: 460px;
-  position: relative;
+  position: absolute;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   /*width: 86px;*/
 }
+.first-img {
+ z-index: 0;
+ bottom: 0px;
+ right: 20px;
+ /*top: 0px;*/
+}
+.second-img {
+ z-index: 1;
+ /*top: 0px;*/
+ bottom: -20px;
+ margin: 0 auto;
 
-
-
-
-
+}
+.third-img {
+  z-index: 0;
+  /*top: 0px;*/
+  bottom: 0px;
+  left: 20px;
+}
 /****************************/
 /*THIRD SECTION*/
 /****************************/
 .third {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 360px;
 }
-
-
-
+.third h1 {
+  font-size: 42px;
+  margin: 0 0 50px;
+}
+.feature-matrix {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.line {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 /****************************/
 /*FORTH SECTION*/
 /****************************/
 .forth {
   height: 575px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #C32326;
+  color: white;
+}
+
+.forth h1 {
+  font-size: 42px;
 }
