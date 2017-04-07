@@ -1,4 +1,5 @@
 body {
+  min-width: 820px;
   display: flex;
   flex-direction: column;
   font-family: HelveticaNeue-Thin,"Helvetica Neue Light","Helvetica Neue","Segoe UI",Helvetica,Arial,"Lucida Grande",sans-serif;
