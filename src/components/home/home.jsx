@@ -1,4 +1,4 @@
-import React from 'react';
+import React           from 'react';
 import { CategoryBox } from '../common';
 
 class Home extends React.Component {
