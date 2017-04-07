@@ -144,9 +144,17 @@ body {
 /*FOOTER SECTION*/
 /****************************/
 footer {
-  height: 65px;
+  height: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: white;
+}
+footer a {
+  margin-right: 20px;
+  padding: 16px 24px 15px;
+  background-color: #C32326;
+  color: white;
+  font-size: 20px;
+  border-radius: 4px;
 }
