@@ -52,7 +52,6 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: #C32326;
-
 }
 .second h1 {
   color: white;
@@ -82,7 +81,6 @@ body {
  /*top: 0px;*/
  bottom: -20px;
  margin: 0 auto;
-
 }
 .third-img {
   z-index: 0;
@@ -94,25 +92,23 @@ body {
 /*THIRD SECTION*/
 /****************************/
 .third {
+  height: 360px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 360px;
 }
 .third h1 {
   font-size: 42px;
   margin: 0 0 50px;
 }
-.feature-matrix {
-  width: 800px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.third p {
+  font-size: 20px;
+  margin: 10px 0px;
 }
-.line {
-  width: 100%;
+.third ul {
+  width: 800px;
+  /*padding: 20px;*/
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -121,7 +117,7 @@ body {
 /*FORTH SECTION*/
 /****************************/
 .forth {
-  height: 575px;
+  height: 360px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -129,7 +125,24 @@ body {
   background-color: #C32326;
   color: white;
 }
-
 .forth h1 {
   font-size: 42px;
+  margin: 0 0 50px;
+}
+.forth p {
+  font-size: 20px;
+  margin: 10px 0px;
+}
+.forth ul {
+  width: 800px;
+  /*padding: 20px;*/
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.forth ul li{
+  /*display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;*/
 }
