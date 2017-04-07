@@ -25,10 +25,12 @@ class CategoryBoxItem extends React.Component {
   render () {
     const vid = this.props.vid;
     const { channelTitle, publishedAt } = vid.snippet;
-    // const { viewCount } = vid.statistics;
-    const viewCount = Math.floor(Math.random() * 10000000);
     const { url } = vid.snippet.thumbnails.medium;
     const title = this.parseTitle(vid.snippet.title);
+    let viewCount = '------';
+    if (vid.statistics) {
+      viewCount = vid.statistics.viewCount;
+    }
 
     let videoId;
     if (typeof vid.id === 'string') {

@@ -10,6 +10,7 @@ class SearchBar extends React.Component {
 
     this.update = this.update.bind(this);
     this.submit = this.submit.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   update(e) {
@@ -24,11 +25,22 @@ class SearchBar extends React.Component {
     this.props.router.push('/search');
   }
 
+  handleKeyPress(e) {
+    if(e.key === 'Enter') {
+      this.submit(e);
+    }
+  }
+
   render() {
     return (
       <div className="search-bar">
-        <input type='text' placeholder="Search" onChange={ this.update }></input>
-        <button type='submit' onClick={ this.submit }>
+        <input
+          type='text'
+          placeholder="Search"
+          onChange={ this.update }
+          onKeyPress={ this.handleKeyPress } />
+
+        <button type='submit' onClick={ this.submit } >
           <i className="material-icons">search</i>
         </button>
       </div>

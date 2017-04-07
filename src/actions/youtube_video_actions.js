@@ -99,7 +99,7 @@ export const fetchChannelVideos = channelId => dispatch => {
 };
 
 export const fetchCategories = () => dispatch => {
-  // TODO: store in state;
+  // TODO: store in state ??
 
   YoutubeVideoAPI.fetchCategories().then(
     res => res.json()
