@@ -8,7 +8,7 @@ class Home extends React.Component {
 
   componentDidMount() {
     let ms = 24 * 3600 * 1000;
-    if(Date.now() - this.props.date > ms || !this.props.trendingVideos) {
+    if(Date.now() - this.props.trending.date > ms || !this.props.trending.videos) {
       this.props.fetchTrending();
     }
 
@@ -35,16 +35,21 @@ class Home extends React.Component {
       return ids.map( id => {
         let channel = channels[id];
         let title = channel.videos[0].snippet.channelTitle;
-        return <CategoryBox key={Math.random()} title={title} vids={channel.videos} />
+        return (
+          <CategoryBox
+            key={id}
+            title={title}
+            vids={channel.videos} />
+        );
       });
     }
   }
 
   render() {
-    if(this.props.trendingVideos) {
+    if(this.props.trending.videos) {
        return (
          <div className='home-page'>
-           <CategoryBox title='Trending' vids={this.props.trendingVideos}/>
+           <CategoryBox title='Trending' vids={this.props.trending.videos}/>
            {this.renderChannels()}
          </div>
        );

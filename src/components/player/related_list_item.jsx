@@ -11,7 +11,6 @@ class RelatedListItem extends React.Component {
   linkVideo() {
     let videoId = this.props.vid.id.videoId;
     hashHistory.push(`watch/${videoId}`);
-    // location.reload();
   }
 
   render () {
