@@ -132,7 +132,7 @@ body {
 }
 .forth p {
   font-size: 20px;
-  margin: 10px 0px;
+  /*margin: 10px 0px;*/
 }
 .forth ul {
   width: 800px;
