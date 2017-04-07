@@ -135,14 +135,17 @@ body {
 }
 .forth ul {
   width: 800px;
-  /*padding: 20px;*/
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.forth ul li{
-  /*display: flex;
-  flex-direction: column;
+/****************************/
+/*FOOTER SECTION*/
+/****************************/
+footer {
+  height: 65px;
+  display: flex;
   justify-content: center;
-  align-items: center;*/
+  align-items: center;
+  background-color: white;
 }
