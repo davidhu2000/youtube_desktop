@@ -1,0 +1,91 @@
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: HelveticaNeue-Thin,"Helvetica Neue Light","Helvetica Neue","Segoe UI",Helvetica,Arial,"Lucida Grande",sans-serif;
+}
+.top {
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.top h1, p {
+  text-align: center;
+}
+.top h1 {
+  font-size: 42px;
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+.top p {
+  line-height: 20px;
+}
+.top img {
+  height: 160px;
+}
+.top a {
+  margin-top: 70px;
+  margin-bottom: 12px;
+  padding: 16px 24px 15px;
+  background-color: #C32326;
+  color: white;
+  font-size: 20px;
+  border-radius: 4px;
+}
+.under-button {
+  font-size: 12px;
+}
+.under-button-span {
+  color: #C32326;
+  text-decoration: underline;
+  cursor: pointer;
+}
+/****************************/
+/*SECOND SECTION*/
+/****************************/
+.second {
+  height: 740px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #C32326;
+}
+.second h1 {
+  color: white;
+  font-size: 42px;
+}
+.image-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+.image-box img{
+  height: 460px;
+  position: relative;
+  /*width: 86px;*/
+}
+
+
+
+
+
+/****************************/
+/*THIRD SECTION*/
+/****************************/
+.third {
+  height: 360px;
+}
+
+
+
+/****************************/
+/*FORTH SECTION*/
+/****************************/
+.forth {
+  height: 575px;
+  background-color: #C32326;
+}
