@@ -60,18 +60,20 @@ Please click [here](https://github.com/davidhu2000/youtube_desktop/issues/new) t
 
 ## Core Members
 
-![David Hu][pic_dh] | ![Alex Sherman][pic_as] | ![Carson Judge][pic_cj] | ![Kevin Nguyen][pic_kn]
-:------------------:|:-----------------------:|:-----------------------:|:----------------------:
-[David Hu][git_dh]  | [Alex Sherman][git_as]  | [Carson Judge][git_cj]  | [Kevin Nguyen][git_kn]
+![David Hu][pic_dh] | ![Alex Sherman][pic_as] | ![Carson Judge][pic_cj] | ![Kevin Nguyen][pic_kn] | ![Raymond Lee][pic_rl]
+:------------------:|:-----------------------:|:-----------------------:|:----------------------:|:---:
+[David Hu][git_dh]  | [Alex Sherman][git_as]  | [Carson Judge][git_cj]  | [Kevin Nguyen][git_kn] | [Raymond Lee][git_rl]
 
-[pic_dh]: https://avatars2.githubusercontent.com/u/15827041?v=3&s=300
-[pic_as]: https://avatars0.githubusercontent.com/u/19175984?v=3&s=300
-[pic_cj]: https://avatars3.githubusercontent.com/u/22506482?v=3&s=300
-[pic_kn]: https://avatars0.githubusercontent.com/u/15253174?v=3&s=300
+[pic_dh]: https://avatars2.githubusercontent.com/u/15827041?v=3&s=200
+[pic_as]: https://avatars0.githubusercontent.com/u/19175984?v=3&s=200
+[pic_cj]: https://avatars3.githubusercontent.com/u/22506482?v=3&s=200
+[pic_kn]: https://avatars0.githubusercontent.com/u/15253174?v=3&s=200
+[pic_rl]: https://avatars3.githubusercontent.com/u/20022799?v=3&s=200
 [git_dh]: https://github.com/davidhu2000
 [git_as]: https://github.com/asherman-ca
 [git_cj]: https://github.com/cjudge1337
 [git_kn]: https://github.com/nguyenkevin16
+[git_rl]: https://github.com/rlee0524
 
 ### Contributors
 
