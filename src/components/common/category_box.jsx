@@ -1,5 +1,5 @@
-import React from 'react';
-import Slider from 'react-slick';
+import React               from 'react';
+import Slider              from 'react-slick';
 import { CategoryBoxItem } from './category_box_item';
 
 class CategoryBox extends React.Component {

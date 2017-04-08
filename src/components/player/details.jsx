@@ -1,6 +1,6 @@
-import React from 'react';
+import React            from 'react';
 import { fetchDetails } from '../../util/youtube_video_util';
-import YT_API_KEY from '../../../config/api_key';
+import YT_API_KEY       from '../../../config/api_key';
 
 class Details extends React.Component {
 

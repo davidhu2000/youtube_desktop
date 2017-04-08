@@ -1,7 +1,7 @@
-import React from 'react';
-import RelatedListItem from './related_list_item';
+import React            from 'react';
+import RelatedListItem  from './related_list_item';
 import { fetchRelated } from '../../util/youtube_video_util';
-import YT_API_KEY from '../../../config/api_key';
+import YT_API_KEY       from '../../../config/api_key';
 
 class Related extends React.Component {
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React           from 'react';
 import { hashHistory } from 'react-router';
 
 class SearchBar extends React.Component {

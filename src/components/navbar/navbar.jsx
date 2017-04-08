@@ -1,9 +1,9 @@
-import React from 'react';
+import React                from 'react';
 import { withRouter, Link } from 'react-router';
 
-import { SearchBar } from '../common';
+import { SearchBar }        from '../common';
 import { authenticateUser } from '../../util/oauth_util';
-import { toggleTheme } from '../../helpers';
+import { toggleTheme }      from '../../helpers';
 
 class Navbar extends React.Component {
   constructor(props) {
