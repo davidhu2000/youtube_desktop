@@ -77,4 +77,4 @@ Please click [here](https://github.com/davidhu2000/youtube_desktop/issues/new) t
 
 ### Contributors
 
-[kuldeepsidhu88](https://github.com/kuldeepsidhu88)
+- [kuldeepsidhu88](https://github.com/kuldeepsidhu88)
