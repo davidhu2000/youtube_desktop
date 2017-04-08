@@ -60,7 +60,7 @@ Please click [here](https://github.com/davidhu2000/youtube_desktop/issues/new) t
 
 ## Core Members
 
-![David Hu][pic_dh] | ![Alex Sherman][pic_as] | ![Carson Judge][pic_cj] | ![Kevin Nguyen][pic_kn] | ![Raymond Lee][pic_rl]
+[![David Hu][pic_dh]][git_dh] | [![Alex Sherman][pic_as]][git_as] | [![Carson Judge][pic_cj]][git_cj] | [![Kevin Nguyen][pic_kn]][git_kn] | [![Raymond Lee][pic_rl]][git_rl]
 :------------------:|:-----------------------:|:-----------------------:|:----------------------:|:---:
 [David Hu][git_dh]  | [Alex Sherman][git_as]  | [Carson Judge][git_cj]  | [Kevin Nguyen][git_kn] | [Raymond Lee][git_rl]
 
