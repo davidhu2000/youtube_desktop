@@ -80,7 +80,6 @@ export const fetchTrending = () => {
 };
 
 export const fetchVideos = (query, nextPageToken = null) => {
-  console.log('calling api');
   let baseUrl = `https://www.googleapis.com/youtube/v3/search`;
   let params = {
     part: 'snippet',

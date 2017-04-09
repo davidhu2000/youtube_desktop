@@ -46,7 +46,6 @@ class VideoList extends React.Component {
     } else if (pageNumber > allPages.length - 4) {
       count = allPages.length - 7;
     }
-    console.log(count);
     return allPages.slice(count, count + 7).map(num => {
       if (num == pageNumber) {
         return (
