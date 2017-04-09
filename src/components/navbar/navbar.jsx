@@ -23,6 +23,35 @@ class Navbar extends React.Component {
     sidebarmenu.classList.toggle('hidden');
   }
 
+  renderRightMenu() {
+    if(this.props.loggedIn) {
+      return (
+        <div className='navbar-right-menu'>
+          <i className="material-icons">file_upload</i>
+          <button>
+            <img className='beads-image' src="./app/assets/ic_notifications_none_black_24px.svg"/>
+          </button>
+          <a onClick={this.props.loginUser} style={{cursor: 'pointer'}}>
+            <img src={this.props.user.picture} />
+          </a>
+        </div>
+      )
+
+    } else {
+      return (
+        <div className='navbar-right-menu'>
+          <i className="material-icons">file_upload</i>
+          <button>
+            <img className='beads-image' src="./app/assets/ic_more_vert_black_24px.svg"/>
+          </button>
+          <a onClick={this.props.loginUser} style={{cursor: 'pointer'}}>
+            <p className="sign-in-text">SIGN IN</p>
+          </a>
+        </div>
+      )
+    }
+  }
+
   render() {
     return (
       <div className='navbar'>
@@ -39,16 +68,8 @@ class Navbar extends React.Component {
             router={ this.props.router } />
         </div>
 
-        <div className='navbar-right-menu'>
-          <i className="material-icons">file_upload</i>
-          <button>
-            <img className='beads-image' src="./app/assets/ic_more_vert_black_24px.svg"/>
-          </button>
-          <a onClick={this.props.loginUser} style={{cursor: 'pointer'}}>
-            <p className="sign-in-text">SIGN IN</p>
-          </a>
+        { this.renderRightMenu() }
 
-        </div>
       </div>
     );
   }

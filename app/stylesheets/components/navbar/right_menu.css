@@ -11,6 +11,12 @@
   margin-right: 20px;
 }
 
+.navbar-right-menu img {
+  height: 27px;
+  width: 27px;
+  border-radius: 50px;
+}
+
 .sign-in-text {
   color: hsl(3, 81.8%, 49.6%);
   font-size: 14px;

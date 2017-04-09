@@ -4,8 +4,9 @@ import Navbar           from './navbar';
 import { receiveQuery } from '../../actions/query_actions';
 import { loginUser }    from '../../actions/oauth_actions';
 
-const mapStateToProps = (state, ownProps) => ({
-  // your code here...
+const mapStateToProps = ({ user }) => ({
+  user,
+  loggedIn: Boolean(user.id)
 });
 
 const mapDispatchToProps = dispatch => ({
