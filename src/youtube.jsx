@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let tokenPromise = new Promise((resolve, reject) => {
     resolve(refreshToken());
-    reject(localStorage.clear());
+    // reject(localStorage.setItem('google-user', null));
   });
 
   tokenPromise.then(

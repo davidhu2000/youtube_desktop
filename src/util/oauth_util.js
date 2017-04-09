@@ -16,7 +16,8 @@ const requestGoogleToken = (options, code) => {
     console.log(response.body);
     if (response && response.ok) {
       // Success - Received Token.
-      window.localStorage.clear();
+      console.log('requestGoogleTokenClear');
+      // window.localStorage.clear();
       window.localStorage.setItem('google-access-token', response.body.access_token);
       window.localStorage.setItem('google-refresh-token', response.body.refresh_token);
       window.localStorage.setItem('google-token-start-time', Date.now());
@@ -132,7 +133,7 @@ export const refreshToken = () => {
     } else {
       // Error - Show messages.
       console.log("err");
-      localStorage.clear();
+      localStorage.setItem('google-user', null);
       console.log(err);
     }
   });
