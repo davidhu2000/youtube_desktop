@@ -6,7 +6,7 @@ import { loginUser }    from '../../actions/oauth_actions';
 
 const mapStateToProps = ({ user }) => ({
   user,
-  loggedIn: Boolean(user.id)
+  loggedIn: Boolean(user)
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -4,28 +4,30 @@ const request = window.require('superagent');
 
 const requestGoogleToken = (options, code) => {
 
-  request
-    .post('https://accounts.google.com/o/oauth2/token', {
-      client_id: options.client_id,
-      client_secret: options.client_secret,
-      code: code,
-      redirect_uri: 'http://localhost:5000/oauth2callback',
-      grant_type: 'authorization_code'
-    })
-    .set("Content-Type", "application/x-www-form-urlencoded")
-    .end(function (err, response) {
-      console.log(response.body);
-      if (response && response.ok) {
-        // Success - Received Token.
-        window.localStorage.setItem('google-access-token', response.body.access_token);
-        window.localStorage.setItem('google-refresh-token', response.body.refresh_token);
-        window.localStorage.setItem('google-token-start-time', Date.now())
-      } else {
-        // Error - Show messages.
-        console.log("err");
-        console.log(err);
-      }
-    });
+  request.post('https://accounts.google.com/o/oauth2/token', {
+    client_id: options.client_id,
+    client_secret: options.client_secret,
+    code: code,
+    redirect_uri: 'http://localhost:5000/oauth2callback',
+    grant_type: 'authorization_code'
+  })
+  .set("Content-Type", "application/x-www-form-urlencoded")
+  .end(function (err, response) {
+    console.log(response.body);
+    if (response && response.ok) {
+      // Success - Received Token.
+      window.localStorage.clear();
+      window.localStorage.setItem('google-access-token', response.body.access_token);
+      window.localStorage.setItem('google-refresh-token', response.body.refresh_token);
+      window.localStorage.setItem('google-token-start-time', Date.now());
+
+      // window.setInterval(refreshToken, 3400000);
+    } else {
+      // Error - Show messages.
+      console.log("err");
+      console.log(err);
+    }
+  });
 
 }
 
@@ -59,7 +61,7 @@ export const authenticateUser = dispatch => {
 
     if (code || error) {
       authWindow.destroy();
-      loginUser(dispatch);
+      setTimeout(() => loginUser(dispatch), 1000);
     }
 
     if (code) {
@@ -113,23 +115,25 @@ export const fetchUserInfo = () => dispatch => {
 }
 
 export const refreshToken = () => {
-    request.post('https://accounts.google.com/o/oauth2/token', {
-      client_id: options.client_id,
-      client_secret: options.client_secret,
-      refresh_token: localStorage.getItem('google-refresh-token'),
-      grant_type: 'refresh_token'
-    })
-    .set("Content-Type", "application/x-www-form-urlencoded")
-    .end(function (err, response) {
-      console.log(response.body);
-      if (response && response.ok) {
-        // Success - Received Token.
-        window.localStorage.setItem('google-access-token', response.body.access_token);
-        window.localStorage.setItem('google-token-start-time', Date.now())
-      } else {
-        // Error - Show messages.
-        console.log("err");
-        console.log(err);
-      }
-    });
+  console.log('refreshing');
+  request.post('https://accounts.google.com/o/oauth2/token', {
+    client_id: YT_API_KEY.clientId,
+    client_secret: YT_API_KEY.clientSecret,
+    refresh_token: localStorage.getItem('google-refresh-token'),
+    grant_type: 'refresh_token'
+  })
+  .set("Content-Type", "application/x-www-form-urlencoded")
+  .end(function (err, response) {
+    console.log(response.body);
+    if (response && response.ok) {
+      // Success - Received Token.
+      window.localStorage.setItem('google-access-token', response.body.access_token);
+      window.localStorage.setItem('google-token-start-time', Date.now())
+    } else {
+      // Error - Show messages.
+      console.log("err");
+      localStorage.clear();
+      console.log(err);
+    }
+  });
 }
