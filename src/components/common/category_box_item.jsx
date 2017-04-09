@@ -1,7 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router';
-import moment from 'moment';
-import { formatViews } from '../../helpers';
+import React            from 'react';
+import { Link }         from 'react-router';
+import moment           from 'moment';
+import { formatNumber, parseDuration } from '../../helpers';
+
 
 class CategoryBoxItem extends React.Component {
   constructor(props) {
@@ -25,9 +26,12 @@ class CategoryBoxItem extends React.Component {
   render () {
     const vid = this.props.vid;
     const { channelTitle, publishedAt } = vid.snippet;
-    const { viewCount } = vid.statistics;
     const { url } = vid.snippet.thumbnails.medium;
     const title = this.parseTitle(vid.snippet.title);
+    let viewCount = '------';
+    if (vid.statistics) {
+      viewCount = vid.statistics.viewCount;
+    }
 
     let videoId;
     if (typeof vid.id === 'string') {
@@ -36,11 +40,18 @@ class CategoryBoxItem extends React.Component {
       videoId = vid.id.videoId;
     }
 
+    let duration;
+    if(vid.contentDetails) {
+      duration = vid.contentDetails.duration;
+      duration = parseDuration(duration);
+    }
+
     return (
       <div className="category-box-item">
 
-        <Link to={`watch/${videoId}`} className="">
+        <Link to={`watch/${videoId}`} className="category-box-item-image">
           <img src={url} />
+          <span>{ duration }</span>
         </Link>
 
         <Link to={`watch/${videoId}`} className="category-box-item-title">
@@ -52,7 +63,7 @@ class CategoryBoxItem extends React.Component {
         </Link>
 
         <div className="category-box-item-info">
-          <span className='basic-text'>{ formatViews(viewCount) } views</span>
+          <span className='basic-text'>{ formatNumber(viewCount) } views</span>
           <span className='category-box-item-date basic-text'>{ moment(publishedAt).fromNow() } </span>
         </div>
       </div>

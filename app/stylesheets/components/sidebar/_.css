@@ -1,0 +1,40 @@
+
+.sidebar {
+  position: fixed;
+  left: 0px;
+  top: 56px;
+  width: 200px;
+  /*margin-top: 20px;*/
+  /*height: 100vh;*/
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  font-size: 13px;
+  color: #333;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.sidebar a {
+  height: 50px;
+  width: 200px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.sidebar a i {
+  padding: 10px;
+}
+
+.sidebar a span {
+  margin-left: 10px;
+}
+
+/*.sidebarcarrot {
+
+}*/

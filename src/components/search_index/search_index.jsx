@@ -1,6 +1,6 @@
-import React from 'react';
+import React          from 'react';
 import { withRouter } from 'react-router';
-import { VideoSearchItem, SmlVideoSearchItem } from '../common';
+import { VideoList }  from '../common';
 
 class SearchIndex extends React.Component {
   constructor(props) {
@@ -9,12 +9,15 @@ class SearchIndex extends React.Component {
 
   _fetchResult(query) {
     if(query !== null) {
+      this.props.clearVideos();
       this.props.searchVideos(query);
     }
   }
 
   componentDidMount() {
-    this._fetchResult(this.props.query);
+    if(this.props.query !== this.props.searchResult.query) {
+      this._fetchResult(this.props.query);
+    }
   }
 
   componentWillReceiveProps(newProps) {
@@ -23,39 +26,46 @@ class SearchIndex extends React.Component {
     }
   }
 
-  addSearchResults() {
-    if (this.props.searchResult) {
-      let vids = this.props.searchResult;
-      return vids.map(vid => <VideoSearchItem key={vid.etag} vid={vid} />);
-    }
-  }
-
-  addSmlSearchResults() {
-    if (this.props.searchResult) {
-      let vids = this.props.searchResult;
-      return vids.map(vid => <SmlVideoSearchItem key={vid.etag} vid={vid} />);
-    }
-  }
-
-  addSearchVolume() {
-      if (this.props.searchResult) {
-        let volume = Object.keys(this.props.searchResult).length;
-        return <p>About {volume} results</p>;
-      }
-  }
-
   render() {
-    return (
-      <div className="search-index">
-        <div className="search-index-container">
-          <div className="search-index-container-top">
-            {this.addSearchVolume()}
-          </div>
-        {this.addSearchResults()}
-        {this.addSmlSearchResults()}
-        </div>
-      </div>
-    );
+    if(this.props.searchResult.videos) {
+      let {
+        pageNumber,
+        nextPageToken,
+        query,
+        videos,
+        pageInfo } = this.props.searchResult;
+
+      let { nextPage, previousPage, searchVideos, goToPage } = this.props;
+
+      let volume;
+      if(pageInfo) {
+        volume = pageInfo.totalResults;
+      }
+
+      let nextAction;
+      let maxPageNumber = Math.max(...Object.keys(videos).map( num => parseInt(num)));
+
+      if(maxPageNumber > pageNumber) {
+        nextAction = nextPage;
+      } else {
+        nextAction = () => searchVideos(query, nextPageToken, pageNumber+1);
+      }
+
+      return (
+        <VideoList
+          pageNumber={pageNumber}
+          allPages={Object.keys(videos)}
+          volume={volume}
+          nextAction={nextAction}
+          previousPage={previousPage}
+          goToPage={goToPage}
+          videos={videos[pageNumber]} />
+      );
+    } else {
+      // add spinner
+      return <div>Loading</div>
+    }
+
   }
 }
 

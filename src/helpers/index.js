@@ -1,13 +1,13 @@
-export const formatViews = views => {
-  let formattedViews = '';
-
-  for(let i = views.length-1; i>=0; i--) {
-    formattedViews = views[i] + formattedViews;
-    if ((views.length - i) % 3 === 0 && i !== 0) {
-      formattedViews = ',' + formattedViews
+export const formatNumber = number => {
+  let formattedNumber = '';
+  number = number.toString();
+  for(let i = number.length-1; i>=0; i--) {
+    formattedNumber = number[i] + formattedNumber;
+    if ((number.length - i) % 3 === 0 && i !== 0) {
+      formattedNumber = ',' + formattedNumber
     }
   }
-  return formattedViews
+  return formattedNumber
 }
 
 
@@ -25,6 +25,30 @@ export const toggleTheme = () => {
 
 
   // result.style.cssText = '--video-title: #000';
+}
 
+export const createUrlParams = obj => (
+  Object.keys(obj).map( key => {
+  	if(obj[key] && `${obj[key]}`.length > 0) {
+  		return `${key}=${encodeURI(obj[key])}`;
+  	}
+  }).filter( str => str !== undefined ).join('&')
+);
 
+export const parseDuration = str => {
+  let values = str.split(/[A-Z]+/);
+  values = values.filter( val => val !== '');
+  values = values.map( (val, idx) => {
+  	if(idx === 0) {
+  		return val;
+  	} else {
+  		if(val.length === 2) {
+  			return val;
+  		} else {
+  			return '0' + val;
+  		}
+  	}
+  });
+
+  return values.join(':')
 }

@@ -1,0 +1,27 @@
+@import url('./search_bar.css');
+@import url('./center_menu.css');
+@import url('./right_menu.css');
+@import url('./left_menu.css');
+
+.navbar {
+  width: 100%;
+  height: 56px;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  background-color: var(--background);
+  position:fixed;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar div i {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.navbar div i:hover {
+  opacity: 1;
+}

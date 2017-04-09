@@ -1,4 +1,4 @@
-import React from 'react';
+import React                 from 'react';
 import { hashHistory, Link } from 'react-router';
 
 class RelatedListItem extends React.Component {
@@ -11,7 +11,6 @@ class RelatedListItem extends React.Component {
   linkVideo() {
     let videoId = this.props.vid.id.videoId;
     hashHistory.push(`watch/${videoId}`);
-    // location.reload();
   }
 
   render () {

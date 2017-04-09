@@ -1,5 +1,5 @@
-import React from 'react';
-import Slider from 'react-slick';
+import React               from 'react';
+import Slider              from 'react-slick';
 import { CategoryBoxItem } from './category_box_item';
 
 class CategoryBox extends React.Component {
@@ -23,7 +23,11 @@ class CategoryBox extends React.Component {
   }
 
   componentDidMount() {
-    window.onresize = this.updateEndIndex.bind(this);
+    window.addEventListener("resize", this.updateEndIndex.bind(this));
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateEndIndex.bind(this));
   }
 
   updateEndIndex() {
