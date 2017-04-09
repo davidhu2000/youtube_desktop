@@ -1,3 +1,4 @@
+// create comma seperated number
 export const formatNumber = number => {
   let formattedNumber = '';
   number = number.toString();
@@ -10,7 +11,7 @@ export const formatNumber = number => {
   return formattedNumber
 }
 
-
+// TODO: fix this function
 export const toggleTheme = () => {
   let ruleName = ':root';
   let result = null;
@@ -27,6 +28,7 @@ export const toggleTheme = () => {
   // result.style.cssText = '--video-title: #000';
 }
 
+// create params for url
 export const createUrlParams = obj => (
   Object.keys(obj).map( key => {
   	if(obj[key] && `${obj[key]}`.length > 0) {
@@ -35,6 +37,7 @@ export const createUrlParams = obj => (
   }).filter( str => str !== undefined ).join('&')
 );
 
+// parse video duration from api call
 export const parseDuration = str => {
   let values = str.split(/[A-Z]+/);
   values = values.filter( val => val !== '');

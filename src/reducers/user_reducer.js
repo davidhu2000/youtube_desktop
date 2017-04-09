@@ -1,6 +1,5 @@
 import { merge } from 'lodash';
-import {
-  RECEIVE_USER } from "../actions/oauth_actions";
+import { RECEIVE_USER } from "../actions/oauth_actions";
 
 let _defaultState = {};
 

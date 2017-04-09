@@ -39,6 +39,8 @@ class Subscriptions extends React.Component {
   render() {
     let subs = this.props.subscriptions || [];
     let keys = Object.keys(subs);
+    
+    // check to see if the number of times videos are fetches is equal to number of subs
     if(this.state.count == keys.length) {
       let videos = [];
       keys.forEach( key => {
