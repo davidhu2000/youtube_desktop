@@ -16,3 +16,7 @@ This will set your local branch to track the remote branch of the same name.
 4) `git pull` to pull down the branch information.
 
 5) `git push origin <branchName>` to push up changes.  
+
+### When working with a out of date branchName
+
+If the remote branch is behind on the master, instead of running `git merge master` to get all the changes from the master branch, which creates a useless commit for the merging, use `git rebase master`. This will fast forward the current branch to match the head of the master branch. 
