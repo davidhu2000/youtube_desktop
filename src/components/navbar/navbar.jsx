@@ -1,8 +1,8 @@
-import React                from 'react';
-import { withRouter, Link } from 'react-router';
+import React                        from 'react';
+import { withRouter, Link }         from 'react-router';
 
-import { SearchBar }        from '../common';
-import { authenticateUser } from '../../util/oauth_util';
+import { SearchBar, DropdownMenu }  from '../common';
+import { authenticateUser }         from '../../util/oauth_util';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -31,9 +31,10 @@ class Navbar extends React.Component {
           <button>
             <img className='beads-image' src="./app/assets/ic_notifications_none_black_24px.svg"/>
           </button>
-          <a style={{cursor: 'pointer'}}>
+          <a onClick={this.toggleDropdown} style={{cursor: 'pointer'}}>
             <img src={this.props.user.picture} />
           </a>
+          <DropdownMenu />
         </div>
       )
 
@@ -50,6 +51,10 @@ class Navbar extends React.Component {
         </div>
       )
     }
+  }
+
+  toggleDropdown() {
+    document.getElementById('dropdown-menu').classList.toggle('hidden');
   }
 
   render() {
