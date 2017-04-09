@@ -5,6 +5,9 @@ import { VideoList } from '../common';
 class Subscriptions extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      count: 0
+    }
   }
 
   _redirect() {
@@ -16,7 +19,9 @@ class Subscriptions extends React.Component {
       this.props.fetchSubscriptions().then(
         () => {
           Object.keys(this.props.subscriptions).forEach( id => {
-            this.props.fetchSubscriptionUploads(id)
+            this.props.fetchSubscriptionUploads(id).then(
+              () => this.setState({ count: this.state.count + 1 })
+            );
           });
         }
       );
@@ -32,13 +37,12 @@ class Subscriptions extends React.Component {
   }
 
   render() {
-    let subs = this.props.subscriptions;
+    let subs = this.props.subscriptions || [];
     let keys = Object.keys(subs);
-    if(keys.length > 0 && subs[keys[keys.length - 1]].videos) {
+    if(this.state.count == keys.length) {
       let videos = [];
-      let subs = this.props.subscriptions;
-      Object.keys(subs).forEach( id => {
-        videos.push(...subs[id].videos);
+      keys.forEach( key => {
+        videos.push(...subs[key].videos);
       });
 
       videos = videos.sort( (v1, v2) => {
@@ -57,7 +61,7 @@ class Subscriptions extends React.Component {
       );
     } else {
       return (
-        <div>Loading</div>
+        <div className='search-index'>Loading</div>
       );
     }
 
