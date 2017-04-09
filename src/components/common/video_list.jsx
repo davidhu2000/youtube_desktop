@@ -1,6 +1,6 @@
-import React from 'react';
-import { formatNumber } from '../../helpers';
-import { VideoSearchItem } from '../common';
+import React                from 'react';
+import { formatNumber }     from '../../helpers';
+import { VideoSearchItem }  from '../common';
 
 class VideoList extends React.Component {
   constructor(props) {

@@ -7,4 +7,4 @@
 3. Add details regarding what code you wrote.
 4. Select the appropriate label for the pull request
 5. If the pull request is related to a particular issue, make sure to reference the issue number.
-6. Add [David Hu](https://www.github.com/davidhu2000) as reviewer.
+6. Add [David Hu](https://www.github.com/davidhu2000) as the reviewer.

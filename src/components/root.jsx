@@ -1,13 +1,16 @@
-import React from 'react';
-import { Provider } from 'react-redux';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import React           from 'react';
+import { Provider }    from 'react-redux';
+import { Router,
+         Route,
+         IndexRoute,
+         hashHistory } from 'react-router';
 
 // main app components
-import App from './app';
-import SearchIndex from './search_index';
-import TrendingIndex from './trending';
-import VideoDetail from './player';
-import Home from './home';
+import App            from './app';
+import SearchIndex    from './search_index';
+import TrendingIndex  from './trending';
+import VideoDetail    from './player';
+import Home           from './home';
 
 const Root = ({ store }) => (
   <Provider store={ store }>

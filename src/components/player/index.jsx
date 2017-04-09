@@ -1,9 +1,9 @@
-import React from 'react';
+import React          from 'react';
 import { withRouter } from 'react-router';
-import Player from './player';
-import Details from './details';
-import Related from './related';
-import Comments from './comments';
+import Player         from './player';
+import Details        from './details';
+import Related        from './related';
+import Comments       from './comments';
 
 class VideoDetail extends React.Component {
 

@@ -1,6 +1,6 @@
-import React from 'react';
+import React       from 'react';
 import { connect } from 'react-redux';
-import Home from './home.jsx';
+import Home        from './home.jsx';
 
 import {
   fetchTrending,

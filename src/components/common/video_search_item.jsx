@@ -1,4 +1,4 @@
-import React from 'react';
+import React    from 'react';
 import { Link } from 'react-router';
 
 class VideoSearchItem extends React.Component {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React         from 'react';
 import YouTubePlayer from 'youtube-player';
 
 class Player extends React.Component {

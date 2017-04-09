@@ -1,7 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router';
-import moment from 'moment';
+import React            from 'react';
+import { Link }         from 'react-router';
+import moment           from 'moment';
 import { formatNumber, parseDuration } from '../../helpers';
+
 
 class CategoryBoxItem extends React.Component {
   constructor(props) {

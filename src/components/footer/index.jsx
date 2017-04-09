@@ -1,5 +1,5 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React          from 'react';
+import { connect }    from 'react-redux';
 import { withRouter } from 'react-router';
 
 class Footer extends React.Component {

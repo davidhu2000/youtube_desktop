@@ -1,4 +1,4 @@
-import React from 'react';
+import React                 from 'react';
 import { hashHistory, Link } from 'react-router';
 
 class RelatedListItem extends React.Component {
