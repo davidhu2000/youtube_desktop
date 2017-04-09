@@ -13,10 +13,9 @@ const requestGoogleToken = (options, code) => {
   })
   .set("Content-Type", "application/x-www-form-urlencoded")
   .end(function (err, response) {
-    console.log(response.body);
+    // console.log(response.body);
     if (response && response.ok) {
       // Success - Received Token.
-      console.log('requestGoogleTokenClear');
       // window.localStorage.clear();
       window.localStorage.setItem('google-access-token', response.body.access_token);
       window.localStorage.setItem('google-refresh-token', response.body.refresh_token);
@@ -35,7 +34,7 @@ const requestGoogleToken = (options, code) => {
 export const authenticateUser = dispatch => {
   let baseUrl = 'https://accounts.google.com/o/oauth2/auth';
   let redirectUrl = 'http://localhost:5000/oauth2callback';
-  let scope = 'https://gdata.youtube.com%20https://www.googleapis.com/auth/userinfo.profile';
+  let scope = 'https://gdata.youtube.com%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email';
 
   let requestUrl = `${baseUrl}?client_id=${YT_API_KEY.clientId}&redirect_uri=${redirectUrl}&scope=${scope}&response_type=code&access_type=offline`
 
@@ -116,7 +115,7 @@ export const fetchUserInfo = () => dispatch => {
 }
 
 export const refreshToken = () => {
-  console.log('refreshing');
+  // console.log('refreshing');
   request.post('https://accounts.google.com/o/oauth2/token', {
     client_id: YT_API_KEY.clientId,
     client_secret: YT_API_KEY.clientSecret,
@@ -125,7 +124,7 @@ export const refreshToken = () => {
   })
   .set("Content-Type", "application/x-www-form-urlencoded")
   .end(function (err, response) {
-    console.log(response.body);
+    // console.log(response.body);
     if (response && response.ok) {
       // Success - Received Token.
       window.localStorage.setItem('google-access-token', response.body.access_token);
