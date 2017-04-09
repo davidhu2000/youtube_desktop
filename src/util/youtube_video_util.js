@@ -128,5 +128,42 @@ export const fetchCategories = () => {
   }
 
   let urlParams = createUrlParams(params);
-  return fetch(`${baseUrl}?${urlParams}`)
+  return fetch(`${baseUrl}?${urlParams}`);
 }
+
+export const fetchAuthUserChannelId = () => {
+  let baseUrl = 'https://www.googleapis.com/youtube/v3/channels';
+  let params = {
+    part: 'snippet',
+    mine: 'true',
+    access_token: localStorage.getItem('google-access-token')
+  }
+
+  let urlParams = createUrlParams(params);
+  return fetch(`${baseUrl}?${urlParams}`);
+}
+
+export const fetchAuthUserSubscriptions = () => {
+  let channelId;
+  fetchAuthUserChannelId()
+  .then(res => res.json())
+  .then(resJson => {
+    channelId = resJson.items[0].id;
+    console.log(channelId);
+
+    let baseUrl = 'https://www.googleapis.com/youtube/v3/subscriptions';
+    let params = {
+      part: 'snippet',
+      channelId,
+      access_token: localStorage.getItem('google-access-token')
+    }
+    let urlParams = createUrlParams(params);
+    return fetch(`${baseUrl}?${urlParams}`);
+  })
+  .then(res => res.json())
+  .then(resJson => console.log(resJson));
+
+
+}
+
+window.testFetch = fetchAuthUserSubscriptions;
