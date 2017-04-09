@@ -2,6 +2,7 @@ import React            from 'react';
 import { connect }      from 'react-redux';
 import Navbar           from './navbar';
 import { receiveQuery } from '../../actions/query_actions';
+import { loginUser }    from '../../actions/oauth_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   // your code here...
