@@ -31,7 +31,7 @@ class Navbar extends React.Component {
           <button>
             <img className='beads-image' src="./app/assets/ic_notifications_none_black_24px.svg"/>
           </button>
-          <a onClick={this.props.loginUser} style={{cursor: 'pointer'}}>
+          <a style={{cursor: 'pointer'}}>
             <img src={this.props.user.picture} />
           </a>
         </div>

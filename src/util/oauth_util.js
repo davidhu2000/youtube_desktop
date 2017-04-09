@@ -14,7 +14,7 @@ const requestGoogleToken = (options, code) => {
     })
     .set("Content-Type", "application/x-www-form-urlencoded")
     .end(function (err, response) {
-      // console.log(response);
+      console.log(response.body);
       if (response && response.ok) {
         // Success - Received Token.
         window.localStorage.setItem('google-access-token', response.body.access_token);
@@ -32,7 +32,7 @@ const requestGoogleToken = (options, code) => {
 export const authenticateUser = dispatch => {
   let baseUrl = 'https://accounts.google.com/o/oauth2/auth';
   let redirectUrl = 'http://localhost:5000/oauth2callback';
-  let scope = 'https://gdata.youtube.com https://www.googleapis.com/auth/userinfo.profile';
+  let scope = 'https://gdata.youtube.com%20https://www.googleapis.com/auth/userinfo.profile';
 
   let requestUrl = `${baseUrl}?client_id=${YT_API_KEY.clientId}&redirect_uri=${redirectUrl}&scope=${scope}&response_type=code&access_type=offline`
 
@@ -97,9 +97,9 @@ export const fetchUserInfo = () => dispatch => {
   request
     .get(`https://www.googleapis.com/oauth2/v2/userinfo?access_token=${accessToken}`)
     .end((err, response) => {
-      console.log(response);
+      // console.log(response);
       if (response && response.ok) {
-
+        localStorage.setItem('google-user', JSON.stringify(response.body))
         dispatch({
           type: "RECEIVE_USER",
           user: response.body
@@ -110,4 +110,26 @@ export const fetchUserInfo = () => dispatch => {
         console.log(err);
       }
     })
+}
+
+export const refreshToken = () => {
+    request.post('https://accounts.google.com/o/oauth2/token', {
+      client_id: options.client_id,
+      client_secret: options.client_secret,
+      refresh_token: localStorage.getItem('google-refresh-token'),
+      grant_type: 'refresh_token'
+    })
+    .set("Content-Type", "application/x-www-form-urlencoded")
+    .end(function (err, response) {
+      console.log(response.body);
+      if (response && response.ok) {
+        // Success - Received Token.
+        window.localStorage.setItem('google-access-token', response.body.access_token);
+        window.localStorage.setItem('google-token-start-time', Date.now())
+      } else {
+        // Error - Show messages.
+        console.log("err");
+        console.log(err);
+      }
+    });
 }
