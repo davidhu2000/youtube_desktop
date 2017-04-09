@@ -160,10 +160,4 @@ export const fetchAuthUserSubscriptions = () => {
     let urlParams = createUrlParams(params);
     return fetch(`${baseUrl}?${urlParams}`);
   })
-  .then(res => res.json())
-  .then(resJson => console.log(resJson));
-
-
 }
-
-window.testFetch = fetchAuthUserSubscriptions;
