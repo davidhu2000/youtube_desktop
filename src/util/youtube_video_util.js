@@ -106,18 +106,18 @@ export const fetchChannelInfo = channelId => {
   return fetch(`${baseUrl}?${urlParams}`);
 }
 
-export const fetchChannelVideos = channelId => {
-  let baseUrl = 'https://www.googleapis.com/youtube/v3/search';
-  let params = {
-    part: 'snippet',
-    channelId,
-    maxResults: 15,
-    key: YT_API_KEY.publicDataKey
-  }
-
-  let urlParams = createUrlParams(params);
-  return fetch(`${baseUrl}?${urlParams}`);
-}
+// export const fetchChannelVideos = channelId => {
+//   let baseUrl = 'https://www.googleapis.com/youtube/v3/search';
+//   let params = {
+//     part: 'snippet',
+//     channelId,
+//     maxResults: 15,
+//     key: YT_API_KEY.publicDataKey
+//   }
+//
+//   let urlParams = createUrlParams(params);
+//   return fetch(`${baseUrl}?${urlParams}`);
+// }
 
 export const fetchCategories = () => {
   let baseUrl = 'https://www.googleapis.com/youtube/v3/guideCategories';
@@ -161,4 +161,18 @@ export const fetchAuthUserSubscriptions = () => {
       return fetch(`${baseUrl}?${urlParams}`);
     }
   );
+}
+
+export const fetchChannelVideos = channelId => {
+  let baseUrl = 'https://www.googleapis.com/youtube/v3/search';
+  let params = {
+    part: 'snippet',
+    channelId,
+    maxResults: 15,
+    order: 'date',
+    key: YT_API_KEY.publicDataKey
+  }
+
+  let urlParams = createUrlParams(params);
+  return fetch(`${baseUrl}?${urlParams}`);
 }

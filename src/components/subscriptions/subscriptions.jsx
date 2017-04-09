@@ -7,7 +7,14 @@ class Subscriptions extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchSubscriptions();
+    this.props.fetchSubscriptions().then(
+      () => {
+        Object.keys(this.props.subscriptions).forEach( id => {
+          console.log(id);
+          this.props.fetchSubscriptionUploads(id)
+        });
+      }
+    );
   }
 
   render() {

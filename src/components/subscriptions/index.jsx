@@ -4,14 +4,15 @@ import { connect } from 'react-redux';
 import Subscriptions from './subscriptions';
 
 import { receiveQuery } from '../../actions/query_actions';
-import { fetchSubscriptions } from '../../actions/youtube_video_actions';
+import { fetchSubscriptions, fetchSubscriptionUploads } from '../../actions/youtube_video_actions';
 
 const mapStateToProps = ({ subscriptions }) => ({
   subscriptions
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchSubscriptions: () => dispatch(fetchSubscriptions())
+  fetchSubscriptions: () => dispatch(fetchSubscriptions()),
+  fetchSubscriptionUploads: id => dispatch(fetchSubscriptionUploads(id))
 });
 
 export default connect(
