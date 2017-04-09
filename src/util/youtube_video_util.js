@@ -106,18 +106,18 @@ export const fetchChannelInfo = channelId => {
   return fetch(`${baseUrl}?${urlParams}`);
 }
 
-export const fetchChannelVideos = channelId => {
-  let baseUrl = 'https://www.googleapis.com/youtube/v3/search';
-  let params = {
-    part: 'snippet',
-    channelId,
-    maxResults: 15,
-    key: YT_API_KEY.publicDataKey
-  }
-
-  let urlParams = createUrlParams(params);
-  return fetch(`${baseUrl}?${urlParams}`);
-}
+// export const fetchChannelVideos = channelId => {
+//   let baseUrl = 'https://www.googleapis.com/youtube/v3/search';
+//   let params = {
+//     part: 'snippet',
+//     channelId,
+//     maxResults: 15,
+//     key: YT_API_KEY.publicDataKey
+//   }
+//
+//   let urlParams = createUrlParams(params);
+//   return fetch(`${baseUrl}?${urlParams}`);
+// }
 
 export const fetchCategories = () => {
   let baseUrl = 'https://www.googleapis.com/youtube/v3/guideCategories';
@@ -128,5 +128,51 @@ export const fetchCategories = () => {
   }
 
   let urlParams = createUrlParams(params);
-  return fetch(`${baseUrl}?${urlParams}`)
+  return fetch(`${baseUrl}?${urlParams}`);
+}
+
+export const fetchAuthUserChannelId = () => {
+  let baseUrl = 'https://www.googleapis.com/youtube/v3/channels';
+  let params = {
+    part: 'snippet',
+    mine: 'true',
+    access_token: localStorage.getItem('google-access-token')
+  }
+
+  let urlParams = createUrlParams(params);
+  return fetch(`${baseUrl}?${urlParams}`);
+}
+
+export const fetchAuthUserSubscriptions = () => {
+
+  return fetchAuthUserChannelId().then(
+    res => res.json()
+  ).then(
+    resJson => {
+      let channelId = resJson.items[0].id;
+
+      let baseUrl = 'https://www.googleapis.com/youtube/v3/subscriptions';
+      let params = {
+        part: 'snippet',
+        channelId,
+        access_token: localStorage.getItem('google-access-token')
+      }
+      let urlParams = createUrlParams(params);
+      return fetch(`${baseUrl}?${urlParams}`);
+    }
+  );
+}
+
+export const fetchChannelVideos = channelId => {
+  let baseUrl = 'https://www.googleapis.com/youtube/v3/search';
+  let params = {
+    part: 'snippet',
+    channelId,
+    maxResults: 15,
+    order: 'date',
+    key: YT_API_KEY.publicDataKey
+  }
+
+  let urlParams = createUrlParams(params);
+  return fetch(`${baseUrl}?${urlParams}`);
 }

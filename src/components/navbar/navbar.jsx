@@ -1,8 +1,8 @@
-import React                from 'react';
-import { withRouter, Link } from 'react-router';
+import React                        from 'react';
+import { withRouter, Link }         from 'react-router';
 
-import { SearchBar }        from '../common';
-import { authenticateUser } from '../../util/oauth_util';
+import { SearchBar, DropdownMenu }  from '../common';
+import { authenticateUser }         from '../../util/oauth_util';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -23,6 +23,42 @@ class Navbar extends React.Component {
     sidebarmenu.classList.toggle('hidden');
   }
 
+  renderRightMenu() {
+    if(this.props.loggedIn) {
+      return (
+        <div className='navbar-right-menu'>
+          <i className="material-icons">file_upload</i>
+          <button>
+            <img className='beads-image' src="./app/assets/ic_notifications_none_black_24px.svg"/>
+          </button>
+          <a onClick={this.toggleDropdown} style={{cursor: 'pointer'}}>
+            <img src={this.props.user.picture} />
+          </a>
+          <DropdownMenu
+            user={this.props.user}
+            logout={this.props.logout}/>
+        </div>
+      )
+
+    } else {
+      return (
+        <div className='navbar-right-menu'>
+          <i className="material-icons">file_upload</i>
+          <button>
+            <img className='beads-image' src="./app/assets/ic_more_vert_black_24px.svg"/>
+          </button>
+          <a onClick={this.props.loginUser} style={{cursor: 'pointer'}}>
+            <p className="sign-in-text">SIGN IN</p>
+          </a>
+        </div>
+      )
+    }
+  }
+
+  toggleDropdown() {
+    document.getElementById('dropdown-menu').classList.toggle('hidden');
+  }
+
   render() {
     return (
       <div className='navbar'>
@@ -39,16 +75,8 @@ class Navbar extends React.Component {
             router={ this.props.router } />
         </div>
 
-        <div className='navbar-right-menu'>
-          <i className="material-icons">file_upload</i>
-          <button>
-            <img className='beads-image' src="./app/assets/ic_more_vert_black_24px.svg"/>
-          </button>
-          <a onClick={authenticateUser} style={{cursor: 'pointer'}}>
-            <p className="sign-in-text">SIGN IN</p>
-          </a>
+        { this.renderRightMenu() }
 
-        </div>
       </div>
     );
   }
