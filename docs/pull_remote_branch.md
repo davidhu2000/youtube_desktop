@@ -1,6 +1,8 @@
-currently in development...
+### To pull remote branches into local repo:
 
-To pull remote branches into local repo:
+run `git fetch`, and all the remote branches should be pulled into the local repo.
+
+**If that is unsuccessful, try the following:**
 
 1) `git checkout -b <branchName>`
 Create a branch of the same name as the remote branch.
