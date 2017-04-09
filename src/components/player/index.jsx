@@ -5,7 +5,6 @@ import Details        from './details';
 import Related        from './related';
 import Comments       from './comments';
 
-
 class VideoDetail extends React.Component {
 
   constructor(props) {
@@ -27,7 +26,6 @@ class VideoDetail extends React.Component {
       </div>
     );
   }
-
 }
 
 export default withRouter(VideoDetail);

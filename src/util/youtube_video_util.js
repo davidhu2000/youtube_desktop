@@ -69,7 +69,7 @@ export const fetchTrending = () => {
   let baseUrl = `https://www.googleapis.com/youtube/v3/videos`;
 
   let params = {
-    part: 'statistics,snippet',
+    part: 'snippet,statistics,contentDetails',
     chart: 'mostPopular',
     maxResults: 25,
     key: YT_API_KEY.publicDataKey
@@ -80,7 +80,6 @@ export const fetchTrending = () => {
 };
 
 export const fetchVideos = (query, nextPageToken = null) => {
-  console.log('calling api');
   let baseUrl = `https://www.googleapis.com/youtube/v3/search`;
   let params = {
     part: 'snippet',

@@ -34,3 +34,21 @@ export const createUrlParams = obj => (
   	}
   }).filter( str => str !== undefined ).join('&')
 );
+
+export const parseDuration = str => {
+  let values = str.split(/[A-Z]+/);
+  values = values.filter( val => val !== '');
+  values = values.map( (val, idx) => {
+  	if(idx === 0) {
+  		return val;
+  	} else {
+  		if(val.length === 2) {
+  			return val;
+  		} else {
+  			return '0' + val;
+  		}
+  	}
+  });
+
+  return values.join(':')
+}

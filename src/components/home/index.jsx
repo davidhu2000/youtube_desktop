@@ -9,8 +9,7 @@ import {
   fetchChannelVideos } from '../../actions/youtube_video_actions';
 
 const mapStateToProps = ({ trending, channels }) => ({
-  trendingVideos: trending.videos,
-  trendingDate: trending.date,
+  trending,
   channels
 });
 

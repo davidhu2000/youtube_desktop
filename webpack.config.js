@@ -2,7 +2,7 @@ var path = require('path');
 
 module.exports = {
   context: __dirname,
-  entry: "./src/electron.jsx",
+  entry: "./src/youtube.jsx",
   output: {
     path: path.join(__dirname, 'app', 'javascripts'),
     filename: 'bundle.js',
