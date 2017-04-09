@@ -55,3 +55,29 @@ export const parseDuration = str => {
 
   return values.join(':')
 }
+
+// return written version of date
+export const parseDate = date => {
+  const months = {
+    0: "Jan",
+    1: "Feb",
+    2: "Mar",
+    3: "Apr",
+    4: "May",
+    5: "June",
+    6: "July",
+    7: "Aug",
+    8: "Sept",
+    9: "Oct",
+    10: "Nov",
+    11: "Dec"
+  };
+  date = new Date(date);
+  let newDate = "";
+
+  newDate += months[date.getMonth()] + " ";
+  newDate += date.getDate() + ", ";
+  newDate += date.getFullYear();
+
+  return newDate;
+}

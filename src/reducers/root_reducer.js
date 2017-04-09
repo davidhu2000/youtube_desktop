@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
   channels: channelsReducer,
   query: queryReducer,
   searchResult: searchResultReducer,
-  subscriptions: subscriptionsReducer
+  subscriptions: subscriptionsReducer,
   trending: trendingReducer,
   user: userReducer,
 });

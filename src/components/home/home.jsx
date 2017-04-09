@@ -25,10 +25,6 @@ class Home extends React.Component {
       const id = channelIds[i];
       this.props.fetchChannelVideos(id);
     }
-
-    window.addEventListener("storage", function () {
-      console.log('new key');
-    }, false);
   }
 
   renderChannels() {
