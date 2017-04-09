@@ -34,7 +34,9 @@ class Navbar extends React.Component {
           <a onClick={this.toggleDropdown} style={{cursor: 'pointer'}}>
             <img src={this.props.user.picture} />
           </a>
-          <DropdownMenu user={this.props.user} />
+          <DropdownMenu
+            user={this.props.user}
+            logout={this.props.logout}/>
         </div>
       )
 

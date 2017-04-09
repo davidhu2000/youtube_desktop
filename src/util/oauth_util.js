@@ -17,8 +17,11 @@ const requestGoogleToken = (options, code) => {
     if (response && response.ok) {
       // Success - Received Token.
       // window.localStorage.clear();
+      // console.log('setting access and refresh tokens');
+      if(response.body.refresh_token) {
+        window.localStorage.setItem('google-refresh-token', response.body.refresh_token);
+      }
       window.localStorage.setItem('google-access-token', response.body.access_token);
-      window.localStorage.setItem('google-refresh-token', response.body.refresh_token);
       window.localStorage.setItem('google-token-start-time', Date.now());
 
       // window.setInterval(refreshToken, 3400000);
@@ -89,7 +92,7 @@ export const authenticateUser = dispatch => {
 }
 
 export const loginUser = dispatch => {
-  console.log('do login redux here');
+  // console.log('do login redux here');
   dispatch(fetchUserInfo());
 }
 

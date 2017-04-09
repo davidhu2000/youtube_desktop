@@ -1,6 +1,14 @@
 import React from 'react';
 
 class DropdownMenu extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  clearUser() {
+    this.props.logout();
+    localStorage.removeItem('google-user');
+  }
 
   render() {
     const { user } = this.props;
@@ -15,14 +23,14 @@ class DropdownMenu extends React.Component {
           <div>
             <h1><strong>{ user.name }</strong></h1>
             <div className='page-numbers'>
-              <button>
+              <button onClick={this.clearUser.bind(this)}>
                 Logout
               </button>
             </div>
 
           </div>
         </div>
-        
+
       </div>
     )
   }
