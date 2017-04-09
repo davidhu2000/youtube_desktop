@@ -23,15 +23,16 @@ const requestGoogleToken = (options, code) => {
       } else {
         // Error - Show messages.
         console.log("err");
+        console.log(err);
       }
     });
 
 }
 
-export const authenticateUser = () => {
+export const authenticateUser = dispatch => {
   let baseUrl = 'https://accounts.google.com/o/oauth2/auth';
   let redirectUrl = 'http://localhost:5000/oauth2callback';
-  let scope = 'https://gdata.youtube.com';
+  let scope = 'https://gdata.youtube.com https://www.googleapis.com/auth/userinfo.profile';
 
   let requestUrl = `${baseUrl}?client_id=${YT_API_KEY.clientId}&redirect_uri=${redirectUrl}&scope=${scope}&response_type=code&access_type=offline`
 
@@ -56,7 +57,10 @@ export const authenticateUser = () => {
     let code = (raw_code && raw_code.length > 1) ? raw_code[1] : null;
     let error = /\?error=(.+)$/.exec(url);
 
-    if (code || error)  authWindow.destroy();
+    if (code || error) {
+      authWindow.destroy();
+      loginUser(dispatch);
+    }
 
     if (code) {
       requestGoogleToken(options, code);
@@ -68,11 +72,11 @@ export const authenticateUser = () => {
     }
   }
 
-  authWindow.webContents.on('will-navigate', (event, url) => {
-    handleCallback(url);
-  });
+  // authWindow.webContents.on('will-navigate', (event, url) => {
+  //   handleCallback(url);
+  // });
 
-  authWindow.webContents.on('did-get-redirect-request', function (event, oldUrl, newUrl) {
+  authWindow.webContents.on('did-get-redirect-request', (event, oldUrl, newUrl) => {
     handleCallback(newUrl);
   });
 
@@ -80,4 +84,30 @@ export const authenticateUser = () => {
   authWindow.on('close', function() {
       authWindow = null;
   }, false);
+}
+
+export const loginUser = dispatch => {
+  console.log('do login redux here');
+  dispatch(fetchUserInfo());
+}
+
+export const fetchUserInfo = () => dispatch => {
+  let accessToken = localStorage.getItem('google-access-token');
+
+  request
+    .get(`https://www.googleapis.com/oauth2/v2/userinfo?access_token=${accessToken}`)
+    .end((err, response) => {
+      console.log(response);
+      if (response && response.ok) {
+
+        dispatch({
+          type: "RECEIVE_USER",
+          user: response.body
+        });
+      } else {
+        // Error - Show messages.
+        console.log("err");
+        console.log(err);
+      }
+    })
 }

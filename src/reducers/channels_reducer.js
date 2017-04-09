@@ -7,7 +7,7 @@ let _defaultState = {};
 
 const trendingReducer = (state = _defaultState, action) => {
   Object.freeze(state);
-  // console.log(action);
+  console.log(action);
   switch(action.type) {
     case RECEIVE_CHANNEL_INFO:
       return merge({}, state, {

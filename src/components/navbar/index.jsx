@@ -9,7 +9,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  receiveQuery: query => dispatch(receiveQuery(query))
+  receiveQuery: query => dispatch(receiveQuery(query)),
+  loginUser: () => dispatch(loginUser())
 });
 
 export default connect(

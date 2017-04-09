@@ -44,7 +44,7 @@ class Navbar extends React.Component {
           <button>
             <img className='beads-image' src="./app/assets/ic_more_vert_black_24px.svg"/>
           </button>
-          <a onClick={authenticateUser} style={{cursor: 'pointer'}}>
+          <a onClick={this.props.loginUser} style={{cursor: 'pointer'}}>
             <p className="sign-in-text">SIGN IN</p>
           </a>
 
