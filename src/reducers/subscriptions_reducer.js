@@ -7,7 +7,7 @@ let _defaultState = {};
 
 const subscriptionsReducer = (state = _defaultState, action) => {
   Object.freeze(state);
-  console.log(action);
+  // console.log(action);
   switch(action.type) {
     case RECEIVE_SUBSCRIPTIONS:
       let newState = {};
