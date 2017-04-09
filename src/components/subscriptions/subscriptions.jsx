@@ -1,20 +1,34 @@
-import React          from 'react';
-import { withRouter } from 'react-router';
-import { VideoList }  from '../common';
+import React from 'react';
+import { withRouter, hashHistory } from 'react-router';
+import { VideoList } from '../common';
 
 class Subscriptions extends React.Component {
   constructor(props){
     super(props);
   }
 
+  _redirect() {
+    hashHistory.replace('/home');
+  }
+
   componentDidMount() {
-    this.props.fetchSubscriptions().then(
-      () => {
-        Object.keys(this.props.subscriptions).forEach( id => {
-          this.props.fetchSubscriptionUploads(id)
-        });
-      }
-    );
+    if(this.props.loggedIn) {
+      this.props.fetchSubscriptions().then(
+        () => {
+          Object.keys(this.props.subscriptions).forEach( id => {
+            this.props.fetchSubscriptionUploads(id)
+          });
+        }
+      );
+    } else {
+      this._redirect();
+    }
+  }
+
+  componentWillReceiveProps(newProps) {
+    if(!newProps.loggedIn) {
+      this._redirect();
+    }
   }
 
   render() {
