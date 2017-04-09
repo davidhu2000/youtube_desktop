@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import moment from 'moment';
-import { formatNumber } from '../../helpers';
+import { formatNumber, parseDuration } from '../../helpers';
 
 class CategoryBoxItem extends React.Component {
   constructor(props) {
@@ -39,11 +39,18 @@ class CategoryBoxItem extends React.Component {
       videoId = vid.id.videoId;
     }
 
+    let duration;
+    if(vid.contentDetails) {
+      duration = vid.contentDetails.duration;
+      duration = parseDuration(duration);
+    }
+
     return (
       <div className="category-box-item">
 
-        <Link to={`watch/${videoId}`} className="">
+        <Link to={`watch/${videoId}`} className="category-box-item-image">
           <img src={url} />
+          <span>{ duration }</span>
         </Link>
 
         <Link to={`watch/${videoId}`} className="category-box-item-title">

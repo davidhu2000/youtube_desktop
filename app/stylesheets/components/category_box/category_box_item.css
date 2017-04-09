@@ -3,9 +3,30 @@
   width: 196px;
 }
 
-.category-box-item img {
+.category-box-item-image {
+  position: relative;
+  display: block;
   height: 110px;
   width: 196px;
+}
+
+.category-box-item-image img {
+  height: 110px;
+  width: 196px;
+}
+
+.category-box-item-image span {
+  display: block;
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  font-size: 11px;
+  background-color: #000;
+  color: #fff;
+  height: 14px;
+  line-height: 14px;
+  opacity: 0.75;
+  padding: 0 4px;
 }
 
 .category-box-item h1 {
