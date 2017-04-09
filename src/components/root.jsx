@@ -1,10 +1,6 @@
-import React          from 'react';
-import { Provider }   from 'react-redux';
-import {
-  Router,
-  Route,
-  IndexRoute,
-  hashHistory }       from 'react-router';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 // main app components
 import App            from './app';
