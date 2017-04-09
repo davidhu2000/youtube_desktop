@@ -4,13 +4,15 @@ import searchResultReducer from './search_result_reducer';
 import trendingReducer from './trending_reducer';
 import channelsReducer from './channels_reducer';
 import userReducer from './user_reducer';
+import subscriptionsReducer from './subscriptions_reducer';
 
 const rootReducer = combineReducers({
   channels: channelsReducer,
   query: queryReducer,
   searchResult: searchResultReducer,
   trending: trendingReducer,
-  user: userReducer
+  user: userReducer,
+  subscriptions: subscriptionsReducer
 });
 
 export default rootReducer;

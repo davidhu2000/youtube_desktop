@@ -144,20 +144,21 @@ export const fetchAuthUserChannelId = () => {
 }
 
 export const fetchAuthUserSubscriptions = () => {
-  let channelId;
-  fetchAuthUserChannelId()
-  .then(res => res.json())
-  .then(resJson => {
-    channelId = resJson.items[0].id;
-    console.log(channelId);
 
-    let baseUrl = 'https://www.googleapis.com/youtube/v3/subscriptions';
-    let params = {
-      part: 'snippet',
-      channelId,
-      access_token: localStorage.getItem('google-access-token')
+  return fetchAuthUserChannelId().then(
+    res => res.json()
+  ).then(
+    resJson => {
+      let channelId = resJson.items[0].id;
+
+      let baseUrl = 'https://www.googleapis.com/youtube/v3/subscriptions';
+      let params = {
+        part: 'snippet',
+        channelId,
+        access_token: localStorage.getItem('google-access-token')
+      }
+      let urlParams = createUrlParams(params);
+      return fetch(`${baseUrl}?${urlParams}`);
     }
-    let urlParams = createUrlParams(params);
-    return fetch(`${baseUrl}?${urlParams}`);
-  })
+  );
 }

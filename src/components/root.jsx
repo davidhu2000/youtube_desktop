@@ -9,9 +9,10 @@ import {
 // main app components
 import App            from './app';
 import SearchIndex    from './search_index';
-import TrendingIndex  from './trending';
+import Trending       from './trending';
 import VideoDetail    from './player';
 import Home           from './home';
+import Subscriptions  from './subscriptions';
 
 const Root = ({ store }) => (
   <Provider store={ store }>
@@ -21,7 +22,8 @@ const Root = ({ store }) => (
 
         <Route path='/home'           component={ Home }          />
         <Route path='/search'         component={ SearchIndex }   />
-        <Route path='/trending'       component={ TrendingIndex } />
+        <Route path='/trending'       component={ Trending }      />
+        <Route path='/subscriptions'  component={ Subscriptions } />
         <Route path='/watch/:videoId' component={ VideoDetail }   />
       </Route>
     </Router>
