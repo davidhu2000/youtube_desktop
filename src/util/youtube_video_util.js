@@ -21,6 +21,7 @@ export const fetchDetails = videoId => {
 
   let params = {
     id: videoId,
+    part: 'snippet,statistics'
   }
   return YoutubeApi.videos(params);
 }

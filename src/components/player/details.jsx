@@ -29,6 +29,7 @@ class Details extends React.Component {
   }
 
   render() {
+    debugger
     return (
       <div className="details-container">
         <h5 className="details-date">

@@ -170,7 +170,8 @@ export const fetchDetails = (videoId, context) => {
   return YoutubeVideoAPI.fetchDetails(videoId).then(
     response => response.json()
   ).then(responseJson => {
-    context.setState({ details: responseJson.items[0].snippet });
+    console.log(responseJson);
+    context.setState({ details: responseJson.items[0] });
   }).catch(error => {
     console.error(error);
   })
