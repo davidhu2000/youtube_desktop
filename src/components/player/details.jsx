@@ -1,7 +1,7 @@
 import React            from 'react';
 import YT_API_KEY       from '../../../config/api_key';
 import { parseDate }    from '../../helpers';
-import { fetchDetails } from '../../util/youtube_video_util';
+import { fetchDetails } from '../../actions/youtube_video_actions';
 
 class Details extends React.Component {
 

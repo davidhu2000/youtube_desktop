@@ -1,7 +1,9 @@
+import merge from 'lodash/merge';
+import * as YoutubeApi from './youtube_api';
 import YT_API_KEY from '../../config/api_key';
 import { createUrlParams } from '../helpers';
 
-export const fetchComments = (videoId, context) => {
+export const fetchComments = videoId => {
   let baseUrl = 'https://www.googleapis.com/youtube/v3/commentThreads';
 
   let params = {
@@ -13,56 +15,23 @@ export const fetchComments = (videoId, context) => {
   let urlParams = createUrlParams(params);
 
   return fetch(`${baseUrl}?${urlParams}`)
-    .then(response => response.json())
-    .then(responseJson => {
-      context.setState({ comments: responseJson.items });
-    })
-    .catch(error => {
-      console.error(error);
-    })
 }
 
-export const fetchDetails = (videoId, context) => {
-  let baseUrl = 'https://www.googleapis.com/youtube/v3/videos';
+export const fetchDetails = videoId => {
 
   let params = {
-    part: 'snippet',
     id: videoId,
-    key: YT_API_KEY.publicDataKey
   }
-
-  let urlParams = createUrlParams(params);
-
-  return fetch(`${baseUrl}?${urlParams}`)
-    .then(response => response.json())
-    .then(responseJson => {
-      context.setState({ details: responseJson.items[0].snippet });
-    })
-    .catch(error => {
-      console.error(error);
-    })
+  return YoutubeApi.videos(params);
 }
 
-export const fetchRelated = (videoId, context) => {
-  let baseUrl = `https://www.googleapis.com/youtube/v3/search`;
-
+export const fetchRelated = videoId => {
   let params = {
-    part: 'snippet',
     type: 'video',
+    maxResults: 10,
     relatedToVideoId: videoId,
-    key: YT_API_KEY.publicDataKey
   }
-
-  let urlParams = createUrlParams(params);
-
-  return fetch(`${baseUrl}?${urlParams}`)
-    .then(response => response.json())
-    .then(responseJson => {
-      context.setState({ vids: responseJson.items });
-    })
-    .catch(error => {
-      console.error(error);
-    })
+  return YoutubeApi.search(params);
 }
 
 export const fetchTrending = () => {
@@ -71,53 +40,27 @@ export const fetchTrending = () => {
   let params = {
     part: 'snippet,statistics,contentDetails',
     chart: 'mostPopular',
-    maxResults: 25,
-    key: YT_API_KEY.publicDataKey
   }
 
-  let urlParams = createUrlParams(params);
-  return fetch(`${baseUrl}?${urlParams}`);
+  return YoutubeApi.videos(params);
 };
 
 export const fetchVideos = (query, nextPageToken = null) => {
-  let baseUrl = `https://www.googleapis.com/youtube/v3/search`;
   let params = {
-    part: 'snippet',
     q: query,
     type: 'video',
-    maxResults: 25,
     pageToken: nextPageToken,
-    key: YT_API_KEY.publicDataKey
   }
 
-  let urlParams = createUrlParams(params);
-  return fetch(`${baseUrl}?${urlParams}`);
+  return YoutubeApi.search(params);
 };
 
 export const fetchChannelInfo = channelId => {
-  let baseUrl = 'https://www.googleapis.com/youtube/v3/channels';
   let params = {
-    part: 'snippet',
-    id: channelId,
-    key: YT_API_KEY.publicDataKey
+    id: channelId
   }
-
-  let urlParams = createUrlParams(params);
-  return fetch(`${baseUrl}?${urlParams}`);
+  return YoutubeApi.channels(channelId);
 }
-
-// export const fetchChannelVideos = channelId => {
-//   let baseUrl = 'https://www.googleapis.com/youtube/v3/search';
-//   let params = {
-//     part: 'snippet',
-//     channelId,
-//     maxResults: 15,
-//     key: YT_API_KEY.publicDataKey
-//   }
-//
-//   let urlParams = createUrlParams(params);
-//   return fetch(`${baseUrl}?${urlParams}`);
-// }
 
 export const fetchCategories = () => {
   let baseUrl = 'https://www.googleapis.com/youtube/v3/guideCategories';
@@ -132,15 +75,11 @@ export const fetchCategories = () => {
 }
 
 export const fetchAuthUserChannelId = () => {
-  let baseUrl = 'https://www.googleapis.com/youtube/v3/channels';
   let params = {
-    part: 'snippet',
     mine: 'true',
     access_token: localStorage.getItem('google-access-token')
   }
-
-  let urlParams = createUrlParams(params);
-  return fetch(`${baseUrl}?${urlParams}`);
+  return YoutubeApi.channels(params);
 }
 
 export const fetchAuthUserSubscriptions = () => {
@@ -164,15 +103,10 @@ export const fetchAuthUserSubscriptions = () => {
 }
 
 export const fetchChannelVideos = channelId => {
-  let baseUrl = 'https://www.googleapis.com/youtube/v3/search';
   let params = {
-    part: 'snippet',
     channelId,
-    maxResults: 15,
     order: 'date',
-    key: YT_API_KEY.publicDataKey
+    maxResults: 15
   }
-
-  let urlParams = createUrlParams(params);
-  return fetch(`${baseUrl}?${urlParams}`);
+  return YoutubeApi.search(params);
 }

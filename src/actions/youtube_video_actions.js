@@ -154,3 +154,34 @@ export const fetchSubscriptionUploads = channelId => dispatch => {
     }
   )
 }
+
+// Video Player Page Actions
+export const fetchComments = (videoId, context) => {
+  return YoutubeVideoAPI.fetchComments(videoId).then(
+    response => response.json()
+  ).then(responseJson => {
+    context.setState({ comments: responseJson.items });
+  }).catch(error => {
+    console.error(error);
+  });
+}
+
+export const fetchDetails = (videoId, context) => {
+  return YoutubeVideoAPI.fetchDetails(videoId).then(
+    response => response.json()
+  ).then(responseJson => {
+    context.setState({ details: responseJson.items[0].snippet });
+  }).catch(error => {
+    console.error(error);
+  })
+}
+
+export const fetchRelated = (videoId, context) => {
+  return YoutubeVideoAPI.fetchRelated(videoId).then(
+    response => response.json()
+  ).then(responseJson => {
+    context.setState({ vids: responseJson.items });
+  }).catch(error => {
+    console.error(error);
+  })
+}
