@@ -53,7 +53,11 @@ export const parseDuration = str => {
   	}
   });
 
-  return values.join(':')
+  if (values.length === 1) {
+    values.unshift('0');
+  }
+
+  return values.join(':');
 }
 
 // return written version of date
