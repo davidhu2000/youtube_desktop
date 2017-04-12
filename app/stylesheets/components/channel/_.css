@@ -1,3 +1,72 @@
 .channel {
-  margin-top: 66px;
+  margin-top: 56px;
+}
+
+.banner-container, #banner {
+  width: 100%;
+  height: 300px;
+}
+
+.channel-banner {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  left: 10%;
+  width: 100%;
+}
+
+.channel-banner-left {
+  position: relative;
+}
+
+.channel-banner-left {
+  position: relative;
+}
+
+#channel-details {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+#channel-profile {
+  position: relative;
+  left: 10%;
+  margin-top: 5px;
+  border-radius: 150px;
+  height: 160px;
+  width: 160px;
+}
+
+#banner-bar {
+  background-color: #657DAE;
+  height: 170px;
+  width: 100%;
+}
+
+#channel-navbar {
+  background-color: #5B719E;
+  height: 70px;
+  width: 100%;
+}
+
+#channel-navbar > ul {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10%;
+}
+
+#channel-navbar > ul > li {
+  color: #EEE;
+  margin-left: 50px;
+  letter-spacing: 0.5px;
+  margin-top: 27px;
+  padding-bottom: 19px;
+}
+
+#channel-navbar > ul > li:hover {
+  cursor: pointer;
+  border-bottom: 5px solid white;
 }
