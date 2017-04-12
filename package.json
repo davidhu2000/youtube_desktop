@@ -22,5 +22,8 @@
     "superagent": "^3.5.0",
     "webpack": "^2.2.1",
     "youtube-player": "^4.2.2"
+  },
+  "devDependencies": {
+    "babel-register": "^6.24.1"
   }
 }

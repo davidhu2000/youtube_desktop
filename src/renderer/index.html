@@ -8,6 +8,23 @@
 
 <body>
   <div id='video-player'></div>
+  <script>
+    const YouTubePlayer = require('youtube-player');
+    let player = YouTubePlayer('video-player', {
+      playerVars: {
+        rel: 0,
+        modestbranding: 1,
+        showinfo: 0
+      }
+    });
+    let videoId = window.location.href.match(/videoId=(.+)/)[1];
+    player.loadVideoById(videoId);
+  </script>
+</body>
+
+</html>
+
+</script>
 </body>
 
 </html>
