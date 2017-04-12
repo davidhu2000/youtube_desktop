@@ -8,6 +8,7 @@ const mapStateToProps = ({ user, subscriptions, setting }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  fetchChannelId: () => dispatch(fetchChannelId())
 });
 
 export default connect(

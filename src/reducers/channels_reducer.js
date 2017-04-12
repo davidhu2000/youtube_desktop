@@ -1,7 +1,8 @@
 import { merge } from 'lodash';
 import {
   RECEIVE_CHANNEL_INFO,
-  RECEIVE_CHANNEL_VIDEOS } from "../actions/youtube_video_actions";
+  RECEIVE_CHANNEL_VIDEOS,
+  RECEIVE_CHANNEL_ID } from "../actions/youtube_video_actions.js";
 
 let _defaultState = {};
 
@@ -18,6 +19,10 @@ const trendingReducer = (state = _defaultState, action) => {
         [action.videos[0].snippet.channelId]:{
           videos: action.videos
         }
+      });
+    case RECEIVE_CHANNEL_ID:
+      return merge({}, state, {
+        channelId: action.channelId
       });
     default:
       return state;
