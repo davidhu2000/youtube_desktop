@@ -187,17 +187,17 @@ export const fetchRelated = (videoId, context) => {
 }
 
 // Channel Actions
-export const RECEIVE_CHANNEL_ID = 'RECEIVE_CHANNEL_ID';
+export const RECEIVE_MY_CHANNEL_ID = 'RECEIVE_MY_CHANNEL_ID';
 
-export const receiveChannelId = (channelId) => ({
-  type: RECEIVE_CHANNEL_ID,
-  channelId
+export const receiveMyChannelId = myChannelId => ({
+  type: RECEIVE_MY_CHANNEL_ID,
+  myChannelId
 })
 
 export const fetchChannelId = () => dispatch => {
   return YoutubeVideoAPI.fetchAuthUserChannelId().then(
     response => response.json()
   ).then(
-    responseJson => dispatch(receiveChannelId(responseJson.items[0].id))
+    responseJson => dispatch(receiveMyChannelId(responseJson.items[0].id))
   );
 }

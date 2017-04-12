@@ -10,7 +10,8 @@ class Sidebar extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchChannelId();
+    this.props.fetchChannelId()
+      .then(() => window.localStorage.setItem('google-user', JSON.stringify(this.props.user)));
   }
 
   render() {
@@ -73,9 +74,9 @@ class Sidebar extends React.Component {
   }
 }
 
-const mapStateToProps = ({ user, channels }) => ({
+const mapStateToProps = ({ user }) => ({
   loggedIn: Boolean(user),
-  channelId: channels.channelId
+  user
 });
 
 const mapDispatchToProps = dispatch => ({

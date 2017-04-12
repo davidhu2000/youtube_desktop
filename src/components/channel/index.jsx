@@ -2,15 +2,12 @@ import React          from 'react';
 import { connect }    from 'react-redux';
 import { withRouter } from 'react-router';
 
-import { fetchChannelId } from '../../actions/youtube_video_actions';
-
 class Channel extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className='channel'>
         <div>Cover photo</div>
