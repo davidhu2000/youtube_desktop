@@ -1,13 +1,21 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React                from 'react';
+import { connect }          from 'react-redux';
 import { Link, withRouter } from 'react-router';
+
+import { fetchChannelId }   from '../../actions/youtube_video_actions';
 
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchChannelId();
+  }
+
   render() {
+    let myChannelId = this.props.channelId;
+
     return (
       <div id="sidebar" className='sidebar hidden'>
         <Link to='/home'>
@@ -42,7 +50,7 @@ class Sidebar extends React.Component {
           <i className='material-icons redish'>videogame_asset</i>
           <span>Gaming</span>
         </Link>
-        { this.props.loggedIn ? <Link to=''>
+        { this.props.loggedIn ? <Link to={`/channel/${myChannelId}`}>
           <i className='material-icons redish'>account_circle</i>
           <span>My Channel</span>
         </Link> : '' }
@@ -65,11 +73,13 @@ class Sidebar extends React.Component {
   }
 }
 
-const mapStateToProps = ({ user }) => ({
-  loggedIn: Boolean(user)
+const mapStateToProps = ({ user, channels }) => ({
+  loggedIn: Boolean(user),
+  channelId: channels.channelId
 });
 
 const mapDispatchToProps = dispatch => ({
+  fetchChannelId: () => dispatch(fetchChannelId())
 });
 
 export default connect(

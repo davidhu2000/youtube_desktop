@@ -9,6 +9,7 @@ import Trending       from './trending';
 import VideoDetail    from './player';
 import Home           from './home';
 import Subscriptions  from './subscriptions';
+import Channel        from './channel'
 
 const Root = ({ store }) => (
   <Provider store={ store }>
@@ -21,6 +22,7 @@ const Root = ({ store }) => (
         <Route path='/trending'       component={ Trending }      />
         <Route path='/subscriptions'  component={ Subscriptions } />
         <Route path='/watch/:videoId' component={ VideoDetail }   />
+        <Route path='/channel/:channelId' component={ Channel }   />
       </Route>
     </Router>
   </Provider>
