@@ -12,19 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // reject(localStorage.setItem('google-user', null));
   });
 
-  tokenPromise.then(
-    () => {
-      let preloadedState = {
-        user: JSON.parse(localStorage.getItem('google-user'))
-      }
-
-      const store = configureStore(preloadedState);
-
-      ReactDOM.render(<Root store={ store } />, root);
-      window.store = store;
+  tokenPromise.then(() => {
+    let preloadedState = {
+      user: JSON.parse(localStorage.getItem('google-user'))
     }
-  )
 
+    const store = configureStore(preloadedState);
 
+    ReactDOM.render(<Root store={store}/>, root);
+    window.store = store;
+    window.s = store.getState;
+  });
 
 });
