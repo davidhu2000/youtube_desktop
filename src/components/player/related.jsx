@@ -8,7 +8,7 @@ class Related extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = { vids: [] };
+    this.state = { vids: [], autoplay: true };
   }
 
   componentDidMount() {
@@ -28,12 +28,27 @@ class Related extends React.Component {
     }
   }
 
+  updateAutoplay(e) {
+    this.setState({
+      autoplay: e.target.checked
+    })
+  }
+
   render() {
     return (
       <div className="related-container">
         <div className="related-title">
           <h2>Up Next</h2>
           <h2>autoplay</h2>
+          <div className="row press">
+            <input
+              type="checkbox"
+              id="checked"
+              checked={this.state.autoplay}
+              onChange={this.updateAutoplay.bind(this)}
+              className="cbx hidden"/>
+            <label htmlFor="checked" className="lbl"></label>
+          </div>
         </div>
 
         <div className="related-list">
