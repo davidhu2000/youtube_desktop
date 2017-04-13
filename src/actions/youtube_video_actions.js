@@ -171,7 +171,6 @@ export const fetchDetails = (videoId, context) => {
     response => response.json()
   ).then(responseJson => {
     let details = responseJson.items[0];
-    // context.setState({ details: responseJson.items[0] });
 
     let channelId = responseJson.items[0].snippet.channelId;
     YoutubeVideoAPI.fetchChannelSubs(channelId).then(
