@@ -8,7 +8,10 @@ class Details extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { details: {} };
+    this.state = {
+      details: {},
+      subs: 0
+    };
   }
 
   componentDidMount() {
@@ -31,19 +34,22 @@ class Details extends React.Component {
   render() {
 
     if (!this.state.details.snippet) {
-      return (<div></div>)
+      return null;
     }
+
+    const { title, channelTitle, publishedAt } = this.state.details.snippet;
+    const { viewCount, likeCount, dislikeCount } = this.state.details.statistics;
 
     return (
       <div className="details-container">
-        <span className="title">{this.state.details.snippet.title}</span>
-        <a href="" className="channel-name">{this.state.details.snippet.channelTitle}</a>
+        <span className="title">{title}</span>
+        <a href="" className="channel-name">{channelTitle}</a>
         <button type="button" className="sub-button">
           <i className="material-icons">play_arrow</i>
           <span>Subscribe</span>
         </button>
-        <span>Subs total</span>
-        <span className="total-views">{this.state.details.statistics.viewCount}</span>
+        <span>{Number(this.state.subs).toLocaleString()}</span>
+        <span className="total-views">{Number(viewCount).toLocaleString()}</span>
         <button type="button" className="add-button">
           <i className="material-icons">add</i>
           <span>Add to</span>
@@ -54,14 +60,14 @@ class Details extends React.Component {
         </button>
         <button type="button" className="like-button">
           <i className="material-icons">thumb_up</i>
-          <span>{this.state.details.statistics.likeCount}</span>
+          <span>{Number(likeCount).toLocaleString()}</span>
         </button>
         <button type="button" className="dislike-button">
           <i className="material-icons">thumb_down</i>
-          <span>{this.state.details.statistics.dislikeCount}</span>
+          <span>{Number(dislikeCount).toLocaleString()}</span>
         </button>
         <h5 className="details-date">
-          Published on {parseDate(this.state.details.snippet.publishedAt)}
+          Published on {parseDate(publishedAt)}
         </h5>
         {this.addDescription()}
       </div>

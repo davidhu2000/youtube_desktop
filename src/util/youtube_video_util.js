@@ -111,3 +111,12 @@ export const fetchChannelVideos = channelId => {
   }
   return YoutubeApi.search(params);
 }
+
+export const fetchChannelSubs = channelId => {
+  let params = {
+    id: channelId,
+    part: 'statistics'
+  }
+
+  return YoutubeApi.channels(params)
+}
