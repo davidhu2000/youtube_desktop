@@ -186,7 +186,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid 2px #C32326;
+  border: solid 1px #C32326;
   color: #C32326;
   font-size: 25px;
 }
