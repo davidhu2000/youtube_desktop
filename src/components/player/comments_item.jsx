@@ -16,7 +16,7 @@ class CommentsItem extends React.Component {
         <img src={authorProfileImageUrl}/>
         <div className="comment-right">
           <h4 className="display-name">{authorDisplayName}</h4>
-          <p className="comment=body">{textOriginal}</p>
+          <p className="comment-body">{textOriginal}</p>
           <p className="like-count">{likeCount}</p>
         </div>
       </div>

@@ -46,6 +46,7 @@ class Home extends React.Component {
   }
 
   render() {
+
     if(this.props.trending.videos) {
        return (
          <div className='home-page'>

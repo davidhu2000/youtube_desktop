@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>YouTube Desktop</title>
+    <link rel=icon href=./favicon.png>
+    <link href="./reset.css" title='main' rel="stylesheet">
+    <link href="./styles.css" title='main' rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  </head>
+  <body>
+    <section class="top">
+      <img src="./images/YouTube-logo.png" alt="">
+      <h1>YouTube for desktop</h1>
+      <p>A simple & beautiful app for YouTube's video platform.
+      </br>Browse without distractions on any OS</p>
+      <a href="https://github.com/davidhu2000/youtube_desktop">
+        <svg width="24px" height="24px" viewBox="0 0 24 24">
+          <g fill="#ffffff">
+            <path id="dynobutton" d=""></path>
+          </g>
+        </svg>
+        <span id="dynospan"></span>&nbspFree Download</a>
+      <p class="under-button">
+        <span class="under-button-span">Download for other platforms.</span> No affiliation with YouTube.
+      </p>
+    </section>
+
+    <section class="second">
+      <h1>Available on OSX and Windows</h1>
+      <div class="image-box">
+        <img class="first-img" src="./images/home_page.png" alt="">
+        <img style="height:440px" class="second-img" src="./images/search_page.png" alt="">
+        <img class="third-img" src="./images/video_page.png" alt="">
+      </div>
+    </section>
+
+    <section class="third">
+      <h1>Featured Technologies</h1>
+      <ul>
+        <li>
+          <img src="./images/electron.svg" alt="">
+          <p>Electron Framework</p>
+        </li>
+        <li>
+          <img src="./images/react.png" alt="">
+          <p>React Front-end</p>
+        </li>
+        <li>
+          <img src="./images/webpack.svg" alt="">
+          <p>Webpack Codesplitting</p>
+        </li>
+      </ul>
+
+    </section>
+
+    <section class="forth">
+      <h1>All the features you're used to</h1>
+      <ul>
+        <li>
+          <p>Video Search</p>
+          <p>Playback</p>
+        </li>
+        <li>
+          <p>Suggested Videos</p>
+          <p>Trending Videos</p>
+        </li>
+        <li>
+          <p>Videos by Category</p>
+          <p>Comment Feed</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="downloads">
+      <h1>Download</h1>
+      <p>By downloading Messenger for Desktop, you acknowledge that it is not an official app</br> and that it is not affiliated with or endorsed by Youtube.</p>
+
+      <div class="download-buttons">
+        <a href="https://github.com/davidhu2000/youtube_desktop">
+          <svg width="24px" height="24px" viewBox="0 0 24 24">
+            <g fill="#C32326">
+              <path id="mac" d=""></path>
+            </g>
+          </svg>
+          Mac</a>
+        <a href="https://github.com/davidhu2000/youtube_desktop">
+        <svg width="24px" height="24px" viewBox="0 0 24 24">
+          <g fill="#C32326">
+            <path id="win" d=""></path>
+          </g>
+        </svg>
+        Windows</a>
+      </div>
+    </section>
+    <footer>
+      <p>No affiliation with YouTube. Contact: <span>ytdesktopapp@gmail.com</span></p>
+    </footer>
+  </body>
+  <script type="text/javascript">
+    let winSvg = "M0,3.39800217 L9.80803915,2.06636452 L9.81232658,11.4978618 L0.00895962329,11.553517 L0,3.39800217 Z M9.80336696,12.5845539 L9.81097989,22.0242708 L0.00761293145,20.6806051 L0.00706326131,12.5212352 L9.80336696,12.5845539 Z M10.992331,1.89216279 L23.9969768,0 L23.9969768,11.3779097 L10.992331,11.4808334 L10.992331,1.89216279 Z M24,12.6733261 L23.9969493,24 L10.9923035,22.1701969 L10.9740819,12.6521194 L24,12.6733261 Z"
+
+    let macSvg = "M18.9765744,10.0395497 L16.6254944,10.0395497 L16.6254944,13.9677517 L18.9765744,13.9677517 C21.7584423,13.9677517 24,16.2093094 24,18.9765744 C24,21.7657438 21.7584423,24 18.9765744,24 C16.2020079,24 13.9604503,21.7657438 13.9604503,18.9765744 L13.9604503,16.6327959 L10.0468512,16.6327959 L10.0468512,18.9765744 C10.0468512,21.7657438 7.79799209,24 5.03072711,24 C2.24885914,24 0,21.7657438 0,18.9765744 C0,16.2093094 2.24885914,13.9677517 5.03072711,13.9677517 L7.38180712,13.9677517 L7.38180712,10.0395497 L5.03072711,10.0395497 C2.26346212,10.0614542 0,7.79799209 0,5.01612413 C0,2.24885914 2.24885914,0 5.03072711,0 C7.79799209,0 10.0468512,2.24885914 10.0468512,5.01612413 L10.0468512,7.38180712 L13.9604503,7.38180712 L13.9604503,5.01612413 C13.9458473,2.24885914 16.2020079,0 18.9765744,0 C21.7584423,0 24,2.24885914 24,5.01612413 C24,7.79799209 21.7584423,10.0395497 18.9765744,10.0395497 Z M10.0468512,10.0468502 L10.0468512,13.9677508 L13.9677519,13.9677508 L13.9677519,10.0468502 L10.0468512,10.0468502 Z M7.38180712,5.00882263 C7.38180712,3.71645878 6.33039246,2.66504411 5.0380286,2.66504411 C3.72376027,2.66504411 2.6723456,3.71645878 2.6723456,5.00882263 C2.6723456,6.32309096 3.72376027,7.37450563 5.0380286,7.37450563 L7.38180712,7.37450563 L7.38180712,5.00882263 Z M7.38180712,18.9765744 L7.38180712,16.6327959 L5.0380286,16.6327959 C3.72376027,16.6327959 2.6723456,17.6842105 2.6723456,18.9765744 C2.6723456,20.2908427 3.72376027,21.3422574 5.0380286,21.3422574 C6.33039246,21.3422574 7.38180712,20.2908427 7.38180712,18.9765744 Z M16.6254944,18.9765744 C16.6254944,20.2908427 17.676909,21.3422574 18.9692729,21.3422574 C20.2835412,21.3422574 21.3349559,20.2908427 21.3349559,18.9765744 C21.3349559,17.6842105 20.2835412,16.6327959 18.9692729,16.6327959 L16.6254944,16.6327959 L16.6254944,18.9765744 Z M16.6254944,7.37450563 L18.9692729,7.37450563 C20.2835412,7.37450563 21.3349559,6.32309096 21.3349559,5.00882263 C21.3349559,3.71645878 20.2835412,2.66504411 18.9692729,2.66504411 C17.676909,2.66504411 16.6254944,3.71645878 16.6254944,5.00882263 L16.6254944,7.37450563 Z";
+
+    document.getElementById("mac").setAttribute("d",macSvg);
+    document.getElementById("win").setAttribute("d",winSvg);
+
+    let dynoButton = document.getElementById("dynobutton")
+    let dynoSpan = document.getElementById("dynospan")
+
+    if (navigator.appVersion.indexOf("Win") !== -1) {
+      dynoButton.setAttribute("d",winSvg);
+      dynoSpan.innerHTML = "Windows";
+    } else if (navigator.appVersion.indexOf("Mac") !== -1) {
+      dynoButton.setAttribute("d",macSvg);
+      dynoSpan.innerHTML = "Mac";
+    };
+  </script>
+</html>

@@ -117,3 +117,71 @@ export const fetchCategories = () => dispatch => {
     err => console.log(err)
   );
 }
+
+// subscription actions
+
+export const RECEIVE_SUBSCRIPTIONS = 'RECEIVE_SUBSCRIPTIONS';
+export const RECEIVE_SUBSCRIPTIONS_UPLOADS = 'RECEIVE_SUBSCRIPTIONS_UPLOADS'
+
+export const receiveSubscriptions = subscriptions => ({
+  type: RECEIVE_SUBSCRIPTIONS,
+  subscriptions
+});
+
+export const receiveSubscriptionsUploads = sub => ({
+  type: RECEIVE_SUBSCRIPTIONS_UPLOADS,
+  sub
+});
+
+export const fetchSubscriptions = () => dispatch => {
+  return YoutubeVideoAPI.fetchAuthUserSubscriptions().then(
+    res => res.json()
+  ).then(
+    resJson => dispatch(receiveSubscriptions(resJson.items))
+  );
+};
+
+export const fetchSubscriptionUploads = channelId => dispatch => {
+  return YoutubeVideoAPI.fetchChannelVideos(channelId).then(
+    res => res.json()
+  ).then(
+    resJson => {
+      let sub = {
+        channelId,
+        videos: resJson.items
+      }
+      return dispatch(receiveSubscriptionsUploads(sub))
+    }
+  )
+}
+
+// Video Player Page Actions
+export const fetchComments = (videoId, context) => {
+  return YoutubeVideoAPI.fetchComments(videoId).then(
+    response => response.json()
+  ).then(responseJson => {
+    context.setState({ comments: responseJson.items });
+  }).catch(error => {
+    console.error(error);
+  });
+}
+
+export const fetchDetails = (videoId, context) => {
+  return YoutubeVideoAPI.fetchDetails(videoId).then(
+    response => response.json()
+  ).then(responseJson => {
+    context.setState({ details: responseJson.items[0].snippet });
+  }).catch(error => {
+    console.error(error);
+  })
+}
+
+export const fetchRelated = (videoId, context) => {
+  return YoutubeVideoAPI.fetchRelated(videoId).then(
+    response => response.json()
+  ).then(responseJson => {
+    context.setState({ vids: responseJson.items });
+  }).catch(error => {
+    console.error(error);
+  })
+}

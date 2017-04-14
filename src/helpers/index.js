@@ -1,3 +1,4 @@
+// create comma seperated number
 export const formatNumber = number => {
   let formattedNumber = '';
   number = number.toString();
@@ -10,7 +11,7 @@ export const formatNumber = number => {
   return formattedNumber
 }
 
-
+// TODO: fix this function
 export const toggleTheme = () => {
   let ruleName = ':root';
   let result = null;
@@ -27,6 +28,7 @@ export const toggleTheme = () => {
   // result.style.cssText = '--video-title: #000';
 }
 
+// create params for url
 export const createUrlParams = obj => (
   Object.keys(obj).map( key => {
   	if(obj[key] && `${obj[key]}`.length > 0) {
@@ -35,6 +37,7 @@ export const createUrlParams = obj => (
   }).filter( str => str !== undefined ).join('&')
 );
 
+// parse video duration from api call
 export const parseDuration = str => {
   let values = str.split(/[A-Z]+/);
   values = values.filter( val => val !== '');
@@ -51,4 +54,30 @@ export const parseDuration = str => {
   });
 
   return values.join(':')
+}
+
+// return written version of date
+export const parseDate = date => {
+  const months = {
+    0: "Jan",
+    1: "Feb",
+    2: "Mar",
+    3: "Apr",
+    4: "May",
+    5: "June",
+    6: "July",
+    7: "Aug",
+    8: "Sept",
+    9: "Oct",
+    10: "Nov",
+    11: "Dec"
+  };
+  date = new Date(date);
+  let newDate = "";
+
+  newDate += months[date.getMonth()] + " ";
+  newDate += date.getDate() + ", ";
+  newDate += date.getFullYear();
+
+  return newDate;
 }

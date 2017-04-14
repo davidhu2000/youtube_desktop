@@ -13,16 +13,15 @@ class App extends React.Component {
   }
 
   render() {
-      return(
-        <div className="relative-content">
-          <Navbar />
-          <Sidebar />
-          { this.props.children }
-          <Footer />
-        </div>
-      );
+    return(
+      <div className="relative-content">
+        <Navbar />
+        <Sidebar />
+        { this.props.children }
+        <Footer />
+      </div>
+    );
   }
-
 }
 
 const mapStateToProps = (state, ownProps) => ({

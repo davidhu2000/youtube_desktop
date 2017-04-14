@@ -1,0 +1,239 @@
+body {
+  min-width: 820px;
+  display: flex;
+  flex-direction: column;
+  font-family: HelveticaNeue-Thin,"Helvetica Neue Light","Helvetica Neue","Segoe UI",Helvetica,Arial,"Lucida Grande",sans-serif;
+}
+.top {
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.top h1, p {
+  text-align: center;
+}
+.top h1 {
+  font-size: 42px;
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+.top p {
+  line-height: 20px;
+}
+.top img {
+  height: 160px;
+}
+.top a {
+  margin-top: 70px;
+  margin-bottom: 12px;
+  padding: 16px 24px 15px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #C32326;
+  color: white;
+  font-size: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.top svg {
+  margin-right: 10px;
+}
+.top a:hover{
+  background-color: rgba(195,35,38,.8);
+}
+.under-button {
+  font-size: 12px;
+}
+.under-button-span {
+  color: #C32326;
+  text-decoration: underline;
+  cursor: pointer;
+}
+/****************************/
+/*SECOND SECTION*/
+/****************************/
+.second {
+  height: 740px;
+  padding: 100px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #C32326;
+}
+.second h1 {
+  color: white;
+  font-size: 42px;
+}
+.image-box{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.image-box img{
+  height: 400px;
+  position: absolute;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.first-img {
+ z-index: 0;
+ bottom: 0px;
+ right: 40px;
+}
+.second-img {
+ z-index: 1;
+ bottom: -20px;
+ margin: 0 auto;
+}
+.third-img {
+  z-index: 0;
+  bottom: 0px;
+  left: 40px;
+}
+/****************************/
+/*THIRD SECTION*/
+/****************************/
+.third {
+  height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.third h1 {
+  font-size: 42px;
+  margin: 0 0 50px;
+}
+.third p {
+  font-size: 20px;
+  margin: 15px 0px;
+}
+.third ul {
+  width: 800px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.third li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.third ul img {
+  height: 84px;
+  width: 84px;
+}
+.third li:nth-child(3) img {
+  margin-left: 10px;
+}
+/****************************/
+/*FORTH SECTION*/
+/****************************/
+.forth {
+  height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #C32326;
+  color: white;
+}
+.forth h1 {
+  font-size: 42px;
+  margin: 0 0 50px;
+}
+.forth p {
+  font-size: 20px;
+  margin: 5px 0px;
+}
+.forth ul {
+  width: 800px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+/****************************/
+/*DOWNLOAD SECTION*/
+/****************************/
+.downloads {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.downloads h1 {
+  font-size: 42px;
+  /*margin-bottom: 40px;*/
+}
+.downloads p {
+  margin: 40px 0px;
+  font-size: 13px;
+  line-height: 18px;
+  opacity: .6;
+}
+.downloads a {
+  height: 60px;
+  width: 210px;
+  margin: 0px 20px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px #C32326;
+  color: #C32326;
+  font-size: 25px;
+}
+.downloads svg {
+  margin-right: 10px;
+}
+.downloads a:hover{
+  background-color: rgba(195,35,38,.05);
+}
+.download-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/****************************/
+/*FOOTER SECTION*/
+/****************************/
+footer {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #323940;
+}
+footer a {
+  margin-right: 10px;
+  padding: 11px 18px 10px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #C32326;
+  color: white;
+  font-size: 15px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+footer svg {
+  margin-right: 10px;
+}
+footer a:hover{
+  background-color: rgba(195,35,38,.8);
+}
+footer p {
+  font-size: 15px;
+  color: white;
+}
+footer span {
+  color: #C32326;
+}
