@@ -9,13 +9,13 @@ module.exports = env => {
   return {
     context: __dirname,
     entry: {
-      app: path.join(__dirname, './src/electron.jsx'),
+      app: path.join(__dirname, './src/youtube.jsx'),
       vendor: ['react', 'react-dom', 'react-router']
     },
     output: {
       path: path.join(__dirname, 'app', 'javascripts'),
       publicPath: path.join('app', 'javascripts/'),
-      filename: '[name].[hash].js'
+      filename: '[name].js'
     },
     module: {
       loaders: [
@@ -38,7 +38,7 @@ module.exports = env => {
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
         minChunks: Infinity,
-        filename: '[name].[hash].js'
+        filename: '[name].js'
       }),
       new HtmlWebpackPlugin({
         template: path.join(__dirname, 'template.html'),

@@ -24,7 +24,7 @@ const routes = (
       System.import ('./trending').then(loadRoute(cb)).catch(errorLoading)
     }}/>
 
-    <Route path='video/:videoId' getComponent={(location, cb) => {
+    <Route path='watch/:videoId' getComponent={(location, cb) => {
       System.import ('./player').then(loadRoute(cb)).catch(errorLoading)
     }}/>
 
