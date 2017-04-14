@@ -1,0 +1,47 @@
+html, body, header, nav, h1, a,
+ul, li, strong, main, button, i,
+section, img, div, h2, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small, h3, h4 {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: inherit;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img {
+  /*width: 100%;
+  height: auto;*/
+}
+
+input,
+textarea,
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+/* Clearfix */
+
+.group:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
