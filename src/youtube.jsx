@@ -1,3 +1,5 @@
+/* global Promise */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
@@ -16,15 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
     () => {
       let preloadedState = {
         user: JSON.parse(localStorage.getItem('google-user'))
-      }
+      };
 
       const store = configureStore(preloadedState);
 
       ReactDOM.render(<Root store={ store } />, root);
       window.store = store;
     }
-  )
-
-
+  );
 
 });
