@@ -9,8 +9,8 @@
     "clear": "rm -rf app/javascripts/* | rm index.html",
     "watch": "yarn run clear | NODE_ENV=development webpack -w --env.dev",
     "build": "yarn run clear && yarn run dev && yarn run start",
-    "dev": " yarn run clear | NODE_ENV=development webpack --env.dev",
-    "prod": "yarn run clear | NODE_ENV=production webpack --progress --env.prod"
+    "dev": "NODE_ENV=development webpack --env.dev",
+    "prod": "NODE_ENV=production webpack --progress --env.prod"
   },
   "dependencies": {
     "electron": "^1.6.2",
