@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "electron .",
-    "clear": "-rm -rf app/javascripts/* | rm index.html",
+    "clear": "rm -rf app/javascripts/* | rm index.html",
     "watch": "yarn run clear | NODE_ENV=development webpack -w --env.dev",
     "build": "yarn run clear && yarn run dev && yarn run start",
     "dev": " yarn run clear | NODE_ENV=development webpack --env.dev",
