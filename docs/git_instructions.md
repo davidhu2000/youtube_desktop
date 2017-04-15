@@ -9,8 +9,7 @@ Create a branch of the same name as the remote branch.
 
 2) You will be on the local branch with the same name as the remote branch.
 
-3) `git branch --set-upstream-to=origin/<branchName> <branchName>`
-
+3) `git branch --set-upstream-to=origin/<branchName> <branchName>`.
 This will set your local branch to track the remote branch of the same name.
 
 4) `git pull` to pull down the branch information.
@@ -23,4 +22,4 @@ If the remote branch is behind on the master, instead of running `git merge mast
 
 ### To stash and un-stash uncommitted changes
 
-If you want to hide the current changes without committing them, run `git stash`. To get back the changes, run `git stash apply`. 
+If you want to hide the current changes without committing them, run `git stash`. To get back the changes, run `git stash apply`.
