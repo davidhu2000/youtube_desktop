@@ -7,8 +7,8 @@
   "scripts": {
     "start": "electron .",
     "clear": "rm -rf app/javascripts/* | rm index.html",
-    "watch": "yarn run clear | NODE_ENV=development webpack -w --env.dev",
-    "build": "yarn run clear && yarn run dev && yarn run start",
+    "watch": "$npm_execpath run clear | NODE_ENV=development webpack -w --env.dev",
+    "build": "$npm_execpath run clear && $npm_execpath run dev && $npm_execpath run start",
     "dev": "NODE_ENV=development webpack --env.dev",
     "prod": "NODE_ENV=production webpack --progress --env.prod"
   },
