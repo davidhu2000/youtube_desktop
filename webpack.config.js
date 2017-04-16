@@ -30,7 +30,6 @@ module.exports = env => {
         }
       ]
     },
-    target: 'electron',
     devtool: 'source-map',
     resolve: {
       extensions: ['.js', '.jsx', '*' ]
