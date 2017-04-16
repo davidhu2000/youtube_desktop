@@ -4,7 +4,7 @@ const webpack = require('webpack');
 
 module.exports = env => {
   const isProduction = plugin => env.prod ? plugin : undefined;
-  const removeEmpty = array => array.filter(p => !!p);
+  const removeEmpty = array => array.filter(p => Boolean(p));
 
   return {
     context: __dirname,
@@ -30,6 +30,7 @@ module.exports = env => {
         }
       ]
     },
+    target: 'electron',
     devtool: 'source-map',
     resolve: {
       extensions: ['.js', '.jsx', '*' ]
@@ -63,5 +64,5 @@ module.exports = env => {
         sourceMap: false
       }))
     ])
-  }
+  };
 };
