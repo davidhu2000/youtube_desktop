@@ -23,6 +23,15 @@
   position: relative;
 }
 
+.multiline {
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.multiline > div {
+  margin-bottom: 20px;
+}
+
 @media screen and (min-width: 488px) {
   .category-box {
     width: 438px;
@@ -95,4 +104,14 @@
 .next:hover {
   transform: translateX(25px);
   box-shadow: 2px 2px 3px var(--border);
+}
+
+.category-box-toggle {
+  width: 100%;
+  color: #167ac6;
+  text-align: right;
+  margin-bottom: 0px;
+  cursor: pointer;
+  font-size: 11px;
+  margin-top: -15px;
 }

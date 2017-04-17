@@ -1,5 +1,5 @@
 import React from 'react';
-import { CategoryBox } from '../common';
+import { CategoryBox, VideosBox } from '../common';
 
 class Home extends React.Component {
   constructor(props) {
@@ -7,17 +7,13 @@ class Home extends React.Component {
 
     this.state = {
       windowWidth: window.innerWidth
-    }
+    };
   }
 
   componentDidMount() {
     let ms = 24 * 3600 * 1000;
     let { trending } = this.props;
-<<<<<<< HEAD
     if (Date.now() - trending.date > ms || !trending.videos) {
-=======
-    if(Date.now() - trending.date > ms || !trending.videos) {
->>>>>>> 415322ce832213ac29652b570e8f370914838e2e
       this.props.fetchTrending();
     }
 
@@ -73,7 +69,7 @@ class Home extends React.Component {
     if (videos) {
       return (
         <div className='home-page'>
-          <CategoryBox
+          <VideosBox
             title='Trending' 
             windowWidth={this.state.windowWidth}
             vids={videos} />

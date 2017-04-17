@@ -12,7 +12,7 @@ class CategoryBoxItem extends React.Component {
     const vid = this.props.vid;
     const { channelTitle, publishedAt } = vid.snippet;
     const { url } = vid.snippet.thumbnails.medium;
-    const title = shortenString(vid.snippet.title, 70);
+    const title = shortenString(vid.snippet.title, 60);
 
     let viewCount = '------';
     if (vid.statistics) {
@@ -32,8 +32,6 @@ class CategoryBoxItem extends React.Component {
       duration = vid.contentDetails.duration;
       duration = parseDuration(duration);
     }
-
-    console.log('viewCount: ', viewCount)
 
     return (
       
