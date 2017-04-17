@@ -27,6 +27,10 @@ class CategoryBoxItem extends React.Component {
       videoId = vid.id.videoId;
     }
 
+    if (vid.contentDetails && vid.contentDetails.upload) {
+      videoId = vid.contentDetails.upload.videoId;
+    }
+
     let duration;
     if(vid.contentDetails && vid.contentDetails.duration) {
       duration = vid.contentDetails.duration;
