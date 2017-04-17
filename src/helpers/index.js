@@ -53,7 +53,11 @@ export const parseDuration = str => {
   	}
   });
 
-  return values.join(':')
+  if (values.length === 1) {
+    values.unshift('0');
+  }
+
+  return values.join(':');
 }
 
 // return written version of date
@@ -80,4 +84,18 @@ export const parseDate = date => {
   newDate += date.getFullYear();
 
   return newDate;
+}
+
+// add ... to strings that are too long
+export const shortenString = (string, maxLength) => {
+  if (string.length > maxLength) {
+    let idx = maxLength - 3;
+    string = string.slice(0, idx);
+
+    while(string[idx] !== ' ') {
+      idx -= 1;
+    }
+    string = string.slice(0, idx) + '...';
+  }
+  return string;
 }

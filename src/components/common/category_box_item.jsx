@@ -1,33 +1,18 @@
-import React            from 'react';
-import { Link }         from 'react-router';
-import moment           from 'moment';
-import { formatNumber, parseDuration } from '../../helpers';
-
+import React from 'react';
+import { Link } from 'react-router';
+import moment from 'moment';
+import { formatNumber, parseDuration, shortenString } from '../../helpers';
 
 class CategoryBoxItem extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  parseTitle(title) {
-    if (title.length >  60) {
-      let idx = 57;
-      title = title.slice(0, idx);
-
-      while(title[idx] !== ' ') {
-        idx -= 1;
-      }
-      idx -= 1;
-      title = title.slice(0, idx) + '...';
-    }
-    return title;
-  }
-
   render () {
     const vid = this.props.vid;
     const { channelTitle, publishedAt } = vid.snippet;
     const { url } = vid.snippet.thumbnails.medium;
-    const title = this.parseTitle(vid.snippet.title);
+    const title = shortenString(vid.snippet.title, 70);
     let viewCount = '------';
     if (vid.statistics) {
       viewCount = vid.statistics.viewCount;

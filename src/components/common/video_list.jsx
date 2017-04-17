@@ -24,7 +24,7 @@ class VideoList extends React.Component {
           key={vid.etag}
           vid={vid}
           cssPrefix='sml-'
-          maxTitleLength={33}
+          maxTitleLength={34}
           maxDescriptionLength={40} />)
       );
     }
