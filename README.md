@@ -79,7 +79,7 @@ Please click [here](https://github.com/davidhu2000/youtube_desktop/issues/new) t
 [git_as]: https://github.com/asherman-ca
 [git_cj]: https://github.com/cjudge1337
 [git_kn]: https://github.com/nguyenkevin16
-[git_rl]: https://github.com/rlee0524
+[git_rl]: https://github.com/rlee0525
 
 ### Contributors
 
