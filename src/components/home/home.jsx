@@ -8,7 +8,8 @@ class Home extends React.Component {
 
   componentDidMount() {
     let ms = 24 * 3600 * 1000;
-    if(Date.now() - this.props.trending.date > ms || !this.props.trending.videos) {
+    let { trending } = this.props;
+    if(Date.now() - trending.date > ms || !trending.videos) {
       this.props.fetchTrending();
     }
 
@@ -46,18 +47,19 @@ class Home extends React.Component {
   }
 
   render() {
+    const { videos } = this.props.trending;
 
-    if(this.props.trending.videos) {
+    if(videos) {
        return (
          <div className='home-page'>
-           <CategoryBox title='Trending' vids={this.props.trending.videos}/>
+           <CategoryBox title='Trending' vids={videos}/>
            {this.renderChannels()}
          </div>
        );
     } else {
       return (
         <div className='home-page'></div>
-      )
+      );
     }
 
   }

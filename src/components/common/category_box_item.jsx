@@ -28,10 +28,12 @@ class CategoryBoxItem extends React.Component {
     const { channelTitle, publishedAt } = vid.snippet;
     const { url } = vid.snippet.thumbnails.medium;
     const title = this.parseTitle(vid.snippet.title);
+
     let viewCount = '------';
     if (vid.statistics) {
       viewCount = vid.statistics.viewCount;
     }
+    viewCount = viewCount || '------';
 
     let videoId;
     if (typeof vid.id === 'string') {
@@ -46,7 +48,10 @@ class CategoryBoxItem extends React.Component {
       duration = parseDuration(duration);
     }
 
+    console.log('viewCount: ', viewCount)
+
     return (
+      
       <div className="category-box-item">
 
         <Link to={`watch/${videoId}`} className="category-box-item-image">
