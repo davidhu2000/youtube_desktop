@@ -31,12 +31,12 @@ class Home extends React.Component {
       this.props.fetchChannelVideos(id);
     }
 
-    // window.addEventListener('resize', this.updateWindowSize.bind(this));
+    this.props.fetchRecommendedVideos();
+
     window.onresize = this.updateWindowSize.bind(this);
   }
 
   componentWillUnmount() {
-    // window.removeEventListener('resize', this.updateWindowSize.bind(this));
     window.onresize = null;
   }
 
@@ -64,11 +64,11 @@ class Home extends React.Component {
   }
 
   renderRecommended() {
-    if (this.props.loggedIn) {
+    if (this.props.loggedIn && this.props.recommended.videos) {
       return (
         <VideosBox
           title='Recommended'
-          vids={this.props.trending.videos}
+          vids={this.props.recommended.videos || []}
           windowWidth={this.state.windowWidth} />
       );
     }

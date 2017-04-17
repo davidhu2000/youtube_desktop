@@ -27,7 +27,7 @@ export const nextPage = () => ({
 export const goToPage = pageNumber => ({
   type: GO_TO_PAGE,
   pageNumber
-})
+});
 
 export const searchVideos = (query, nextPageToken, pageNumber = 1) => dispatch => {
 
@@ -116,7 +116,7 @@ export const fetchCategories = () => dispatch => {
   ).catch(
     err => console.log(err)
   );
-}
+};
 
 // subscription actions
 
@@ -149,11 +149,11 @@ export const fetchSubscriptionUploads = channelId => dispatch => {
       let sub = {
         channelId,
         videos: resJson.items
-      }
+      };
       return dispatch(receiveSubscriptionsUploads(sub))
     }
-  )
-}
+  );
+};
 
 // Video Player Page Actions
 export const fetchComments = (videoId, context) => {
@@ -164,7 +164,7 @@ export const fetchComments = (videoId, context) => {
   }).catch(error => {
     console.error(error);
   });
-}
+};
 
 export const fetchDetails = (videoId, context) => {
   return YoutubeVideoAPI.fetchDetails(videoId).then(
@@ -173,8 +173,8 @@ export const fetchDetails = (videoId, context) => {
     context.setState({ details: responseJson.items[0].snippet });
   }).catch(error => {
     console.error(error);
-  })
-}
+  });
+};
 
 export const fetchRelated = (videoId, context) => {
   return YoutubeVideoAPI.fetchRelated(videoId).then(
@@ -183,5 +183,23 @@ export const fetchRelated = (videoId, context) => {
     context.setState({ vids: responseJson.items });
   }).catch(error => {
     console.error(error);
-  })
-}
+  });
+};
+
+// recommended actions
+export const RECEIVE_RECOMMENDED_VIDEOS = 'RECEIVE_RECOMMENDED_VIDEOS';
+
+export const receiveRecommendedVideos = videos => ({
+  type: RECEIVE_RECOMMENDED_VIDEOS,
+  videos
+});
+
+export const fetchRecommendedVideos = () => dispatch => {
+  return YoutubeVideoAPI.fetchRecommendedVideos().then(
+    response => response.json()
+  ).then(responseJson => {
+    return dispatch(receiveRecommendedVideos(responseJson.items));
+  }).catch(error => {
+    console.log(error);
+  });
+};

@@ -28,7 +28,7 @@ class CategoryBoxItem extends React.Component {
     }
 
     let duration;
-    if(vid.contentDetails) {
+    if(vid.contentDetails && vid.contentDetails.duration) {
       duration = vid.contentDetails.duration;
       duration = parseDuration(duration);
     }
