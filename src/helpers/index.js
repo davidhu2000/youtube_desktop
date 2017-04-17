@@ -85,8 +85,7 @@ export const parseDate = date => {
   newDate += date.getFullYear();
 
   return newDate;
-<<<<<<< HEAD
-}
+};
 
 // add ... to strings that are too long
 export const shortenString = (string, maxLength) => {
@@ -100,7 +99,5 @@ export const shortenString = (string, maxLength) => {
     string = string.slice(0, idx) + '...';
   }
   return string;
-}
-=======
 };
->>>>>>> fixed error that throws if video has not view count, fixed formatting
+

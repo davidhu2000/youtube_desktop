@@ -34,8 +34,6 @@ class CategoryBoxItem extends React.Component {
       duration = parseDuration(duration);
     }
 
-    console.log('viewCount: ', viewCount)
-
     return (
       
       <div className="category-box-item">

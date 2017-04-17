@@ -1,4 +1,4 @@
-import React           from 'react';
+import React from 'react';
 import { CategoryBox } from '../common';
 
 class Home extends React.Component {
@@ -13,7 +13,7 @@ class Home extends React.Component {
   componentDidMount() {
     let ms = 24 * 3600 * 1000;
     let { trending } = this.props;
-    if(Date.now() - trending.date > ms || !trending.videos) {
+    if (Date.now() - trending.date > ms || !trending.videos) {
       this.props.fetchTrending();
     }
 
@@ -26,7 +26,7 @@ class Home extends React.Component {
       'UCBR8-60-B28hp2BmDPdntcQ',
     ];
 
-    for(let i = 0; i < channelIds.length; i++) {
+    for (let i = 0; i < channelIds.length; i++) {
       const id = channelIds[i];
       this.props.fetchChannelVideos(id);
     }
@@ -48,8 +48,8 @@ class Home extends React.Component {
     let channels = this.props.channels;
 
     let ids = Object.keys(channels);
-    if(ids[0]) {
-      return ids.map( id => {
+    if (ids[0]) {
+      return ids.map(id => {
         let channel = channels[id];
         let title = channel.videos[0].snippet.channelTitle;
         return (
@@ -66,13 +66,16 @@ class Home extends React.Component {
   render() {
     const { videos } = this.props.trending;
 
-    if(videos) {
-       return (
-         <div className='home-page'>
-           <CategoryBox title='Trending' vids={videos}/>
-           {this.renderChannels()}
-         </div>
-       );
+    if (videos) {
+      return (
+        <div className='home-page'>
+          <CategoryBox
+            title='Trending' 
+            windowWidth={this.state.windowWidth}
+            vids={videos} />
+          {this.renderChannels()}
+        </div>
+      );
     } else {
       return (
         <div className='home-page'></div>
