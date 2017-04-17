@@ -8,7 +8,7 @@ class CategoryBox extends React.Component {
     this.state = {
       startIndex: 0,
       endIndex: this.numberVideosToShow()
-    }
+    };
 
     this.slideVideos = this.slideVideos.bind(this);
   }
@@ -88,7 +88,7 @@ class CategoryBox extends React.Component {
         </div>
 
       </div>
-    )
+    );
   }
 }
 

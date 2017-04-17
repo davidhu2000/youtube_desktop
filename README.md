@@ -1,6 +1,6 @@
-# ![Home Page](/docs/images/home_page.png)
-
 # Youtube Desktop
+
+![Home Page](/docs/images/home_page.png)
 
 A desktop client of [youtube](https://www.youtube.com) that allows the user to browse Youtube without the need of a browser.
 
@@ -29,22 +29,26 @@ This app is built with responsiveness in mind. Multiple break points are set to 
 
 ![responsiveness](/docs/images/responsive.gif)
 
-# Contribute
+## Contribute
 
 To fix a bug or create a feature, follow these steps:
 
 1. Fork the repo
 2. Create a new branch (`git checkout -b awesome-feature`)
 3. Make changes or add new changes.
-5. Commit your changes (`git add -A; git commit -m 'Awesome new feature'`)`
-6. Push to the branch (`git push origin awesome-feature`)
-7. Create a Pull Request, add appropriate label and assign [David Hu](https://www.github.com/davidhu2000) as the reviewer.
+4. Commit your changes (`git add -A; git commit -m 'Awesome new feature'`)`
+5. Push to the branch (`git push origin awesome-feature`)
+6. Create a Pull Request, add appropriate label and assign [David Hu](https://www.github.com/davidhu2000) as the reviewer.
 
 Please click [here](https://github.com/davidhu2000/youtube_desktop/issues/new) to report an issue or request a new feature.
 
-See [Git Instructions](docs/git_instructions.md) for steps on how to pull remote branches and fast forward branches that are behind the master.
+**See [Git Instructions](docs/git_instructions.md) for instructions on:**
 
-# Technologies
+- pull remote branches that are not on local repo.
+- fast forward branches that are behind the master.
+- stash and un-stash uncommitted changes
+
+## Technologies
 
 - [Electron](https://electron.atom.io/) - Electron allows for building cross platform desktop applications using JavaScript, HTML, and CSS
 - [ReactJS](https://facebook.github.io/react/) - A JavaScript framework for building user interfaces that efficiently update and render components.
@@ -52,15 +56,15 @@ See [Git Instructions](docs/git_instructions.md) for steps on how to pull remote
 - [Webpack](https://webpack.github.io/) - A module bundler that takes module with dependencies and creates static assets.
 - [Youtube API](https://developers.google.com/youtube/) - API that provides all the data required to build this app.
 
-# Future Features
+## Future Features
 
 - Allow signed in user to upload videos, add comments, etc.
 - Add autoplay and allow user to play video in the background with the browser window closed.
 - Add support to minimize video player to allow for navigation during playback.
 
-# Team
+## Team
 
-## Core Members
+### Core Members
 
 [![David Hu][pic_dh]][git_dh] | [![Alex Sherman][pic_as]][git_as] | [![Carson Judge][pic_cj]][git_cj] | [![Kevin Nguyen][pic_kn]][git_kn] | [![Raymond Lee][pic_rl]][git_rl]
 :------------------:|:-----------------------:|:-----------------------:|:----------------------:|:---:
