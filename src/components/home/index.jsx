@@ -8,9 +8,10 @@ import {
   fetchChannelInfo,
   fetchChannelVideos } from '../../actions/youtube_video_actions';
 
-const mapStateToProps = ({ trending, channels }) => ({
+const mapStateToProps = ({ trending, channels, user }) => ({
   trending,
-  channels
+  channels,
+  loggedIn: Boolean(user)
 });
 
 const mapDispatchToProps = dispatch => ({

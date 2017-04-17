@@ -63,13 +63,25 @@ class Home extends React.Component {
     }
   }
 
+  renderRecommended() {
+    if (this.props.loggedIn) {
+      return (
+        <VideosBox
+          title='Recommended'
+          vids={this.props.trending.videos}
+          windowWidth={this.state.windowWidth} />
+      );
+    }
+  }
+
   render() {
     const { videos } = this.props.trending;
 
     if (videos) {
       return (
         <div className='home-page'>
-          <VideosBox
+          {this.renderRecommended()}
+          <CategoryBox
             title='Trending' 
             windowWidth={this.state.windowWidth}
             vids={videos} />
