@@ -13,7 +13,11 @@ class Home extends React.Component {
   componentDidMount() {
     let ms = 24 * 3600 * 1000;
     let { trending } = this.props;
+<<<<<<< HEAD
     if (Date.now() - trending.date > ms || !trending.videos) {
+=======
+    if(Date.now() - trending.date > ms || !trending.videos) {
+>>>>>>> 415322ce832213ac29652b570e8f370914838e2e
       this.props.fetchTrending();
     }
 
