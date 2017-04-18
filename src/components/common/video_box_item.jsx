@@ -39,24 +39,24 @@ class VideoBoxItem extends React.Component {
 
     return (
       
-      <div className="category-box-item">
+      <div className="video-box-item">
 
-        <Link to={`watch/${videoId}`} className="category-box-item-image">
+        <Link to={`watch/${videoId}`} className="video-box-item-image">
           <img src={url} />
           <span>{ duration }</span>
         </Link>
 
-        <Link to={`watch/${videoId}`} className="category-box-item-title">
+        <Link to={`watch/${videoId}`} className="video-box-item-title">
           <h1 className='video-title'>{title}</h1>
         </Link>
 
-        <Link to='#' className='category-box-item-channel'>
+        <Link to='#' className='video-box-item-channel'>
           <p className='basic-text'>{channelTitle}</p>
         </Link>
 
-        <div className="category-box-item-info">
+        <div className="video-box-item-info">
           <span className='basic-text'>{ formatNumber(viewCount) } views</span>
-          <span className='category-box-item-date basic-text'>{ moment(publishedAt).fromNow() } </span>
+          <span className='video-box-item-date basic-text'>{ moment(publishedAt).fromNow() } </span>
         </div>
       </div>
     );

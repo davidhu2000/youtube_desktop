@@ -94,21 +94,21 @@ class VideoBox extends React.Component {
     if (this.props.multiline) {
       let buttonVal = this.state.numRows === 2 ? 'Show more' : 'Show fewer';
       return (
-        <div className='category-box multiline'>
-          <h1 className='category-box-title'>{this.props.title}</h1>
-          <div className='category-box-videos multiline'>
+        <div className='video-box multiline'>
+          <h1 className='video-box-title'>{this.props.title}</h1>
+          <div className='video-box-videos multiline'>
             { this.renderVideos() }
           </div>
           <button 
-            className='category-box-toggle' 
+            className='video-box-toggle' 
             onClick={this.toggleMoreVideos.bind(this)}>{ buttonVal }</button>
         </div>
       );
     } else {
       return (
-        <div className='category-box'>
-          <h1 className='category-box-title'>{this.props.title}</h1>
-          <div className='category-box-videos'>
+        <div className='video-box'>
+          <h1 className='video-box-title'>{this.props.title}</h1>
+          <div className='video-box-videos'>
             { this.renderVideos() }
             { this.state.startIndex === 0 ? '' : <a className="prev" onClick={() => this.slideVideos(-1)}>&#10094;</a> }
             { this.state.endIndex  === 15 ? '' : <a className="next" onClick={() => this.slideVideos(1) }>&#10095;</a> }

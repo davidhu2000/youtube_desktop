@@ -1,0 +1,6 @@
+@import url('./video_box.css');
+@import url('./video_box_item.css');
+
+.home-page {
+  margin-top: 66px;
+}
