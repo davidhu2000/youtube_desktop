@@ -2,11 +2,11 @@
 
 ![Home Page](/docs/images/home_page.png)
 
-A desktop client of [youtube](https://www.youtube.com) that allows the user to browse Youtube without the need of a browser.
+A desktop client of [youtube](https://www.youtube.com) that allows the user to browse the site without the need of a browser.
 
 ## Demo
 
-This project is still currently in development. This link will be updated upon our first release.
+This project is still currently in development. A link will appear here upon our first release.
 
 ## The Application
 
@@ -25,7 +25,7 @@ This project is still currently in development. This link will be updated upon o
 
 ## Response Design
 
-This app is built with responsiveness in mind. Multiple break points are set to render different contents with different widths.
+This app is built with responsiveness in mind. Multiple break points are set to render different contents at different window widths.
 
 ![responsiveness](/docs/images/responsive.gif)
 
