@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import moment from 'moment';
 import { formatNumber, parseDuration, shortenString } from '../../helpers';
 
-class CategoryBoxItem extends React.Component {
+class VideoBoxItem extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -63,4 +63,4 @@ class CategoryBoxItem extends React.Component {
   }
 }
 
-export { CategoryBoxItem };
+export { VideoBoxItem };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CategoryBox, VideosBox } from '../common';
+import { VideoBox } from '../common';
 
 class Home extends React.Component {
   constructor(props) {
@@ -61,7 +61,7 @@ class Home extends React.Component {
         let channel = channels[id];
         let title = channel.videos[0].snippet.channelTitle;
         return (
-          <CategoryBox
+          <VideoBox
             key={id}
             windowWidth={this.state.windowWidth}
             title={title}
@@ -74,8 +74,9 @@ class Home extends React.Component {
   renderRecommended() {
     if (this.props.loggedIn && this.props.recommended.videos) {
       return (
-        <VideosBox
+        <VideoBox
           title='Recommended'
+          multiline={true}
           vids={this.props.recommended.videos || []}
           windowWidth={this.state.windowWidth} />
       );
@@ -89,7 +90,7 @@ class Home extends React.Component {
       return (
         <div className='home-page'>
           {this.renderRecommended()}
-          <CategoryBox
+          <VideoBox
             title='Trending' 
             windowWidth={this.state.windowWidth}
             vids={videos} />
@@ -101,7 +102,6 @@ class Home extends React.Component {
         <div className='home-page'></div>
       );
     }
-
   }
 }
 
