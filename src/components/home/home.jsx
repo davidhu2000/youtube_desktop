@@ -31,9 +31,17 @@ class Home extends React.Component {
       this.props.fetchChannelVideos(id);
     }
 
-    this.props.fetchRecommendedVideos();
+    if (this.props.loggedIn) {
+      this.props.fetchRecommendedVideos();
+    }
 
     window.onresize = this.updateWindowSize.bind(this);
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.loggedIn) {
+      newProps.fetchRecommendedVideos();
+    } 
   }
 
   componentWillUnmount() {
