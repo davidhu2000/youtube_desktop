@@ -37,7 +37,7 @@ export const searchVideos = (query, nextPageToken, pageNumber = 1) => dispatch =
     videos => {
       videos['query'] = query;
       videos['pageNumber'] = pageNumber;
-      return dispatch(receiveVideos(videos))
+      return dispatch(receiveVideos(videos));
     }
   ).catch(
     err => console.log(err)
@@ -82,7 +82,7 @@ export const fetchChannelInfo = channelId => dispatch => {
   return YoutubeVideoAPI.fetchChannelInfo(channelId).then(
     res => res.json()
   ).then(
-    channels => dispatch(receiveChannel(channels.items[0]))
+    channels => dispatch(receiveChannelInfo(channels.items[0]))
   ).catch(
     err => console.log(err)
   );
@@ -121,7 +121,7 @@ export const fetchCategories = () => dispatch => {
 // subscription actions
 
 export const RECEIVE_SUBSCRIPTIONS = 'RECEIVE_SUBSCRIPTIONS';
-export const RECEIVE_SUBSCRIPTIONS_UPLOADS = 'RECEIVE_SUBSCRIPTIONS_UPLOADS'
+export const RECEIVE_SUBSCRIPTIONS_UPLOADS = 'RECEIVE_SUBSCRIPTIONS_UPLOADS';
 
 export const receiveSubscriptions = subscriptions => ({
   type: RECEIVE_SUBSCRIPTIONS,
@@ -150,7 +150,7 @@ export const fetchSubscriptionUploads = channelId => dispatch => {
         channelId,
         videos: resJson.items
       };
-      return dispatch(receiveSubscriptionsUploads(sub))
+      return dispatch(receiveSubscriptionsUploads(sub));
     }
   );
 };
