@@ -8,7 +8,7 @@ A desktop client of [youtube](https://www.youtube.com) that allows the user to b
 
 This project is still currently in development. A link will appear here upon our first release.
 
-## The Application
+### The Application
 
 #### The Search Page
 
@@ -21,7 +21,6 @@ This project is still currently in development. A link will appear here upon our
 #### The OmniAuth Page
 
 ![OAuth Page](/docs/images/oauth.png)
-
 
 ## Response Design
 
