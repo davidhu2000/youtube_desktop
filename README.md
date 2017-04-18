@@ -31,22 +31,9 @@ This app is built with responsiveness in mind. Multiple break points are set to 
 
 ## Contribute
 
-To fix a bug or create a feature, follow these steps:
+We'd love to get contributions from you! Please take a look at the [Contribution Readme] to see how to get your changes merged in.
 
-1. Fork the repo
-2. Create a new branch (`git checkout -b awesome-feature`)
-3. Make changes or add new changes.
-4. Commit your changes (`git add -A; git commit -m 'Awesome new feature'`)`
-5. Push to the branch (`git push origin awesome-feature`)
-6. Create a Pull Request, add appropriate label and assign [David Hu](https://www.github.com/davidhu2000) as the reviewer.
-
-Please click [here](https://github.com/davidhu2000/youtube_desktop/issues/new) to report an issue or request a new feature.
-
-**See [Git Instructions](docs/git_instructions.md) for instructions on:**
-
-- pull remote branches that are not on local repo.
-- fast forward branches that are behind the master.
-- stash and un-stash uncommitted changes
+[Contribution Readme]: CONTRIBUTING.md
 
 ## Technologies
 
