@@ -8,7 +8,7 @@ class CategoryBox extends React.Component {
     this.state = {
       startIndex: 0,
       endIndex: this.numberVideosToShow()
-    }
+    };
 
     this.slideVideos = this.slideVideos.bind(this);
   }
@@ -21,12 +21,17 @@ class CategoryBox extends React.Component {
     ));
   }
 
-  componentDidMount() {
-    window.addEventListener("resize", this.updateEndIndex.bind(this));
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateEndIndex.bind(this));
+  // componentDidMount() {
+  //   window.addEventListener("resize", this.updateEndIndex.bind(this));
+  // }
+  //
+  // componentWillUnmount() {
+  //   window.removeEventListener("resize", this.updateEndIndex.bind(this));
+  // }
+  componentWillReceiveProps(newProps) {
+    if (this.props.windowWidth !== newProps.windowWidth) {
+      this.updateEndIndex();
+    }
   }
 
   updateEndIndex() {
@@ -83,7 +88,7 @@ class CategoryBox extends React.Component {
         </div>
 
       </div>
-    )
+    );
   }
 }
 

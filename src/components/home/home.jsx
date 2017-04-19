@@ -4,6 +4,10 @@ import { CategoryBox } from '../common';
 class Home extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      windowWidth: window.innerWidth
+    }
   }
 
   componentDidMount() {
@@ -25,6 +29,18 @@ class Home extends React.Component {
       const id = channelIds[i];
       this.props.fetchChannelVideos(id);
     }
+
+    // window.addEventListener('resize', this.updateWindowSize.bind(this));
+    window.onresize = this.updateWindowSize.bind(this);
+  }
+
+  componentWillUnmount() {
+    // window.removeEventListener('resize', this.updateWindowSize.bind(this));
+    window.onresize = null;
+  }
+
+  updateWindowSize() {
+    this.setState({ windowWidth: window.innerWidth });
   }
 
   renderChannels() {
@@ -38,6 +54,7 @@ class Home extends React.Component {
         return (
           <CategoryBox
             key={id}
+            windowWidth={this.state.windowWidth}
             title={title}
             vids={channel.videos} />
         );
@@ -46,11 +63,13 @@ class Home extends React.Component {
   }
 
   render() {
-
     if(this.props.trending.videos) {
        return (
          <div className='home-page'>
-           <CategoryBox title='Trending' vids={this.props.trending.videos}/>
+           <CategoryBox
+             windowWidth={this.state.windowWidth}
+             title='Trending'
+             vids={this.props.trending.videos}/>
            {this.renderChannels()}
          </div>
        );

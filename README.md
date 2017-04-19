@@ -1,14 +1,14 @@
-# ![Home Page](/docs/images/home_page.png)
-
 # Youtube Desktop
 
-A desktop client of [youtube](https://www.youtube.com) that allows the user to browse Youtube without the need of a browser.
+![Home Page](/docs/images/home_page.png)
+
+A desktop client of [youtube](https://www.youtube.com) that allows the user to browse the site without the need of a browser.
 
 ## Demo
 
-This project is still currently in development. This link will be updated upon our first release.
+This project is still currently in development. A link will appear here upon our first release.
 
-## The Application
+### The Application
 
 #### The Search Page
 
@@ -22,29 +22,19 @@ This project is still currently in development. This link will be updated upon o
 
 ![OAuth Page](/docs/images/oauth.png)
 
-
 ## Response Design
 
-This app is built with responsiveness in mind. Multiple break points are set to render different contents with different widths.
+This app is built with responsiveness in mind. Multiple break points are set to render different contents at different window widths.
 
 ![responsiveness](/docs/images/responsive.gif)
 
-# Contribute
+## Contribute
 
-To fix a bug or create a feature, follow these steps:
+We'd love to get contributions from you! Please take a look at the [Contribution Readme] to see how to get your changes merged in.
 
-1. Fork the repo
-2. Create a new branch (`git checkout -b awesome-feature`)
-3. Make changes or add new changes.
-5. Commit your changes (`git add -A; git commit -m 'Awesome new feature'`)`
-6. Push to the branch (`git push origin awesome-feature`)
-7. Create a Pull Request, add appropriate label and assign [David Hu](https://www.github.com/davidhu2000) as the reviewer.
+[Contribution Readme]: CONTRIBUTING.md
 
-Please click [here](https://github.com/davidhu2000/youtube_desktop/issues/new) to report an issue or request a new feature.
-
-See [Git Instructions](docs/git_instructions.md) for steps on how to pull remote branches and fast forward branches that are behind the master.
-
-# Technologies
+## Technologies
 
 - [Electron](https://electron.atom.io/) - Electron allows for building cross platform desktop applications using JavaScript, HTML, and CSS
 - [ReactJS](https://facebook.github.io/react/) - A JavaScript framework for building user interfaces that efficiently update and render components.
@@ -52,15 +42,15 @@ See [Git Instructions](docs/git_instructions.md) for steps on how to pull remote
 - [Webpack](https://webpack.github.io/) - A module bundler that takes module with dependencies and creates static assets.
 - [Youtube API](https://developers.google.com/youtube/) - API that provides all the data required to build this app.
 
-# Future Features
+## Future Features
 
 - Allow signed in user to upload videos, add comments, etc.
 - Add autoplay and allow user to play video in the background with the browser window closed.
 - Add support to minimize video player to allow for navigation during playback.
 
-# Team
+## Team
 
-## Core Members
+### Core Members
 
 [![David Hu][pic_dh]][git_dh] | [![Alex Sherman][pic_as]][git_as] | [![Carson Judge][pic_cj]][git_cj] | [![Kevin Nguyen][pic_kn]][git_kn] | [![Raymond Lee][pic_rl]][git_rl]
 :------------------:|:-----------------------:|:-----------------------:|:----------------------:|:---:
@@ -75,7 +65,7 @@ See [Git Instructions](docs/git_instructions.md) for steps on how to pull remote
 [git_as]: https://github.com/asherman-ca
 [git_cj]: https://github.com/cjudge1337
 [git_kn]: https://github.com/nguyenkevin16
-[git_rl]: https://github.com/rlee0524
+[git_rl]: https://github.com/rlee0525
 
 ### Contributors
 

@@ -1,5 +1,6 @@
-import React    from 'react';
+import React from 'react';
 import { Link } from 'react-router';
+import { shortenString } from '../../helpers';
 
 class VideoSearchItem extends React.Component {
   constructor(props) {
@@ -28,12 +29,10 @@ class VideoSearchItem extends React.Component {
 
         <div className={`${cssPrefix}index-item-right`}>
           <Link to={`watch/${videoId}`}>
-            <h1>{title.length > maxTitleLength ?
-                title.slice(0, maxTitleLength - 3)+'...' : title}</h1>
+            <h1>{ shortenString(title, maxTitleLength) }</h1>
           </Link>
           <p>{channelTitle}</p>
-          <p>{description.length > maxDescriptionLength ?
-              description.slice(0, maxDescriptionLength - 3) + '...' : description}</p>
+          <p>{ shortenString(description, maxDescriptionLength) }</p>
         </div>
       </div>
     );
