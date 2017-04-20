@@ -25,6 +25,17 @@ class Details extends React.Component {
     }
   }
 
+  parseDescription(description) {
+    return description.map(line => {
+      // TODO: parse description for links
+      return (
+          <span key={Math.random()}>
+            {line}<br/>
+          </span>
+      );     
+    });
+  }
+
   addDescription() {
     if (this.state.details.snippet.description){
       let descript;
@@ -39,7 +50,7 @@ class Details extends React.Component {
 
       return (
         <p className="description">
-          { descript.map(line => <span key={Math.random()}>{line}<br/></span>) }
+          { this.parseDescription(descript) }
           <hr />
           <button onClick={ () => this.setState({ showAllDecription: !this.state.showAllDecription }) }>
             { buttonVal }
