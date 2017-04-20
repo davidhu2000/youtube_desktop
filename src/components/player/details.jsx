@@ -1,6 +1,4 @@
 import React            from 'react';
-import YT_API_KEY       from '../../../config/api_key';
-import { parseDate }    from '../../helpers';
 import { fetchDetails } from '../../actions/youtube_video_actions';
 import DetailsUpper     from './details_upper';
 import DetailsLower     from './details_lower';
@@ -18,7 +16,7 @@ class Details extends React.Component {
 
   componentDidMount() {
     fetchDetails(this.props.videoId, this);
-    }
+  }
 
   componentWillReceiveProps(newProps) {
     if(newProps.videoId !== this.props.videoId) {
@@ -32,18 +30,19 @@ class Details extends React.Component {
       return null;
     }
     
-    const { title, channelTitle, publishedAt, description } = this.state.details.snippet;
-    const { viewCount, likeCount, dislikeCount } = this.state.details.statistics;
+    const { details, subs } = this.state;
+    const { title, channelTitle, publishedAt, description } = details.snippet;
+    const { viewCount, likeCount, dislikeCount } = details.statistics;
 
     return (
 
       <div className="details-container">
         <DetailsUpper 
+          subs={subs}
           title={title}
-          channelTitle={channelTitle}
-          subs={this.state.subs}
-          viewCount={viewCount}
           likeCount={likeCount}
+          viewCount={viewCount}
+          channelTitle={channelTitle}
           dislikeCount={dislikeCount} />
 
         <DetailsLower 
