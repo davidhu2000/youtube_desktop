@@ -100,11 +100,44 @@
   align-items: center;
   justify-content: space-around;
 }
+
 .add-button, .like-button {
   margin-right: 10px;
 }
 
+.like-button, .dislike-button {
+  position: relative;
+}
 
+.details-action-bar-count-text {
+  position: absolute;
+  top: -30px;
+  background: #222;
+  color: #fff;
+  height: 25px;
+  font-size: 11px;
+  line-height: 25px;
+  text-align: center;
+  padding: 0 7px;
+  border-radius: 2px;
+  display: none;
+}
+
+.arrow {
+  color: red;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #222;
+  position: absolute;
+  right: 45%;
+  bottom: -5px;
+  width: 0;
+  height: 0;
+}
+
+.details-action-bar-count:hover + .details-action-bar-count-text {
+  display: inline;
+}
 
 .details-lower-container {
   width: 100%;
@@ -124,6 +157,10 @@
 .details-lower-container p {
   margin-top: 10px;
   font-size: 12px;
+}
+
+.details-lower-description {
+  width: 100%;
 }
 
 .description {

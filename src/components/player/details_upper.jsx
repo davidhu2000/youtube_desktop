@@ -43,11 +43,19 @@ class DetailsUpper extends React.Component {
             <div className="details-action-bar-right">
               <button type="button" className="like-button">
                 <i className="material-icons">thumb_up</i>
-                <span>{formatNumber(likeCount)}</span>
+                <span className="details-action-bar-count">{formatNumber(likeCount)}</span>
+                <span className="details-action-bar-count-text">
+                  I like this
+                  <div className='arrow'></div>
+                </span>
               </button>
               <button type="button" className="dislike-button">
                 <i className="material-icons">thumb_down</i>
-                <span>{formatNumber(dislikeCount)}</span>
+                <span className="details-action-bar-count">{formatNumber(dislikeCount)}</span>
+                <span className="details-action-bar-count-text">
+                  I dislike this
+                  <div className='arrow'></div>
+                </span>
               </button>
             </div>
           </div>
