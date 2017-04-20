@@ -10,21 +10,27 @@ export const fetchComments = videoId => {
     part: 'snippet,replies',
     videoId,
     key: YT_API_KEY.publicDataKey
-  }
+  };
 
   let urlParams = createUrlParams(params);
-
-  return fetch(`${baseUrl}?${urlParams}`)
-}
+  return fetch(`${baseUrl}?${urlParams}`);
+};
 
 export const fetchDetails = videoId => {
 
   let params = {
     id: videoId,
     part: 'snippet,statistics'
-  }
+  };
   return YoutubeApi.videos(params);
-}
+};
+
+export const fetchVideoRating = videoId => {
+  let params = {
+    id: videoId,
+  };
+  return YoutubeApi.videosGetRating(params);
+};
 
 // TODO: add https://www.googleapis.com/youtube/v3/videos/getRating to get current user ratings
 
@@ -33,9 +39,9 @@ export const fetchRelated = videoId => {
     type: 'video',
     maxResults: 10,
     relatedToVideoId: videoId,
-  }
+  };
   return YoutubeApi.search(params);
-}
+};
 
 export const fetchTrending = () => {
   let baseUrl = `https://www.googleapis.com/youtube/v3/videos`;
@@ -43,7 +49,7 @@ export const fetchTrending = () => {
   let params = {
     part: 'snippet,statistics,contentDetails',
     chart: 'mostPopular',
-  }
+  };
 
   return YoutubeApi.videos(params);
 };
@@ -53,7 +59,7 @@ export const fetchVideos = (query, nextPageToken = null) => {
     q: query,
     type: 'video',
     pageToken: nextPageToken,
-  }
+  };
 
   return YoutubeApi.search(params);
 };
@@ -61,9 +67,9 @@ export const fetchVideos = (query, nextPageToken = null) => {
 export const fetchChannelInfo = channelId => {
   let params = {
     id: channelId
-  }
+  };
   return YoutubeApi.channels(channelId);
-}
+};
 
 export const fetchCategories = () => {
   let baseUrl = 'https://www.googleapis.com/youtube/v3/guideCategories';
@@ -71,19 +77,19 @@ export const fetchCategories = () => {
     part: 'snippet',
     regionCode: 'US',
     key: YT_API_KEY.publicDataKey
-  }
+  };
 
   let urlParams = createUrlParams(params);
   return fetch(`${baseUrl}?${urlParams}`);
-}
+};
 
 export const fetchAuthUserChannelId = () => {
   let params = {
     mine: 'true',
     access_token: localStorage.getItem('google-access-token')
-  }
+  };
   return YoutubeApi.channels(params);
-}
+};
 
 export const fetchAuthUserSubscriptions = () => {
 
@@ -98,27 +104,27 @@ export const fetchAuthUserSubscriptions = () => {
         part: 'snippet',
         channelId,
         access_token: localStorage.getItem('google-access-token')
-      }
+      };
       let urlParams = createUrlParams(params);
       return fetch(`${baseUrl}?${urlParams}`);
     }
   );
-}
+};
 
 export const fetchChannelVideos = channelId => {
   let params = {
     channelId,
     order: 'date',
     maxResults: 15
-  }
+  };
   return YoutubeApi.search(params);
-}
+};
 
 export const fetchChannelSubs = channelId => {
   let params = {
     id: channelId,
     part: 'statistics'
-  }
+  };
 
-  return YoutubeApi.channels(params)
-}
+  return YoutubeApi.channels(params);
+};

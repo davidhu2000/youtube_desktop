@@ -1,8 +1,8 @@
-import React            from 'react';
-import { fetchDetails } from '../../actions/youtube_video_actions';
-import { videosRate }    from '../../actions/interaction_actions';
-import DetailsUpper     from './details_upper';
-import DetailsLower     from './details_lower';
+import React from 'react';
+import { fetchDetails, fetchVideoRating } from '../../actions/youtube_video_actions';
+import { videosRate } from '../../actions/interaction_actions';
+import DetailsUpper from './details_upper';
+import DetailsLower from './details_lower';
 
 class Details extends React.Component {
 
@@ -19,11 +19,13 @@ class Details extends React.Component {
 
   componentDidMount() {
     fetchDetails(this.props.videoId, this);
+    fetchVideoRating(this.props.videoId, this);
   }
 
   componentWillReceiveProps(newProps) {
     if(newProps.videoId !== this.props.videoId) {
       fetchDetails(this.props.videoId, this);
+      fetchVideoRating(this.props.videoId, this);
     }
   }
 
