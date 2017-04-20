@@ -5,6 +5,26 @@ import { formatNumber } from '../../helpers';
 class DetailsUpper extends React.Component {
    constructor(props) {
      super(props);
+     this.ratingVideo = this.ratingVideo.bind(this);
+    //  this.ratingButtonColor = this.ratingButtonColor.bind(this);
+  }
+
+  ratingVideo(rating) {
+    let ratingString;
+    if (this.props.currentRating === rating) {
+      ratingString = 'none';
+    } else {
+      ratingString = rating;
+    }
+    this.props.videosRate(this.props.videoId, ratingString, this.props.context);
+  }
+
+  ratingButtonColor(ratingType) {
+    if (this.props.currentRating === ratingType) {
+      return '#167AC6';
+    } else {
+      return '#666666';
+    }
   }
 
   render() {
@@ -46,7 +66,12 @@ class DetailsUpper extends React.Component {
               </button>
             </div>
             <div className="details-action-bar-right">
-              <button type="button" className="like-button">
+              <button 
+                type="button" 
+                className="like-button" 
+                style={{ color: this.ratingButtonColor('like') }}
+                onClick={ () => this.ratingVideo('like') } >
+
                 <i className="material-icons">thumb_up</i>
                 <span className="details-action-bar-count">{formatNumber(likeCount)}</span>
                 <span className="details-action-bar-count-text">
@@ -54,7 +79,13 @@ class DetailsUpper extends React.Component {
                   <div className='arrow'></div>
                 </span>
               </button>
-              <button type="button" className="dislike-button">
+
+              <button 
+                type="button" 
+                className="dislike-button"
+                style={{ color: this.ratingButtonColor('dislike') }}
+                onClick={ () => this.ratingVideo('dislike') } >
+
                 <i className="material-icons">thumb_down</i>
                 <span className="details-action-bar-count">{formatNumber(dislikeCount)}</span>
                 <span className="details-action-bar-count-text">

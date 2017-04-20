@@ -26,6 +26,8 @@ export const fetchDetails = videoId => {
   return YoutubeApi.videos(params);
 }
 
+// TODO: add https://www.googleapis.com/youtube/v3/videos/getRating to get current user ratings
+
 export const fetchRelated = videoId => {
   let params = {
     type: 'video',

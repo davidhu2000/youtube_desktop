@@ -1,5 +1,6 @@
 import React            from 'react';
 import { fetchDetails } from '../../actions/youtube_video_actions';
+import { videosRate }    from '../../actions/interaction_actions';
 import DetailsUpper     from './details_upper';
 import DetailsLower     from './details_lower';
 
@@ -10,8 +11,10 @@ class Details extends React.Component {
 
     this.state = {
       details: {},
-      subs: 0
+      subs: 0,
+      rating: 'none'
     };
+
   }
 
   componentDidMount() {
@@ -25,7 +28,7 @@ class Details extends React.Component {
   }
 
   render() {
-
+    console.log(this.state);
     if (!this.state.details.snippet) {
       return null;
     }
@@ -42,6 +45,10 @@ class Details extends React.Component {
           title={title}
           likeCount={likeCount}
           viewCount={viewCount}
+          videosRate={videosRate}
+          context={this}
+          currentRating={this.state.rating}
+          videoId={this.props.videoId}
           channelTitle={channelTitle}
           dislikeCount={dislikeCount} />
 
