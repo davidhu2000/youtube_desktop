@@ -1,15 +1,28 @@
 // create comma seperated number
-export const formatNumber = number => {
-  let formattedNumber = '';
-  number = number.toString();
-  for(let i = number.length-1; i>=0; i--) {
-    formattedNumber = number[i] + formattedNumber;
-    if ((number.length - i) % 3 === 0 && i !== 0) {
-      formattedNumber = ',' + formattedNumber
-    }
+export const formatNumber = (number, shouldAbbreviate = false) => {
+	
+  if (shouldAbbreviate) {
+  	// return number in '1M' or '965K' format
+		var ranges = [
+		  { divider: 1e18 , suffix: 'P' },
+		  { divider: 1e15 , suffix: 'E' },
+		  { divider: 1e12 , suffix: 'T' },
+		  { divider: 1e9 , suffix: 'G' },
+		  { divider: 1e6 , suffix: 'M' },
+		  { divider: 1e3 , suffix: 'k' }
+		];
+	
+	  for (var i = 0; i < ranges.length; i++) {
+	    if (number >= ranges[i].divider) {
+	      return Math.floor(number / ranges[i].divider).toString() + ranges[i].suffix;
+	    }
+	  }
+	  return number.toString();
+  } else {
+    return Number(number).toLocaleString();
   }
-  return formattedNumber
-}
+
+};
 
 // TODO: fix this function
 export const toggleTheme = () => {
@@ -21,12 +34,11 @@ export const toggleTheme = () => {
 
   result = find.call(colorSheet.cssRules, cssRule => {
       return cssRule instanceof CSSStyleRule
-          && cssRule.selectorText.toLowerCase() == ruleName;
+          && cssRule.selectorText.toLowerCase() === ruleName;
   });
 
-
   // result.style.cssText = '--video-title: #000';
-}
+};
 
 // create params for url
 export const createUrlParams = obj => (
@@ -58,7 +70,7 @@ export const parseDuration = str => {
   }
 
   return values.join(':');
-}
+};
 
 // return written version of date
 export const parseDate = date => {
@@ -84,7 +96,7 @@ export const parseDate = date => {
   newDate += date.getFullYear();
 
   return newDate;
-}
+};
 
 // add ... to strings that are too long
 export const shortenString = (string, maxLength) => {
@@ -98,4 +110,4 @@ export const shortenString = (string, maxLength) => {
     string = string.slice(0, idx) + '...';
   }
   return string;
-}
+};
