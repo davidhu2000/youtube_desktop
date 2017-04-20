@@ -2,6 +2,7 @@ import React            from 'react';
 import YT_API_KEY       from '../../../config/api_key';
 import { parseDate }    from '../../helpers';
 import { fetchDetails } from '../../actions/youtube_video_actions';
+import DetailsLower     from './details_lower';
 
 class Details extends React.Component {
 
@@ -25,50 +26,16 @@ class Details extends React.Component {
     }
   }
 
-  parseDescription(description) {
-    return description.map(line => {
-      // TODO: parse description for links
-      return (
-          <span key={Math.random()}>
-            {line}<br/>
-          </span>
-      );     
-    });
-  }
-
-  addDescription() {
-    if (this.state.details.snippet.description){
-      let descript;
-      let buttonVal;
-      if(this.state.showAllDecription) {
-        descript = this.state.details.snippet.description.split('\n');
-        buttonVal = 'Show less';
-      } else {
-        descript = [this.state.details.snippet.description.slice(0,200)];
-        buttonVal = 'Show more';
-      }
-
-      return (
-        <p className="description">
-          { this.parseDescription(descript) }
-          <hr />
-          <button 
-            className='details-description-button'
-            onClick={ () => this.setState({ showAllDecription: !this.state.showAllDecription }) }>
-            { buttonVal }
-          </button>
-        </p>
-      );
-    }
-  }
+  
 
   render() {
 
     if (!this.state.details.snippet) {
       return null;
     }
-
-    const { title, channelTitle, publishedAt } = this.state.details.snippet;
+    console.log(this.state);
+    
+    const { title, channelTitle, publishedAt, description } = this.state.details.snippet;
     const { viewCount, likeCount, dislikeCount } = this.state.details.statistics;
 
     return (
@@ -114,14 +81,9 @@ class Details extends React.Component {
           </div>
         </div>
 
-        <div className="details-lower-container">
-          <h3 className="details-date">
-            Published on {parseDate(publishedAt)}
-          </h3>
-          <div>
-            {this.addDescription()}
-          </div>
-        </div>
+        <DetailsLower 
+          publishedAt={publishedAt}
+          description={description} />
 
       </div>
     );
