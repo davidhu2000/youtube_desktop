@@ -2,6 +2,13 @@
 
 ## To pull remote branches into local repo
 
+### Method 1
+
+1. `git fetch origin`
+2. `git checkout -b branchName origin/branchName`
+
+### Method 2
+
 1. `git checkout -b <branchName>` Create a branch of the same name as the remote branch.
 2. You will be on the local branch with the same name as the remote branch
 3. `git branch --set-upstream-to=origin/<branchName> <branchName>`. This will set your local branch to track the remote branch of the same name.

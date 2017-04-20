@@ -36,6 +36,8 @@ Make or add changes, commit your changes, and push up to Github:
 
 _Congratulations!_ You are done. Just wait for us to review your code.
 
+## Issues or Feature Requests
+
 Please click [here](https://github.com/davidhu2000/youtube_desktop/issues/new) to report an issue or request a new feature.
 
 **See [Git Instructions](docs/git_instructions.md) on how to:**
