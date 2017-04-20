@@ -124,3 +124,15 @@
   margin-top: 10px;
   font-size: 12px;
 }
+
+.details-description-button {
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bolder;
+  opacity: 0.6;
+}
+
+.details-description-button:hover {
+  opacity: 1;
+}

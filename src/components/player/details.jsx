@@ -52,7 +52,9 @@ class Details extends React.Component {
         <p className="description">
           { this.parseDescription(descript) }
           <hr />
-          <button onClick={ () => this.setState({ showAllDecription: !this.state.showAllDecription }) }>
+          <button 
+            className='details-description-button'
+            onClick={ () => this.setState({ showAllDecription: !this.state.showAllDecription }) }>
             { buttonVal }
           </button>
         </p>
