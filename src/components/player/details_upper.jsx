@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatNumber } from '../../helpers';
 
 class DetailsUpper extends React.Component {
    constructor(props) {
@@ -21,11 +22,11 @@ class DetailsUpper extends React.Component {
                 <img className='white-burger' src="./app/assets/whiteburger.png"/>
                 <span>Subscribe</span>
               </button>
-              <span className="sub-span">{Number(subs).toLocaleString()}</span>
+              <span className="sub-span">{formatNumber(subs)}</span>
               </div>
             </div>
             <div className="details-stats-bar-right">
-              <span className="total-views">{Number(viewCount).toLocaleString()} views</span>
+              <span className="total-views">{formatNumber(viewCount)} views</span>
             </div>
           </div>
           <div className="details-action-bar">
@@ -42,11 +43,11 @@ class DetailsUpper extends React.Component {
             <div className="details-action-bar-right">
               <button type="button" className="like-button">
                 <i className="material-icons">thumb_up</i>
-                <span>{Number(likeCount).toLocaleString()}</span>
+                <span>{formatNumber(likeCount)}</span>
               </button>
               <button type="button" className="dislike-button">
                 <i className="material-icons">thumb_down</i>
-                <span>{Number(dislikeCount).toLocaleString()}</span>
+                <span>{formatNumber(dislikeCount)}</span>
               </button>
             </div>
           </div>
