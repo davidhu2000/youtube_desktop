@@ -30,7 +30,6 @@ class Details extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     if (!this.state.details.snippet) {
       return null;
     }

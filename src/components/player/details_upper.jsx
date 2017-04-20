@@ -28,12 +28,17 @@ class DetailsUpper extends React.Component {
   }
 
   render() {
-    const { 
+    let { 
       title, channelTitle, subs, 
       viewCount, likeCount, dislikeCount } = this.props; 
     
+    likeCount = parseInt(likeCount);
+    dislikeCount = parseInt(dislikeCount);
 
-    let ratio = parseFloat(likeCount) / (parseFloat(dislikeCount) + parseFloat(likeCount));
+    console.log(likeCount);
+    console.log(likeCount + (this.props.currentRating === 'like' ? 1 : 0) )
+
+    let ratio = likeCount / (dislikeCount + likeCount);
     
     return (
       <div className="details-upper-container">
@@ -73,7 +78,9 @@ class DetailsUpper extends React.Component {
                 onClick={ () => this.ratingVideo('like') } >
 
                 <i className="material-icons">thumb_up</i>
-                <span className="details-action-bar-count">{formatNumber(likeCount)}</span>
+                <span className="details-action-bar-count">
+                  {formatNumber(likeCount + (this.props.currentRating === 'like' ? 1 : 0) )}
+                </span>
                 <span className="details-action-bar-count-text">
                   I like this
                   <div className='arrow'></div>
@@ -87,7 +94,9 @@ class DetailsUpper extends React.Component {
                 onClick={ () => this.ratingVideo('dislike') } >
 
                 <i className="material-icons">thumb_down</i>
-                <span className="details-action-bar-count">{formatNumber(dislikeCount)}</span>
+                <span className="details-action-bar-count">
+                  {formatNumber(dislikeCount + (this.props.currentRating === 'dislike' ? 1 : 0) )}
+                </span>
                 <span className="details-action-bar-count-text">
                   I dislike this
                   <div className='arrow'></div>
