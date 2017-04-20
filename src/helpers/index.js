@@ -21,10 +21,10 @@ export const formatNumber = (number, shouldAbbreviate = false) => {
   } else {
     return Number(number).toLocaleString();
   }
-
 };
 
 // TODO: fix this function
+
 export const toggleTheme = () => {
   let ruleName = ':root';
   let result = null;
@@ -68,7 +68,6 @@ export const parseDuration = str => {
   if (values.length === 1) {
     values.unshift('0');
   }
-
   return values.join(':');
 };
 

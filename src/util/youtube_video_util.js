@@ -32,8 +32,6 @@ export const fetchVideoRating = videoId => {
   return YoutubeApi.videosGetRating(params);
 };
 
-// TODO: add https://www.googleapis.com/youtube/v3/videos/getRating to get current user ratings
-
 export const fetchRelated = videoId => {
   let params = {
     type: 'video',
@@ -128,3 +126,13 @@ export const fetchChannelSubs = channelId => {
 
   return YoutubeApi.channels(params);
 };
+
+export const fetchRecommendedVideos = () => {
+  let params = {
+    home: true,
+    access_token: localStorage.getItem('google-access-token')
+  };
+
+  return YoutubeApi.activities(params);
+};
+
