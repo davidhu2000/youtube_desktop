@@ -160,7 +160,11 @@ export const fetchComments = (videoId, context) => {
   return YoutubeVideoAPI.fetchComments(videoId).then(
     response => response.json()
   ).then(responseJson => {
-    context.setState({ comments: responseJson.items });
+    if (responseJson.items) {
+      context.setState({ comments: responseJson.items });
+    } else if (responseJson.error && responseJson.error.code === 403) {
+      context.setState({ comments: "disabled" });
+    }
   }).catch(error => {
     console.error(error);
   });
