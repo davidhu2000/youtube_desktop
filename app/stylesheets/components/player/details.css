@@ -108,7 +108,8 @@
 
 .details-lower-container {
   width: 100%;
-  padding: 20px 20px;
+  padding: 20px;
+  padding-bottom: 10px;
   margin: 10px 0px;
   display: flex;
   flex-direction: column;
@@ -125,12 +126,22 @@
   font-size: 12px;
 }
 
+.description {
+  border-bottom: .5px solid rgba(51, 51, 51,.2);
+  border-radius: 2px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  padding-bottom: 10px;
+}
+
 .details-description-button {
   width: 100%;
   text-align: center;
   text-transform: uppercase;
   font-weight: bolder;
   opacity: 0.6;
+  margin-top: 10px;
+  font-size: 12px;
 }
 
 .details-description-button:hover {
