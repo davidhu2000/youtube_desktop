@@ -1,4 +1,5 @@
 import React from 'react';
+import LikeDislikeRatio from './like_dislike_ratio';
 import { formatNumber } from '../../helpers';
 
 class DetailsUpper extends React.Component {
@@ -10,7 +11,10 @@ class DetailsUpper extends React.Component {
     const { 
       title, channelTitle, subs, 
       viewCount, likeCount, dislikeCount } = this.props; 
+    
 
+    let ratio = parseFloat(likeCount) / (parseFloat(dislikeCount) + parseFloat(likeCount));
+    
     return (
       <div className="details-upper-container">
           <h1 className="title">{title}</h1>
@@ -27,6 +31,7 @@ class DetailsUpper extends React.Component {
             </div>
             <div className="details-stats-bar-right">
               <span className="total-views">{formatNumber(viewCount)} views</span>
+              <LikeDislikeRatio ratio={ratio} />
             </div>
           </div>
           <div className="details-action-bar">
@@ -57,6 +62,7 @@ class DetailsUpper extends React.Component {
                   <div className='arrow'></div>
                 </span>
               </button>
+              
             </div>
           </div>
         </div>

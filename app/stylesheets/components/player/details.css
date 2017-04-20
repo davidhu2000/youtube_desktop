@@ -17,26 +17,35 @@
   align-items: flex-start;
   background-color: var(--background);
 }
+
 .details-upper-container i, .total-views {
   color: #666666;
 }
+
 .title, .total-views {
   font-size: 20px;
 }
+
+.total-views {
+  padding-bottom: 4px;
+}
+
 .details-stats-bar {
   width: 100%;
-  margin: 10px 0px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 }
+
 .details-stats-bar-left {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
   font-size: 12px;
+  margin: 10px 0px;
 }
+
 .button-span {
   margin-top: 5px;
   display: flex;
@@ -56,11 +65,13 @@
   background-color: hsl(3, 81.8%, 49.6%);
   color: white;
 }
+
 .sub-button img {
   margin: 0px 0px;
   padding: 0px 0px;
   height: 15px;
 }
+
 .sub-span {
   height: 24px;
   padding: 5px 5px;
@@ -73,12 +84,15 @@
   border-bottom-left-radius: 0px;
   background-color: var(--background);
 }
+
 .details-stats-bar-right {
-  height: 43px;
+  height: 100%;
   display: flex;
   justify-content: flex-end;
-  align-items: flex-end;
+  align-items: flex-start;
+  flex-direction: column;
 }
+
 .details-action-bar {
   width: 100%;
   padding-top: 10px;
@@ -88,13 +102,17 @@
   border-top: .5px solid rgba(51, 51, 51,.2);
   color: #666666;
 }
+
 .details-action-bar-left, .details-action-bar-right {
   display: flex;
+  height: 100%;
 }
+
 .details-action-bar i {
   margin: 0px 5px;
   color: #666666;
 }
+
 .details-action-bar button {
   display: flex;
   align-items: center;
@@ -107,6 +125,20 @@
 
 .like-button, .dislike-button {
   position: relative;
+}
+
+.like-dislike-ratio-background {
+  width: 100%;
+  height: 2px;
+  border: 1px solid #cccccc;
+  box-sizing: border-box;
+}
+
+.like-dislike-ratio {
+  height: 2px;
+  width: 100%;
+  background: #167AC6;
+  
 }
 
 .details-action-bar-count-text {
