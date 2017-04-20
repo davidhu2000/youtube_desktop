@@ -3,7 +3,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
+
 .details-upper-container {
   padding: 20px 20px 10px;
   margin-top: 10px;

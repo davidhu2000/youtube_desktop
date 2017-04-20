@@ -10,7 +10,8 @@ class Details extends React.Component {
 
     this.state = {
       details: {},
-      subs: 0
+      subs: 0,
+      showAllDecription: false
     };
   }
 
@@ -26,8 +27,25 @@ class Details extends React.Component {
 
   addDescription() {
     if (this.state.details.snippet.description){
-      let descript = this.state.details.snippet.description.slice(0,200);
-      return <p className="description">{descript + "..."}</p>;
+      let descript;
+      let buttonVal;
+      if(this.state.showAllDecription) {
+        descript = this.state.details.snippet.description.split('\n');
+        buttonVal = 'Show less';
+      } else {
+        descript = [this.state.details.snippet.description.slice(0,200)];
+        buttonVal = 'Show more';
+      }
+
+      return (
+        <p className="description">
+          { descript.map(line => <span key={Math.random()}>{line}<br/></span>) }
+          <hr />
+          <button onClick={ () => this.setState({ showAllDecription: !this.state.showAllDecription }) }>
+            { buttonVal }
+          </button>
+        </p>
+      );
     }
   }
 
@@ -36,7 +54,7 @@ class Details extends React.Component {
     if (!this.state.details.snippet) {
       return null;
     }
-    console.log(this.state);
+
     const { title, channelTitle, publishedAt } = this.state.details.snippet;
     const { viewCount, likeCount, dislikeCount } = this.state.details.statistics;
 
@@ -87,9 +105,9 @@ class Details extends React.Component {
           <h3 className="details-date">
             Published on {parseDate(publishedAt)}
           </h3>
-          <p>
-          {this.addDescription()}
-          </p>
+          <div>
+            {this.addDescription()}
+          </div>
         </div>
 
       </div>
