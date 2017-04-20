@@ -1,4 +1,4 @@
-.category-box-title {
+.video-box-title {
   line-height: 18px;
   color: var(--category-title);
   cursor: pointer;
@@ -7,7 +7,7 @@
   font-size: 15px;
 }
 
-.category-box {
+.video-box {
   background: var(--background);
   min-width: 438px;
   padding: 15px 18px;
@@ -16,39 +16,48 @@
   box-shadow: 1px 1px 1px var(--border);
 }
 
-.category-box-videos{
+.video-box-videos{
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   position: relative;
 }
 
+.multiline {
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.multiline > div {
+  margin-bottom: 20px;
+}
+
 @media screen and (min-width: 488px) {
-  .category-box {
+  .video-box {
     width: 438px;
   }
 }
 
 @media screen and (min-width: 694px) {
-  .category-box {
+  .video-box {
     width: 644px;
   }
 }
 
 @media screen and (min-width: 900px) {
-  .category-box {
+  .video-box {
     width: 850px;
   }
 }
 
 @media screen and (min-width: 1132px) {
-  .category-box {
+  .video-box {
     width: 1056px;
   }
 }
 
 @media screen and (min-width: 1312px) {
-  .category-box {
+  .video-box {
     width: 1262px;
   }
 }
@@ -95,4 +104,15 @@
 .next:hover {
   transform: translateX(25px);
   box-shadow: 2px 2px 3px var(--border);
+}
+
+.video-box-toggle {
+  width: 100%;
+  color: #167ac6;
+  text-align: right;
+  margin-bottom: 0px;
+  cursor: pointer;
+  font-size: 11px;
+  margin-top: -15px;
+  font-weight: bolder;
 }
