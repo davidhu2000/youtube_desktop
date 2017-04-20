@@ -21,13 +21,6 @@ class CategoryBox extends React.Component {
     ));
   }
 
-  // componentDidMount() {
-  //   window.addEventListener("resize", this.updateEndIndex.bind(this));
-  // }
-  //
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize", this.updateEndIndex.bind(this));
-  // }
   componentWillReceiveProps(newProps) {
     if (this.props.windowWidth !== newProps.windowWidth) {
       this.updateEndIndex();

@@ -43,6 +43,6 @@ VideoSearchItem.defaultProps = {
   cssPrefix: '',
   maxTitleLength: 80,
   maxDescriptionLength: 123
-}
+};
 
 export { VideoSearchItem };

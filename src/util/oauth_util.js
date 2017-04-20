@@ -1,4 +1,5 @@
 import YT_API_KEY from '../../config/api_key';
+import { createUrlParams } from '../helpers';
 const { BrowserWindow } = window.require('electron').remote;
 const request = window.require('superagent');
 
@@ -44,9 +45,19 @@ export const authenticateUser = dispatch => {
     'https://www.googleapis.com/auth/youtube.upload',
     'https://www.googleapis.com/auth/userinfo.profile',
     'https://www.googleapis.com/auth/userinfo.email'
-  ].join('%20');
+  ].join(' ');
 
-  let requestUrl = `${baseUrl}?client_id=${YT_API_KEY.clientId}&redirect_uri=${redirectUrl}&scope=${scope}&response_type=code&access_type=offline`;
+  let params = {
+    client_id: YT_API_KEY.clientId,
+    redirect_uri: redirectUrl,
+    scope: scope,
+    response_type: 'code',
+    access_type: 'offline'
+  };
+
+  let urlParams = createUrlParams(params);
+
+  let requestUrl = `${baseUrl}?${urlParams}`;
 
   let options = {
     client_id: YT_API_KEY.clientId,
