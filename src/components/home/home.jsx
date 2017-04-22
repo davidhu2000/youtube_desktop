@@ -36,17 +36,17 @@ class Home extends React.Component {
       this.props.fetchRecommendedVideos();
     }
 
-    window.onresize = this.updateWindowSize.bind(this);
+    window.addEventListener('resize', this.updateWindowSize.bind(this));
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.loggedIn) {
+    if (!this.props.loggedIn && newProps.loggedIn) {
       newProps.fetchRecommendedVideos();
     } 
   }
 
   componentWillUnmount() {
-    window.onresize = null;
+    window.removeEventListener('resize', this.updateWindowSize.bind(this));
   }
 
   updateWindowSize() {
@@ -64,8 +64,8 @@ class Home extends React.Component {
         return (
           <VideoBox
             key={id}
-            windowWidth={this.state.windowWidth}
             title={title}
+            windowWidth={this.state.windowWidth}
             vids={channel.videos} />
         );
       });
