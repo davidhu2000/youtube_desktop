@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class DropdownMenu extends React.Component {
   constructor(props) {
@@ -32,8 +33,12 @@ class DropdownMenu extends React.Component {
         </div>
 
       </div>
-    )
+    );
   }
 }
+
+DropdownMenu.propTypes = {
+  logout: PropTypes.func
+};
 
 export { DropdownMenu };

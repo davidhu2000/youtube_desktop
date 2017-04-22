@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { VideoBoxItem } from './video_box_item';
 
 class VideoBox extends React.Component {
@@ -118,6 +119,13 @@ class VideoBox extends React.Component {
     }
   }
 }
+
+VideoBox.propTypes = {
+  multiline: PropTypes.bool,
+  title: PropTypes.string,
+  windowWidth: PropTypes.number,
+  vids: PropTypes.arrayOf(PropTypes.object)
+};
 
 VideoBox.defaultProps = {
   multiline: false

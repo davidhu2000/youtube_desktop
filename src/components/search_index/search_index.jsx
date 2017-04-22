@@ -1,4 +1,5 @@
 import React          from 'react';
+import PropTypes      from 'prop-types';
 import { withRouter } from 'react-router';
 import { VideoList }  from '../common';
 
@@ -63,10 +64,30 @@ class SearchIndex extends React.Component {
       );
     } else {
       // add spinner
-      return <div>Loading</div>
+      return <div>Loading</div>;
     }
-
   }
 }
+
+SearchIndex.propTypes = {
+  receiveQuery: PropTypes.func.isRequired,
+  searchVideos: PropTypes.func.isRequired, 
+  clearVideos: PropTypes.func.isRequired, 
+  previousPage: PropTypes.func.isRequired,
+  nextPage: PropTypes.func.isRequired, 
+  goToPage: PropTypes.func.isRequired, 
+  query: PropTypes.string,
+  searchResult: PropTypes.shape({
+    nextPageToken: PropTypes.string,
+    prevPageToken: PropTypes.string,
+    pageNumber: PropTypes.number,
+    query: PropTypes.string,
+    pageInfo: PropTypes.shape({
+      resultsPerPage: PropTypes.number,
+      totalResults: PropTypes.number
+    }),
+    videos: PropTypes.object
+  })
+};
 
 export default withRouter(SearchIndex);
