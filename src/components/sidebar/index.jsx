@@ -15,7 +15,7 @@ class Sidebar extends React.Component {
   }
 
   render() {
-    let myChannelId = this.props.channelId;
+    let myChannelId = JSON.parse(window.localStorage.getItem('google-user')).myChannelId;
 
     return (
       <div id="sidebar" className='sidebar hidden'>

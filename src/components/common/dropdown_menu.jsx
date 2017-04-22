@@ -27,7 +27,6 @@ class DropdownMenu extends React.Component {
                 Logout
               </button>
             </div>
-
           </div>
         </div>
 

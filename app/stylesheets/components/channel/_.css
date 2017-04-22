@@ -4,7 +4,7 @@
 
 .banner-container, #banner {
   width: 100%;
-  height: 300px;
+  height: 230px;
 }
 
 .channel-banner {
@@ -13,60 +13,100 @@
   flex-direction: row;
   justify-content: space-between;
   left: 10%;
-  width: 100%;
+  right: 10%;
+  width: 80%;
 }
 
 .channel-banner-left {
   position: relative;
+  display: flex;
+  flex-direction: row;
 }
 
-.channel-banner-left {
+#channel-profile {
   position: relative;
+  left: 10%;
+  top: 15px;
+  border-radius: 150px;
+  height: 90px;
+  width: 90px;
 }
 
 #channel-details {
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   color: white;
+  top: 15px;
+  left: 30px;
 }
 
-#channel-profile {
+#channel-owner-name {
+  font-size: 18px;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+#channel-owner-subscribers {
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.channel-banner-right {
   position: relative;
-  left: 10%;
-  margin-top: 5px;
-  border-radius: 150px;
-  height: 160px;
-  width: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: black;
+  top: 15px;
+  font-weight: bold;
+}
+
+#subscribed-num {
+  margin-left: 5px;
+}
+
+#subscribe-button {
+  background-color: #EEE;
+  box-shadow: 1px 1px 1px darkgray;
+  border-radius: 2px;
+  padding: 10px 13px;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 #banner-bar {
   background-color: #657DAE;
-  height: 170px;
+  height: 120px;
   width: 100%;
 }
 
 #channel-navbar {
   background-color: #5B719E;
-  height: 70px;
+  height: 40px;
   width: 100%;
 }
 
 #channel-navbar > ul {
   display: flex;
   flex-direction: row;
-  margin-left: 10%;
+  margin-left: 5%;
 }
 
 #channel-navbar > ul > li {
   color: #EEE;
-  margin-left: 50px;
+  font-size: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
   letter-spacing: 0.5px;
-  margin-top: 27px;
-  padding-bottom: 19px;
+  margin-top: 14px;
+  padding-bottom: 9px;
+  text-transform: uppercase;
 }
 
 #channel-navbar > ul > li:hover {
   cursor: pointer;
-  border-bottom: 5px solid white;
+  border-bottom: 3px solid white;
 }
