@@ -2,14 +2,36 @@ import React          from 'react';
 import { connect }    from 'react-redux';
 import { withRouter } from 'react-router';
 
+import { fetchChannelVideos } from '../../actions/youtube_video_actions';
+import { CategoryBox } from '../common';
+
 class Channel extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  render() {
+  componentWillMount() {
+    this.props.fetchChannelVideos('UCOpcACMWblDls9Z6GERVi1A');
+    // TODO: Will need to pass channelId on click and use that to fetch videos and other information.
+  }
 
-    console.log(this.props);
+  renderVideos() {
+    let channelId = 'UCOpcACMWblDls9Z6GERVi1A';
+    let channelInfo = this.props.channelId['UCOpcACMWblDls9Z6GERVi1A'];
+    let videos = channelInfo ? channelInfo.videos : "";
+    let title = videos ? videos[0].snippet.channelTitle : "";
+
+    return (
+      <CategoryBox
+        key={channelId}
+        title={title}
+        vids={videos} />
+    )
+  }
+
+  render() {
+    let channelId = 'UCOpcACMWblDls9Z6GERVi1A';
+
     return (
       <div className='channel'>
         <div className="banner-container">
@@ -43,7 +65,7 @@ class Channel extends React.Component {
           <div>Main Video Description</div>
         </div>
         <div>
-          Sliders of videos
+          {this.props.channelId[channelId] && this.renderVideos()}
         </div>
       </div>
     );
@@ -51,11 +73,11 @@ class Channel extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-
+  channelId: state.channels
 });
 
 const mapDispatchToProps = dispatch => ({
-
+  fetchChannelVideos: id => dispatch(fetchChannelVideos(id))
 });
 
 export default connect(
