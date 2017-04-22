@@ -26,6 +26,7 @@ class Home extends React.Component {
       'UClgRkhTL3_hImCAmdLfDE4g',
       'UCYfdidRxbB8Qhf0Nx7ioOYw',
       'UCBR8-60-B28hp2BmDPdntcQ',
+      'UCOpcACMWblDls9Z6GERVi1A', // Screen Junkies for sample
     ];
 
     for (let i = 0; i < channelIds.length; i++) {
