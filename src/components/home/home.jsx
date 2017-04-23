@@ -36,7 +36,8 @@ class Home extends React.Component {
       this.props.fetchRecommendedVideos();
     }
 
-    window.addEventListener('resize', this.updateWindowSize.bind(this));
+    window.onresize = this.updateWindowSize.bind(this);
+    // window.addEventListener('resize', this.updateWindowSize.bind(this));
   }
 
   componentWillReceiveProps(newProps) {
@@ -46,7 +47,8 @@ class Home extends React.Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowSize.bind(this));
+    window.onresize = null;
+    // window.removeEventListener('resize', this.updateWindowSize.bind(this));
   }
 
   updateWindowSize() {
