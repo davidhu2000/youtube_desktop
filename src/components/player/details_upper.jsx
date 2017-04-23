@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import LikeDislikeRatio from './like_dislike_ratio';
 import { formatNumber } from '../../helpers';
-
 
 class DetailsUpper extends React.Component {
    constructor(props) {
@@ -29,15 +29,13 @@ class DetailsUpper extends React.Component {
   }
 
   render() {
+
     let {
       title, channelTitle, subs,
       viewCount, likeCount, dislikeCount } = this.props;
 
     likeCount = parseInt(likeCount);
     dislikeCount = parseInt(dislikeCount);
-
-    console.log(likeCount);
-    console.log(likeCount + (this.props.currentRating === 'like' ? 1 : 0) )
 
     let ratio = likeCount / (dislikeCount + likeCount);
 
@@ -103,5 +101,18 @@ class DetailsUpper extends React.Component {
     );
   }
 }
+
+DetailsUpper.propTypes = {
+  channelTitle: PropTypes.string,
+  context: PropTypes.object,
+  currentRating: PropTypes.string,
+  dislikeCount: PropTypes.string,
+  likeCount: PropTypes.string,
+  subs: PropTypes.string,
+  title: PropTypes.string,
+  videoId: PropTypes.string,
+  videosRate: PropTypes.func,
+  viewCount: PropTypes.string
+};
 
 export default DetailsUpper;

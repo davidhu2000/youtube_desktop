@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { fetchDetails, fetchVideoRating } from '../../actions/youtube_video_actions';
 import { videosRate } from '../../actions/interaction_actions';
 import DetailsUpper from './details_upper';
@@ -63,5 +64,9 @@ class Details extends React.Component {
     );
   }
 }
+
+Details.propTypes = {
+  videoId: PropTypes.string
+};
 
 export default Details;

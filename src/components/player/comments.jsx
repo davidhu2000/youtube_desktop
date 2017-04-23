@@ -1,5 +1,5 @@
 import React             from 'react';
-
+import PropTypes         from 'prop-types';
 import CommentsItem      from './comments_item';
 import { fetchComments } from '../../actions/youtube_video_actions';
 import YT_API_KEY        from '../../../config/api_key';
@@ -47,5 +47,9 @@ class Comments extends React.Component {
     );
   }
 }
+
+Comments.propTypes = {
+  videoId: PropTypes.string
+};
 
 export default Comments;

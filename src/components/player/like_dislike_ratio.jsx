@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class LikeDislikeRatio extends React.Component {
 
@@ -14,5 +15,9 @@ class LikeDislikeRatio extends React.Component {
     );
   }
 }
+
+LikeDislikeRatio.propTypes = {
+  ratio: PropTypes.number
+};
 
 export default LikeDislikeRatio;

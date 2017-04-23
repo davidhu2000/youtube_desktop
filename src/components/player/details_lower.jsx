@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { parseDate, formatNumber } from '../../helpers';
 
 class DetailsLower extends React.Component {
@@ -71,5 +72,12 @@ class DetailsLower extends React.Component {
     );
   }
 }
+
+DetailsLower.propTypes = {
+  channelTitle: PropTypes.string,
+  subs: PropTypes.string,
+  publishedAt: PropTypes.string,
+  description: PropTypes.string
+};
 
 export default DetailsLower;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { parseDate } from '../../helpers';
 
 class CommentsItem extends React.Component {
@@ -23,7 +24,10 @@ class CommentsItem extends React.Component {
       </div>
     );
   }
-
 }
+
+CommentsItem.propTypes = {
+  comment: PropTypes.object.isRequired
+};
 
 export default CommentsItem;
