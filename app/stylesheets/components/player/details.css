@@ -18,7 +18,7 @@
   background-color: var(--background);
 }
 
-.details-upper-container i, .total-views {
+.total-views {
   color: #666666;
 }
 

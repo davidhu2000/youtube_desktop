@@ -1,4 +1,5 @@
 import React                 from 'react';
+import PropTypes             from 'prop-types';
 import { hashHistory, Link } from 'react-router';
 
 class RelatedListItem extends React.Component {
@@ -34,5 +35,9 @@ class RelatedListItem extends React.Component {
     );
   }
 }
+
+RelatedListItem.propTypes = {
+  vid: PropTypes.object.isRequired
+};
 
 export default RelatedListItem;

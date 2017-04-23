@@ -2,6 +2,7 @@
 @import url('./center_menu.css');
 @import url('./right_menu.css');
 @import url('./left_menu.css');
+@import url('./dropdown_menu.css');
 
 .navbar {
   width: 100%;

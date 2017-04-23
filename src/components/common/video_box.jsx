@@ -92,8 +92,6 @@ class VideoBox extends React.Component {
   }
 
   render() {
-    console.log(this.props);
-    console.log(this.state)
     if (this.props.multiline) {
       let buttonVal = this.state.numRows === 2 ? 'Show more' : 'Show fewer';
       return (

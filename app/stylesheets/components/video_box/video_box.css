@@ -1,3 +1,11 @@
+.video-box {
+  background: var(--background);
+  min-width: 438px;
+  padding: 15px 18px;
+  height: 264px;
+  border-bottom: 1px solid var(--border);
+}
+
 .video-box-title {
   line-height: 18px;
   color: var(--category-title);
@@ -5,15 +13,6 @@
   font-weight: 500;
   padding-bottom: 10px;
   font-size: 15px;
-}
-
-.video-box {
-  background: var(--background);
-  min-width: 438px;
-  padding: 15px 18px;
-  height: 254px;
-  border: 1px solid var(--border);
-  box-shadow: 1px 1px 1px var(--border);
 }
 
 .video-box-videos{
@@ -26,10 +25,6 @@
 .multiline {
   flex-wrap: wrap;
   height: 100%;
-}
-
-.multiline > div {
-  margin-bottom: 20px;
 }
 
 @media screen and (min-width: 0px) {
@@ -63,56 +58,56 @@
 }
 
 .prev, .next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   position: absolute;
-  top: 35%;
-  width: 15px;
-  height: 60px;
-  margin-top: -22px;
-  color: #333;
-  font-weight: bold;
-  font-size: 13px;
-  opacity: 0.5;
-  vertical-align: center;
+  top: 20%;
+  background-color: #fff;
+  color: #999;
+  width: 40px;
+  height: 40px;
+  font-weight: 300;
+  font-size: 14px;
   text-align: center;
   line-height: 60px;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3), 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
 .next {
   right: 0;
-  margin-right: -15px;
+  margin-right: -20px;
 }
 
 .prev {
   left: 0;
-  margin-left: -15px;
+  margin-left: -20px;
 }
 
 .prev:hover, .next:hover {
-  opacity: 1;
-
-  border: 1px solid var(--border);
-  background: var(--background);
-  width: 40px;
+  color: #333;
 }
 
-.prev:hover {
-  transform: translateX(-25px);
-  box-shadow: 0px 1px 1px var(--border);
-}
-
-.next:hover {
-  transform: translateX(25px);
-  box-shadow: 2px 2px 3px var(--border);
+.prev:active, .next:active {
+  transform: translateY(2px);
+  box-shadow: 1px 1px 3px #bbb;
 }
 
 .video-box-toggle {
   width: 100%;
-  color: #167ac6;
-  text-align: right;
+  color: #777;
+  text-align: left;
+  text-transform: uppercase;
   margin-bottom: 0px;
   cursor: pointer;
   font-size: 11px;
   margin-top: -15px;
-  font-weight: bolder;
+  font-weight: 500;
+}
+
+.video-box-toggle:hover {
+  color: #111;
 }

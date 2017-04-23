@@ -1,4 +1,5 @@
 import React            from 'react';
+import PropTypes        from 'prop-types';
 import RelatedListItem  from './related_list_item';
 import { fetchRelated } from '../../actions/youtube_video_actions';
 import YT_API_KEY       from '../../../config/api_key';
@@ -6,7 +7,7 @@ import YT_API_KEY       from '../../../config/api_key';
 class Related extends React.Component {
 
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = { vids: [], autoplay: true };
   }
@@ -31,7 +32,7 @@ class Related extends React.Component {
   updateAutoplay(e) {
     this.setState({
       autoplay: e.target.checked
-    })
+    });
   }
 
   render() {
@@ -58,5 +59,9 @@ class Related extends React.Component {
     );
   }
 }
+
+Related.propTypes = {
+  videoId: PropTypes.string
+};
 
 export default Related;
