@@ -101,11 +101,6 @@ export const parseDate = date => {
 export const shortenString = (string, maxLength) => {
   if (string.length > maxLength) {
     let idx = maxLength - 3;
-    string = string.slice(0, idx);
-
-    while(string[idx] !== ' ') {
-      idx -= 1;
-    }
     string = string.slice(0, idx) + '...';
   }
   return string;

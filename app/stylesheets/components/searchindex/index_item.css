@@ -35,6 +35,8 @@
   margin-top: 5px;
   color: var(--basic-text);
   font-size: 12px;
+  word-wrap: break-word;
+  width: 100%;
 }
 
 /*SmlIndexItem*/
@@ -55,6 +57,7 @@
 
 .sml-index-item-right {
   height: 100%;
+  width: 172px;
   padding: 0px 10px;
   display: flex;
   flex-direction: column;
@@ -71,4 +74,6 @@
   margin-top: 5px;
   color: var(--basic-text);
   font-size: 12px;
+  word-wrap: break-word;
+  width: 100%;
 }

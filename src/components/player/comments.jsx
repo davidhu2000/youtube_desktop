@@ -30,7 +30,10 @@ class Comments extends React.Component {
   }
 
   render() {
-    console.log(this.state);
+    if (this.state.comments === "disabled") {
+      return (<div className="comments-container">Comments are disabled.</div>);
+    }
+
     return (
       <div className="comments-container">
         <div className="top-comments">
