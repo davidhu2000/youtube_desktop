@@ -35,24 +35,12 @@ class Home extends React.Component {
     if (this.props.loggedIn) {
       this.props.fetchRecommendedVideos();
     }
-
-    window.onresize = this.updateWindowSize.bind(this);
-    // window.addEventListener('resize', this.updateWindowSize.bind(this));
   }
 
   componentWillReceiveProps(newProps) {
     if (!this.props.loggedIn && newProps.loggedIn) {
       newProps.fetchRecommendedVideos();
     } 
-  }
-
-  componentWillUnmount() {
-    window.onresize = null;
-    // window.removeEventListener('resize', this.updateWindowSize.bind(this));
-  }
-
-  updateWindowSize() {
-    this.setState({ windowWidth: window.innerWidth });
   }
 
   renderChannels() {
@@ -67,7 +55,7 @@ class Home extends React.Component {
           <VideoBox
             key={id}
             title={title}
-            windowWidth={this.state.windowWidth}
+            windowWidth={this.props.setting.windowWidth}
             vids={channel.videos} />
         );
       });
@@ -81,7 +69,7 @@ class Home extends React.Component {
           title='Recommended'
           multiline={true}
           vids={this.props.recommended.videos || []}
-          windowWidth={this.state.windowWidth} />
+          windowWidth={this.props.setting.windowWidth} />
       );
     }
   }
@@ -95,7 +83,7 @@ class Home extends React.Component {
           {this.renderRecommended()}
           <VideoBox
             title='Trending' 
-            windowWidth={this.state.windowWidth}
+            windowWidth={this.props.setting.windowWidth}
             vids={videos} />
           {this.renderChannels()}
         </div>

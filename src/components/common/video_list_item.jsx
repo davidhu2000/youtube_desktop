@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { shortenString } from '../../helpers';
 
-class VideoSearchItem extends React.Component {
+class VideoListItem extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -40,17 +40,17 @@ class VideoSearchItem extends React.Component {
   }
 }
 
-VideoSearchItem.propTypes = {
+VideoListItem.propTypes = {
   cssPrefix: PropTypes.string,
   maxTitleLength: PropTypes.number,
   maxDescriptionLength: PropTypes.number,
   vid: PropTypes.object
 };
 
-VideoSearchItem.defaultProps = {
+VideoListItem.defaultProps = {
   cssPrefix: '',
   maxTitleLength: 80,
   maxDescriptionLength: 123
 };
 
-export { VideoSearchItem };
+export { VideoListItem };

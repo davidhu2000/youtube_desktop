@@ -9,11 +9,12 @@ import {
   fetchChannelVideos,
   fetchRecommendedVideos } from '../../actions/youtube_video_actions';
 
-const mapStateToProps = ({ trending, channels, user, recommended }) => ({
+const mapStateToProps = ({ trending, channels, user, recommended, setting }) => ({
   trending,
   channels,
   loggedIn: Boolean(user),
   recommended,
+  setting,
 });
 
 const mapDispatchToProps = dispatch => ({

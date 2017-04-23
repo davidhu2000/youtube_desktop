@@ -13,7 +13,7 @@ class VideoList extends React.Component {
   addSearchResults() {
     if (this.props.videos) {
       let vids = this.props.videos;
-      return vids.map(vid => <VideoSearchItem key={vid.etag} vid={vid} />);
+      return vids.map(vid => <VideoListItem key={vid.etag} vid={vid} />);
     }
   }
 
@@ -21,7 +21,7 @@ class VideoList extends React.Component {
     if (this.props.videos) {
       let vids = this.props.videos;
       return vids.map(vid => (
-        <VideoSearchItem
+        <VideoListItem
           key={vid.etag}
           vid={vid}
           cssPrefix='sml-'
