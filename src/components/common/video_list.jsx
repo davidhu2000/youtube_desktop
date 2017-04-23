@@ -1,7 +1,7 @@
 import React                from 'react';
 import PropTypes            from 'prop-types';
 import { formatNumber }     from '../../helpers';
-import { VideoSearchItem }  from '../common';
+import { VideoListItem }  from '../common';
 
 class VideoList extends React.Component {
   constructor(props) {
