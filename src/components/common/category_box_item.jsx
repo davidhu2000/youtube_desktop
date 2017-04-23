@@ -24,6 +24,7 @@ class CategoryBoxItem extends React.Component {
   }
 
   render () {
+    const channelId = this.props.channelId;
     const vid = this.props.vid;
     const { channelTitle, publishedAt } = vid.snippet;
     const { url } = vid.snippet.thumbnails.medium;
@@ -58,7 +59,7 @@ class CategoryBoxItem extends React.Component {
           <h1 className='video-title'>{title}</h1>
         </Link>
 
-        <Link to='#' className='category-box-item-channel'>
+        <Link to={`channel/${channelId}`} className='category-box-item-channel'>
           <p className='basic-text'>{channelTitle}</p>
         </Link>
 

@@ -17,6 +17,7 @@ class CategoryBox extends React.Component {
     return this.props.vids.slice(this.state.startIndex, this.state.endIndex).map( vid => (
       <CategoryBoxItem
         key={vid.etag}
+        channelId={this.props.channelId}
         vid={vid} />
     ));
   }

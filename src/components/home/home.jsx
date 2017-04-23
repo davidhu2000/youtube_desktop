@@ -39,6 +39,7 @@ class Home extends React.Component {
         return (
           <CategoryBox
             key={id}
+            channelId={id}
             title={title}
             vids={channel.videos} />
         );
