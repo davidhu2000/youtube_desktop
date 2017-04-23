@@ -15,21 +15,26 @@ class DropdownMenu extends React.Component {
     const { user } = this.props;
     return (
       <div id='dropdown-menu' className='hidden'>
-        <div className='arrow'></div>
-        <div className='gray-bar'>
-          <h1><strong>{ user.email }</strong></h1>
-        </div>
         <div className='user-info'>
           <img src={user.picture} />
-          <div>
-            <h1><strong>{ user.name }</strong></h1>
-            <div className='page-numbers'>
-              <button onClick={this.clearUser.bind(this)}>
-                Logout
-              </button>
-            </div>
+          <h1><strong>{ user.name }</strong></h1>
+        </div>
 
+        <div>    
+          <div className='button-list'>
+            <button onClick={() => {}}>
+              My channel
+            </button>
+            <button onClick={this.clearUser.bind(this)}>
+              Sign Out
+            </button>
           </div>
+        </div>
+
+        <div className='button-list dropdown-options'>
+          <button>Settings</button>
+          <button>Help</button>
+          <button>Send feedback</button>
         </div>
 
       </div>
