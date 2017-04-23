@@ -1,40 +1,64 @@
-import React            from 'react';
-import YT_API_KEY       from '../../../config/api_key';
-import { parseDate }    from '../../helpers';
-import { fetchDetails } from '../../actions/youtube_video_actions';
+import React from 'react';
+import { fetchDetails, fetchVideoRating } from '../../actions/youtube_video_actions';
+import { videosRate } from '../../actions/interaction_actions';
+import DetailsUpper from './details_upper';
+import DetailsLower from './details_lower';
 
 class Details extends React.Component {
 
   constructor(props) {
     super(props);
 
-    this.state = { details: {} };
+    this.state = {
+      details: {},
+      subs: 0,
+      rating: 'none'
+    };
+
   }
 
   componentDidMount() {
     fetchDetails(this.props.videoId, this);
+    fetchVideoRating(this.props.videoId, this);
   }
 
   componentWillReceiveProps(newProps) {
     if(newProps.videoId !== this.props.videoId) {
       fetchDetails(this.props.videoId, this);
-    }
-  }
-
-  addDescription() {
-    if (this.state.details.description){
-      let descript = this.state.details.description.slice(0,200);
-      return <p className="description">{descript + "..."}</p>;
+      fetchVideoRating(this.props.videoId, this);
     }
   }
 
   render() {
+    if (!this.state.details.snippet) {
+      return null;
+    }
+
+    const { details, subs } = this.state;
+    const { title, channelTitle, publishedAt, description } = details.snippet;
+    const { viewCount, likeCount, dislikeCount } = details.statistics;
+
     return (
+
       <div className="details-container">
-        <h5 className="details-date">
-          Published on {parseDate(this.state.details.publishedAt)}
-        </h5>
-        {this.addDescription()}
+        <DetailsUpper
+          subs={subs}
+          title={title}
+          likeCount={likeCount}
+          viewCount={viewCount}
+          videosRate={videosRate}
+          context={this}
+          currentRating={this.state.rating}
+          videoId={this.props.videoId}
+          channelTitle={channelTitle}
+          dislikeCount={dislikeCount} />
+
+        <DetailsLower
+          channelTitle={channelTitle}
+          subs={subs}
+          publishedAt={publishedAt}
+          description={description} />
+
       </div>
     );
   }

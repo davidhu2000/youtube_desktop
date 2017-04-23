@@ -43,6 +43,36 @@ export const channels = params => {
   return fetch(`${baseUrl}?${urlParams}`);
 };
 
+// to like or dislike a video
+export const videosRate = params => {
+  let baseUrl = 'https://www.googleapis.com/youtube/v3/videos/rate';
+
+  let defaultParams = {
+    access_token: localStorage.getItem('google-access-token'),
+    key: YT_API_KEY.clientId,
+    rating: "none"
+  };
+  let mergedParams = merge(defaultParams, params);
+  let urlParams = createUrlParams(mergedParams);
+
+  return fetch(`${baseUrl}?${urlParams}`, { method: 'post' });
+};
+
+// to get current user's rating of video;
+export const videosGetRating = params => {
+  let baseUrl = 'https://www.googleapis.com/youtube/v3/videos/getRating';
+
+  let defaultParams = {
+    access_token: localStorage.getItem('google-access-token'),
+    key: YT_API_KEY.clientId,
+  };
+
+  let mergedParams = merge(defaultParams, params);
+  let urlParams = createUrlParams(mergedParams);
+
+  return fetch(`${baseUrl}?${urlParams}`);
+};
+
 export const activities = params => {
   let baseUrl = 'https://www.googleapis.com/youtube/v3/activities';
 

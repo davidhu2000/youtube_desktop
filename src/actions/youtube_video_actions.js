@@ -174,9 +174,29 @@ export const fetchDetails = (videoId, context) => {
   return YoutubeVideoAPI.fetchDetails(videoId).then(
     response => response.json()
   ).then(responseJson => {
-    context.setState({ details: responseJson.items[0].snippet });
+    let details = responseJson.items[0];
+
+    let channelId = responseJson.items[0].snippet.channelId;
+    YoutubeVideoAPI.fetchChannelSubs(channelId).then(
+      subsResponse => subsResponse.json()
+    ).then(subsResponseJson => {
+      context.setState({
+        subs: subsResponseJson.items[0].statistics.subscriberCount ,
+        details,
+      });
+    }).catch(error => {
+      console.error(error);
+    });
   }).catch(error => {
     console.error(error);
+  });
+};
+
+export const fetchVideoRating = (videoId, context) => {
+  return YoutubeVideoAPI.fetchVideoRating(videoId).then(
+    response => response.json()
+  ).then(responseJson => {
+    context.setState({ rating: responseJson.items[0].rating });
   });
 };
 

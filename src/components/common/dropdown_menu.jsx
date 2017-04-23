@@ -32,7 +32,7 @@ class DropdownMenu extends React.Component {
         </div>
 
       </div>
-    )
+    );
   }
 }
 

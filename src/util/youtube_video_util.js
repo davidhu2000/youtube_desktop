@@ -13,16 +13,23 @@ export const fetchComments = videoId => {
   };
 
   let urlParams = createUrlParams(params);
-
-  return fetch(`${baseUrl}?${urlParams}`)
+  return fetch(`${baseUrl}?${urlParams}`);
 };
 
 export const fetchDetails = videoId => {
 
   let params = {
     id: videoId,
+    part: 'snippet,statistics'
   };
   return YoutubeApi.videos(params);
+};
+
+export const fetchVideoRating = videoId => {
+  let params = {
+    id: videoId,
+  };
+  return YoutubeApi.videosGetRating(params);
 };
 
 export const fetchRelated = videoId => {
@@ -111,6 +118,15 @@ export const fetchChannelVideos = channelId => {
   return YoutubeApi.search(params);
 };
 
+export const fetchChannelSubs = channelId => {
+  let params = {
+    id: channelId,
+    part: 'statistics'
+  };
+
+  return YoutubeApi.channels(params);
+};
+
 export const fetchRecommendedVideos = () => {
   let params = {
     home: true,
@@ -119,3 +135,4 @@ export const fetchRecommendedVideos = () => {
 
   return YoutubeApi.activities(params);
 };
+

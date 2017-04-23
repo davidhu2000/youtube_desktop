@@ -1,4 +1,5 @@
 import YT_API_KEY from '../../config/api_key';
+import { createUrlParams } from '../helpers';
 const { BrowserWindow } = window.require('electron').remote;
 const request = window.require('superagent');
 
@@ -37,9 +38,26 @@ const requestGoogleToken = (options, code) => {
 export const authenticateUser = dispatch => {
   let baseUrl = 'https://accounts.google.com/o/oauth2/auth';
   let redirectUrl = 'http://localhost:5000/oauth2callback';
-  let scope = 'https://gdata.youtube.com%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email';
+  let scope = [
+    'https://gdata.youtube.com',
+    'https://www.googleapis.com/auth/youtube',
+    'https://www.googleapis.com/auth/youtube.force-ssl',
+    'https://www.googleapis.com/auth/youtube.upload',
+    'https://www.googleapis.com/auth/userinfo.profile',
+    'https://www.googleapis.com/auth/userinfo.email'
+  ].join(' ');
 
-  let requestUrl = `${baseUrl}?client_id=${YT_API_KEY.clientId}&redirect_uri=${redirectUrl}&scope=${scope}&response_type=code&access_type=offline`;
+  let params = {
+    client_id: YT_API_KEY.clientId,
+    redirect_uri: redirectUrl,
+    scope: scope,
+    response_type: 'code',
+    access_type: 'offline'
+  };
+
+  let urlParams = createUrlParams(params);
+
+  let requestUrl = `${baseUrl}?${urlParams}`;
 
   let options = {
     client_id: YT_API_KEY.clientId,

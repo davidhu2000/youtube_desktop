@@ -1,14 +1,26 @@
 // create comma seperated number
-export const formatNumber = number => {
-  let formattedNumber = '';
-  number = number.toString();
-  for(let i = number.length-1; i>=0; i--) {
-    formattedNumber = number[i] + formattedNumber;
-    if ((number.length - i) % 3 === 0 && i !== 0) {
-      formattedNumber = ',' + formattedNumber;
-    }
+export const formatNumber = (number, shouldAbbreviate = false) => {
+	
+  if (shouldAbbreviate) {
+  	// return number in '1M' or '965K' format
+		var ranges = [
+		  { divider: 1e18 , suffix: 'P' },
+		  { divider: 1e15 , suffix: 'E' },
+		  { divider: 1e12 , suffix: 'T' },
+		  { divider: 1e09 , suffix: 'G' },
+		  { divider: 1e06 , suffix: 'M' },
+		  { divider: 1e03 , suffix: 'k' }
+		];
+	
+	  for (var i = 0; i < ranges.length; i++) {
+	    if (number >= ranges[i].divider) {
+	      return Math.floor(number / ranges[i].divider).toString() + ranges[i].suffix;
+	    }
+	  }
+	  return number.toString();
+  } else {
+    return Number(number).toLocaleString();
   }
-  return formattedNumber;
 };
 
 // TODO: fix this function
@@ -24,7 +36,6 @@ export const toggleTheme = () => {
       return cssRule instanceof CSSStyleRule
           && cssRule.selectorText.toLowerCase() === ruleName;
   });
-
 
   // result.style.cssText = '--video-title: #000';
 };
@@ -58,9 +69,7 @@ export const parseDuration = str => {
     values.unshift('0');
   }
   return values.join(':');
-
 };
-
 
 // return written version of date
 export const parseDate = date => {
@@ -96,4 +105,3 @@ export const shortenString = (string, maxLength) => {
   }
   return string;
 };
-
