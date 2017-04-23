@@ -30,6 +30,7 @@ class Comments extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="comments-container">
         <div className="top-comments">
