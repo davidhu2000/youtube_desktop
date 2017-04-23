@@ -24,12 +24,14 @@ class Channel extends React.Component {
     return (
       <CategoryBox
         key={channelId}
+        channelId={channelId}
         title={title}
         vids={videos} />
     )
   }
 
   render() {
+    console.log(this.props.router.location);
     let channelId = 'UCOpcACMWblDls9Z6GERVi1A';
 
     return (

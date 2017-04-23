@@ -56,6 +56,7 @@ class Home extends React.Component {
         return (
           <VideoBox
             key={id}
+            channelId={id}
             title={title}
             sidebarVisible={this.props.setting.sidebarVisible}
             windowWidth={this.props.setting.windowWidth}
