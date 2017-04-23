@@ -54,7 +54,7 @@ class DetailsLower extends React.Component {
             <div className="button-span">
               <button type="button" className="sub-button">
                 <span>SUBSCRIBE</span>
-                <span className="sub-span">{formatNumber(subs).slice(0,4) + "K"}</span>
+                <span className="sub-span">{formatNumber(subs, true)}</span>
               </button>
             </div>
           </div>
