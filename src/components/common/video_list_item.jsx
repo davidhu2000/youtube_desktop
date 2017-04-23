@@ -11,8 +11,12 @@ class VideoListItem extends React.Component {
   render () {
     const vid = this.props.vid;
     const { description, title, channelTitle, publishedAt } = vid.snippet;
-    const { viewCount } = vid.statistics;
     const { url } = vid.snippet.thumbnails.medium;
+
+    let viewCount = '---';
+    if (vid.statistics) {
+      viewCount = vid.statistics.viewCount;
+    }
 
     const { 
       cssPrefix, 
