@@ -20,6 +20,10 @@ class App extends React.Component {
   componentDidMount() {
     this.updateSetting();
     window.addEventListener('resize', this.updateSetting.bind(this));
+
+    if(this.props.location.pathname === '/search' && !this.props.searchResult.video) {
+      this.props.router.replace('/home');
+    }
   }
 
   componentWillUnmount() {
@@ -39,7 +43,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  setting: state.setting
+  setting: state.setting,
+  searchResult: state.searchResult
 });
 
 const mapDispatchToProps = dispatch => ({
