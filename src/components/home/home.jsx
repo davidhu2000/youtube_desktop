@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { VideoBox } from '../common';
 
 class Home extends React.Component {
@@ -36,17 +37,17 @@ class Home extends React.Component {
       this.props.fetchRecommendedVideos();
     }
 
-    window.onresize = this.updateWindowSize.bind(this);
+    window.addEventListener('resize', this.updateWindowSize.bind(this));
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.loggedIn) {
+    if (!this.props.loggedIn && newProps.loggedIn) {
       newProps.fetchRecommendedVideos();
     }
   }
 
   componentWillUnmount() {
-    window.onresize = null;
+    window.removeEventListener('resize', this.updateWindowSize.bind(this));
   }
 
   updateWindowSize() {
@@ -106,5 +107,30 @@ class Home extends React.Component {
     }
   }
 }
+
+Home.propTypes = {
+  fetchTrending: PropTypes.func.isRequired,
+  fetchChannelInfo: PropTypes.func.isRequired,
+  fetchChannelVideos: PropTypes.func.isRequired,
+  fetchCategories: PropTypes.func.isRequired,
+  fetchRecommendedVideos: PropTypes.func.isRequired,
+  loggedIn: PropTypes.bool.isRequired,
+  trending: PropTypes.shape({
+    date: PropTypes.number,
+    videos: PropTypes.arrayOf(PropTypes.object)
+  }),
+  channels: (props, propName, componentName) => {
+    let type = 'object';
+    if(!(new RegExp(type)).test(props[propName])) {
+      return new Error(
+        `Invalid prop ${propName} supplied to ${componentName}.
+        Expecting an object with id as keys and ${type} as values.`
+      );
+    }
+  },
+  recommended: PropTypes.shape({
+    videos: PropTypes.arrayOf(PropTypes.object)
+  })
+};
 
 export default Home;

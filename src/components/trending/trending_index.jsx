@@ -1,4 +1,5 @@
 import React          from 'react';
+import PropTypes      from 'prop-types';
 import { withRouter } from 'react-router';
 import { VideoList }  from '../common';
 
@@ -15,7 +16,6 @@ class TrendingIndex extends React.Component {
     }
   }
 
-
   render() {
     return (
       <VideoList
@@ -25,5 +25,13 @@ class TrendingIndex extends React.Component {
     );
   }
 }
+
+TrendingIndex.propTypes = {
+  fetchTrending: PropTypes.func.isRequired,
+  trending: PropTypes.shape({
+    date: PropTypes.number,
+    videos: PropTypes.arrayOf(PropTypes.object)
+  })
+};
 
 export default withRouter(TrendingIndex);

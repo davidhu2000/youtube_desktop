@@ -16,6 +16,7 @@
     "electron": "^1.6.2",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
+    "prop-types": "^15.5.8",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",

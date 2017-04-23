@@ -1,5 +1,6 @@
-import React                from 'react';
-import { connect }          from 'react-redux';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router';
 
 import { fetchChannelId }   from '../../actions/youtube_video_actions';
@@ -73,6 +74,10 @@ class Sidebar extends React.Component {
     );
   }
 }
+
+Sidebar.propTypes = {
+  loggedIn: PropTypes.bool.isRequired
+};
 
 const mapStateToProps = ({ user }) => ({
   loggedIn: Boolean(user),
