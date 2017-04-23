@@ -10,7 +10,7 @@
   padding: 20px 20px 10px;
   margin-top: 10px;
   width: 100%;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  /*box-shadow: 0 1px 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);*/
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -53,11 +53,11 @@
   align-items: center;
 }
 .sub-button {
-  height: 24px;
-  width: 90px;
+  height: 35px;
+  width: 145px;
   padding: 0px 5px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   border-radius: 2px;
   border-top-right-radius: 0px;
@@ -72,7 +72,7 @@
   height: 15px;
 }
 
-.sub-span {
+/*.sub-span {
   height: 24px;
   padding: 5px 5px;
   display: flex;
@@ -83,7 +83,7 @@
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
   background-color: var(--background);
-}
+}*/
 
 .details-stats-bar-right {
   height: 100%;

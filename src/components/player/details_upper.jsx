@@ -2,6 +2,7 @@ import React from 'react';
 import LikeDislikeRatio from './like_dislike_ratio';
 import { formatNumber } from '../../helpers';
 
+
 class DetailsUpper extends React.Component {
    constructor(props) {
      super(props);
@@ -28,10 +29,10 @@ class DetailsUpper extends React.Component {
   }
 
   render() {
-    let { 
-      title, channelTitle, subs, 
-      viewCount, likeCount, dislikeCount } = this.props; 
-    
+    let {
+      title, channelTitle, subs,
+      viewCount, likeCount, dislikeCount } = this.props;
+
     likeCount = parseInt(likeCount);
     dislikeCount = parseInt(dislikeCount);
 
@@ -39,23 +40,16 @@ class DetailsUpper extends React.Component {
     console.log(likeCount + (this.props.currentRating === 'like' ? 1 : 0) )
 
     let ratio = likeCount / (dislikeCount + likeCount);
-    
+
     return (
       <div className="details-upper-container">
           <h1 className="title">{title}</h1>
           <div className="details-stats-bar">
             <div className="details-stats-bar-left">
-              <a href="" className="channel-name">{channelTitle}</a>
-              <div className="button-span">
-              <button type="button" className="sub-button">
-                <img className='white-burger' src="./app/assets/whiteburger.png"/>
-                <span>Subscribe</span>
-              </button>
-              <span className="sub-span">{formatNumber(subs)}</span>
-              </div>
+              <span className="total-views">{formatNumber(viewCount)} views</span>
             </div>
             <div className="details-stats-bar-right">
-              <span className="total-views">{formatNumber(viewCount)} views</span>
+
               <LikeDislikeRatio ratio={ratio} />
             </div>
           </div>
@@ -71,9 +65,9 @@ class DetailsUpper extends React.Component {
               </button>
             </div>
             <div className="details-action-bar-right">
-              <button 
-                type="button" 
-                className="like-button" 
+              <button
+                type="button"
+                className="like-button"
                 style={{ color: this.ratingButtonColor('like') }}
                 onClick={ () => this.ratingVideo('like') } >
 
@@ -87,8 +81,8 @@ class DetailsUpper extends React.Component {
                 </span>
               </button>
 
-              <button 
-                type="button" 
+              <button
+                type="button"
                 className="dislike-button"
                 style={{ color: this.ratingButtonColor('dislike') }}
                 onClick={ () => this.ratingVideo('dislike') } >
@@ -102,7 +96,7 @@ class DetailsUpper extends React.Component {
                   <div className='arrow'></div>
                 </span>
               </button>
-              
+
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { parseDate } from '../../helpers';
+import { parseDate, formatNumber } from '../../helpers';
 
 class DetailsLower extends React.Component {
    constructor(props) {
@@ -17,7 +17,7 @@ class DetailsLower extends React.Component {
           <span key={Math.random()}>
             {line}<br/>
           </span>
-      );     
+      );
     });
   }
 
@@ -39,14 +39,23 @@ class DetailsLower extends React.Component {
   }
 
   render() {
+    let { subs, channelTitle } = this.props;
     return (
       <div className="details-lower-container">
+        <a href="" className="channel-name">{channelTitle}</a>
         <h3 className="details-date">
           Published on {parseDate(this.props.publishedAt)}
         </h3>
+        <div className="button-span">
+        <button type="button" className="sub-button">
+          <span>Subscribe</span>
+          <span className="sub-span">{formatNumber(subs)}</span>
+        </button>
+
+        </div>
         <div className="details-lower-description">
           {this.addDescription()}
-          <button 
+          <button
             className='details-description-button'
             onClick={ () => this.setState({ showAllDecription: !this.state.showAllDecription }) }>
             { this.state.showAllDecription ? 'Show less' : 'Show more' }

@@ -33,7 +33,7 @@ class Details extends React.Component {
     if (!this.state.details.snippet) {
       return null;
     }
-    
+
     const { details, subs } = this.state;
     const { title, channelTitle, publishedAt, description } = details.snippet;
     const { viewCount, likeCount, dislikeCount } = details.statistics;
@@ -41,7 +41,7 @@ class Details extends React.Component {
     return (
 
       <div className="details-container">
-        <DetailsUpper 
+        <DetailsUpper
           subs={subs}
           title={title}
           likeCount={likeCount}
@@ -53,7 +53,9 @@ class Details extends React.Component {
           channelTitle={channelTitle}
           dislikeCount={dislikeCount} />
 
-        <DetailsLower 
+        <DetailsLower
+          channelTitle={channelTitle}
+          subs={subs}
           publishedAt={publishedAt}
           description={description} />
 
