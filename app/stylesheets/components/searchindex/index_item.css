@@ -21,19 +21,46 @@
   justify-content: flex-start;
 }
 
+.index-item-right > * {
+  margin: 5px 0;
+}
+
 .index-item-right a:hover {
   text-decoration: underline;
 }
 
 .index-item-right h1 {
-  color: var(--video-title);
+  color: #111;
+  font-weight: 500;
   font-size: 16px;
 }
 
 .index-item-right p {
-  margin-top: 5px;
+  margin-top: 10px;
   color: var(--basic-text);
   font-size: 12px;
   word-wrap: break-word;
   width: 100%;
+}
+
+.index-item-right-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  font-size: 13px;
+}
+
+.index-item-right-info .channel-title {
+  color: #313131;
+  padding-right: 10px;
+}
+
+.index-item-right-info span {
+  color: var(--basic-text);
+}
+
+.publish-date::before {
+  content: '\002022';
+  margin: 0 5px;
 }

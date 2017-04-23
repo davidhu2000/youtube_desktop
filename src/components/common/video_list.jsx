@@ -22,8 +22,8 @@ class VideoList extends React.Component {
       },
       "large": {
         cssPrefix: '',
-        maxTitleLength: 80,
-        maxDescriptionLength: 123,
+        maxTitleLength: 150,
+        maxDescriptionLength: 180,
         itemWidth: 856
       }
     };
@@ -63,10 +63,15 @@ class VideoList extends React.Component {
 
   addSearchVolume() {
     if (this.props.volume && this.props.shouldShowVolume) {
-      return <p>About {formatNumber(this.props.volume)} results</p>;
+      return (
+        <div className="search-index-container-top">
+          <p>About {formatNumber(this.props.volume)} results</p>
+        </div>
+      );
     }
   }
 
+  // potentially replace this with infinite scroll?
   renderPageNumbers() {
     let { pageNumber, allPages } = this.props;
 
@@ -115,9 +120,7 @@ class VideoList extends React.Component {
     return (
       <div className="search-index">
         <div className="search-index-container">
-          <div className="search-index-container-top">
-            {this.addSearchVolume()}
-          </div>
+          {this.addSearchVolume()}
           {this.addSearchResults()}
           {this.renderPageNavigtion()}
         </div>

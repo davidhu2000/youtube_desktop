@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
-import { shortenString } from '../../helpers';
+import { shortenString, formatNumber, parseDate, timeFromNow } from '../../helpers';
 
 class VideoListItem extends React.Component {
   constructor(props) {
@@ -11,6 +11,7 @@ class VideoListItem extends React.Component {
   render () {
     const vid = this.props.vid;
     const { description, title, channelTitle, publishedAt } = vid.snippet;
+    const { viewCount } = vid.statistics;
     const { url } = vid.snippet.thumbnails.medium;
 
     const { cssPrefix, maxTitleLength, maxDescriptionLength } = this.props;
@@ -32,7 +33,11 @@ class VideoListItem extends React.Component {
           <Link to={`watch/${videoId}`}>
             <h1>{ shortenString(title, maxTitleLength) }</h1>
           </Link>
-          <p>{channelTitle}</p>
+          <div className='index-item-right-info'>
+            <span className='channel-title'>{channelTitle}</span>
+            <span className='view-count'> { formatNumber(viewCount, true) + ' Views'}</span>
+            <span className='publish-date'> { timeFromNow(publishedAt) }</span>
+          </div>
           <p>{ shortenString(description, maxDescriptionLength) }</p>
         </div>
       </div>
