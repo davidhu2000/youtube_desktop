@@ -1,4 +1,5 @@
 import React                from 'react';
+import PropTypes            from 'prop-types';
 import { formatNumber }     from '../../helpers';
 import { VideoSearchItem }  from '../common';
 
@@ -96,9 +97,15 @@ class VideoList extends React.Component {
   }
 }
 
+VideoList.propTypes = {
+  showShowPageNumber: PropTypes.bool,
+  showShowVolume: PropTypes.bool,
+  videos: PropTypes.arrayOf(PropTypes.object)
+};
+
 VideoList.defaultProps = {
   shouldShowPageNumber: true,
   shouldShowVolume: true
-}
+};
 
 export { VideoList };

@@ -1,4 +1,5 @@
 import React           from 'react';
+import PropTypes       from 'prop-types';
 import { hashHistory } from 'react-router';
 
 class SearchBar extends React.Component {
@@ -47,5 +48,9 @@ class SearchBar extends React.Component {
     );
   }
 }
+
+SearchBar.propTypes = {
+  receiveQuery: PropTypes.func.isRequired
+};
 
 export { SearchBar };

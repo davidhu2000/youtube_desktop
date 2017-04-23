@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withRouter, hashHistory } from 'react-router';
 import { VideoList } from '../common';
 
@@ -7,7 +8,7 @@ class Subscriptions extends React.Component {
     super(props);
     this.state = {
       count: 0
-    }
+    };
   }
 
   _redirect() {
@@ -48,8 +49,8 @@ class Subscriptions extends React.Component {
       });
 
       videos = videos.sort( (v1, v2) => {
-        let date1 = new Date(v1.snippet.publishedAt)
-        let date2 = new Date(v2.snippet.publishedAt)
+        let date1 = new Date(v1.snippet.publishedAt);
+        let date2 = new Date(v2.snippet.publishedAt);
         return date2 - date1;
       });
 
@@ -69,5 +70,20 @@ class Subscriptions extends React.Component {
 
   }
 }
+
+Subscriptions.propTypes = {
+  fetchSubscriptionUploads: PropTypes.func.isRequired,
+  fetchSubscriptions: PropTypes.func.isRequired,
+  loggedIn: PropTypes.bool.isRequired,
+  subscriptions: (props, propName, componentName) => {
+    let type = 'object';
+    if(!(new RegExp(type)).test(props[propName])) {
+      return new Error(
+        `Invalid prop ${propName} supplied to ${componentName}.
+        Expecting an object with id as keys and ${type} as values.`
+      );
+    }
+  }
+};
 
 export default withRouter(Subscriptions);

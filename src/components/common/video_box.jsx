@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { VideoBoxItem } from './video_box_item';
 
 class VideoBox extends React.Component {
@@ -91,6 +92,8 @@ class VideoBox extends React.Component {
   }
 
   render() {
+    console.log(this.props);
+    console.log(this.state)
     if (this.props.multiline) {
       let buttonVal = this.state.numRows === 2 ? 'Show more' : 'Show fewer';
       return (
@@ -118,6 +121,13 @@ class VideoBox extends React.Component {
     }
   }
 }
+
+VideoBox.propTypes = {
+  multiline: PropTypes.bool,
+  title: PropTypes.string,
+  windowWidth: PropTypes.number,
+  vids: PropTypes.arrayOf(PropTypes.object)
+};
 
 VideoBox.defaultProps = {
   multiline: false

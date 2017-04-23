@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import { formatNumber, parseDuration, shortenString } from '../../helpers';
 
@@ -62,5 +63,9 @@ class VideoBoxItem extends React.Component {
     );
   }
 }
+
+VideoBoxItem.propTypes = {
+  vid: PropTypes.object
+};
 
 export { VideoBoxItem };

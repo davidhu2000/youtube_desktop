@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { shortenString } from '../../helpers';
 
@@ -38,6 +39,13 @@ class VideoSearchItem extends React.Component {
     );
   }
 }
+
+VideoSearchItem.propTypes = {
+  cssPrefix: PropTypes.string,
+  maxTitleLength: PropTypes.number,
+  maxDescriptionLength: PropTypes.number,
+  vid: PropTypes.object
+};
 
 VideoSearchItem.defaultProps = {
   cssPrefix: '',
