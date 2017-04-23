@@ -103,11 +103,16 @@
 
 .video-box-toggle {
   width: 100%;
-  color: #167ac6;
-  text-align: right;
+  color: #777;
+  text-align: left;
+  text-transform: uppercase;
   margin-bottom: 0px;
   cursor: pointer;
   font-size: 11px;
   margin-top: -15px;
-  font-weight: bolder;
+  font-weight: 500;
+}
+
+.video-box-toggle:hover {
+  color: #111;
 }

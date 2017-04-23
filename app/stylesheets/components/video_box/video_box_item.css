@@ -8,7 +8,7 @@
   display: block;
   height: 110px;
   width: 196px;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .video-box-item-image img {
@@ -32,7 +32,7 @@
 
 .video-box-item h1 {
   color: #111;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 12px;
   padding-bottom: 10px;
 }
