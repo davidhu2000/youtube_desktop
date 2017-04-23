@@ -1,6 +1,5 @@
 .index-item {
   padding: 10px;
-  width: 693px;
   height: 158px;
   display: flex;
   align-items: center;
@@ -32,45 +31,6 @@
 }
 
 .index-item-right p {
-  margin-top: 5px;
-  color: var(--basic-text);
-  font-size: 12px;
-  word-wrap: break-word;
-  width: 100%;
-}
-
-/*SmlIndexItem*/
-
-.sml-index-item {
-  display: none;
-  padding: 10px;
-  width: 438px;
-  height: 158px;
-}
-
-.sml-index-item-left img {
-  height: 138px;
-  width: 246px;
-  padding: 0px;
-  margin: 0px;
-}
-
-.sml-index-item-right {
-  height: 100%;
-  width: 172px;
-  padding: 0px 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-
-.sml-index-item-right h1 {
-  color: var(--video-title);
-  font-size: 16px;
-}
-
-.sml-index-item-right p {
   margin-top: 5px;
   color: var(--basic-text);
   font-size: 12px;

@@ -23,12 +23,12 @@ class VideoListItem extends React.Component {
     }
 
     return (
-      <div className={`${cssPrefix}index-item`}>
-        <Link to={`watch/${videoId}`} className={`${cssPrefix}index-item-left`}>
+      <div className={`index-item`} style={{width: this.props.itemWidth }}>
+        <Link to={`watch/${videoId}`} className={`index-item-left`}>
           <img src={url} />
         </Link>
 
-        <div className={`${cssPrefix}index-item-right`}>
+        <div className={`index-item-right`}>
           <Link to={`watch/${videoId}`}>
             <h1>{ shortenString(title, maxTitleLength) }</h1>
           </Link>
@@ -41,16 +41,10 @@ class VideoListItem extends React.Component {
 }
 
 VideoListItem.propTypes = {
-  cssPrefix: PropTypes.string,
+  itemWidth: PropTypes.number,
   maxTitleLength: PropTypes.number,
   maxDescriptionLength: PropTypes.number,
   vid: PropTypes.object
-};
-
-VideoListItem.defaultProps = {
-  cssPrefix: '',
-  maxTitleLength: 80,
-  maxDescriptionLength: 123
 };
 
 export { VideoListItem };

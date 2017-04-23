@@ -7,27 +7,57 @@ class VideoList extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      "small": {
+        cssPrefix: '',
+        maxTitleLength: 34,
+        maxDescriptionLength: 40,
+        itemWidth: 430
+      },
+      "medium": {
+        cssPrefix: '',
+        maxTitleLength: 80,
+        maxDescriptionLength: 123,
+        itemWidth: 642
+      },
+      "large": {
+        cssPrefix: '',
+        maxTitleLength: 80,
+        maxDescriptionLength: 123,
+        itemWidth: 856
+      }
+    };
+
     this.renderPageNumbers = this.renderPageNumbers.bind(this);
+    this.addSearchResults = this.addSearchResults.bind(this);
   }
 
-  addSearchResults() {
-    if (this.props.videos) {
-      let vids = this.props.videos;
-      return vids.map(vid => <VideoListItem key={vid.etag} vid={vid} />);
+  determineListItemSize() {
+    let width = this.props.windowWidth;
+    switch (true) {
+      case (width < 660 ):
+        return 'small';
+      case (width >= 600 && width <875):
+        return 'medium';
+      case (width >= 865):
+        return 'large';
     }
   }
 
-  addSmlSearchResults() {
-    if (this.props.videos) {
-      let vids = this.props.videos;
-      return vids.map(vid => (
-        <VideoListItem
-          key={vid.etag}
-          vid={vid}
-          cssPrefix='sml-'
-          maxTitleLength={34}
-          maxDescriptionLength={40} />)
-      );
+  addSearchResults() {
+     if (this.props.videos) {
+       let size = this.determineListItemSize();
+       let vids = this.props.videos;
+
+       return vids.map(vid => (
+         <VideoListItem
+           key={vid.etag}
+           vid={vid}
+           itemWidth={this.state[size].itemWidth}
+           cssPrefix={this.state[size].cssPrefix}
+           maxTitleLength={this.state[size].maxTitleLength}
+           maxDescriptionLength={this.state[size].maxDescriptionLength} />)
+       );
     }
   }
 
@@ -89,7 +119,6 @@ class VideoList extends React.Component {
             {this.addSearchVolume()}
           </div>
           {this.addSearchResults()}
-          {this.addSmlSearchResults()}
           {this.renderPageNavigtion()}
         </div>
       </div>
@@ -100,7 +129,8 @@ class VideoList extends React.Component {
 VideoList.propTypes = {
   showShowPageNumber: PropTypes.bool,
   showShowVolume: PropTypes.bool,
-  videos: PropTypes.arrayOf(PropTypes.object)
+  videos: PropTypes.arrayOf(PropTypes.object),
+  windowWidth: PropTypes.number
 };
 
 VideoList.defaultProps = {

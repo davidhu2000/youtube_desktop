@@ -11,9 +11,10 @@ import {
   nextPage,
   goToPage } from '../../actions/youtube_video_actions';
 
-const mapStateToProps = ({ query, searchResult }) => ({
+const mapStateToProps = ({ query, searchResult, setting }) => ({
   query,
-  searchResult
+  searchResult,
+  setting
 });
 
 const mapDispatchToProps = dispatch => ({

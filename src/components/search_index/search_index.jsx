@@ -60,7 +60,8 @@ class SearchIndex extends React.Component {
           nextAction={nextAction}
           previousPage={previousPage}
           goToPage={goToPage}
-          videos={videos[pageNumber]} />
+          videos={videos[pageNumber]}
+          windowWidth={this.props.setting.windowWidth} />
       );
     } else {
       // add spinner
