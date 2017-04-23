@@ -48,54 +48,54 @@ class DetailsUpper extends React.Component {
             <div className="details-stats-bar-left">
               <span className="total-views">{formatNumber(viewCount)} views</span>
             </div>
+
             <div className="details-stats-bar-right">
 
-              <LikeDislikeRatio ratio={ratio} />
-            </div>
-          </div>
-          <div className="details-action-bar">
-            <div className="details-action-bar-left">
-              <button type="button" className="add-button">
-                <i className="material-icons">add</i>
-                <span>Add to</span>
-              </button>
-              <button type="button" className="share-button">
-                <i className="material-icons">share</i>
-                <span>Share</span>
-              </button>
-            </div>
-            <div className="details-action-bar-right">
-              <button
-                type="button"
-                className="like-button"
-                style={{ color: this.ratingButtonColor('like') }}
-                onClick={ () => this.ratingVideo('like') } >
+              <div className="details-rating-section">
+                <div className="details-action-bar-right">
+                  <button
+                    type="button"
+                    className="like-button"
+                    style={{ color: this.ratingButtonColor('like') }}
+                    onClick={ () => this.ratingVideo('like') } >
 
-                <i className="material-icons">thumb_up</i>
-                <span className="details-action-bar-count">
-                  {formatNumber(likeCount + (this.props.currentRating === 'like' ? 1 : 0) )}
-                </span>
-                <span className="details-action-bar-count-text">
-                  I like this
-                  <div className='arrow'></div>
-                </span>
-              </button>
+                    <i className="material-icons">thumb_up</i>
+                    <span className="details-action-bar-count">
+                      {formatNumber(likeCount + (this.props.currentRating === 'like' ? 1 : 0) ).slice(0,1) + "K"}
+                    </span>
+                    <span className="details-action-bar-count-text">
+                      I like this
+                      <div className='arrow'></div>
+                    </span>
+                  </button>
 
-              <button
-                type="button"
-                className="dislike-button"
-                style={{ color: this.ratingButtonColor('dislike') }}
-                onClick={ () => this.ratingVideo('dislike') } >
+                  <button
+                    type="button"
+                    className="dislike-button"
+                    style={{ color: this.ratingButtonColor('dislike') }}
+                    onClick={ () => this.ratingVideo('dislike') } >
 
-                <i className="material-icons">thumb_down</i>
-                <span className="details-action-bar-count">
-                  {formatNumber(dislikeCount + (this.props.currentRating === 'dislike' ? 1 : 0) )}
-                </span>
-                <span className="details-action-bar-count-text">
-                  I dislike this
-                  <div className='arrow'></div>
-                </span>
-              </button>
+                    <i className="material-icons">thumb_down</i>
+                    <span className="details-action-bar-count">
+                      {formatNumber(dislikeCount + (this.props.currentRating === 'dislike' ? 1 : 0) ).slice(0,1) + "K"}
+                    </span>
+                    <span className="details-action-bar-count-text">
+                      I dislike this
+                      <div className='arrow'></div>
+                    </span>
+                  </button>
+                </div>
+                <LikeDislikeRatio ratio={ratio} />
+              </div>
+
+              <div className="details-action-bar-left">
+                <button type="button" className="add-button">
+                  <i className="material-icons">add</i>
+                </button>
+                <button type="button" className="share-button">
+                  <i className="material-icons">share</i>
+                </button>
+              </div>
 
             </div>
           </div>

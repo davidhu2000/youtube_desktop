@@ -32,18 +32,22 @@
 
 .details-stats-bar {
   width: 100%;
+  height: 40px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  border-bottom: .5px solid rgba(51, 51, 51,.2);
+
 }
 
 .details-stats-bar-left {
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-start;
-  font-size: 12px;
-  margin: 10px 0px;
+  align-items: center;
+}
+
+.details-stats-bar-left span {
+  font-size: 16px;
 }
 
 .button-span {
@@ -86,25 +90,37 @@
 }*/
 
 .details-stats-bar-right {
-  height: 100%;
+  /*height: 100%;*/
+  height: 40px;
+  /*width: 270px;*/
   display: flex;
-  justify-content: flex-end;
+  /*justify-content: flex-end;
   align-items: flex-start;
-  flex-direction: column;
+  flex-direction: column;*/
+  justify-content: center;
+  align-items: center;
 }
 
-.details-action-bar {
-  width: 100%;
-  padding-top: 10px;
+.details-rating-section {
+  height: 100%;
+  /*margin-right: 5px;*/
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.details-action-bar-right button, .details-action-bar-left button {
+  display: flex;
   align-items: center;
-  border-top: .5px solid rgba(51, 51, 51,.2);
-  color: #666666;
+}
+
+.details-action-bar-right i {
+  margin-right: 5px;
 }
 
 .details-action-bar-left, .details-action-bar-right {
   display: flex;
+  align-items: center;
   height: 100%;
 }
 
@@ -119,8 +135,12 @@
   justify-content: space-around;
 }
 
-.add-button, .like-button {
-  margin-right: 10px;
+.like-button{
+  margin-right: 20px;
+}
+
+.add-button {
+  margin: 0px 20px;
 }
 
 .like-button, .dislike-button {
