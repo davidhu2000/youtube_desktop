@@ -38,7 +38,8 @@ class DropdownMenu extends React.Component {
 }
 
 DropdownMenu.propTypes = {
-  logout: PropTypes.func
+  logout: PropTypes.func,
+  user: PropTypes.object
 };
 
 export { DropdownMenu };

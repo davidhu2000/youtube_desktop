@@ -66,15 +66,15 @@
   top: 20%;
   background-color: #fff;
   color: #999;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   font-weight: 300;
-  font-size: 13px;
+  font-size: 14px;
   text-align: center;
   line-height: 60px;
   border: 1px solid #ddd;
   border-radius: 50px;
-  box-shadow: 1px 3px 5px #999;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3), 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
 .next {
