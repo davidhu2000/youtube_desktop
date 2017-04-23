@@ -24,7 +24,7 @@ class VideoList extends React.Component {
           key={vid.etag}
           vid={vid}
           cssPrefix='sml-'
-          maxTitleLength={33}
+          maxTitleLength={34}
           maxDescriptionLength={40} />)
       );
     }
@@ -47,7 +47,7 @@ class VideoList extends React.Component {
       count = allPages.length - 7;
     }
     return allPages.slice(count, count + 7).map(num => {
-      if (num == pageNumber) {
+      if (num === pageNumber) {
         return (
           <button key={Math.random()} disabled={true}>{num}</button>
         );

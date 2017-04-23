@@ -5,13 +5,14 @@ export const formatNumber = number => {
   for(let i = number.length-1; i>=0; i--) {
     formattedNumber = number[i] + formattedNumber;
     if ((number.length - i) % 3 === 0 && i !== 0) {
-      formattedNumber = ',' + formattedNumber
+      formattedNumber = ',' + formattedNumber;
     }
   }
-  return formattedNumber
-}
+  return formattedNumber;
+};
 
 // TODO: fix this function
+
 export const toggleTheme = () => {
   let ruleName = ':root';
   let result = null;
@@ -21,12 +22,12 @@ export const toggleTheme = () => {
 
   result = find.call(colorSheet.cssRules, cssRule => {
       return cssRule instanceof CSSStyleRule
-          && cssRule.selectorText.toLowerCase() == ruleName;
+          && cssRule.selectorText.toLowerCase() === ruleName;
   });
 
 
   // result.style.cssText = '--video-title: #000';
-}
+};
 
 // create params for url
 export const createUrlParams = obj => (
@@ -53,8 +54,13 @@ export const parseDuration = str => {
   	}
   });
 
-  return values.join(':')
-}
+  if (values.length === 1) {
+    values.unshift('0');
+  }
+  return values.join(':');
+
+};
+
 
 // return written version of date
 export const parseDate = date => {
@@ -80,4 +86,14 @@ export const parseDate = date => {
   newDate += date.getFullYear();
 
   return newDate;
-}
+};
+
+// add ... to strings that are too long
+export const shortenString = (string, maxLength) => {
+  if (string.length > maxLength) {
+    let idx = maxLength - 3;
+    string = string.slice(0, idx) + '...';
+  }
+  return string;
+};
+

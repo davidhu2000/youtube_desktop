@@ -27,7 +27,7 @@ export const nextPage = () => ({
 export const goToPage = pageNumber => ({
   type: GO_TO_PAGE,
   pageNumber
-})
+});
 
 export const searchVideos = (query, nextPageToken, pageNumber = 1) => dispatch => {
 
@@ -37,7 +37,7 @@ export const searchVideos = (query, nextPageToken, pageNumber = 1) => dispatch =
     videos => {
       videos['query'] = query;
       videos['pageNumber'] = pageNumber;
-      return dispatch(receiveVideos(videos))
+      return dispatch(receiveVideos(videos));
     }
   ).catch(
     err => console.log(err)
@@ -82,7 +82,7 @@ export const fetchChannelInfo = channelId => dispatch => {
   return YoutubeVideoAPI.fetchChannelInfo(channelId).then(
     res => res.json()
   ).then(
-    channels => dispatch(receiveChannel(channels.items[0]))
+    channels => dispatch(receiveChannelInfo(channels.items[0]))
   ).catch(
     err => console.log(err)
   );
@@ -116,12 +116,12 @@ export const fetchCategories = () => dispatch => {
   ).catch(
     err => console.log(err)
   );
-}
+};
 
 // subscription actions
 
 export const RECEIVE_SUBSCRIPTIONS = 'RECEIVE_SUBSCRIPTIONS';
-export const RECEIVE_SUBSCRIPTIONS_UPLOADS = 'RECEIVE_SUBSCRIPTIONS_UPLOADS'
+export const RECEIVE_SUBSCRIPTIONS_UPLOADS = 'RECEIVE_SUBSCRIPTIONS_UPLOADS';
 
 export const receiveSubscriptions = subscriptions => ({
   type: RECEIVE_SUBSCRIPTIONS,
@@ -149,22 +149,26 @@ export const fetchSubscriptionUploads = channelId => dispatch => {
       let sub = {
         channelId,
         videos: resJson.items
-      }
-      return dispatch(receiveSubscriptionsUploads(sub))
+      };
+      return dispatch(receiveSubscriptionsUploads(sub));
     }
-  )
-}
+  );
+};
 
 // Video Player Page Actions
 export const fetchComments = (videoId, context) => {
   return YoutubeVideoAPI.fetchComments(videoId).then(
     response => response.json()
   ).then(responseJson => {
-    context.setState({ comments: responseJson.items });
+    if (responseJson.items) {
+      context.setState({ comments: responseJson.items });
+    } else if (responseJson.error && responseJson.error.code === 403) {
+      context.setState({ comments: "disabled" });
+    }
   }).catch(error => {
     console.error(error);
   });
-}
+};
 
 export const fetchDetails = (videoId, context) => {
   return YoutubeVideoAPI.fetchDetails(videoId).then(
@@ -173,8 +177,8 @@ export const fetchDetails = (videoId, context) => {
     context.setState({ details: responseJson.items[0].snippet });
   }).catch(error => {
     console.error(error);
-  })
-}
+  });
+};
 
 export const fetchRelated = (videoId, context) => {
   return YoutubeVideoAPI.fetchRelated(videoId).then(
@@ -184,7 +188,7 @@ export const fetchRelated = (videoId, context) => {
   }).catch(error => {
     console.error(error);
   })
-}
+};
 
 // Channel Actions
 export const RECEIVE_MY_CHANNEL_ID = 'RECEIVE_MY_CHANNEL_ID';
@@ -192,7 +196,7 @@ export const RECEIVE_MY_CHANNEL_ID = 'RECEIVE_MY_CHANNEL_ID';
 export const receiveMyChannelId = myChannelId => ({
   type: RECEIVE_MY_CHANNEL_ID,
   myChannelId
-})
+});
 
 export const fetchChannelId = () => dispatch => {
   return YoutubeVideoAPI.fetchAuthUserChannelId().then(
@@ -200,4 +204,22 @@ export const fetchChannelId = () => dispatch => {
   ).then(
     responseJson => dispatch(receiveMyChannelId(responseJson.items[0].id))
   );
-}
+};
+
+// recommended actions
+export const RECEIVE_RECOMMENDED_VIDEOS = 'RECEIVE_RECOMMENDED_VIDEOS';
+
+export const receiveRecommendedVideos = videos => ({
+  type: RECEIVE_RECOMMENDED_VIDEOS,
+  videos
+});
+
+export const fetchRecommendedVideos = () => dispatch => {
+  return YoutubeVideoAPI.fetchRecommendedVideos().then(
+    response => response.json()
+  ).then(responseJson => {
+    return dispatch(receiveRecommendedVideos(responseJson.items));
+  }).catch(error => {
+    console.log(error);
+  });
+};

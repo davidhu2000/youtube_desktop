@@ -1,14 +1,19 @@
-import React           from 'react';
-import { CategoryBox } from '../common';
+import React from 'react';
+import { VideoBox } from '../common';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      windowWidth: window.innerWidth
+    };
   }
 
   componentDidMount() {
     let ms = 24 * 3600 * 1000;
-    if(Date.now() - this.props.trending.date > ms || !this.props.trending.videos) {
+    let { trending } = this.props;
+    if (Date.now() - trending.date > ms || !trending.videos) {
       this.props.fetchTrending();
     }
 
@@ -22,24 +27,45 @@ class Home extends React.Component {
       'UCOpcACMWblDls9Z6GERVi1A', // Screen Junkies for sample
     ];
 
-    for(let i = 0; i < channelIds.length; i++) {
+    for (let i = 0; i < channelIds.length; i++) {
       const id = channelIds[i];
       this.props.fetchChannelVideos(id);
     }
+
+    if (this.props.loggedIn) {
+      this.props.fetchRecommendedVideos();
+    }
+
+    window.onresize = this.updateWindowSize.bind(this);
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.loggedIn) {
+      newProps.fetchRecommendedVideos();
+    }
+  }
+
+  componentWillUnmount() {
+    window.onresize = null;
+  }
+
+  updateWindowSize() {
+    this.setState({ windowWidth: window.innerWidth });
   }
 
   renderChannels() {
     let channels = this.props.channels;
 
     let ids = Object.keys(channels);
-    if(ids[0]) {
-      return ids.map( id => {
+    if (ids[0]) {
+      return ids.map(id => {
         let channel = channels[id];
         let title = channel.videos[0].snippet.channelTitle;
         return (
-          <CategoryBox
+          <VideoBox
             key={id}
             channelId={id}
+            windowWidth={this.state.windowWidth}
             title={title}
             vids={channel.videos} />
         );
@@ -47,21 +73,37 @@ class Home extends React.Component {
     }
   }
 
-  render() {
+  renderRecommended() {
+    if (this.props.loggedIn && this.props.recommended.videos) {
+      return (
+        <VideoBox
+          title='Recommended'
+          multiline={true}
+          vids={this.props.recommended.videos || []}
+          windowWidth={this.state.windowWidth} />
+      );
+    }
+  }
 
-    if(this.props.trending.videos) {
-       return (
-         <div className='home-page'>
-           <CategoryBox title='Trending' vids={this.props.trending.videos}/>
-           {this.renderChannels()}
-         </div>
-       );
+  render() {
+    const { videos } = this.props.trending;
+
+    if (videos) {
+      return (
+        <div className='home-page'>
+          {this.renderRecommended()}
+          <VideoBox
+            title='Trending'
+            windowWidth={this.state.windowWidth}
+            vids={videos} />
+          {this.renderChannels()}
+        </div>
+      );
     } else {
       return (
         <div className='home-page'></div>
-      )
+      );
     }
-
   }
 }
 

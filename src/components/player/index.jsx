@@ -5,6 +5,8 @@ import Details        from './details';
 import Related        from './related';
 import Comments       from './comments';
 
+import videoWindow from '../../renderer/video_page';
+
 class VideoDetail extends React.Component {
 
   constructor(props) {
@@ -16,6 +18,7 @@ class VideoDetail extends React.Component {
     return (
       <div className="player-container">
         <div className="left-frame">
+          <button onClick={() => videoWindow(videoId).show()}>Pop Off</button>
           <Player   videoId={videoId}/>
           <Details  videoId={videoId}/>
           <Comments videoId={videoId}/>

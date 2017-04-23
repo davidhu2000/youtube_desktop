@@ -6,11 +6,14 @@ import {
   fetchTrending,
   fetchCategories,
   fetchChannelInfo,
-  fetchChannelVideos } from '../../actions/youtube_video_actions';
+  fetchChannelVideos,
+  fetchRecommendedVideos } from '../../actions/youtube_video_actions';
 
-const mapStateToProps = ({ trending, channels }) => ({
+const mapStateToProps = ({ trending, channels, user, recommended }) => ({
   trending,
-  channels
+  channels,
+  loggedIn: Boolean(user),
+  recommended,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -18,6 +21,7 @@ const mapDispatchToProps = dispatch => ({
   fetchChannelInfo: id => dispatch(fetchChannelInfo(id)),
   fetchChannelVideos: id => dispatch(fetchChannelVideos(id)),
   fetchCategories: () => dispatch(fetchCategories()),
+  fetchRecommendedVideos: () => dispatch(fetchRecommendedVideos()),
 });
 
 export default connect(

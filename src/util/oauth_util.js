@@ -32,20 +32,20 @@ const requestGoogleToken = (options, code) => {
     }
   });
 
-}
+};
 
 export const authenticateUser = dispatch => {
   let baseUrl = 'https://accounts.google.com/o/oauth2/auth';
   let redirectUrl = 'http://localhost:5000/oauth2callback';
   let scope = 'https://gdata.youtube.com%20https://www.googleapis.com/auth/userinfo.profile%20https://www.googleapis.com/auth/userinfo.email';
 
-  let requestUrl = `${baseUrl}?client_id=${YT_API_KEY.clientId}&redirect_uri=${redirectUrl}&scope=${scope}&response_type=code&access_type=offline`
+  let requestUrl = `${baseUrl}?client_id=${YT_API_KEY.clientId}&redirect_uri=${redirectUrl}&scope=${scope}&response_type=code&access_type=offline`;
 
   let options = {
     client_id: YT_API_KEY.clientId,
     client_secret: YT_API_KEY.clientSecret,
     scope: scope
-  }
+  };
 
   let authWindow = new BrowserWindow({
     width: 800,
@@ -58,8 +58,8 @@ export const authenticateUser = dispatch => {
   authWindow.show();
 
   const handleCallback = url => {
-    let raw_code = /code=([^&]*)/.exec(url) || null;
-    let code = (raw_code && raw_code.length > 1) ? raw_code[1] : null;
+    let rawCode = /code=([^&]*)/.exec(url) || null;
+    let code = (rawCode && rawCode.length > 1) ? rawCode[1] : null;
     let error = /\?error=(.+)$/.exec(url);
 
     if (code || error) {
@@ -75,7 +75,7 @@ export const authenticateUser = dispatch => {
        // render some error
       //  console.log(error);
     }
-  }
+  };
 
   // authWindow.webContents.on('will-navigate', (event, url) => {
   //   handleCallback(url);
@@ -89,12 +89,12 @@ export const authenticateUser = dispatch => {
   authWindow.on('close', function() {
       authWindow = null;
   }, false);
-}
+};
 
 export const loginUser = dispatch => {
   // console.log('do login redux here');
   dispatch(fetchUserInfo());
-}
+};
 
 export const fetchUserInfo = () => dispatch => {
   let accessToken = localStorage.getItem('google-access-token');
@@ -104,7 +104,7 @@ export const fetchUserInfo = () => dispatch => {
     .end((err, response) => {
       // console.log(response);
       if (response && response.ok) {
-        localStorage.setItem('google-user', JSON.stringify(response.body))
+        localStorage.setItem('google-user', JSON.stringify(response.body));
         dispatch({
           type: "RECEIVE_USER",
           user: response.body
@@ -114,8 +114,8 @@ export const fetchUserInfo = () => dispatch => {
         console.log("err");
         console.log(err);
       }
-    })
-}
+    });
+};
 
 export const refreshToken = () => {
   // console.log('refreshing');
@@ -131,7 +131,7 @@ export const refreshToken = () => {
     if (response && response.ok) {
       // Success - Received Token.
       window.localStorage.setItem('google-access-token', response.body.access_token);
-      window.localStorage.setItem('google-token-start-time', Date.now())
+      window.localStorage.setItem('google-token-start-time', Date.now());
     } else {
       // Error - Show messages.
       console.log("err");
@@ -139,4 +139,4 @@ export const refreshToken = () => {
       console.log(err);
     }
   });
-}
+};
