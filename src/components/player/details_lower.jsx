@@ -42,17 +42,23 @@ class DetailsLower extends React.Component {
     let { subs, channelTitle } = this.props;
     return (
       <div className="details-lower-container">
-        <a href="" className="channel-name">{channelTitle}</a>
-        <h3 className="details-date">
-          Published on {parseDate(this.props.publishedAt)}
-        </h3>
-        <div className="button-span">
-        <button type="button" className="sub-button">
-          <span>Subscribe</span>
-          <span className="sub-span">{formatNumber(subs)}</span>
-        </button>
-
+        <div className="details-lower-container-upper">
+          <div className="details-lower-container-upper-left">
+            <a href="" className="channel-name">{channelTitle}</a>
+            <h3 className="details-date">
+              Published on {parseDate(this.props.publishedAt)}
+            </h3>
+          </div>
+          <div className="details-lower-container-upper-right">
+            <div className="button-span">
+              <button type="button" className="sub-button">
+                <span>SUBSCRIBE</span>
+                <span className="sub-span">{formatNumber(subs).slice(0,4) + "K"}</span>
+              </button>
+            </div>
+          </div>
         </div>
+
         <div className="details-lower-description">
           {this.addDescription()}
           <button
