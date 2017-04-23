@@ -1,5 +1,5 @@
 .index-item {
-  padding: 10px;
+  /*padding: 10px;*/
   height: 158px;
   display: flex;
   align-items: center;
@@ -47,6 +47,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  flex-wrap: wrap;
   width: 100%;
   font-size: 13px;
 }
@@ -60,7 +61,7 @@
   color: var(--basic-text);
 }
 
-.publish-date::before {
+.view-count::after {
   content: '\002022';
   margin: 0 5px;
 }

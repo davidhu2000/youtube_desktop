@@ -9,21 +9,21 @@ class VideoList extends React.Component {
 
     this.state = {
       "small": {
-        cssPrefix: '',
         maxTitleLength: 34,
         maxDescriptionLength: 40,
+        maxChannelTitleLength: 15,
         itemWidth: 430
       },
       "medium": {
-        cssPrefix: '',
         maxTitleLength: 80,
         maxDescriptionLength: 123,
+        maxChannelTitleLength: 200,
         itemWidth: 642
       },
       "large": {
-        cssPrefix: '',
         maxTitleLength: 150,
         maxDescriptionLength: 180,
+        maxChannelTitleLength: 200,
         itemWidth: 856
       }
     };
@@ -54,9 +54,9 @@ class VideoList extends React.Component {
            key={vid.etag}
            vid={vid}
            itemWidth={this.state[size].itemWidth}
-           cssPrefix={this.state[size].cssPrefix}
            maxTitleLength={this.state[size].maxTitleLength}
-           maxDescriptionLength={this.state[size].maxDescriptionLength} />)
+           maxDescriptionLength={this.state[size].maxDescriptionLength}
+           maxChannelTitleLength={this.state[size].maxChannelTitleLength} />)
        );
     }
   }
