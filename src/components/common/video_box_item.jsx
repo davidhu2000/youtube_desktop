@@ -56,8 +56,8 @@ class VideoBoxItem extends React.Component {
         </Link>
 
         <div className="video-box-item-info">
-          <span className='basic-text'>{ formatNumber(viewCount) } views</span>
-          <span className='video-box-item-date basic-text'>{ moment(publishedAt).fromNow() } </span>
+          <span>{ formatNumber(viewCount) } views</span>
+          <span className='video-box-item-date'>{ moment(publishedAt).fromNow() } </span>
         </div>
       </div>
     );

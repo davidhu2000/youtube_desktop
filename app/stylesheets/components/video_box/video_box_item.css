@@ -1,5 +1,5 @@
 .video-box-item {
-  height: 159px;
+  height: 199px;
   width: 196px;
 }
 
@@ -31,9 +31,10 @@
 }
 
 .video-box-item h1 {
-  color: var(--video-title);
-  font-weight: 500;
-  font-size: 13px;
+  color: #111;
+  font-weight: bold;
+  font-size: 12px;
+  padding-bottom: 10px;
 }
 
 .video-box-item-title {
@@ -47,7 +48,7 @@
 .video-box-item-channel {
   width: 196px;
   font-size: 11px;
-  color: var(--basic-text);
+  color: #444;
   display: block;
 }
 
@@ -65,7 +66,7 @@
 
 .video-box-item-info {
   font-size: 11px;
-  color: var(--basic-text);
+  color: #888;
 }
 
 .video-box-item-date::before {
