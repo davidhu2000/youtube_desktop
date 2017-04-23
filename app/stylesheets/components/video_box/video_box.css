@@ -58,47 +58,42 @@
 }
 
 .prev, .next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   position: absolute;
-  top: 35%;
-  width: 15px;
-  height: 60px;
-  margin-top: -22px;
-  color: #333;
-  font-weight: bold;
+  top: 20%;
+  background-color: #fff;
+  color: #999;
+  width: 36px;
+  height: 36px;
+  font-weight: 300;
   font-size: 13px;
-  opacity: 0.5;
-  vertical-align: center;
   text-align: center;
   line-height: 60px;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  box-shadow: 1px 3px 5px #999;
 }
 
 .next {
   right: 0;
-  margin-right: -15px;
+  margin-right: -20px;
 }
 
 .prev {
   left: 0;
-  margin-left: -15px;
+  margin-left: -20px;
 }
 
 .prev:hover, .next:hover {
-  opacity: 1;
-
-  border: 1px solid var(--border);
-  background: var(--background);
-  width: 40px;
+  color: #333;
 }
 
-.prev:hover {
-  transform: translateX(-25px);
-  box-shadow: 0px 1px 1px var(--border);
-}
-
-.next:hover {
-  transform: translateX(25px);
-  box-shadow: 2px 2px 3px var(--border);
+.prev:active, .next:active {
+  transform: translateY(2px);
+  box-shadow: 1px 1px 3px #bbb;
 }
 
 .video-box-toggle {
