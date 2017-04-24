@@ -21,9 +21,13 @@ class Sidebar extends React.Component {
     ));
   }
 
+  shouldShow() {
+    return window.innerWidth >= 1300 ? '' : 'hidden';
+  }
+
   render() {
     return (
-      <div id="sidebar" className='sidebar hidden'>
+      <div id="sidebar" className={`sidebar ${this.shouldShow()}`}>
         {/* Header section */}
         <div className='sidebar-section' id='sidebar-header'>
           <div className='sidebar-item'>

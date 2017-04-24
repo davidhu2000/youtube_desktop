@@ -68,7 +68,7 @@ class VideoBox extends React.Component {
 
   // for sliding video box
   slideVideos(direction) {
-    let numVideos = this.numberVideosToShow();
+    let numVideos = this.calcBoxWidthAndNumVideos().numVideosPerRow;
 
     let startIndex = this.state.startIndex + direction * numVideos;
     let endIndex   = this.state.endIndex + direction * numVideos;

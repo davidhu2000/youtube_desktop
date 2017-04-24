@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import Sidebar from './sidebar';
 
-const mapStateToProps = ({ user, subscriptions }) => ({
+const mapStateToProps = ({ user, subscriptions, setting }) => ({
   loggedIn: Boolean(user),
-  subscriptions: subscriptions
+  subscriptions,
+  setting
 });
 
 const mapDispatchToProps = dispatch => ({
