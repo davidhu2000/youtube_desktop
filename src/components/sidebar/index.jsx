@@ -11,6 +11,10 @@ class Sidebar extends React.Component {
   render() {
     return (
       <div id="sidebar" className='sidebar hidden'>
+        <div className='sidebar-header'>
+          <i className="material-icons">menu</i>
+          <img className='youtube-logo' src="./app/assets/Youtube-logo.png"/>
+        </div>
         <Link to='/home'>
           <i className='material-icons'>home</i>
           <span>Home</span>
