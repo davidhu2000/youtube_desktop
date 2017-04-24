@@ -2,10 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router';
 import { propChecker } from 'helpers';
+import { values } from 'lodash';
 
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  renderSubscriptions() {
+    let subs = values(this.props.subscriptions);
+    return subs.map( sub => (
+      <div className="sidebar-item" key={sub.resourceId.channelId}>
+        <Link to=''>
+          <img src={sub.thumbnails.default.url} />
+          <span>{sub.title}</span>
+        </Link>
+      </div>
+    ));
   }
 
   render() {
@@ -69,8 +82,7 @@ class Sidebar extends React.Component {
           <div className="sidebar-header">
             <Link to=''>SUBSCRIPTIONS</Link>
           </div>
-
-
+          { this.renderSubscriptions() }
         </div>
 
       </div>

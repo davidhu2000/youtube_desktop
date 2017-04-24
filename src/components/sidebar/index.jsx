@@ -3,7 +3,7 @@ import Sidebar from './sidebar';
 
 const mapStateToProps = ({ user, subscriptions }) => ({
   loggedIn: Boolean(user),
-  subscriptions
+  subscriptions: subscriptions
 });
 
 const mapDispatchToProps = dispatch => ({
