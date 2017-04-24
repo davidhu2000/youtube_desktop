@@ -18,7 +18,9 @@ class App extends React.Component {
   }
 
   updateSetting() {
-    this.props.receiveSetting({ windowWidth: window.innerWidth });
+    let windowWidth = window.innerWidth;
+    if (windowWidth > 1300) windowWidth -= 240;
+    this.props.receiveSetting({ windowWidth });
   }
 
   componentDidMount() {

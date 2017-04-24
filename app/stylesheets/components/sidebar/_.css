@@ -1,11 +1,8 @@
 
 .sidebar {
-  position: fixed;
+  position: absolute;
   left: 0px;
-  top: 56px;
   width: 240px;
-  /*margin-top: 20px;*/
-  /*height: 100%;*/
   z-index: 50;
   display: flex;
   flex-direction: column;
@@ -14,7 +11,7 @@
   font-size: 13px;
   color: #333;
   background-color: white;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  /*box-shadow: 0 1px 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);*/
 }
 
 .sidebar-section {
@@ -24,6 +21,10 @@
   border-bottom: 1px solid #e2e2e2;
   width: 240px;
   padding: 12px 0;
+}
+
+.sidebar-section:last-of-type {
+  border-bottom: none;
 }
 
 .sidebar-item {
@@ -82,4 +83,10 @@
 .sidebar-item a img {
   height: 24px;
   border-radius: 24px;
+}
+
+@media screen and (min-width: 1300px) {
+  #sidebar {
+    position: static;
+  }
 }

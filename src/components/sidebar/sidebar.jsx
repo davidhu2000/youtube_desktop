@@ -23,7 +23,7 @@ class Sidebar extends React.Component {
 
   render() {
     return (
-      <div id="sidebar" className='sidebar'>
+      <div id="sidebar" className='sidebar hidden'>
         {/* Header section */}
         <div className='sidebar-section' id='sidebar-header'>
           <div className='sidebar-item'>

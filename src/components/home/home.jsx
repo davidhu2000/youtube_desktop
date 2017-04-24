@@ -80,7 +80,7 @@ class Home extends React.Component {
 
     if (videos) {
       return (
-        <div className='home-page'>
+        <div className='main-content' id='main'>
           {this.renderRecommended()}
           <VideoBox
             title='Trending' 
