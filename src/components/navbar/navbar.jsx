@@ -1,12 +1,13 @@
-import React                        from 'react';
-import { withRouter, Link }         from 'react-router';
-
-import { SearchBar, DropdownMenu }  from '../common';
-import { authenticateUser }         from '../../util/oauth_util';
+import React from 'react';
+import { withRouter, Link } from 'react-router';
+import PropTypes from 'prop-types';
+import { SearchBar, DropdownMenu } from '../common';
+import { authenticateUser } from '../../util/oauth_util';
 
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
+    this.toggleSidebar = this.toggleSidebar.bind(this);
   }
 
   toggleSidebar() {
@@ -15,6 +16,10 @@ class Navbar extends React.Component {
     let sidebarmenu   = document.getElementById("sidebar-menu");
     let logo          = document.getElementById("sidebar-logo");
     let burger        = document.getElementById("burger");
+
+    let sidebarVisible = sidebar.classList.contains('hidden');
+
+    this.props.receiveSetting({ sidebarVisible });
 
     burger.classList.toggle('grey_shift');
     logo.classList.toggle('grey_shift');
@@ -38,7 +43,7 @@ class Navbar extends React.Component {
             user={this.props.user}
             logout={this.props.logout}/>
         </div>
-      )
+      );
 
     } else {
       return (
@@ -85,5 +90,14 @@ class Navbar extends React.Component {
     );
   }
 }
+
+Navbar.propTypes = {
+  user: PropTypes.object,
+  loggedIn: PropTypes.bool,
+  receiveQuery: PropTypes.func,
+  loginUser: PropTypes.func,
+  logout: PropTypes.func,
+  receiveSetting: PropTypes.func
+};
 
 export default withRouter(Navbar);

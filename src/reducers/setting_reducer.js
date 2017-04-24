@@ -2,7 +2,8 @@ import { merge } from 'lodash';
 import { RECEIVE_SETTING } from "../actions/setting_actions.js";
 
 let _defaultState = {
-  windowWidth: null
+  windowWidth: null,
+  sidebarVisible: window.innerWidth >= 1300 ? true : false
 };
 
 const settingReducer = (state = _defaultState, action) => {

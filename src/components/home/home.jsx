@@ -56,6 +56,7 @@ class Home extends React.Component {
           <VideoBox
             key={id}
             title={title}
+            sidebarVisible={this.props.setting.sidebarVisible}
             windowWidth={this.props.setting.windowWidth}
             vids={channel.videos} />
         );
@@ -68,6 +69,7 @@ class Home extends React.Component {
       return (
         <VideoBox
           title='Recommended'
+          sidebarVisible={this.props.setting.sidebarVisible}
           multiline={true}
           vids={this.props.recommended.videos || []}
           windowWidth={this.props.setting.windowWidth} />
@@ -84,6 +86,7 @@ class Home extends React.Component {
           {this.renderRecommended()}
           <VideoBox
             title='Trending' 
+            sidebarVisible={this.props.setting.sidebarVisible}
             windowWidth={this.props.setting.windowWidth}
             vids={videos} />
           {this.renderChannels()}
