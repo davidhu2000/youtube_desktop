@@ -38,7 +38,7 @@ class VideoBox extends React.Component {
     let boxWidth = 438;
     let width = window.innerWidth;
 
-    if (width > 1300 && this.props.sidebarVisible) {
+    if (width > 1312 && this.props.sidebarVisible) {
       width -= 240;
     } 
 
