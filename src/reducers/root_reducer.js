@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import channelsReducer from './channels_reducer';
+import channelDetailsReducer from './channel_details_reducer';
 import queryReducer from './query_reducer';
 import recommendedReducer from './recommended_reducer';
 import searchResultReducer from './search_result_reducer';
@@ -9,6 +10,7 @@ import userReducer from './user_reducer';
 
 const rootReducer = combineReducers({
   channels: channelsReducer,
+  channelDetails: channelDetailsReducer,
   query: queryReducer,
   recommended: recommendedReducer,
   searchResult: searchResultReducer,

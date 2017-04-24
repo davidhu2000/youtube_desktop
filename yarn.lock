@@ -2306,6 +2306,12 @@ rc@^1.1.2, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-click-outside@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/react-click-outside/-/react-click-outside-2.3.0.tgz#928d04b0d5f622ac0c66e2d3c481db1b3cd81ace"
+  dependencies:
+    hoist-non-react-statics "^1.2.0"
+
 react-dom@^15.4.2:
   version "15.5.4"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.5.4.tgz#ba0c28786fd52ed7e4f2135fe0288d462aef93da"

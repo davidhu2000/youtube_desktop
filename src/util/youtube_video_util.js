@@ -108,8 +108,21 @@ export const fetchChannelVideos = channelId => {
     order: 'date',
     maxResults: 15
   };
+
   return YoutubeApi.search(params);
 };
+
+export const fetchChannelDetails = channelId => {
+  let params = {
+    // part: 'snippet',
+    part: 'statistics',
+    channelId,
+    maxResults: 25,
+    key: YT_API_KEY.publicDataKey
+  };
+
+  return YoutubeApi.search(params);
+}
 
 export const fetchRecommendedVideos = () => {
   let params = {

@@ -206,6 +206,22 @@ export const fetchChannelId = () => dispatch => {
   );
 };
 
+// Channel Detail Actions
+export const RECEIVE_CHANNEL_DETAILS = 'RECEIVE_CHANNEL_DETAILS';
+
+export const receiveChannelDetails = channelDetails => ({
+  type: RECEIVE_CHANNEL_DETAILS,
+  channelDetails
+});
+
+export const fetchChannelDetails = channelId => dispatch => {
+  return YoutubeVideoAPI.fetchChannelDetails(channelId).then(
+    response => response.json()
+  ).then(
+    responseJson => dispatch(receiveChannelDetails(responseJson.items))
+  );
+}
+
 // recommended actions
 export const RECEIVE_RECOMMENDED_VIDEOS = 'RECEIVE_RECOMMENDED_VIDEOS';
 

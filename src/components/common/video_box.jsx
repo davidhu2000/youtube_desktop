@@ -34,9 +34,9 @@ class VideoBox extends React.Component {
     }
     return numVideos;
   }
-  
+
   // for multi-line video box
-  toggleMoreVideos() {  
+  toggleMoreVideos() {
     let numRows;
     if (this.state.numRows === 2) {
       numRows = Math.floor(this.props.vids.length / this.state.numVideosPerRow);
@@ -75,7 +75,7 @@ class VideoBox extends React.Component {
   }
 
   renderVideos() {
-    let { numVideosPerRow, numRows, startIndex, endIndex } = this.state; 
+    let { numVideosPerRow, numRows, startIndex, endIndex } = this.state;
     let startVal, endVal;
 
     if (this.props.multiline) {
@@ -87,13 +87,11 @@ class VideoBox extends React.Component {
     }
 
     return this.props.vids.slice(startVal, endVal).map( vid => (
-      <VideoBoxItem key={vid.etag} vid={vid} />
+      <VideoBoxItem channelId={this.props.channelId} key={vid.etag} vid={vid} />
     ));
   }
 
   render() {
-    console.log(this.props);
-    console.log(this.state)
     if (this.props.multiline) {
       let buttonVal = this.state.numRows === 2 ? 'Show more' : 'Show fewer';
       return (
@@ -102,8 +100,8 @@ class VideoBox extends React.Component {
           <div className='video-box-videos multiline'>
             { this.renderVideos() }
           </div>
-          <button 
-            className='video-box-toggle' 
+          <button
+            className='video-box-toggle'
             onClick={this.toggleMoreVideos.bind(this)}>{ buttonVal }</button>
         </div>
       );
