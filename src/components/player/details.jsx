@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { fetchDetails, fetchVideoRating } from '../../actions/youtube_video_actions';
-import { videosRate } from '../../actions/interaction_actions';
+import { fetchDetails, fetchVideoRating } from 'actions/youtube_video_actions';
+import { videosRate } from 'actions/interaction_actions';
 import DetailsUpper from './details_upper';
 import DetailsLower from './details_lower';
 

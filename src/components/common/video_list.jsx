@@ -1,6 +1,6 @@
-import React                from 'react';
-import PropTypes            from 'prop-types';
-import { formatNumber }     from '../../helpers';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { formatNumber } from 'helpers';
 import { VideoListItem }  from '../common';
 
 class VideoList extends React.Component {

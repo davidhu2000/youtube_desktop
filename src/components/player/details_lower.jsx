@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { parseDate, formatNumber } from '../../helpers';
+import { parseDate, formatNumber } from 'helpers';
 
 class DetailsLower extends React.Component {
    constructor(props) {

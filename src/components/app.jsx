@@ -2,8 +2,8 @@ import React                from 'react';
 import { connect }          from 'react-redux';
 import { withRouter, Link } from 'react-router';
 import PropTypes            from 'prop-types';
-import { receiveSetting }   from '../actions/setting_actions';
-import { propChecker }      from '../helpers';
+import { receiveSetting }   from 'actions/setting_actions';
+import { propChecker }      from 'helpers';
 
 import Navbar  from './navbar';
 import Sidebar from './sidebar';

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
-import { shortenString, formatNumber, parseDate, timeFromNow } from '../../helpers';
+import { shortenString, formatNumber, parseDate, timeFromNow } from 'helpers';
 
 class VideoListItem extends React.Component {
   constructor(props) {

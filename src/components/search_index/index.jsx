@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 
 import SearchIndex from './search_index';
 
-import { receiveQuery } from '../../actions/query_actions';
+import { receiveQuery } from 'actions/query_actions';
 import {
   searchVideos,
   clearVideos,
   previousPage,
   nextPage,
-  goToPage } from '../../actions/youtube_video_actions';
+  goToPage } from 'actions/youtube_video_actions';
 
 const mapStateToProps = ({ query, searchResult, setting }) => ({
   query,
