@@ -1,7 +1,9 @@
 import React                from 'react';
 import { connect }          from 'react-redux';
 import { withRouter, Link } from 'react-router';
+import PropTypes            from 'prop-types';
 import { receiveSetting }   from '../actions/setting_actions';
+import { propChecker }      from '../helpers';
 
 import Navbar  from './navbar';
 import Sidebar from './sidebar';
@@ -41,6 +43,13 @@ class App extends React.Component {
     );
   }
 }
+
+
+
+App.propTypes = {
+  setting: propChecker.setting(),
+  searchResult: propChecker.searchResult()
+};
 
 const mapStateToProps = (state, ownProps) => ({
   setting: state.setting,

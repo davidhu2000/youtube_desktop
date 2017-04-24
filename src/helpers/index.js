@@ -1,3 +1,5 @@
+export * from './prop_checker';
+
 // create comma seperated number
 export const formatNumber = (number, shouldAbbreviate = false) => {
 	

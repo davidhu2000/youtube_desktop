@@ -1,7 +1,8 @@
-import React          from 'react';
-import PropTypes      from 'prop-types';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
-import { VideoList }  from '../common';
+import { VideoList } from '../common';
+import { propChecker } from 'helpers';
 
 class SearchIndex extends React.Component {
   constructor(props) {
