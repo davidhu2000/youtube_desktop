@@ -37,6 +37,10 @@ const routes = (
       System.import ('./home').then(loadRoute(cb)).catch(errorLoading);
     }}/>
 
+  <Route path='channel/:channelId' getComponent={(location, cb) => {
+      System.import ('./channel').then(loadRoute(cb)).catch(errorLoading);
+    }}/>
+
   </Route>
 );
 

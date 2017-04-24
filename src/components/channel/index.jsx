@@ -2,37 +2,55 @@ import React          from 'react';
 import { connect }    from 'react-redux';
 import { withRouter } from 'react-router';
 
-import { fetchChannelVideos } from '../../actions/youtube_video_actions';
-import { CategoryBox } from '../common';
+import { fetchChannelVideos,
+         fetchChannelDetails } from '../../actions/youtube_video_actions';
+import { VideoBox } from '../common';
 
 class Channel extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      windowWidth: window.innerWidth
+    };
   }
 
   componentWillMount() {
-    this.props.fetchChannelVideos('UCOpcACMWblDls9Z6GERVi1A');
-    // TODO: Will need to pass channelId on click and use that to fetch videos and other information.
+    this.props.fetchChannelVideos(this.props.channelId);
+    this.props.fetchChannelDetails(this.props.channelId);
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.updateWindowSize.bind(this));
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowSize.bind(this));
+  }
+
+  updateWindowSize() {
+    this.setState({ windowWidth: window.innerWidth });
   }
 
   renderVideos() {
-    let channelId = 'UCOpcACMWblDls9Z6GERVi1A';
-    let channelInfo = this.props.channelId['UCOpcACMWblDls9Z6GERVi1A'];
+    let channelId = this.props.channelId;
+    let channelInfo = this.props.channels[channelId];
     let videos = channelInfo ? channelInfo.videos : "";
     let title = videos ? videos[0].snippet.channelTitle : "";
 
     return (
-      <CategoryBox
+      <VideoBox
         key={channelId}
         channelId={channelId}
+        windowWidth={this.state.windowWidth}
         title={title}
         vids={videos} />
     )
   }
 
   render() {
-    console.log(this.props.router.location);
-    let channelId = 'UCOpcACMWblDls9Z6GERVi1A';
+    let channelId = this.props.channelId;
+    console.log(this.props);
 
     return (
       <div className='channel'>
@@ -67,7 +85,7 @@ class Channel extends React.Component {
           <div>Main Video Description</div>
         </div>
         <div>
-          {this.props.channelId[channelId] && this.renderVideos()}
+          {this.props.channels[channelId] && this.renderVideos()}
         </div>
       </div>
     );
@@ -75,11 +93,13 @@ class Channel extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  channelId: state.channels
+  channelId: ownProps.params.channelId,
+  channels: state.channels
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchChannelVideos: id => dispatch(fetchChannelVideos(id))
+  fetchChannelVideos: id => dispatch(fetchChannelVideos(id)),
+  fetchChannelDetails: id => dispatch(fetchChannelDetails(id))
 });
 
 export default connect(

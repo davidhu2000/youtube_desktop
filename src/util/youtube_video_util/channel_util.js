@@ -38,3 +38,13 @@ export const fetchCategories = () => {
   let urlParams = createUrlParams(params);
   return fetch(`${baseUrl}?${urlParams}`);
 };
+
+export const fetchChannelDetails = channelId => {
+  let params = {
+    part: 'statistics',
+    channelId,
+    maxResults: 25,
+    key: YT_API_KEY.publicDataKey
+  };
+  return YoutubeApi.channels(params);
+}
