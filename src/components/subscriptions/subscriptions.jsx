@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter, hashHistory } from 'react-router';
+import { propChecker } from 'helpers';
 import { VideoList } from '../common';
 
 class Subscriptions extends React.Component {
@@ -57,6 +58,7 @@ class Subscriptions extends React.Component {
       return (
         <div>
           <VideoList
+            windowWidth={this.props.setting.windowWidth}
             shouldShowPageNumber={false}
             shouldShowVolume={false}
             videos={videos} />
@@ -75,15 +77,7 @@ Subscriptions.propTypes = {
   fetchSubscriptionUploads: PropTypes.func.isRequired,
   fetchSubscriptions: PropTypes.func.isRequired,
   loggedIn: PropTypes.bool.isRequired,
-  subscriptions: (props, propName, componentName) => {
-    let type = 'object';
-    if(!(new RegExp(type)).test(props[propName])) {
-      return new Error(
-        `Invalid prop ${propName} supplied to ${componentName}.
-        Expecting an object with id as keys and ${type} as values.`
-      );
-    }
-  }
+  subscriptions: propChecker.subscriptions()
 };
 
 export default withRouter(Subscriptions);

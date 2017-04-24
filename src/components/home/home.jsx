@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { VideoBox } from '../common';
+import { propChecker } from 'helpers';
 
 class Home extends React.Component {
   constructor(props) {
@@ -102,23 +103,10 @@ Home.propTypes = {
   fetchChannelVideos: PropTypes.func.isRequired,
   fetchCategories: PropTypes.func.isRequired,
   fetchRecommendedVideos: PropTypes.func.isRequired,
+  channels: propChecker.channels(),
   loggedIn: PropTypes.bool.isRequired,
-  trending: PropTypes.shape({
-    date: PropTypes.number,
-    videos: PropTypes.arrayOf(PropTypes.object)
-  }),
-  channels: (props, propName, componentName) => {
-    let type = 'object';
-    if(!(new RegExp(type)).test(props[propName])) {
-      return new Error(
-        `Invalid prop ${propName} supplied to ${componentName}.
-        Expecting an object with id as keys and ${type} as values.`
-      );
-    }
-  },
-  recommended: PropTypes.shape({
-    videos: PropTypes.arrayOf(PropTypes.object)
-  })
+  recommended: propChecker.recommended(),
+  trending: propChecker.trending()
 };
 
 export default Home;

@@ -33,7 +33,7 @@ class VideoList extends React.Component {
   }
 
   determineListItemSize() {
-    let width = this.props.windowWidth;
+    let width = window.innerWidth;
     switch (true) {
       case (width < 660 ):
         return 'small';

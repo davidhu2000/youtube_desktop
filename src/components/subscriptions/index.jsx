@@ -6,9 +6,10 @@ import Subscriptions from './subscriptions';
 import { receiveQuery } from 'actions/query_actions';
 import { fetchSubscriptions, fetchSubscriptionUploads } from 'actions/youtube_video_actions';
 
-const mapStateToProps = ({ subscriptions, user }) => ({
+const mapStateToProps = ({ setting, subscriptions, user }) => ({
   subscriptions,
-  loggedIn: Boolean(user)
+  loggedIn: Boolean(user),
+  setting
 });
 
 const mapDispatchToProps = dispatch => ({

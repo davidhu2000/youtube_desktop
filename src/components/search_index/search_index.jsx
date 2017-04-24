@@ -79,17 +79,7 @@ SearchIndex.propTypes = {
   nextPage: PropTypes.func.isRequired, 
   goToPage: PropTypes.func.isRequired, 
   query: PropTypes.string,
-  searchResult: PropTypes.shape({
-    nextPageToken: PropTypes.string,
-    prevPageToken: PropTypes.string,
-    pageNumber: PropTypes.number,
-    query: PropTypes.string,
-    pageInfo: PropTypes.shape({
-      resultsPerPage: PropTypes.number,
-      totalResults: PropTypes.number
-    }),
-    videos: PropTypes.object
-  })
+  searchResult: propChecker.searchResult()
 };
 
 export default withRouter(SearchIndex);
