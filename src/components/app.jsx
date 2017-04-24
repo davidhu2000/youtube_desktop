@@ -1,7 +1,9 @@
-import React                from 'react';
-import { connect }          from 'react-redux';
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router';
-import PropTypes            from 'prop-types';
+
+import { fetchSubscriptions }from 'actions/youtube_video_actions';
 import { receiveSetting }   from 'actions/setting_actions';
 import { propChecker }      from 'helpers';
 
@@ -26,6 +28,10 @@ class App extends React.Component {
     if(this.props.location.pathname === '/search' && !this.props.searchResult.video) {
       this.props.router.replace('/home');
     }
+
+    if(this.props.loggedIn) {
+      this.props.fetchSubscriptions();
+    }
   }
 
   componentWillUnmount() {
@@ -48,16 +54,21 @@ class App extends React.Component {
 
 App.propTypes = {
   setting: propChecker.setting(),
-  searchResult: propChecker.searchResult()
+  searchResult: propChecker.searchResult(),
+  loggedIn: PropTypes.bool,
+  receiveSetting: PropTypes.func,
+  fetchSubscriptions: PropTypes.func
 };
 
 const mapStateToProps = (state, ownProps) => ({
   setting: state.setting,
-  searchResult: state.searchResult
+  searchResult: state.searchResult,
+  loggedIn: Boolean(state.user)
 });
 
 const mapDispatchToProps = dispatch => ({
-  receiveSetting: setting => dispatch(receiveSetting(setting))
+  receiveSetting: setting => dispatch(receiveSetting(setting)),
+  fetchSubscriptions: () => dispatch(fetchSubscriptions())
 });
 
 export default connect(

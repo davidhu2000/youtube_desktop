@@ -35,6 +35,7 @@
   align-items: center;
   justify-content: flex-start; 
   height: 40px;
+  cursor: pointer;
 }
 
 #sidebar-header {
@@ -48,6 +49,15 @@
 
 .sidebar-item:hover {
   background: #f4f4f4;
+}
+
+
+.sidebar-header {
+  font-size: 14px;
+  color: hsl(0, 0%, 53.3%);
+  padding-left: 24px;
+  height: 20px;
+  cursor: pointer;
 }
 
 .sidebar-item a {
