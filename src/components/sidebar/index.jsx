@@ -10,23 +10,49 @@ class Sidebar extends React.Component {
 
   render() {
     return (
-      <div id="sidebar" className='sidebar hidden'>
-        <div className='sidebar-header'>
-          <i className="material-icons">menu</i>
-          <img className='youtube-logo' src="./app/assets/Youtube-logo.png"/>
+      <div id="sidebar" className='sidebar'>
+        {/* Header section */}
+        <div className='sidebar-section' id='sidebar-header'>
+          <div className='sidebar-item'>
+
+            <i className="material-icons">menu</i>
+            <img className='youtube-logo' src="./app/assets/Youtube-logo.png" />
+          </div>
         </div>
-        <Link to='/home'>
-          <i className='material-icons'>home</i>
-          <span>Home</span>
-        </Link>
-        <Link to='/trending'>
-          <i className='material-icons'>whatshot</i>
-          <span>Trending</span>
-        </Link>
-        { this.props.loggedIn ? <Link to=''>
-          <i className='material-icons'>hourglass_full</i>
-          <span>History</span>
-        </Link> : '' }
+
+        {/* Main button section */}
+        <div className="sidebar-section">
+          <div className="sidebar-item">
+            <Link to='/home'>
+              <i className='material-icons'>home</i>
+              <span>Home</span>
+            </Link>
+          </div>
+
+          <div className="sidebar-item">
+            <Link to='/trending'>
+              <i className='material-icons'>whatshot</i>
+              <span>Trending</span>
+            </Link>
+          </div>
+
+          <div className="sidebar-item">
+            {this.props.loggedIn ? (
+              <Link to='/subscriptions'>
+                <i className='material-icons'>subscriptions</i>
+                <span>Subscriptions</span>
+              </Link>
+            ) : (
+              <Link to=''>
+                <i className='material-icons'>hourglass_full</i>
+                <span>History</span>
+              </Link>
+            )}
+
+          </div>
+        </div>
+
+
         <Link to=''>
           <i className='material-icons redish'>music_video</i>
           <span>Music</span>
@@ -47,18 +73,18 @@ class Sidebar extends React.Component {
           <i className='material-icons redish'>videogame_asset</i>
           <span>Gaming</span>
         </Link>
-        { this.props.loggedIn ? <Link to=''>
+        {this.props.loggedIn ? <Link to=''>
           <i className='material-icons redish'>account_circle</i>
           <span>My Channel</span>
-        </Link> : '' }
-        { this.props.loggedIn ? <Link to='/subscriptions'>
+        </Link> : ''}
+        {this.props.loggedIn ? <Link to='/subscriptions'>
           <i className='material-icons redish'>subscriptions</i>
           <span>Subscriptions</span>
-        </Link> : '' }
-        { this.props.loggedIn ? <Link to=''>
+        </Link> : ''}
+        {this.props.loggedIn ? <Link to=''>
           <i className='material-icons redish'>watch_later</i>
           <span>Watch Later</span>
-        </Link> : '' }
+        </Link> : ''}
         <Link to=''>
           <i className='material-icons redish'>view_array</i>
           <span>Get YouTube Red</span>
