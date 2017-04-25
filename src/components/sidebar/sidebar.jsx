@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router';
 import { propChecker, toggleSidebar } from 'helpers';
 import { values } from 'lodash';
+import SidebarItem from 'sidebar_item';
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -83,6 +84,8 @@ class Sidebar extends React.Component {
             </Link>
           </div>
 
+          
+
           <div className="sidebar-item">
             <Link to='/trending'>
               <i className='material-icons'>whatshot</i>
@@ -112,7 +115,7 @@ class Sidebar extends React.Component {
 
           <div className="sidebar-item">
             <Link to=''>
-              <i className='material-icons redish'>watch_later</i>
+              <i className='material-icons'>watch_later</i>
               <span>Watch Later</span>
             </Link> 
           </div>

@@ -39,7 +39,7 @@ html {
 }
 
 .redish {
-  color: #e62117;
+  color: #e62117 !important;
 }
 
 .greyscale {
