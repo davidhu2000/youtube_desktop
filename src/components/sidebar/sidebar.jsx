@@ -111,7 +111,7 @@ class Sidebar extends React.Component {
           </div>
         </div>
 
-        <div className="sidebar-Main">
+        <div className="sidebar-main">
           {/* Main button section */}
           <div className="sidebar-section">
             <SidebarItem link='home' span='Home' icon='home' />
