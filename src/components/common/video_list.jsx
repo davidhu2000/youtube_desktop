@@ -118,12 +118,10 @@ class VideoList extends React.Component {
 
   render() {
     return (
-      <div className="main-content">
-        <div className="search-index-container">
-          {this.addSearchVolume()}
-          {this.addSearchResults()}
-          {this.renderPageNavigtion()}
-        </div>
+      <div className="search-index-container">
+        {this.addSearchVolume()}
+        {this.addSearchResults()}
+        {this.renderPageNavigtion()}
       </div>
     );
   }

@@ -5,7 +5,7 @@ import { withRouter, Link } from 'react-router';
 
 import { fetchSubscriptions } from 'actions/youtube_video_actions';
 import { receiveSetting } from 'actions/setting_actions';
-import { propChecker } from 'helpers';
+import { propChecker, toggleSidebar } from 'helpers';
 
 import Navbar  from './navbar';
 import Sidebar from './sidebar';
@@ -49,9 +49,11 @@ class App extends React.Component {
       <div className="relative-content">
         <Navbar />
         <Sidebar />
-        { this.props.children }
+        <div className="main-content">
+          { this.props.children }
+        </div>
         <Footer />
-        <div id='sidebar-cover' className='hidden'></div>
+        <div id='sidebar-cover' className='hidden' onClick={toggleSidebar}></div>
       </div>
     );
   }

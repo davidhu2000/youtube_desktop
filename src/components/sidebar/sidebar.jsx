@@ -50,9 +50,19 @@ class Sidebar extends React.Component {
     }
   }
 
+  handleClick(e) {
+    let wideWindow = window.innerWidth > 1312;
+    let correctClassName = e.target.className;
+    let correctTags = ['I', 'SPAN', 'IMG'].includes(e.target.tagName);
+
+    if (wideWindow && (correctClassName || correctTags)) {
+      toggleSidebar();
+    }  
+  }
+
   render() {
     return (
-      <div id="sidebar" className={`sidebar`}>
+      <div id="sidebar" className={`sidebar`} onClick={this.handleClick}>
         {/* Header section */}
         <div className='sidebar-section' id='sidebar-header'>
           <div className='sidebar-item'>
