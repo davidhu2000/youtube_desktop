@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 import PropTypes from 'prop-types';
+import { shortenString } from 'helpers';
 
 class SidebarItem extends React.Component {
    constructor(props) {
@@ -32,7 +33,7 @@ class SidebarItem extends React.Component {
       <div className={`sidebar-item`} id={link}>
         <Link to={`/${link}`}>
           { this.renderIcon() }
-          <span>{span}</span>
+          <span>{shortenString(span, 19)}</span>
         </Link>
       </div>
     );
