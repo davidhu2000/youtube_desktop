@@ -6,15 +6,32 @@ class DropdownMenu extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    document.addEventListener('click', this.handleClick.bind(this), true);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleClick.bind(this), true);
+  }
+
   clearUser() {
     this.props.logout();
     localStorage.removeItem('google-user');
   }
 
+  handleClick(e) {
+    let dropdown = document.getElementById('dropdown-menu');
+    console.log(dropdown.contains(e.target));
+    console.log(e.target.tagName)
+    if(dropdown && (!dropdown.contains(e.target) || e.target.tagName === 'BUTTON' || !dropdown.contains(e.target))) {
+      this.props.toggleDropdown();
+    }
+  }
+
   render() {
     const { user } = this.props;
     return (
-      <div id='dropdown-menu' className='hidden'>
+      <div id='dropdown-menu'>
         <div className='user-info'>
           <img src={user.picture} />
           <h1><strong>{ user.name }</strong></h1>

@@ -7,11 +7,11 @@
 .navbar {
   width: 100%;
   height: 56px;
-  padding: 0px 20px;
+  padding: 0px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0px 4px 8px -3px rgba(17, 17, 17, .16);
   background-color: var(--background);
   position:fixed;
   top: 0;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { parseDate, formatNumber } from '../../helpers';
+import { parseDate, formatNumber } from 'helpers';
 
 class DetailsLower extends React.Component {
    constructor(props) {
@@ -54,7 +54,7 @@ class DetailsLower extends React.Component {
             <div className="button-span">
               <button type="button" className="sub-button">
                 <span>SUBSCRIBE</span>
-                <span className="sub-span">{formatNumber(subs).slice(0,4) + "K"}</span>
+                <span className="sub-span">{formatNumber(subs, true)}</span>
               </button>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { parseDate } from '../../helpers';
+import { parseDate } from 'helpers';
 
 class CommentsItem extends React.Component {
 

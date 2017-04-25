@@ -1,7 +1,7 @@
 import merge from 'lodash/merge';
 import * as YoutubeApi from './youtube_api';
 import YT_API_KEY from '../../config/api_key';
-import { createUrlParams } from '../helpers';
+import { createUrlParams } from 'helpers';
 
 export const fetchComments = videoId => {
   let baseUrl = 'https://www.googleapis.com/youtube/v3/commentThreads';

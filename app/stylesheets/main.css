@@ -16,11 +16,22 @@ html {
 }
 
 .relative-content {
-  position: relative;
+  /*position: relative;*/
+  display: flex;
+  flex-direction: row;
+  /*align-items: flex-start;
+  display: flex;
+  justify-content: center;*/
+  /*background-color: #F1F1F1;*/
+}
+
+.main-content {
+  width: 100%;
+  margin-top: 66px;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  /*background-color: #F1F1F1;*/
 }
 
 .hidden {

@@ -1,42 +1,77 @@
-import React                from 'react';
-import PropTypes            from 'prop-types';
-import { formatNumber }     from '../../helpers';
-import { VideoSearchItem }  from '../common';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { formatNumber } from 'helpers';
+import { VideoListItem }  from '../common';
 
 class VideoList extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      "small": {
+        maxTitleLength: 34,
+        maxDescriptionLength: 40,
+        maxChannelTitleLength: 15,
+        itemWidth: 430
+      },
+      "medium": {
+        maxTitleLength: 80,
+        maxDescriptionLength: 123,
+        maxChannelTitleLength: 200,
+        itemWidth: 642
+      },
+      "large": {
+        maxTitleLength: 150,
+        maxDescriptionLength: 180,
+        maxChannelTitleLength: 200,
+        itemWidth: 856
+      }
+    };
+
     this.renderPageNumbers = this.renderPageNumbers.bind(this);
+    this.addSearchResults = this.addSearchResults.bind(this);
   }
 
-  addSearchResults() {
-    if (this.props.videos) {
-      let vids = this.props.videos;
-      return vids.map(vid => <VideoSearchItem key={vid.etag} vid={vid} />);
+  determineListItemSize() {
+    let width = window.innerWidth;
+    switch (true) {
+      case (width < 660 ):
+        return 'small';
+      case (width >= 600 && width <875):
+        return 'medium';
+      case (width >= 865):
+        return 'large';
     }
   }
 
-  addSmlSearchResults() {
-    if (this.props.videos) {
-      let vids = this.props.videos;
-      return vids.map(vid => (
-        <VideoSearchItem
-          key={vid.etag}
-          vid={vid}
-          cssPrefix='sml-'
-          maxTitleLength={34}
-          maxDescriptionLength={40} />)
-      );
+  addSearchResults() {
+     if (this.props.videos) {
+       let size = this.determineListItemSize();
+       let vids = this.props.videos;
+
+       return vids.map(vid => (
+         <VideoListItem
+           key={vid.etag}
+           vid={vid}
+           itemWidth={this.state[size].itemWidth}
+           maxTitleLength={this.state[size].maxTitleLength}
+           maxDescriptionLength={this.state[size].maxDescriptionLength}
+           maxChannelTitleLength={this.state[size].maxChannelTitleLength} />)
+       );
     }
   }
 
   addSearchVolume() {
     if (this.props.volume && this.props.shouldShowVolume) {
-      return <p>About {formatNumber(this.props.volume)} results</p>;
+      return (
+        <div className="search-index-container-top">
+          <p>About {formatNumber(this.props.volume)} results</p>
+        </div>
+      );
     }
   }
 
+  // potentially replace this with infinite scroll?
   renderPageNumbers() {
     let { pageNumber, allPages } = this.props;
 
@@ -83,15 +118,10 @@ class VideoList extends React.Component {
 
   render() {
     return (
-      <div className="search-index">
-        <div className="search-index-container">
-          <div className="search-index-container-top">
-            {this.addSearchVolume()}
-          </div>
-          {this.addSearchResults()}
-          {this.addSmlSearchResults()}
-          {this.renderPageNavigtion()}
-        </div>
+      <div className="search-index-container">
+        {this.addSearchVolume()}
+        {this.addSearchResults()}
+        {this.renderPageNavigtion()}
       </div>
     );
   }
@@ -100,7 +130,8 @@ class VideoList extends React.Component {
 VideoList.propTypes = {
   showShowPageNumber: PropTypes.bool,
   showShowVolume: PropTypes.bool,
-  videos: PropTypes.arrayOf(PropTypes.object)
+  videos: PropTypes.arrayOf(PropTypes.object),
+  windowWidth: PropTypes.number
 };
 
 VideoList.defaultProps = {
