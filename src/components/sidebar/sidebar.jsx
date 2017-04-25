@@ -51,9 +51,9 @@ class Sidebar extends React.Component {
   }
 
   handleClick(e) {
-    let wideWindow = window.innerWidth > 1312;
+    let wideWindow = window.innerWidth < 1312;
     let correctClassName = e.target.className;
-    let correctTags = ['I', 'SPAN', 'IMG'].includes(e.target.tagName);
+    let correctTags = ['I', 'SPAN', 'IMG', 'A'].includes(e.target.tagName);
 
     if (wideWindow && (correctClassName || correctTags)) {
       toggleSidebar();
@@ -67,8 +67,10 @@ class Sidebar extends React.Component {
         <div className='sidebar-section' id='sidebar-header'>
           <div className='sidebar-item'>
 
-            <i className="material-icons" onClick={toggleSidebar}>menu</i>
-            <img className='youtube-logo' src="./app/assets/Youtube-logo.png" />
+            <i className="material-icons">menu</i>
+            <Link to='/home'>
+              <img className='youtube-logo' src="./app/assets/Youtube-logo.png" />
+            </Link>
           </div>
         </div>
 
