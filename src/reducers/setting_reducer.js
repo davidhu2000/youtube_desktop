@@ -3,7 +3,7 @@ import { RECEIVE_SETTING } from "../actions/setting_actions.js";
 
 let _defaultState = {
   windowWidth: null,
-  sidebarVisible: window.innerWidth >= 1300 ? true : false
+  sidebarVisible: window.innerWidth >= 1312 ? true : false
 };
 
 const settingReducer = (state = _defaultState, action) => {

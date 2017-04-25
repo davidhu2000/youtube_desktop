@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router';
 
-import { fetchSubscriptions }from 'actions/youtube_video_actions';
-import { receiveSetting }   from 'actions/setting_actions';
-import { propChecker }      from 'helpers';
+import { fetchSubscriptions } from 'actions/youtube_video_actions';
+import { receiveSetting } from 'actions/setting_actions';
+import { propChecker } from 'helpers';
 
 import Navbar  from './navbar';
 import Sidebar from './sidebar';
@@ -19,13 +19,16 @@ class App extends React.Component {
 
   updateSetting() {
     let windowWidth = window.innerWidth;
-    if (windowWidth > 1300) windowWidth -= 240;
-    this.props.receiveSetting({ windowWidth });
+    let sidebar = document.getElementById('sidebar');
+    let sidebarVisible = sidebar.classList.contains('ondocument') || sidebar.classList.contains('onscreen');
+
+    this.props.receiveSetting({ windowWidth, sidebarVisible });
   }
 
   componentDidMount() {
     this.updateSetting();
     window.addEventListener('resize', this.updateSetting.bind(this));
+    window.addEventListener('click', this.updateSetting.bind(this));
 
     if(this.props.location.pathname === '/search' && !this.props.searchResult.video) {
       this.props.router.replace('/home');

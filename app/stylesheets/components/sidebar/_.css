@@ -1,7 +1,46 @@
+@keyframes slideOut {
+  0% {
+    left: 0px;
+  }
+  100% {
+    left: -240px;
+  }
+}
+
+.offscreen {
+  z-index: 110 !important;
+  animation-name: slideOut;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-duration: 0.2s;
+}
+
+@keyframes slideIn {
+  0% {
+    left: -240px;
+  } 
+  100% {
+    left: 0px;
+  }
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.onscreen {
+  z-index: 110 !important;
+  animation-name: slideIn;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-duration: 0.2s;
+}
 
 .sidebar {
-  position: absolute;
-  left: 0px;
   width: 240px;
   z-index: 50;
   display: flex;
@@ -11,7 +50,6 @@
   font-size: 13px;
   color: #333;
   background-color: white;
-  /*box-shadow: 0 1px 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);*/
 }
 
 .sidebar-section {

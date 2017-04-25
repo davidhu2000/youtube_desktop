@@ -2,7 +2,8 @@ import React from 'react';
 import { withRouter, Link } from 'react-router';
 import PropTypes from 'prop-types';
 import { SearchBar, DropdownMenu } from '../common';
-import { authenticateUser } from '../../util/oauth_util';
+import { authenticateUser } from 'util/oauth_util';
+import { toggleSidebar } from 'helpers';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -17,15 +18,15 @@ class Navbar extends React.Component {
     let logo          = document.getElementById("sidebar-logo");
     let burger        = document.getElementById("burger");
 
-    let sidebarVisible = sidebar.classList.contains('hidden');
-
-    this.props.receiveSetting({ sidebarVisible });
+    // this.props.receiveSetting({ sidebarVisible });
 
     burger.classList.toggle('grey_shift');
     logo.classList.toggle('grey_shift');
-    sidebar.classList.toggle('hidden');
     sidebarcarrot.classList.toggle('hidden');
     sidebarmenu.classList.toggle('hidden');
+
+    // let sidebarClass = window.innerWidth <= 1312 ? 'offscreen' : 'hidden';
+    // sidebar.classList.toggle(sidebarClass);
   }
 
   renderRightMenu() {
@@ -68,8 +69,8 @@ class Navbar extends React.Component {
     return (
       <div className='navbar'>
         <div className='navbar-left-menu'>
-          <i onClick={this.toggleSidebar} id="sidebar-menu" className="material-icons">menu</i>
-          <i onClick={this.toggleSidebar} id="sidebar-carrot" className="material-icons hidden">keyboard_arrow_down</i>
+          <i onClick={toggleSidebar} id="sidebar-menu" className="material-icons">menu</i>
+          <i onClick={toggleSidebar} id="sidebar-carrot" className="material-icons hidden">keyboard_arrow_down</i>
           <Link to='/' className='burger' id="burger">
             <img src="./app/assets/burger.png"/>
           </Link>
@@ -96,8 +97,7 @@ Navbar.propTypes = {
   loggedIn: PropTypes.bool,
   receiveQuery: PropTypes.func,
   loginUser: PropTypes.func,
-  logout: PropTypes.func,
-  receiveSetting: PropTypes.func
+  logout: PropTypes.func
 };
 
 export default withRouter(Navbar);

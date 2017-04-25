@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router';
-import { propChecker } from 'helpers';
+import { propChecker, toggleSidebar } from 'helpers';
 import { values } from 'lodash';
 
 class Sidebar extends React.Component {
@@ -21,18 +21,37 @@ class Sidebar extends React.Component {
     ));
   }
 
-  shouldShow() {
-    return window.innerWidth >= 1312 ? '' : 'hidden';
+  componentDidMount() {
+    let sidebar = document.getElementById('sidebar');
+    if (window.innerWidth > 1312) {
+      sidebar.classList.remove('fixed', 'offscreen');   
+      sidebar.classList.add('absolute', 'ondocument');
+    } else {
+      sidebar.classList.remove('absolute', 'ondocument');
+      sidebar.classList.add('fixed', 'offscreen');
+    }
+  }
+
+  componentWillReceiveProps(newProps) {
+    let sidebar = document.getElementById('sidebar');
+
+    if (this.props.setting.windowWidth > 1312 && newProps.setting.windowWidth <= 1312) {
+      sidebar.classList.remove('absolute', 'ondocument', 'hidden');
+      sidebar.classList.add('fixed', 'offscreen');
+    } else if (this.props.setting.windowWidth <= 1312 && newProps.setting.windowWidth > 1312) {
+      sidebar.classList.remove('fixed', 'onscreen', 'offscreen');
+      sidebar.classList.add('absolute', 'ondocument');
+    }
   }
 
   render() {
     return (
-      <div id="sidebar" className={`sidebar ${this.shouldShow()}`}>
+      <div id="sidebar" className={`sidebar`}>
         {/* Header section */}
         <div className='sidebar-section' id='sidebar-header'>
           <div className='sidebar-item'>
 
-            <i className="material-icons">menu</i>
+            <i className="material-icons" onClick={toggleSidebar}>menu</i>
             <img className='youtube-logo' src="./app/assets/Youtube-logo.png" />
           </div>
         </div>
