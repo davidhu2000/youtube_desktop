@@ -8,6 +8,9 @@ import { toggleSidebar } from 'helpers';
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      showDropdown: false
+    };
   }
 
   renderRightMenu() {
@@ -18,12 +21,13 @@ class Navbar extends React.Component {
           <button>
             <img className='beads-image' src="./app/assets/ic_notifications_none_black_24px.svg"/>
           </button>
-          <a onClick={this.toggleDropdown} style={{cursor: 'pointer'}}>
+          <a onClick={this.toggleDropdown.bind(this)} style={{cursor: 'pointer'}}>
             <img src={this.props.user.picture} />
           </a>
-          <DropdownMenu
+          { this.state.showDropdown ? <DropdownMenu
+            toggleDropdown={this.toggleDropdown.bind(this)}
             user={this.props.user}
-            logout={this.props.logout}/>
+            logout={this.props.logout}/> : null }
         </div>
       );
     } else {
@@ -42,10 +46,11 @@ class Navbar extends React.Component {
   }
 
   toggleDropdown() {
-    document.getElementById('dropdown-menu').classList.toggle('hidden');
+    this.setState({ showDropdown: !this.state.showDropdown });
   }
 
   render() {
+    console.log(this.state)
     return (
       <div className='navbar'>
         <div className='navbar-left-menu'>
