@@ -29,6 +29,14 @@ class Comments extends React.Component {
     }
   }
 
+  renderNumComments() {
+    let numComments = 0;
+    if (this.state.comments) {
+      numComments = this.state.comments.length;
+      return numComments;
+    }
+  }
+
   render() {
     if (this.state.comments === "disabled") {
       return (<div className="comments-container">Comments are disabled.</div>);
@@ -37,8 +45,8 @@ class Comments extends React.Component {
     return (
       <div className="comments-container">
         <div className="top-comments">
-          <p>Top Comments</p>
-          <i className="material-icons arrow-down">keyboard_arrow_down</i>
+          {this.renderNumComments()}
+          <p>Comments</p>
         </div>
         <div className="comments-list">
           {this.renderComments()}
