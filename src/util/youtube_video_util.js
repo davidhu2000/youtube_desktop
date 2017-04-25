@@ -1,7 +1,7 @@
 import merge from 'lodash/merge';
 import * as YoutubeApi from './youtube_api';
 import YT_API_KEY from '../../config/api_key';
-import { createUrlParams } from '../helpers';
+import { createUrlParams } from 'helpers';
 
 export const fetchComments = videoId => {
   let baseUrl = 'https://www.googleapis.com/youtube/v3/commentThreads';
@@ -13,16 +13,23 @@ export const fetchComments = videoId => {
   };
 
   let urlParams = createUrlParams(params);
-
-  return fetch(`${baseUrl}?${urlParams}`)
+  return fetch(`${baseUrl}?${urlParams}`);
 };
 
 export const fetchDetails = videoId => {
 
   let params = {
     id: videoId,
+    part: 'snippet,statistics'
   };
   return YoutubeApi.videos(params);
+};
+
+export const fetchVideoRating = videoId => {
+  let params = {
+    id: videoId,
+  };
+  return YoutubeApi.videosGetRating(params);
 };
 
 export const fetchRelated = videoId => {
@@ -114,15 +121,23 @@ export const fetchChannelVideos = channelId => {
 
 export const fetchChannelDetails = channelId => {
   let params = {
-    // part: 'snippet',
     part: 'statistics',
     channelId,
     maxResults: 25,
     key: YT_API_KEY.publicDataKey
   };
 
-  return YoutubeApi.search(params);
+  return YoutubeApi.channels(params);
 }
+
+export const fetchChannelSubs = channelId => {
+  let params = {
+    id: channelId,
+    part: 'statistics'
+  };
+
+  return YoutubeApi.channels(params);
+};
 
 export const fetchRecommendedVideos = () => {
   let params = {

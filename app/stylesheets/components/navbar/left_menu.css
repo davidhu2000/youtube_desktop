@@ -1,21 +1,29 @@
 .navbar-left-menu {
   width: 25%;
   min-width: 200px;
-  padding: 0px 10px;
+  padding: 0px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .navbar-left-menu i {
   line-height: 56px;
-  margin: 0px 10px;
+  margin: 0px 8px;
+  padding-right: 16px;
 }
 
 .youtube-logo {
   padding: 0px;
   margin: 0px;
-  margin-right: 50%;
+  /*margin-right: 50%;*/
+  height: 56px;
+  width: 112px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.youtube-logo img {
   height: 56px;
   width: 112px;
 }

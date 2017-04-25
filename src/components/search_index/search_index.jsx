@@ -1,7 +1,8 @@
-import React          from 'react';
-import PropTypes      from 'prop-types';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
-import { VideoList }  from '../common';
+import { VideoList } from '../common';
+import { propChecker } from 'helpers';
 
 class SearchIndex extends React.Component {
   constructor(props) {
@@ -60,7 +61,8 @@ class SearchIndex extends React.Component {
           nextAction={nextAction}
           previousPage={previousPage}
           goToPage={goToPage}
-          videos={videos[pageNumber]} />
+          videos={videos[pageNumber]}
+          windowWidth={this.props.setting.windowWidth} />
       );
     } else {
       // add spinner
@@ -77,17 +79,7 @@ SearchIndex.propTypes = {
   nextPage: PropTypes.func.isRequired, 
   goToPage: PropTypes.func.isRequired, 
   query: PropTypes.string,
-  searchResult: PropTypes.shape({
-    nextPageToken: PropTypes.string,
-    prevPageToken: PropTypes.string,
-    pageNumber: PropTypes.number,
-    query: PropTypes.string,
-    pageInfo: PropTypes.shape({
-      resultsPerPage: PropTypes.number,
-      totalResults: PropTypes.number
-    }),
-    videos: PropTypes.object
-  })
+  searchResult: propChecker.searchResult()
 };
 
 export default withRouter(SearchIndex);

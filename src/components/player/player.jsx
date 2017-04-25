@@ -1,4 +1,5 @@
 import React         from 'react';
+import PropTypes     from 'prop-types';
 import YouTubePlayer from 'youtube-player';
 
 class Player extends React.Component {
@@ -35,5 +36,9 @@ class Player extends React.Component {
     );
   }
 }
+
+Player.propTypes = {
+  videoId: PropTypes.string
+};
 
 export default Player;

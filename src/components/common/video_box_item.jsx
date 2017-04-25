@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import PropTypes from 'prop-types';
-import moment from 'moment';
-import { formatNumber, parseDuration, shortenString } from '../../helpers';
+import { formatNumber, parseDuration, shortenString, timeFromNow } from 'helpers';
 
 class VideoBoxItem extends React.Component {
   constructor(props) {
@@ -57,8 +56,8 @@ class VideoBoxItem extends React.Component {
         </Link>
 
         <div className="video-box-item-info">
-          <span className='basic-text'>{ formatNumber(viewCount) } views</span>
-          <span className='video-box-item-date basic-text'>{ moment(publishedAt).fromNow() } </span>
+          <span>{ formatNumber(viewCount) } views</span>
+          <span className='video-box-item-date'>{ timeFromNow(publishedAt) } </span>
         </div>
       </div>
     );

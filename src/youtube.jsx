@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   tokenPromise.then(() => {
     let preloadedState = {
       user: JSON.parse(localStorage.getItem('google-user'))
-    }
+    };
 
     const store = configureStore(preloadedState);
 

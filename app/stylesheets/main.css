@@ -1,7 +1,7 @@
 @import url('base/reset.css');
 @import url('base/color.css');
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900');
 @import url('components/navbar/_.css');
 @import url('components/sidebar/_.css');
 @import url('components/searchindex/_.css');
@@ -17,11 +17,22 @@ html {
 }
 
 .relative-content {
-  position: relative;
+  /*position: relative;*/
+  display: flex;
+  flex-direction: row;
+  /*align-items: flex-start;
+  display: flex;
+  justify-content: center;*/
+  /*background-color: #F1F1F1;*/
+}
+
+.main-content {
+  width: 100%;
+  margin-top: 66px;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  background-color: #F1F1F1;
 }
 
 .hidden {
@@ -29,7 +40,7 @@ html {
 }
 
 .redish {
-  color: #e62117;
+  color: #e62117 !important;
 }
 
 .greyscale {

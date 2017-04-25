@@ -21,7 +21,8 @@ class TrendingIndex extends React.Component {
       <VideoList
         shouldShowVolume={false}
         shouldShowPageNumber={false}
-        videos={this.props.trending.videos} />
+        videos={this.props.trending.videos} 
+        windowWidth={this.props.setting.windowWidth} />
     );
   }
 }

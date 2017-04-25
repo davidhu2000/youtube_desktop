@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { VideoBox } from '../common';
+import { propChecker } from 'helpers';
 
 class Home extends React.Component {
   constructor(props) {
@@ -36,22 +37,12 @@ class Home extends React.Component {
     if (this.props.loggedIn) {
       this.props.fetchRecommendedVideos();
     }
-
-    window.addEventListener('resize', this.updateWindowSize.bind(this));
   }
 
   componentWillReceiveProps(newProps) {
     if (!this.props.loggedIn && newProps.loggedIn) {
       newProps.fetchRecommendedVideos();
     }
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowSize.bind(this));
-  }
-
-  updateWindowSize() {
-    this.setState({ windowWidth: window.innerWidth });
   }
 
   renderChannels() {
@@ -65,9 +56,10 @@ class Home extends React.Component {
         return (
           <VideoBox
             key={id}
-            channelId={id}
-            windowWidth={this.state.windowWidth}
             title={title}
+            channelId={id}
+            sidebarVisible={this.props.setting.sidebarVisible}
+            windowWidth={this.props.setting.windowWidth}
             vids={channel.videos} />
         );
       });
@@ -79,9 +71,10 @@ class Home extends React.Component {
       return (
         <VideoBox
           title='Recommended'
+          sidebarVisible={this.props.setting.sidebarVisible}
           multiline={true}
           vids={this.props.recommended.videos || []}
-          windowWidth={this.state.windowWidth} />
+          windowWidth={this.props.setting.windowWidth} />
       );
     }
   }
@@ -91,11 +84,12 @@ class Home extends React.Component {
 
     if (videos) {
       return (
-        <div className='home-page'>
+        <div id='main'>
           {this.renderRecommended()}
           <VideoBox
             title='Trending'
-            windowWidth={this.state.windowWidth}
+            sidebarVisible={this.props.setting.sidebarVisible}
+            windowWidth={this.props.setting.windowWidth}
             vids={videos} />
           {this.renderChannels()}
         </div>
@@ -114,23 +108,10 @@ Home.propTypes = {
   fetchChannelVideos: PropTypes.func.isRequired,
   fetchCategories: PropTypes.func.isRequired,
   fetchRecommendedVideos: PropTypes.func.isRequired,
+  channels: propChecker.channels(),
   loggedIn: PropTypes.bool.isRequired,
-  trending: PropTypes.shape({
-    date: PropTypes.number,
-    videos: PropTypes.arrayOf(PropTypes.object)
-  }),
-  channels: (props, propName, componentName) => {
-    let type = 'object';
-    if(!(new RegExp(type)).test(props[propName])) {
-      return new Error(
-        `Invalid prop ${propName} supplied to ${componentName}.
-        Expecting an object with id as keys and ${type} as values.`
-      );
-    }
-  },
-  recommended: PropTypes.shape({
-    videos: PropTypes.arrayOf(PropTypes.object)
-  })
+  recommended: propChecker.recommended(),
+  trending: propChecker.trending()
 };
 
 export default Home;

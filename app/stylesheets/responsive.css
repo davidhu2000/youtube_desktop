@@ -37,20 +37,4 @@
   .burger {
     display: inherit;
   }
-
-/*search index*/
-
-  .index-item {
-    display: none;
-  }
-
-  .sml-index-item {
-    display: flex;
-    align-items: center;
-  }
-
-  .search-index-container {
-    width: 440px;
-  }
-
 }

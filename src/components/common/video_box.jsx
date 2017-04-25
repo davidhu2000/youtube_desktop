@@ -6,33 +6,56 @@ class VideoBox extends React.Component {
    constructor(props) {
      super(props);
 
+     let data = this.calcBoxWidthAndNumVideos(props.sidebarVisible);
+
      this.state = {
        startIndex: 0,
-       endIndex: this.numberVideosToShow(),
-       numVideosPerRow: this.numberVideosToShow(),
-       numRows: 2
+       endIndex: data.numVideosPerRow,
+       numVideosPerRow: data.numVideosPerRow,
+       numRows: 2,
+       boxWidth: data.boxWidth
      };
   }
 
   componentWillReceiveProps(newProps) {
     if (this.props.windowWidth !== newProps.windowWidth) {
-      this.setState({ numVideosPerRow: this.numberVideosToShow() });
+      let newState = this.calcBoxWidthAndNumVideos();
+      this.setState(newState);
       this.updateEndIndex();
     }
   }
 
-  numberVideosToShow() {
-    let numVideos = 2;
-    if(window.innerWidth > 1312) {
-      numVideos = 6;
-    } else if(window.innerWidth > 1132) {
-      numVideos = 5;
-    } else if(window.innerWidth > 900) {
-      numVideos = 4;
-    } else if(window.innerWidth > 694) {
-      numVideos = 3;
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.sidebarVisible !== prevProps.sidebarVisible) {
+      let newState = this.calcBoxWidthAndNumVideos();
+      this.setState(newState);
+      this.updateEndIndex();
     }
-    return numVideos;
+  }
+
+  calcBoxWidthAndNumVideos() {
+    let numVideosPerRow = 2;
+    let boxWidth = 438;
+    let width = window.innerWidth;
+
+    if (width > 1312 && this.props.sidebarVisible) {
+      width -= 240;
+    }
+
+    if(width > 1312) {
+      numVideosPerRow = 6;
+      boxWidth = 1262;
+    } else if(width > 1132) {
+      numVideosPerRow = 5;
+      boxWidth = 1056;
+    } else if(width > 900) {
+      numVideosPerRow = 4;
+      boxWidth = 850;
+    } else if(width > 694) {
+      numVideosPerRow = 3;
+      boxWidth = 644;
+    }
+    return { numVideosPerRow, boxWidth };
   }
 
   // for multi-line video box
@@ -48,7 +71,7 @@ class VideoBox extends React.Component {
 
   // for sliding video box
   updateEndIndex() {
-    let numVideos = this.numberVideosToShow();
+    let numVideos = this.calcBoxWidthAndNumVideos(this.props.sidebarVisible).numVideosPerRow;
     this.setState({
       endIndex: this.state.startIndex + numVideos
     });
@@ -56,7 +79,7 @@ class VideoBox extends React.Component {
 
   // for sliding video box
   slideVideos(direction) {
-    let numVideos = this.numberVideosToShow();
+    let numVideos = this.calcBoxWidthAndNumVideos(this.props.sidebarVisible).numVideosPerRow;
 
     let startIndex = this.state.startIndex + direction * numVideos;
     let endIndex   = this.state.endIndex + direction * numVideos;
@@ -93,21 +116,21 @@ class VideoBox extends React.Component {
 
   render() {
     if (this.props.multiline) {
-      let buttonVal = this.state.numRows === 2 ? 'Show more' : 'Show fewer';
+      let buttonVal = this.state.numRows === 2 ? 'Show more' : 'Show less';
       return (
-        <div className='video-box multiline'>
+        <div className='video-box multiline' style={{width: this.state.boxWidth}}>
           <h1 className='video-box-title'>{this.props.title}</h1>
           <div className='video-box-videos multiline'>
             { this.renderVideos() }
+            <button
+              className='video-box-toggle'
+              onClick={this.toggleMoreVideos.bind(this)}>{ buttonVal }</button>
           </div>
-          <button
-            className='video-box-toggle'
-            onClick={this.toggleMoreVideos.bind(this)}>{ buttonVal }</button>
         </div>
       );
     } else {
       return (
-        <div className='video-box'>
+        <div className='video-box' style={{width: this.state.boxWidth}}>
           <h1 className='video-box-title'>{this.props.title}</h1>
           <div className='video-box-videos'>
             { this.renderVideos() }
@@ -124,7 +147,8 @@ VideoBox.propTypes = {
   multiline: PropTypes.bool,
   title: PropTypes.string,
   windowWidth: PropTypes.number,
-  vids: PropTypes.arrayOf(PropTypes.object)
+  vids: PropTypes.arrayOf(PropTypes.object),
+  sidebarVisible: PropTypes.bool
 };
 
 VideoBox.defaultProps = {

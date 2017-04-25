@@ -1,26 +1,16 @@
-import React                        from 'react';
-import { withRouter, Link }         from 'react-router';
-
-import { SearchBar, DropdownMenu }  from '../common';
-import { authenticateUser }         from '../../util/oauth_util';
+import React from 'react';
+import { withRouter, Link } from 'react-router';
+import PropTypes from 'prop-types';
+import { SearchBar, DropdownMenu } from '../common';
+import { authenticateUser } from 'util/oauth_util';
+import { toggleSidebar } from 'helpers';
 
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  toggleSidebar() {
-    let sidebar       = document.getElementById("sidebar");
-    let sidebarcarrot = document.getElementById("sidebar-carrot");
-    let sidebarmenu   = document.getElementById("sidebar-menu");
-    let logo          = document.getElementById("sidebar-logo");
-    let burger        = document.getElementById("burger");
-
-    burger.classList.toggle('grey_shift');
-    logo.classList.toggle('grey_shift');
-    sidebar.classList.toggle('hidden');
-    sidebarcarrot.classList.toggle('hidden');
-    sidebarmenu.classList.toggle('hidden');
+    this.state = {
+      showDropdown: false
+    };
   }
 
   renderRightMenu() {
@@ -31,15 +21,15 @@ class Navbar extends React.Component {
           <button>
             <img className='beads-image' src="./app/assets/ic_notifications_none_black_24px.svg"/>
           </button>
-          <a onClick={this.toggleDropdown} style={{cursor: 'pointer'}}>
+          <a onClick={this.toggleDropdown.bind(this)} style={{cursor: 'pointer'}}>
             <img src={this.props.user.picture} />
           </a>
-          <DropdownMenu
+          { this.state.showDropdown ? <DropdownMenu
+            toggleDropdown={this.toggleDropdown.bind(this)}
             user={this.props.user}
-            logout={this.props.logout}/>
+            logout={this.props.logout}/> : null }
         </div>
-      )
-
+      );
     } else {
       return (
         <div className='navbar-right-menu'>
@@ -51,20 +41,20 @@ class Navbar extends React.Component {
             <p className="sign-in-text">SIGN IN</p>
           </a>
         </div>
-      )
+      );
     }
   }
 
   toggleDropdown() {
-    document.getElementById('dropdown-menu').classList.toggle('hidden');
+    this.setState({ showDropdown: !this.state.showDropdown });
   }
 
   render() {
     return (
       <div className='navbar'>
         <div className='navbar-left-menu'>
-          <i onClick={this.toggleSidebar} id="sidebar-menu" className="material-icons">menu</i>
-          <i onClick={this.toggleSidebar} id="sidebar-carrot" className="material-icons hidden">keyboard_arrow_down</i>
+          <i onClick={toggleSidebar} id="sidebar-menu" className="material-icons">menu</i>
+          <i onClick={toggleSidebar} id="sidebar-carrot" className="material-icons hidden">keyboard_arrow_down</i>
           <Link to='/' className='burger' id="burger">
             <img src="./app/assets/burger.png"/>
           </Link>
@@ -85,5 +75,13 @@ class Navbar extends React.Component {
     );
   }
 }
+
+Navbar.propTypes = {
+  user: PropTypes.object,
+  loggedIn: PropTypes.bool,
+  receiveQuery: PropTypes.func,
+  loginUser: PropTypes.func,
+  logout: PropTypes.func
+};
 
 export default withRouter(Navbar);
