@@ -22,7 +22,7 @@ class Sidebar extends React.Component {
   }
 
   shouldShow() {
-    return window.innerWidth >= 1300 ? '' : 'hidden';
+    return window.innerWidth >= 1312 ? '' : 'hidden';
   }
 
   render() {
