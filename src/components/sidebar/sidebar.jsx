@@ -61,7 +61,6 @@ class Sidebar extends React.Component {
     ));
   }
 
-
   render() {
     return (
       <div id="sidebar" className={`sidebar`} onClick={this.handleClick}>

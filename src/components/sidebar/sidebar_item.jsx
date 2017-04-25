@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 
 class SidebarItem extends React.Component {
@@ -9,16 +9,27 @@ class SidebarItem extends React.Component {
 
   renderIcon() {
     if(this.props.useImage) {
-      return <img src={this.props.url} />;
+      return (
+        <img src={this.props.url} />
+      );
     } else {
-      return <i className='material-icons'>{this.props.icon}</i>;
+      return (
+        <i className={`material-icons ${this.shouldBeRed()}`}>
+          {this.props.icon}
+        </i>
+      );
     }
+  }
+
+  shouldBeRed() {
+    let path = this.props.router.location.pathname;
+    return path === `/${this.props.link}` ? 'redish' : '';
   }
 
   render() {
     const { link, icon, span } = this.props;
     return (
-      <div className="sidebar-item">
+      <div className={`sidebar-item`} id={link}>
         <Link to={`/${link}`}>
           { this.renderIcon() }
           <span>{span}</span>
@@ -40,4 +51,4 @@ SidebarItem.propsTypes = {
   span: PropTypes.string.isRequired
 };
 
-export default SidebarItem;
+export default withRouter(SidebarItem);
