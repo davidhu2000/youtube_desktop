@@ -41,6 +41,7 @@ class App extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateSetting.bind(this));
+    window.removeEventListener('click', this.updateSetting.bind(this));
   }
 
   render() {
@@ -50,6 +51,7 @@ class App extends React.Component {
         <Sidebar />
         { this.props.children }
         <Footer />
+        <div id='sidebar-cover' className='hidden'></div>
       </div>
     );
   }

@@ -8,25 +8,6 @@ import { toggleSidebar } from 'helpers';
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
-    this.toggleSidebar = this.toggleSidebar.bind(this);
-  }
-
-  toggleSidebar() {
-    let sidebar       = document.getElementById("sidebar");
-    let sidebarcarrot = document.getElementById("sidebar-carrot");
-    let sidebarmenu   = document.getElementById("sidebar-menu");
-    let logo          = document.getElementById("sidebar-logo");
-    let burger        = document.getElementById("burger");
-
-    // this.props.receiveSetting({ sidebarVisible });
-
-    burger.classList.toggle('grey_shift');
-    logo.classList.toggle('grey_shift');
-    sidebarcarrot.classList.toggle('hidden');
-    sidebarmenu.classList.toggle('hidden');
-
-    // let sidebarClass = window.innerWidth <= 1312 ? 'offscreen' : 'hidden';
-    // sidebar.classList.toggle(sidebarClass);
   }
 
   renderRightMenu() {
@@ -45,7 +26,6 @@ class Navbar extends React.Component {
             logout={this.props.logout}/>
         </div>
       );
-
     } else {
       return (
         <div className='navbar-right-menu'>
@@ -57,7 +37,7 @@ class Navbar extends React.Component {
             <p className="sign-in-text">SIGN IN</p>
           </a>
         </div>
-      )
+      );
     }
   }
 

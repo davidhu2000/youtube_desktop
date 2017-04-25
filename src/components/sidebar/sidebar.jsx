@@ -23,9 +23,12 @@ class Sidebar extends React.Component {
 
   componentDidMount() {
     let sidebar = document.getElementById('sidebar');
+    let cover = document.getElementById('sidebar-cover');
+    cover.classList.add('hidden');
+
     if (window.innerWidth > 1312) {
       sidebar.classList.remove('fixed', 'offscreen');   
-      sidebar.classList.add('absolute', 'ondocument');
+      sidebar.classList.add('absolute', 'ondocument');     
     } else {
       sidebar.classList.remove('absolute', 'ondocument');
       sidebar.classList.add('fixed', 'offscreen');
@@ -33,14 +36,17 @@ class Sidebar extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
+    let cover = document.getElementById('sidebar-cover');
     let sidebar = document.getElementById('sidebar');
 
     if (this.props.setting.windowWidth > 1312 && newProps.setting.windowWidth <= 1312) {
       sidebar.classList.remove('absolute', 'ondocument', 'hidden');
       sidebar.classList.add('fixed', 'offscreen');
+      cover.classList.add('hidden');
     } else if (this.props.setting.windowWidth <= 1312 && newProps.setting.windowWidth > 1312) {
       sidebar.classList.remove('fixed', 'onscreen', 'offscreen');
       sidebar.classList.add('absolute', 'ondocument');
+      cover.classList.add('hidden');
     }
   }
 
