@@ -8,13 +8,10 @@
 }
 
 .related-title {
+  height: 30px;
   width: 100%;
   display: flex;
   justify-content: space-between;
-}
-
-.related-list {
-
 }
 
 .related-item {
@@ -94,4 +91,9 @@
 
 .press {
 	margin-bottom: 40px;
+  display: flex;
+}
+
+.press h2 {
+  margin-right: 10px;
 }
