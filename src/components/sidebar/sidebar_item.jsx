@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 
 class SidebarItem extends React.Component {
@@ -20,7 +21,7 @@ class SidebarItem extends React.Component {
       <div className="sidebar-item">
         <Link to={`/${link}`}>
           { this.renderIcon() }
-          <span>${span}</span>
+          <span>{span}</span>
         </Link>
       </div>
     );
@@ -35,8 +36,8 @@ SidebarItem.propsTypes = {
   useImage: PropTypes.bool,
   url: PropTypes.string,
   icon: PropTypes.string,
-  link: PropTypes.string,
-  span: PropTypes.string
+  link: PropTypes.string.isRequired,
+  span: PropTypes.string.isRequired
 };
 
 export default SidebarItem;

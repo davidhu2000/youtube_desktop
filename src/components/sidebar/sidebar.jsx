@@ -3,23 +3,11 @@ import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router';
 import { propChecker, toggleSidebar } from 'helpers';
 import { values } from 'lodash';
-import SidebarItem from 'sidebar_item';
+import SidebarItem from './sidebar_item';
 
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  renderSubscriptions() {
-    let subs = values(this.props.subscriptions);
-    return subs.map( sub => (
-      <div className="sidebar-item" key={sub.resourceId.channelId}>
-        <Link to=''>
-          <img src={sub.thumbnails.default.url} />
-          <span>{sub.title}</span>
-        </Link>
-      </div>
-    ));
   }
 
   componentDidMount() {
@@ -61,6 +49,19 @@ class Sidebar extends React.Component {
     }  
   }
 
+  renderSubscriptions() {
+    let subs = values(this.props.subscriptions);
+    return subs.map( sub => (
+      <SidebarItem 
+        key={Math.random()}
+        link='#' 
+        span={sub.title} 
+        useImage={true} 
+        url={sub.thumbnails.default.url} />
+    ));
+  }
+
+
   render() {
     return (
       <div id="sidebar" className={`sidebar`} onClick={this.handleClick}>
@@ -77,28 +78,9 @@ class Sidebar extends React.Component {
 
         {/* Main button section */}
         <div className="sidebar-section">
-          <div className="sidebar-item">
-            <Link to='/home'>
-              <i className='material-icons'>home</i>
-              <span>Home</span>
-            </Link>
-          </div>
-
-          
-
-          <div className="sidebar-item">
-            <Link to='/trending'>
-              <i className='material-icons'>whatshot</i>
-              <span>Trending</span>
-            </Link>
-          </div>
-
-          <div className="sidebar-item">
-            <Link to='/subscriptions'>
-              <i className='material-icons'>subscriptions</i>
-              <span>Subscriptions</span>
-            </Link>
-          </div>
+          <SidebarItem link='home' span='Home' icon='home' />
+          <SidebarItem link='trending' span='Trending' icon='whatshot' />
+          <SidebarItem link='subscriptions' span='Subscriptions' icon='subscriptions' />
         </div>
 
         {/* Library button section */}
@@ -106,19 +88,9 @@ class Sidebar extends React.Component {
           <div className="sidebar-header">
             <Link to=''>LIBRARY</Link>
           </div>
-          <div className="sidebar-item">
-            <Link to=''>
-              <i className='material-icons'>history</i>
-              <span>History</span>
-            </Link>
-          </div>
-
-          <div className="sidebar-item">
-            <Link to=''>
-              <i className='material-icons'>watch_later</i>
-              <span>Watch Later</span>
-            </Link> 
-          </div>
+          
+          <SidebarItem link='history' span='History' icon='history' />
+          <SidebarItem link='#' span='Watch Later' icon='watch_later' />
         </div>
 
         {/* Subscription buttons */}
