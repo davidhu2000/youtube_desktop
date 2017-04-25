@@ -30,6 +30,7 @@
 
 .fixed {
   position: fixed;
+  height: 100vh;
 }
 
 .onscreen {
@@ -71,24 +72,21 @@
 .sidebar {
   width: 240px;
   z-index: 99;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
   font-size: 13px;
   color: #333;
   background-color: white;
   overflow-x: hidden;
+  overflow-y: hidden;
+  height: 100vh;
 }
 
 .sidebar-main {
   overflow-y: hidden;
-  width: 240px;
+  height: 100%;
 }
 
 .sidebar-main:hover {
-  overflow-y: scroll;
-  /*width: 250px;*/
+  overflow-y: overlay;
 }
 
 .sidebar-section {
