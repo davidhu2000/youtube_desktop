@@ -111,39 +111,48 @@ class Sidebar extends React.Component {
           </div>
         </div>
 
-        {/* Main button section */}
-        <div className="sidebar-section">
-          <SidebarItem link='home' span='Home' icon='home' />
-          <SidebarItem link='trending' span='Trending' icon='whatshot' />
-          <SidebarItem link='subscriptions' span='Subscriptions' icon='subscriptions' />
-        </div>
-
-        {/* Library button section */}
-        <div className="sidebar-section">
-          <div className="sidebar-header">
-            <Link to=''>LIBRARY</Link>
-          </div>
-          
-          <SidebarItem link='history' span='History' icon='history' />
-          <SidebarItem link='' span='Watch Later' icon='watch_later' />
-
-          { this.renderUserPlaylists() }
-
-          <div className='sidebar-item'>
-            <a onClick={this.togglePlaylists.bind(this)}>
-              <i className="material-icons">{this.state.icon}</i>
-              <span>{this.state.buttonVal}</span>
-            </a>
+        <div className="sidebar-main">
+          {/* Main button section */}
+          <div className="sidebar-section">
+            <SidebarItem link='home' span='Home' icon='home' />
+            <SidebarItem link='trending' span='Trending' icon='whatshot' />
+            <SidebarItem link='subscriptions' span='Subscriptions' icon='subscriptions' />
           </div>
 
-        </div>
+          {/* Library button section */}
+          <div className="sidebar-section">
+            <div className="sidebar-header">
+              <Link to=''>LIBRARY</Link>
+            </div>
+            
+            <SidebarItem link='history' span='History' icon='history' />
+            <SidebarItem link='' span='Watch Later' icon='watch_later' />
 
-        {/* Subscription buttons */}
-        <div className="sidebar-section">
-          <div className="sidebar-header">
-            <Link to=''>SUBSCRIPTIONS</Link>
+            { this.renderUserPlaylists() }
+
+            <div className='sidebar-item'>
+              <a onClick={this.togglePlaylists.bind(this)}>
+                <i className="material-icons">{this.state.icon}</i>
+                <span>{this.state.buttonVal}</span>
+              </a>
+            </div>
+
           </div>
-          { this.renderSubscriptions() }
+
+          {/* Subscription buttons */}
+          <div className="sidebar-section">
+            <div className="sidebar-header">
+              <Link to=''>SUBSCRIPTIONS</Link>
+            </div>
+            { this.renderSubscriptions() }
+            { this.renderSubscriptions() }
+            { this.renderSubscriptions() }
+            { this.renderSubscriptions() }
+            { this.renderSubscriptions() }
+            { this.renderSubscriptions() }
+            { this.renderSubscriptions() }
+            { this.renderSubscriptions() }
+          </div>
         </div>
 
       </div>

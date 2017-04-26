@@ -12,13 +12,16 @@
 @import url('./responsive.css');
 
 html {
-  font-family: "Roboto", arial, sans-serif
+  font-family: "Roboto", arial, sans-serif;
+  overflow: hidden;
 }
 
 .relative-content {
-  /*position: relative;*/
+  position: relative;
   display: flex;
   flex-direction: row;
+  overflow: hidden;
+  height: 100vh;
   /*align-items: flex-start;
   display: flex;
   justify-content: center;*/
@@ -26,12 +29,19 @@ html {
 }
 
 .main-content {
-  width: 100%;
+  /*width: 100%;*/
+  flex: 1;
   margin-top: 66px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  overflow-y: hidden;
+  /*height: 100vh;*/
+}
+
+.main-content:hover {
+  overflow-y: overlay;
 }
 
 .hidden {

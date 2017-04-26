@@ -64,7 +64,7 @@ class Subscriptions extends React.Component {
       });
 
       return (
-        <div>
+        <div className='main-content'>
           <VideoList
             windowWidth={this.props.setting.windowWidth}
             shouldShowPageNumber={false}
@@ -74,7 +74,7 @@ class Subscriptions extends React.Component {
       );
     } else {
       return (
-        <div className='search-index'>Loading</div>
+        <div className='main-content'>Loading</div>
       );
     }
 

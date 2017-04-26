@@ -49,9 +49,7 @@ class App extends React.Component {
       <div className="relative-content">
         <Navbar />
         <Sidebar />
-        <div className="main-content">
-          { this.props.children }
-        </div>
+        { this.props.children }
         <Footer />
         <div id='sidebar-cover' className='hidden' onClick={toggleSidebar}></div>
       </div>

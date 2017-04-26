@@ -54,15 +54,18 @@ class SearchIndex extends React.Component {
       }
 
       return (
-        <VideoList
-          pageNumber={pageNumber}
-          allPages={Object.keys(videos)}
-          volume={volume}
-          nextAction={nextAction}
-          previousPage={previousPage}
-          goToPage={goToPage}
-          videos={videos[pageNumber]}
-          windowWidth={this.props.setting.windowWidth} />
+        <div className="main-content">
+          <VideoList
+            pageNumber={pageNumber}
+            allPages={Object.keys(videos)}
+            volume={volume}
+            nextAction={nextAction}
+            previousPage={previousPage}
+            goToPage={goToPage}
+            videos={videos[pageNumber]}
+            windowWidth={this.props.setting.windowWidth} />
+        </div>
+
       );
     } else {
       // add spinner
