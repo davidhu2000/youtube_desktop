@@ -40,7 +40,7 @@ export const searchVideos = (query, nextPageToken, pageNumber = 1) => dispatch =
         res => res.json()
       ).then(
         videoStatResults => {
-          for (let i = 0; i < 25; i++) {
+          for (let i = 0; i < videos.items.length; i++) {
             videos.items[i]['statistics']
               = videoStatResults.items[i].statistics;
           }
