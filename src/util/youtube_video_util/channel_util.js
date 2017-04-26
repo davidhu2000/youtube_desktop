@@ -47,4 +47,4 @@ export const fetchChannelDetails = channelId => {
     key: YT_API_KEY.publicDataKey
   };
   return YoutubeApi.channels(params);
-}
+};

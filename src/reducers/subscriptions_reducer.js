@@ -1,7 +1,7 @@
 import { merge } from 'lodash';
 import {
   RECEIVE_SUBSCRIPTIONS,
-  RECEIVE_SUBSCRIPTIONS_UPLOADS } from "../actions/youtube_video_actions";
+  RECEIVE_SUBSCRIPTIONS_UPLOADS } from "actions/youtube_video_actions";
 
 let _defaultState = {};
 

@@ -1,6 +1,6 @@
 import { merge } from 'lodash';
-import { RECEIVE_USER } from "../actions/oauth_actions";
-import { RECEIVE_MY_CHANNEL_ID } from "../actions/youtube_video_actions.js";
+import { RECEIVE_USER } from "actions/oauth_actions";
+import { RECEIVE_MY_CHANNEL_ID } from "actions/youtube_video_actions";
 
 let _defaultState = {};
 

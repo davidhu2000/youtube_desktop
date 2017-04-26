@@ -4,7 +4,7 @@ import {
   CLEAR_VIDEOS,
   PREVIOUS_PAGE,
   NEXT_PAGE,
-  GO_TO_PAGE } from "../actions/youtube_video_actions";
+  GO_TO_PAGE } from "actions/youtube_video_actions";
 
 let _defaultState = {
   videos: null,

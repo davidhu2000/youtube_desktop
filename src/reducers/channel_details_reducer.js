@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import { RECEIVE_CHANNEL_DETAILS } from "../actions/youtube_video_actions.js";
+import { RECEIVE_CHANNEL_DETAILS } from "actions/youtube_video_actions";
 
 let _defaultState = {};
 
