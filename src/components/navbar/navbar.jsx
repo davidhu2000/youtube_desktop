@@ -22,7 +22,7 @@ class Navbar extends React.Component {
             <img className='beads-image' src="./app/assets/ic_notifications_none_black_24px.svg"/>
           </button>
           <a onClick={this.toggleDropdown.bind(this)} style={{cursor: 'pointer'}}>
-            <img className='user-picture' src={this.props.user.picture} />
+            <img className='navbar-user-picture' src={this.props.user.picture} />
           </a>
           { this.state.showDropdown ? <DropdownMenu
             context={this}

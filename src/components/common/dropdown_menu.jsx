@@ -21,7 +21,11 @@ class DropdownMenu extends React.Component {
 
   handleClick(e) {
     let dropdown = document.getElementById('dropdown-menu');
-    if(dropdown && !e.target.classList.contains('user-picture') && (!dropdown.contains(e.target) || e.target.tagName === 'BUTTON')) {
+    // only close the dropdown if 
+    // 1) dropdown is visible
+    // 2) the clicked target isn't the navbar user picture, which toggles dropdown
+    // 3) the dropdown component doesn't contain the target, or the target is a button. 
+    if (dropdown && !e.target.classList.contains('navbar-user-picture') && (!dropdown.contains(e.target) || e.target.tagName === 'BUTTON')) {
       this.props.context.setState({ showDropdown: false });
     }
   }
