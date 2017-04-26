@@ -40,7 +40,7 @@ class VideoBox extends React.Component {
 
     if (width > 1312 && this.props.sidebarVisible) {
       width -= 240;
-    } 
+    }
 
     if(width > 1312) {
       numVideosPerRow = 6;
@@ -126,7 +126,6 @@ class VideoBox extends React.Component {
               className='video-box-toggle' 
               onClick={this.toggleMoreVideos.bind(this)}>{ buttonVal }</button>
           </div>
-          
         </div>
       );
     } else {

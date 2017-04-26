@@ -35,7 +35,8 @@ export const channels = params => {
 
   let defaultParams = {
     part: 'snippet',
-    key: YT_API_KEY.publicDataKey
+    key: YT_API_KEY.publicDataKey,
+    maxResults: 25,
   };
 
   let mergedParams = merge(defaultParams, params);
