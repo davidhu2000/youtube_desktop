@@ -18,6 +18,12 @@
   border-radius: 50px;
 }
 
+.navbar-right-menu .user-picture {
+  height: 32px;
+  width: 32px;
+  border-radius: 50px;
+}
+
 .sign-in-text {
   color: hsl(3, 81.8%, 49.6%);
   font-size: 14px;
