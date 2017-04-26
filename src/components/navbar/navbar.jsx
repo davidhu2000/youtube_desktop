@@ -55,9 +55,6 @@ class Navbar extends React.Component {
         <div className='navbar-left-menu'>
           <i onClick={toggleSidebar} id="sidebar-menu" className="material-icons">menu</i>
           <i onClick={toggleSidebar} id="sidebar-carrot" className="material-icons hidden">keyboard_arrow_down</i>
-          <Link to='/' className='burger' id="burger">
-            <img src="./app/assets/burger.png"/>
-          </Link>
           <Link to='/' className='youtube-logo' id="sidebar-logo">
             <img src="./app/assets/Youtube-logo.png"/>
           </Link>
