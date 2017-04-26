@@ -42,11 +42,18 @@ export const fetchRelated = videoId => {
 };
 
 export const fetchTrending = () => {
-  let baseUrl = `https://www.googleapis.com/youtube/v3/videos`;
-
   let params = {
     part: 'snippet,statistics,contentDetails',
     chart: 'mostPopular',
+  };
+
+  return YoutubeApi.videos(params);
+};
+
+export const fetchVideoStats = videos => {
+  let params = {
+    part: 'statistics',
+    id: videos.items.map(item => item.id.videoId).join(','),
   };
 
   return YoutubeApi.videos(params);
@@ -135,4 +142,3 @@ export const fetchRecommendedVideos = () => {
 
   return YoutubeApi.activities(params);
 };
-
