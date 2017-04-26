@@ -34,12 +34,17 @@ export const searchVideos = (query, nextPageToken, pageNumber = 1) => dispatch =
   return YoutubeVideoAPI.fetchVideos(query, nextPageToken).then(
     res => res.json()
   ).then(
-    jsonResult => {
+    videos => {
 
-      YoutubeVideoAPI.fetchVideoStats(jsonResult).then(
+      YoutubeVideoAPI.fetchVideoStats(videos).then(
         res => res.json()
       ).then(
-        videos => {
+        videoStatResults => {
+          for (let i = 0; i < 25; i++) {
+            videos.items[i]['statistics']
+              = videoStatResults.items[i].statistics;
+          }
+
           videos['query'] = query;
           videos['pageNumber'] = pageNumber;
 
