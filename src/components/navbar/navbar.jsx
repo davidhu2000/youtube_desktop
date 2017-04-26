@@ -25,7 +25,7 @@ class Navbar extends React.Component {
             <img className='user-picture' src={this.props.user.picture} />
           </a>
           { this.state.showDropdown ? <DropdownMenu
-            toggleDropdown={this.toggleDropdown.bind(this)}
+            context={this}
             user={this.props.user}
             logout={this.props.logout}/> : null }
         </div>
