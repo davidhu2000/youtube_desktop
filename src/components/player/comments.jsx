@@ -1,7 +1,7 @@
 import React             from 'react';
 import PropTypes         from 'prop-types';
 import CommentsItem      from './comments_item';
-import
+import NewComment        from './new_comment';
 import { fetchComments } from '../../actions/youtube_video_actions';
 import YT_API_KEY        from '../../../config/api_key';
 
@@ -37,7 +37,7 @@ class Comments extends React.Component {
 
     return (
       <div className="comments-container">
-
+        <NewComment videoId={this.props.videoId} />
         <div className="top-comments">
           <p>Top Comments</p>
           <i className="material-icons arrow-down">keyboard_arrow_down</i>

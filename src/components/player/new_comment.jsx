@@ -1,4 +1,6 @@
-import React from 'react';
+import React             from 'react';
+import PropTypes         from 'prop-types';
+import YT_API_KEY        from '../../../config/api_key';
 
 class NewComment extends React.Component {
 
@@ -12,13 +14,16 @@ class NewComment extends React.Component {
 
   render() {
     return (
-      <div className="new-comment-container">
-        <input type="text"></input>
-      </div>
+      <form className="new-comment-form">
+        <input type="text" className="" />
+        <input type="submit" className="" />
+      </form>
     );
   }
 }
 
-// NewComment.propTypes
+NewComment.propTypes = {
+  videoId: PropTypes.string
+}
 
 export default NewComment;
