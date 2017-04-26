@@ -50,6 +50,15 @@ export const fetchTrending = () => {
   return YoutubeApi.videos(params);
 };
 
+export const fetchVideoStats = videos => {
+  let params = {
+    part: 'snippet,statistics,contentDetails',
+    id: videos.items.map(item => item.id.videoId).join(',')
+  };
+
+  return YoutubeApi.videos(params);
+};
+
 export const fetchVideos = (query, nextPageToken = null) => {
   let params = {
     q: query,
