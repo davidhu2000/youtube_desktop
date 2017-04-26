@@ -49,3 +49,12 @@ export const fetchRelated = videoId => {
   };
   return YoutubeApi.search(params);
 };
+
+export const fetchVideoStats = videos => {
+  let params = {
+    part: 'statistics',
+    id: videos.items.map(item => item.id.videoId).join(','),
+  };
+
+  return YoutubeApi.videos(params);
+};

@@ -34,9 +34,20 @@ export const searchVideos = (query, nextPageToken, pageNumber = 1) => dispatch =
     res => res.json()
   ).then(
     videos => {
-      videos['query'] = query;
-      videos['pageNumber'] = pageNumber;
-      return dispatch(receiveVideos(videos));
+       YoutubeVideoAPI.fetchVideoStats(videos).then(
+         res => res.json()
+       ).then(
+         videoStatResults => {
+           for (let i = 0; i < videos.items.length; i++) {
+             videos.items[i]['statistics'] = videoStatResults.items[i].statistics;
+           }
+ 
+           videos['query'] = query;
+           videos['pageNumber'] = pageNumber;
+ 
+           return dispatch(receiveVideos(videos));
+         }
+       );
     }
   ).catch(
     err => console.log(err)
