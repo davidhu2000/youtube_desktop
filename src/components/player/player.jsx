@@ -1,6 +1,6 @@
 import React         from 'react';
 import PropTypes     from 'prop-types';
-import YouTubePlayer from 'youtube-player';
+// import YouTubePlayer from 'youtube-player';
 
 class Player extends React.Component {
 
@@ -8,31 +8,31 @@ class Player extends React.Component {
     super(props);
 
     this.player = null;
+    this.state = {
+      height: 390,
+      width: 640
+    };
+
   }
 
-  componentDidMount() {
-    this.createPlayer(this.props.videoId);
-  }
-
-  componentWillReceiveProps(newProps) {
-    if(newProps.videoId !== this.props.videoId) {
-      this.player.loadVideoById(newProps.videoId);
-    }
-  }
-
-  createPlayer(videoId) {
-    this.player = YouTubePlayer('video-player', {
-      playerVars: { rel: 0, modestbranding: 1, showinfo: 0 }
+  updateHeight() {
+    this.setState({
+      height: this.state.height + 100,
+      width: this.state.width + 100
     });
-    this.player.loadVideoById(videoId);
-
   }
 
   render() {
     return (
-      <span>
-        <div id="video-player"></div>
-      </span>
+      <div>
+        {/*<div id="video-player"></div>*/}
+
+        <iframe id="video-player" type="text/html" width={this.state.width} height={this.state.height}
+          src={`https://www.youtube.com/embed/${this.props.videoId}`}
+          frameBorder="0" allowFullScreen></iframe>
+
+        <button onClick={this.updateHeight.bind(this)}>Bigger</button>
+      </div>
     );
   }
 }
