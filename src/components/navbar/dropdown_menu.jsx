@@ -9,7 +9,6 @@ class DropdownMenu extends React.Component {
 
   handleClickOutside(e) {
     let notNavbarButton = !e.target.classList.contains('navbar-user-picture');
-
     if(notNavbarButton) {
       this.props.toggleDropdown();
     }
