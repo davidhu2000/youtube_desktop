@@ -1,33 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import enhanceWithClickOutside from 'react-click-outside';
 
 class DropdownMenu extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  componentDidMount() {
-    document.addEventListener('click', this.handleClick.bind(this), true);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('click', this.handleClick.bind(this), true);
+  handleClickOutside(e) {
+    let notNavbarButton = !e.target.classList.contains('navbar-user-picture');
+    if(notNavbarButton) {
+      this.props.toggleDropdown();
+    }
   }
 
   clearUser() {
     this.props.logout();
+    this.props.toggleDropdown();
     localStorage.removeItem('google-user');
-  }
-
-  handleClick(e) {
-    let dropdown = document.getElementById('dropdown-menu');
-    let notNavbarButton = !e.target.classList.contains('navbar-user-picture');
-    let clickedOutside = !dropdown.contains(e.target);
-    let clickedDropdownButton = e.target.tagName === 'BUTTON';
-
-    if (dropdown && notNavbarButton && (clickedOutside || clickedDropdownButton)) {
-      this.props.context.setState({ showDropdown: false });
-    }
   }
 
   render() {
@@ -66,4 +56,4 @@ DropdownMenu.propTypes = {
   user: PropTypes.object
 };
 
-export { DropdownMenu };
+export default enhanceWithClickOutside(DropdownMenu);

@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router';
 import { propChecker, toggleSidebar } from 'helpers';
 import { values } from 'lodash';
+
 import SidebarItem from './sidebar_item';
+import ContributorSection from './contributor_section';
+import SubscriptionSection from './subscription_section';
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -60,18 +63,6 @@ class Sidebar extends React.Component {
     if (narrowWindow && notShowMore && (correctClassName || correctTags)) {
       toggleSidebar();
     }  
-  }
-
-  renderSubscriptions() {
-    let subs = values(this.props.subscriptions);
-    return subs.map( sub => (
-      <SidebarItem 
-        key={Math.random()}
-        link='#' 
-        span={sub.title} 
-        useImage={true} 
-        url={sub.thumbnails.default.url} />
-    ));
   }
 
   // update with real playlists from api call
@@ -140,66 +131,13 @@ class Sidebar extends React.Component {
 
           </div>
 
-          {/* Subscription buttons */}
-          <div className="sidebar-section">
-            <div className="sidebar-header">
-              <Link to=''>SUBSCRIPTIONS</Link>
-            </div>
-            { this.renderSubscriptions() }
-          </div>
+          <SubscriptionSection subscriptions={this.props.subscriptions} />
 
-          {/* Contributor Sections */}
-          <div className="sidebar-section">
-            <div className='sidebar-header'>
-              CONTRIBUTORS
-            </div>
-
-            <SidebarItem 
-              link='https://www.github.com/davidhu2000' 
-              span={'David Hu'} 
-              useImage={true} 
-              url={'https://avatars2.githubusercontent.com/u/15827041?v=3&s=200'} />
-
-            <SidebarItem 
-              link='https://github.com/asherman-ca' 
-              span={'Alex Sherman'} 
-              useImage={true} 
-              url={'https://avatars0.githubusercontent.com/u/19175984?v=3&s=200'} />
-
-            <SidebarItem 
-              link='https://www.github.com/cjudge1337' 
-              span={'Carson Judge'} 
-              useImage={true} 
-              url={'https://avatars3.githubusercontent.com/u/22506482?v=3&s=200'} />
-
-            <SidebarItem 
-              link='https://www.github.com/nguyenkevin16' 
-              span={'Kevin Nyugen'} 
-              useImage={true} 
-              url={'https://avatars0.githubusercontent.com/u/15253174?v=3&s=200'} />
-
-            <SidebarItem 
-              link='https://www.github.com/rlee0525' 
-              span={'Raymond Lee'} 
-              useImage={true} 
-              url={'https://avatars3.githubusercontent.com/u/20022799?v=3&s=200'} />
-
-            <SidebarItem 
-              link='https://www.github.com/davidhu2000' 
-              span={'Katarina Rossi'} 
-              useImage={true} 
-              url={'https://avatars3.githubusercontent.com/u/20021799?v=3&s=200'} />
-
-          </div>
+          <ContributorSection />
 
            <div className="sidebar-section">
-              <div className="sidebar-header">
-                Copyright @2017
-              </div>
-            </div>
-            <div className="sidebar-section">
-              <div className="sidebar-header">
-                Copyright @2017
+              <div className='sidebar-header'>
+                This app is a collaborative effort from all of the contributors. We hope you enjoy using it.
               </div>
             </div>
         </div>
