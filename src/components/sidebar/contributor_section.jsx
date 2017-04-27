@@ -43,7 +43,7 @@ class ContributorSection extends React.Component {
   }
 
   openNewWindow(url) {
-    ipcRenderer.sendSync('open-url', url);
+    ipcRenderer.send('open-url', url);
   }
 
   renderContributors() {
@@ -57,7 +57,7 @@ class ContributorSection extends React.Component {
           </a>
         </div>
       );
-    })
+    });
   }
 
   render() {

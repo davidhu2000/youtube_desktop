@@ -16,7 +16,7 @@ export const fetchAuthUserSubscriptions = () => {
   ).then(
     resJson => {
       let channelId = resJson.items[0].id;
-
+        
       let baseUrl = 'https://www.googleapis.com/youtube/v3/subscriptions';
       let params = {
         part: 'snippet',
