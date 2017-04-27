@@ -33,7 +33,7 @@ app.on('ready', () => {
   //   shell.openExternal(arg[0]);
   // });
 
-  // createWindow();
+  createWindow();
 });
 
 app.on('window-all-closed', () => {
@@ -45,4 +45,3 @@ app.on('window-all-closed', () => {
 app.on('activate', () => {
   if (win === null) createWindow();
 });
-

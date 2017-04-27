@@ -13,8 +13,8 @@ export const receiveSubscriptionsUploads = sub => ({
   sub
 });
 
-export const fetchSubscriptions = () => dispatch => {
-  return YoutubeVideoAPI.fetchAuthUserSubscriptions().then(
+export const fetchSubscriptions = channelId => dispatch => {
+  return YoutubeVideoAPI.fetchAuthUserSubscriptions(channelId).then(
     res => res.json()
   ).then(
     resJson => dispatch(receiveSubscriptions(resJson.items))

@@ -39,7 +39,7 @@ class Subscriptions extends React.Component {
       let oldNumSubs = Object.keys(this.props.subscriptions).length;
       let newNumSubs = Object.keys(newProps.subscriptions).length;
       if (oldNumSubs !== newNumSubs) {
-        this.props.fetchSubscriptions().then(
+        this.props.fetchSubscriptions(this.props.channelId).then(
           () => this.getUploads(newProps.subscriptions)
         );
       }
@@ -49,7 +49,7 @@ class Subscriptions extends React.Component {
   render() {
     let subs = this.props.subscriptions || [];
     let keys = Object.keys(subs);
-    
+
     // check to see if the number of times videos are fetches is equal to number of subs
     if(this.state.count === keys.length) {
       let videos = [];
