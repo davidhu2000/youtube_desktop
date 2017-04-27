@@ -3,7 +3,7 @@ export const parseStringForLinks = str => {
 	let matches = str.match(regex);
 	if (matches) {
 		for(let i = 0; i < matches.length; i++) {
-			str = str.replace(matches[i], url => `<a target='${url}'>${url}</a>`);
+			str = str.replace(matches[i], url => `<a className='detail-links'>${url}</a>`);
 		}
 	}
 	

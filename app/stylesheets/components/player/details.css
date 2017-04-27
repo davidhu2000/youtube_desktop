@@ -155,6 +155,10 @@
 }
 .details-lower-description a {
   color: hsl(206.1, 79.3%, 52.7%);
+  cursor: pointer;
+}
+.details-lower-description a:hover {
+  text-decoration: underline;
 }
 .details-lower-container h3 {
   font-size: 14px;
