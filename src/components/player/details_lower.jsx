@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { parseDate, formatNumber } from 'helpers';
+import { parseDate, formatNumber, parseStringForLinks } from 'helpers';
 
 class DetailsLower extends React.Component {
    constructor(props) {
@@ -11,12 +11,15 @@ class DetailsLower extends React.Component {
      };
   }
 
+  handleExternalLinks(url) {
+    console.log(url)
+  }
+
   parseDescription(description) {
     return description.map(line => {
       // TODO: parse description for links
       return (
-          <span key={Math.random()}>
-            {line}<br/>
+          <span key={Math.random()} dangerouslySetInnerHTML={{ __html: `${parseStringForLinks(line)}<br />` }}>
           </span>
       );
     });

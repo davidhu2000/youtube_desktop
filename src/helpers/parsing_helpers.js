@@ -1,8 +1,10 @@
 export const parseStringForLinks = str => {
-	let regex = /https?:\/\/(www.)?(?!www).+\.[^\s]{2,}/g;
+	let regex = /https?:\/\/(www.)?(?!www).+?\.[^\s]{2,}/g;
 	let matches = str.match(regex);
-	for(let i = 0; i < matches.length; i++) {
-		str = str.replace(matches[i], url => `<a href='${url}'>${url}</a>`)
+	if (matches) {
+		for(let i = 0; i < matches.length; i++) {
+			str = str.replace(matches[i], url => `<a target='${url}'>${url}</a>`);
+		}
 	}
 	
 	return str;
