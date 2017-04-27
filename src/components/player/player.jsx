@@ -9,8 +9,8 @@ class Player extends React.Component {
 
     this.player = null;
     this.state = {
-      height: 400,
-      width: 400
+      height: 390,
+      width: 640
     };
 
   }
