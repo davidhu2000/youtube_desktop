@@ -50,6 +50,8 @@
   font-size: 11px;
   color: #444;
   display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
 }
 
 .video-box-item-channel:hover {

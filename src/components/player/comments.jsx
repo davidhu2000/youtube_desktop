@@ -2,7 +2,7 @@ import React             from 'react';
 import PropTypes         from 'prop-types';
 import CommentsItem      from './comments_item';
 import NewComment        from './new_comment';
-import { fetchComments } from '../../actions/youtube_video_actions';
+import { fetchComments } from 'actions/youtube_video_actions';
 import YT_API_KEY        from '../../../config/api_key';
 
 class Comments extends React.Component {
@@ -30,6 +30,14 @@ class Comments extends React.Component {
     }
   }
 
+  renderNumComments() {
+    let numComments = 0;
+    if (this.state.comments) {
+      numComments = this.state.comments.length;
+      return numComments;
+    }
+  }
+
   render() {
     if (this.state.comments === "disabled") {
       return (<div className="comments-container">Comments are disabled.</div>);
@@ -39,8 +47,8 @@ class Comments extends React.Component {
       <div className="comments-container">
         <NewComment videoId={this.props.videoId} />
         <div className="top-comments">
-          <p>Top Comments</p>
-          <i className="material-icons arrow-down">keyboard_arrow_down</i>
+          {this.renderNumComments()}
+          <p>Comments</p>
         </div>
         <div className="comments-list">
           {this.renderComments()}

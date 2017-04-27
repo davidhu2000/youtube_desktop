@@ -3,10 +3,11 @@ import { connect }       from 'react-redux';
 import { withRouter }    from 'react-router';
 
 import trendingIndex     from './trending_index';
-import { fetchTrending } from '../../actions/youtube_video_actions';
+import { fetchTrending } from 'actions/youtube_video_actions';
 
-const mapStateToProps = ({ trending }) => ({
-  trending
+const mapStateToProps = ({ trending, setting }) => ({
+  trending,
+  setting
 });
 
 const mapDispatchToProps = dispatch => ({

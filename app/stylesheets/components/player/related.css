@@ -8,18 +8,24 @@
 }
 
 .related-title {
+  height: 30px;
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
-.related-list {
-
-}
-
 .related-item {
   margin: 5px 0px;
   display: flex;
+}
+
+.related-item:first-child {
+  border-bottom: .25px #666666 solid;
+  padding-bottom: 10px;
+}
+
+.related-item:nth-child(2) {
+  margin-top: 15px;
 }
 
 .related-item-info {
@@ -94,4 +100,9 @@
 
 .press {
 	margin-bottom: 40px;
+  display: flex;
+}
+
+.press h2 {
+  margin-right: 10px;
 }

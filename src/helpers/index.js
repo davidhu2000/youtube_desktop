@@ -1,6 +1,9 @@
+export * from './prop_checker';
+export * from './sidebar';
+
 // create comma seperated number
-export const formatNumber = (number, shouldAbbreviate = false) => {
-	
+export const formatNumber = (number = 301, shouldAbbreviate = false) => {
+
   if (shouldAbbreviate) {
   	// return number in '1M' or '965K' format
 		var ranges = [
@@ -11,7 +14,7 @@ export const formatNumber = (number, shouldAbbreviate = false) => {
 		  { divider: 1e06 , suffix: 'M' },
 		  { divider: 1e03 , suffix: 'k' }
 		];
-	
+
 	  for (var i = 0; i < ranges.length; i++) {
 	    if (number >= ranges[i].divider) {
 	      return Math.floor(number / ranges[i].divider).toString() + ranges[i].suffix;
@@ -95,6 +98,26 @@ export const parseDate = date => {
   newDate += date.getFullYear();
 
   return newDate;
+};
+
+export const timeFromNow = date => {
+  let durationsInSeconds = {
+    year: 31536000, month: 2592000, day: 86400,
+    hour: 3600, 		minute: 60, 		second: 1
+  };
+
+  let ms = Math.floor((new Date() - new Date(date))/1000);
+	let types = ['year', 'month', 'day', 'hour', 'minute', 'second'];
+
+
+  for(let idx = 0; idx < types.length; idx ++) {
+    let num = Math.floor(ms / durationsInSeconds[types[idx]]);
+    if (num >= 1) {
+    	let type = types[idx];
+    	if (num > 1) type += 's';
+    	return `${num} ${type} ago`;
+    }
+  }
 };
 
 // add ... to strings that are too long

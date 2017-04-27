@@ -1,7 +1,7 @@
 import React            from 'react';
 import PropTypes        from 'prop-types';
 import RelatedListItem  from './related_list_item';
-import { fetchRelated } from '../../actions/youtube_video_actions';
+import { fetchRelated } from 'actions/youtube_video_actions';
 import YT_API_KEY       from '../../../config/api_key';
 
 class Related extends React.Component {
@@ -40,8 +40,9 @@ class Related extends React.Component {
       <div className="related-container">
         <div className="related-title">
           <h2>Up Next</h2>
-          <h2>autoplay</h2>
+
           <div className="row press">
+            <h2>autoplay</h2>
             <input
               type="checkbox"
               id="checked"

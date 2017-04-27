@@ -16,6 +16,10 @@ export const fetchComments = videoId => {
   return fetch(`${baseUrl}?${urlParams}`);
 };
 
+export const submitTopLevelComment = () => {
+
+};
+
 export const fetchDetails = videoId => {
 
   let params = {
@@ -135,4 +139,3 @@ export const fetchRecommendedVideos = () => {
 
   return YoutubeApi.activities(params);
 };
-

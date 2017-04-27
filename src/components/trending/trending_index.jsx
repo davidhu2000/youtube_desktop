@@ -18,10 +18,14 @@ class TrendingIndex extends React.Component {
 
   render() {
     return (
-      <VideoList
-        shouldShowVolume={false}
-        shouldShowPageNumber={false}
-        videos={this.props.trending.videos} />
+      <div className="main-content">
+        <VideoList
+          shouldShowVolume={false}
+          shouldShowPageNumber={false}
+          videos={this.props.trending.videos} 
+          windowWidth={this.props.setting.windowWidth} />
+      </div>
+      
     );
   }
 }

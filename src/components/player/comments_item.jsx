@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { parseDate } from '../../helpers';
+import { parseDate } from 'helpers';
 
 class CommentsItem extends React.Component {
 
@@ -17,9 +17,15 @@ class CommentsItem extends React.Component {
       <div className="comment-item">
         <img src={authorProfileImageUrl}/>
         <div className="comment-right">
-          <h4 className="display-name">{authorDisplayName}</h4>
-          <p className="comment-body">{textOriginal}</p>
-          <p className="comment-date">{parsedDate}</p>
+          <div className="comment-right-upper">
+            <h4 className="display-name">{authorDisplayName}</h4>
+            <p className="comment-date">{parsedDate}</p>
+          </div>
+
+          <div className="comment-right-lower">
+            <p className="comment-body">{textOriginal.slice(0,75)}</p>
+          </div>
+
         </div>
       </div>
     );

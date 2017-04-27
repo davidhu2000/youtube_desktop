@@ -12,15 +12,36 @@
 @import url('./responsive.css');
 
 html {
-  font-family: "Roboto", arial, sans-serif
+  font-family: "Roboto", arial, sans-serif;
+  overflow: hidden;
 }
 
 .relative-content {
   position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  overflow: hidden;
+  height: 100vh;
+  /*align-items: flex-start;
+  display: flex;
+  justify-content: center;*/
   /*background-color: #F1F1F1;*/
+}
+
+.main-content {
+  /*width: 100%;*/
+  flex: 1;
+  margin-top: 66px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: hidden;
+  /*height: 100vh;*/
+}
+
+.main-content:hover {
+  overflow-y: overlay;
 }
 
 .hidden {
@@ -28,7 +49,7 @@ html {
 }
 
 .redish {
-  color: #e62117;
+  color: #e62117 !important;
 }
 
 .greyscale {

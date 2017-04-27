@@ -7,12 +7,10 @@
   display: flex;
   justify-content: center;
   margin-top: 56px;
-  /*background-color: #f1f1f1;*/
 }
 
 .search-index-container {
   background-color: white;
-  width: 693px;
 }
 
 .search-index-container-top {
