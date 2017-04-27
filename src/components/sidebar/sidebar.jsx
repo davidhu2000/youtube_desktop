@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router';
 import { propChecker, toggleSidebar } from 'helpers';
 import { values } from 'lodash';
+
 import SidebarItem from './sidebar_item';
 import ContributorSection from './contributor_section';
 import SubscriptionSection from './subscription_section';
