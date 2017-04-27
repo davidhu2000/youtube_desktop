@@ -7,25 +7,18 @@ class DropdownMenu extends React.Component {
     super(props);
   }
 
-  handleClickOutside() {
-    this.props.toggleDropdown();
+  handleClickOutside(e) {
+    let notNavbarButton = !e.target.classList.contains('navbar-user-picture');
+
+    if(notNavbarButton) {
+      this.props.toggleDropdown();
+    }
   }
 
   clearUser() {
     this.props.logout();
     this.props.toggleDropdown();
     localStorage.removeItem('google-user');
-  }
-
-  handleClick(e) {
-    let dropdown = document.getElementById('dropdown-menu');
-    let notNavbarButton = !e.target.classList.contains('navbar-user-picture');
-    let clickedOutside = !dropdown.contains(e.target);
-    let clickedDropdownButton = e.target.tagName === 'BUTTON';
-
-    if (dropdown && notNavbarButton && (clickedOutside || clickedDropdownButton)) {
-      this.props.context.setState({ showDropdown: false });
-    }
   }
 
   render() {
