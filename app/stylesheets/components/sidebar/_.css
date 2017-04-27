@@ -82,7 +82,7 @@
 
 .sidebar-main {
   overflow-y: hidden;
-  height: 100%;
+  height: calc(100% - 65px);
 }
 
 .sidebar-main:hover {
