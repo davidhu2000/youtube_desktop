@@ -9,4 +9,10 @@ export const fetchAuthUserPlaylists = () => {
   return YoutubeApi.playlists(params);
 };
 
-window.fetchAuthUserPlaylists = fetchAuthUserPlaylists;
+export const fetchChannelPlaylists = (channelId) => {
+  let params = {
+    access_token: localStorage.getItem('google-access-token'),
+    channelId
+  };
+  return YoutubeApi.playlists(params);
+};
