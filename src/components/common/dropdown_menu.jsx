@@ -21,8 +21,12 @@ class DropdownMenu extends React.Component {
 
   handleClick(e) {
     let dropdown = document.getElementById('dropdown-menu');
-    if(dropdown && (!dropdown.contains(e.target) || e.target.tagName === 'BUTTON' || !dropdown.contains(e.target))) {
-      this.props.toggleDropdown();
+    let notNavbarButton = !e.traget.classList.contains('navbar-user-picture');
+    let clickedOutside = !dropdown.contains(e.target);
+    let clickedDropdownButton = e.target.tagName === 'BUTTON';
+
+    if (dropdown && notNavbarButton && (clickedOutside || clickedDropdownButton)) {
+      this.props.context.setState({ showDropdown: false });
     }
   }
 
