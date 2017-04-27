@@ -27,13 +27,19 @@ const createWindow = () => {
 };
 
 app.on('ready', () => {
-  // ipcMain.on('open-url', (event, arg) => {
-  //   console.log(event);
-  //   console.log(arg)
-  //   shell.openExternal(arg[0]);
-  // });
+  ipcMain.on('open-url', (event, arg) => {
+    shell.openExternal(arg);
 
-  // createWindow();
+    // let newWin = new BrowserWindow({
+    //   width: 800,
+    //   height: 800
+    // });
+
+    // newWin.loadURL(arg);
+    // newWin.show();
+  });
+
+  createWindow();
 });
 
 app.on('window-all-closed', () => {
