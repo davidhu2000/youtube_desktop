@@ -1,7 +1,8 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router';
 import PropTypes from 'prop-types';
-import { SearchBar, DropdownMenu } from '../common';
+import { SearchBar } from '../common';
+import DropdownMenu from './dropdown_menu';
 import { authenticateUser } from 'util/oauth_util';
 import { toggleSidebar } from 'helpers';
 
@@ -11,6 +12,10 @@ class Navbar extends React.Component {
     this.state = {
       showDropdown: false
     };
+  }
+
+  toggleDropdown() {
+    this.setState({ showDropdown: !this.state.showDropdown });
   }
 
   renderRightMenu() {
@@ -26,6 +31,7 @@ class Navbar extends React.Component {
           </a>
           { this.state.showDropdown ? <DropdownMenu
             context={this}
+            toggleDropdown={this.toggleDropdown.bind(this)}
             user={this.props.user}
             logout={this.props.logout}/> : null }
         </div>
@@ -43,10 +49,6 @@ class Navbar extends React.Component {
         </div>
       );
     }
-  }
-
-  toggleDropdown() {
-    this.setState({ showDropdown: !this.state.showDropdown });
   }
 
   render() {
