@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import { RECEIVE_SETTING } from "../actions/setting_actions.js";
+import { RECEIVE_SETTING } from "actions/setting_actions";
 
 let _defaultState = {
   windowWidth: null,

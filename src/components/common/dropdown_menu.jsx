@@ -39,7 +39,7 @@ class DropdownMenu extends React.Component {
           <h1><strong>{ user.name }</strong></h1>
         </div>
 
-        <div>    
+        <div>
           <div className='button-list'>
             <button onClick={() => {}}>
               My channel

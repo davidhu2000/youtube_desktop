@@ -26,6 +26,7 @@ class Home extends React.Component {
       'UClgRkhTL3_hImCAmdLfDE4g',
       'UCYfdidRxbB8Qhf0Nx7ioOYw',
       'UCBR8-60-B28hp2BmDPdntcQ',
+      'UCOpcACMWblDls9Z6GERVi1A', // Screen Junkies for sample
     ];
 
     for (let i = 0; i < channelIds.length; i++) {
@@ -41,7 +42,7 @@ class Home extends React.Component {
   componentWillReceiveProps(newProps) {
     if (!this.props.loggedIn && newProps.loggedIn) {
       newProps.fetchRecommendedVideos();
-    } 
+    }
   }
 
   renderChannels() {
@@ -55,7 +56,9 @@ class Home extends React.Component {
         return (
           <VideoBox
             key={id}
+            channelId={id}
             title={title}
+            channelId={id}
             sidebarVisible={this.props.setting.sidebarVisible}
             windowWidth={this.props.setting.windowWidth}
             vids={channel.videos} />
@@ -85,7 +88,7 @@ class Home extends React.Component {
         <div className='main-content'>
           {this.renderRecommended()}
           <VideoBox
-            title='Trending' 
+            title='Trending'
             sidebarVisible={this.props.setting.sidebarVisible}
             windowWidth={this.props.setting.windowWidth}
             vids={videos} />

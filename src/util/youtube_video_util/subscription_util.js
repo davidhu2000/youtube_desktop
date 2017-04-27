@@ -21,7 +21,8 @@ export const fetchAuthUserSubscriptions = () => {
       let params = {
         part: 'snippet',
         channelId,
-        access_token: localStorage.getItem('google-access-token')
+        access_token: localStorage.getItem('google-access-token'),
+        maxResults: 25
       };
       let urlParams = createUrlParams(params);
       return fetch(`${baseUrl}?${urlParams}`);

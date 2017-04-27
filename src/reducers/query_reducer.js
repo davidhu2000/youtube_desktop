@@ -1,7 +1,7 @@
 import { merge } from 'lodash';
 import {
   RECEIVE_QUERY,
-  CLEAR_QUERY } from "../actions/query_actions";
+  CLEAR_QUERY } from "actions/query_actions";
 
 let _defaultState = null;
 
