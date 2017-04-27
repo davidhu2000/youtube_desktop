@@ -21,7 +21,7 @@ class DropdownMenu extends React.Component {
 
   handleClick(e) {
     let dropdown = document.getElementById('dropdown-menu');
-    let notNavbarButton = !e.traget.classList.contains('navbar-user-picture');
+    let notNavbarButton = !e.target.classList.contains('navbar-user-picture');
     let clickedOutside = !dropdown.contains(e.target);
     let clickedDropdownButton = e.target.tagName === 'BUTTON';
 
