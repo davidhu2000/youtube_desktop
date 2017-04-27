@@ -1,20 +1,34 @@
 import * as YoutubeVideoAPI from 'util/youtube_video_util';
 
-export const fetchComments = (videoId, context) => {
+export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
+
+export const receiveComments = comments => ({
+  type: RECEIVE_COMMENTS,
+  comments
+});
+
+export const fetchComments = videoId => dispatch => {
   return YoutubeVideoAPI.fetchComments(videoId).then(
     response => response.json()
   ).then(responseJson => {
     if (responseJson.items) {
-      context.setState({ comments: responseJson.items });
+      dispatch(receiveComments(responseJson.items));
     } else if (responseJson.error && responseJson.error.code === 403) {
-      context.setState({ comments: "disabled" });
+      dispatch(receiveComments('disabled'));
     }
   }).catch(error => {
     console.error(error);
   });
 };
 
-export const fetchDetails = (videoId, context) => {
+export const RECEIVE_DETAILS = 'RECEIVE_DETAILS';
+
+export const receiveDetails = details => ({
+  type: RECEIVE_DETAILS,
+  details
+});
+
+export const fetchDetails = videoId => dispatch => {
   return YoutubeVideoAPI.fetchDetails(videoId).then(
     response => response.json()
   ).then(responseJson => {
@@ -24,10 +38,8 @@ export const fetchDetails = (videoId, context) => {
     YoutubeVideoAPI.fetchChannelSubs(channelId).then(
       subsResponse => subsResponse.json()
     ).then(subsResponseJson => {
-      context.setState({
-        subs: subsResponseJson.items[0].statistics.subscriberCount ,
-        details,
-      });
+      details.sub = subsResponseJson.items[0].statistics.subscriberCount;
+      dispatch(receiveDetails(details));
     }).catch(error => {
       console.error(error);
     });
@@ -36,19 +48,33 @@ export const fetchDetails = (videoId, context) => {
   });
 };
 
-export const fetchVideoRating = (videoId, context) => {
+export const RECEIVE_VIDEO_RATING = 'RECEIVE_VIDEO_RATING';
+
+export const receiveVideoRating = rating => ({
+  type: RECEIVE_VIDEO_RATING,
+  rating
+});
+
+export const fetchVideoRating = videoId => dispatch => {
   return YoutubeVideoAPI.fetchVideoRating(videoId).then(
     response => response.json()
   ).then(responseJson => {
-    context.setState({ rating: responseJson.items[0].rating });
+    dispatch(receiveVideoRating(responseJson.items[0].rating));
   });
 };
 
-export const fetchRelated = (videoId, context) => {
+export const RECEIVE_RELATED = 'RECEIVE_RELATED';
+
+export const receiveRelated = related => ({
+  type: RECEIVE_RELATED,
+  related
+});
+
+export const fetchRelated = videoId => dispatch => {
   return YoutubeVideoAPI.fetchRelated(videoId).then(
     response => response.json()
   ).then(responseJson => {
-    context.setState({ vids: responseJson.items });
+    dispatch(receiveRelated(responseJson.items));
   }).catch(error => {
     console.error(error);
   });
