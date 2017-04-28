@@ -30,8 +30,6 @@ class Player extends React.Component {
         <iframe id="video-player" type="text/html" width={this.state.width} height={this.state.height}
           src={`https://www.youtube.com/embed/${this.props.videoId}`}
           frameBorder="0" allowFullScreen></iframe>
-
-        <button onClick={this.updateHeight.bind(this)}>Bigger</button>
       </div>
     );
   }

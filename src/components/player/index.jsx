@@ -1,9 +1,9 @@
 import React          from 'react';
-import { withRouter } from 'react-router';
 import { connect }    from 'react-redux';
 import PlayerDetails from './main';
 
 import { fetchComments, fetchVideoRating, fetchRelated, fetchDetails } from 'actions/youtube_video_actions';
+import { videosRate } from 'actions/interaction_actions';
 
 const mapStateToProps = ({ playerDetails, setting }) => ({
   playerDetails,
@@ -11,10 +11,14 @@ const mapStateToProps = ({ playerDetails, setting }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchComments: () => dispatch(fetchComments()),
-  fetchRelated: () => dispatch(fetchRelated()),
-  fetchDetails: () => dispatch(fetchDetails()),
-  fetchVideoRating: () => dispatch(fetchVideoRating())
+  fetchComments: videoId => dispatch(fetchComments(videoId)),
+  fetchRelated: videoId => dispatch(fetchRelated(videoId)),
+  fetchDetails: videoId => dispatch(fetchDetails(videoId)),
+  fetchVideoRating: videoId => dispatch(fetchVideoRating(videoId)),
+  videosRate: (videoId, rating) => dispatch(videosRate(videoId, rating))
 });
 
-export default withRouter(PlayerDetails);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PlayerDetails);

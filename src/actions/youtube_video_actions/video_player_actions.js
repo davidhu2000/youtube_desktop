@@ -38,7 +38,7 @@ export const fetchDetails = videoId => dispatch => {
     YoutubeVideoAPI.fetchChannelSubs(channelId).then(
       subsResponse => subsResponse.json()
     ).then(subsResponseJson => {
-      details.sub = subsResponseJson.items[0].statistics.subscriberCount;
+      details.subs = subsResponseJson.items[0].statistics.subscriberCount;
       dispatch(receiveDetails(details));
     }).catch(error => {
       console.error(error);

@@ -1,19 +1,20 @@
 import { RECEIVE_COMMENTS,
          RECEIVE_DETAILS,
          RECEIVE_VIDEO_RATING,
-         RECEIVE_RELATED } from 'youtube_video_actions';
+         RECEIVE_RELATED } from 'actions/youtube_video_actions';
 import merge from 'lodash/merge';
 
 let _defaultState = {
   comments: [],
   details: {},
   rating: 'none',
-  vids: [],
+  related: [],
   autoplay: true
 };
 
 const playerDetailsReducer = ( state = _defaultState, action ) => {
   Object.freeze(state);
+  console.log(action);
 
   switch(action.type) {
     case RECEIVE_COMMENTS:
@@ -25,17 +26,17 @@ const playerDetailsReducer = ( state = _defaultState, action ) => {
         details: action.details
       });
     case RECEIVE_VIDEO_RATING:
+      console.log(action)
       return merge({}, state, {
         rating: action.rating
       });
     case RECEIVE_RELATED:
       return merge({}, state, {
-        vids: action.vids,
-        autoplay: action.autoplay
+        related: action.related
       });
     default:
       return state;
   }
-}
+};
 
 export default playerDetailsReducer;

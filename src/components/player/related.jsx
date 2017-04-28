@@ -1,7 +1,6 @@
 import React            from 'react';
 import PropTypes        from 'prop-types';
 import RelatedListItem  from './related_list_item';
-import { fetchRelated } from 'actions/youtube_video_actions';
 import YT_API_KEY       from '../../../config/api_key';
 
 class Related extends React.Component {
@@ -9,22 +8,14 @@ class Related extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { vids: [], autoplay: true };
-  }
-
-  componentDidMount() {
-    fetchRelated(this.props.videoId, this);
-  }
-
-  componentWillReceiveProps(newProps) {
-    if(newProps.videoId !== this.props.videoId) {
-      fetchRelated(this.props.videoId, this);
-    }
+    this.state = {
+      autoplay: true
+    };
   }
 
   renderRelatedVideos() {
-    if (this.state.vids.length !== 0) {
-      let vids = this.state.vids;
+    if (this.props.related.length !== 0) {
+      let vids = this.props.related;
       return vids.map(vid => <RelatedListItem key={vid.etag} vid={vid} />)
     }
   }

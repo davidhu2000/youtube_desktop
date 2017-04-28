@@ -16,18 +16,28 @@ class PlayerDetails extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    let videoId = this.props.router.params.videoId;
+    this.props.fetchDetails(videoId);
+    this.props.fetchComments(videoId);
+    this.props.fetchRelated(videoId);
+    this.props.fetchVideoRating(videoId);
+  }
+
   render() {
     let videoId = this.props.router.params.videoId;
+    let { comments, details, related, rating } = this.props.playerDetails;
+
     return (
       <div className="main-content"> 
         <div className="player-container">
           <div className="left-frame">
             <Player   videoId={videoId}/>
-            <Details  videoId={videoId}/>
-            <Comments videoId={videoId}/>
+            <Details  details={details} rating={rating} videoId={videoId} videosRate={this.props.videosRate}/>
+            <Comments comments={comments}/>
           </div>
           <div className="right-frame">
-            <Related  videoId={videoId}/>
+            <Related  related={this.props.playerDetails.related}/>
           </div>
         </div>
       </div>    
