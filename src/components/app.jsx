@@ -78,6 +78,11 @@ class App extends React.Component {
       addition = 0.001;
     }
 
+    let isLoading = this.props.setting.isLoading;
+    if (!isLoading) {
+      addition = 5;
+    }
+
     this.setState({
       progress: this.state.progress + this.state.addition,
       addition
@@ -86,7 +91,8 @@ class App extends React.Component {
 
   renderProgressBar() {
     let isLoading = this.props.setting.isLoading;
-    if (isLoading) {
+
+    if (isLoading || (!isLoading && this.state.progress < 100 && this.state.progress > 0)) {
       return (
         <ProgressBar 
           isLoading={isLoading} 
