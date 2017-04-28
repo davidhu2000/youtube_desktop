@@ -37,13 +37,15 @@
     top: 0px;
     bottom: inherit;
     right: inherit;
+    left: 170px;
   }
   .second-img {
-   bottom: inherit;
-   margin: auto 0;
+   bottom: 280px;
+   left: 138px;
+   margin: inherit;
   }
   .third-img {
-    left: inherit;
+    left: 170px;
   }
 /*third section*/
   .third div {
