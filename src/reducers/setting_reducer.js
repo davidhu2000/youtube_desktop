@@ -4,7 +4,7 @@ import { RECEIVE_SETTING } from "../actions/setting_actions.js";
 let _defaultState = {
   windowWidth: null,
   sidebarVisible: window.innerWidth >= 1312 ? true : false,
-  isLoading: false
+  isLoading: true
 };
 
 const settingReducer = (state = _defaultState, action) => {

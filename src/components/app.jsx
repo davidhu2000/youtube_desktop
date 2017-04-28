@@ -16,7 +16,9 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      progress: 0
+      progress: 0,
+      addition: 0.5,
+      pathname: 'home'
     };
   }
 
@@ -33,6 +35,8 @@ class App extends React.Component {
     window.addEventListener('resize', this.updateSetting.bind(this));
     window.addEventListener('click', this.updateSetting.bind(this));
 
+    this.props.setState({ pathname: this.props.pathname.pathname });
+
     if(this.props.location.pathname === '/search' && !this.props.searchResult.video) {
       this.props.router.replace('/home');
     }
@@ -43,8 +47,15 @@ class App extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (this.props.location.pathname !== newProps.location.pathname) {
+    if (this.state.pathname !== newProps.location.pathname) {
+
+      console.log('app')
       this.props.receiveSetting({ isLoading: true });
+      this.setState({ 
+        progress: 0,
+        addition: 0.5,
+        pathname: newProps.location.pathname
+      });
     }
   }
 
@@ -54,13 +65,24 @@ class App extends React.Component {
   }
 
   updateProgress() {
+    let addition;
+    if (this.state.progress < 30) {
+      addition = 0.5;
+    } else if (this.state.progress < 40) {
+      addition = 0.25;
+    } else if (this.state.progress < 50) {
+      addition = 0.1;
+    } else {
+      addition = 0.001;
+    }
+
     this.setState({
-      progress: this.state.progress + 1
+      progress: this.state.progress + this.state.addition,
+      addition
     });
   }
 
   renderProgressBar() {
-    console.log(this.state)
     let isLoading = this.props.setting.isLoading;
     if (isLoading) {
       return (
