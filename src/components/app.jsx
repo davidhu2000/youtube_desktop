@@ -35,7 +35,7 @@ class App extends React.Component {
     window.addEventListener('resize', this.updateSetting.bind(this));
     window.addEventListener('click', this.updateSetting.bind(this));
 
-    this.props.setState({ pathname: this.props.pathname.pathname });
+    this.setState({ pathname: this.props.location.pathname });
 
     if(this.props.location.pathname === '/search' && !this.props.searchResult.video) {
       this.props.router.replace('/home');
@@ -47,9 +47,11 @@ class App extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (this.state.pathname !== newProps.location.pathname) {
+    // console.log(this.state);
+    // console.log(newProps)
+    if (this.state && this.state.pathname !== newProps.location.pathname) {
 
-      console.log('app')
+      // console.log('app')
       this.props.receiveSetting({ isLoading: true });
       this.setState({ 
         progress: 0,
