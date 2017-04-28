@@ -7,10 +7,10 @@ import { fetchSubscriptions } from 'actions/youtube_video_actions';
 import { receiveSetting } from 'actions/setting_actions';
 import { propChecker, toggleSidebar } from 'helpers';
 
-import Navbar  from './navbar';
+import Navbar from './navbar';
 import Sidebar from './sidebar';
-import Footer  from './footer';
-
+import Footer from './footer';
+import { ProgressBar } from './common';
 
 class App extends React.Component {
   constructor(props){
@@ -47,6 +47,7 @@ class App extends React.Component {
   render() {
     return(
       <div className="relative-content">
+        <ProgressBar />
         <Navbar />
         <Sidebar />
         { this.props.children }
