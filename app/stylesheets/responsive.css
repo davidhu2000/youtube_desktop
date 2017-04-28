@@ -3,23 +3,24 @@
 /*navbar*/
 
   .navbar {
-    justify-content: space-around;
+    justify-content: flex-start;
   }
 
   .navbar-center-menu {
     min-width: 100px;
+    flex-grow: 2;
   }
 
   .navbar-left-menu {
     min-width: 80px;
-    padding-right: 10px;
+    /*padding-right: 10px;*/
     justify-content: flex-start;
   }
 
   .navbar-right-menu {
     min-width: 40px;
     width: 10%;
-    padding-left: 10px;
+    margin-left: 20px;
     justify-content: flex-end;
   }
 
