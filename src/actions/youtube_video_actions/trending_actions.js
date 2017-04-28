@@ -12,11 +12,7 @@ export const fetchTrending = () => dispatch => {
   return YoutubeVideoAPI.fetchTrending().then(
     res => res.json()
   ).then(
-    videos => {
-      console.log('trending api')
-      dispatch(receiveTrending(videos.items));
-      return dispatch(receiveSetting({ isLoading: false }));
-    }
+    videos => dispatch(receiveTrending(videos.items))
   ).catch(
     err => console.log(err)
   );

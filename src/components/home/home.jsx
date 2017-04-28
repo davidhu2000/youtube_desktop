@@ -1,3 +1,4 @@
+/* global Promise */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { VideoBox } from '../common';
@@ -13,10 +14,12 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
+    let dataNeeded = [];
+
     let ms = 24 * 3600 * 1000;
     let { trending } = this.props;
     if (Date.now() - trending.date > ms || !trending.videos) {
-      this.props.fetchTrending();
+      dataNeeded.push(this.props.fetchTrending());
     }
 
     let channelIds = [
@@ -30,12 +33,14 @@ class Home extends React.Component {
 
     for (let i = 0; i < channelIds.length; i++) {
       const id = channelIds[i];
-      this.props.fetchChannelVideos(id);
+      dataNeeded.push(this.props.fetchChannelVideos(id));
     }
 
     if (this.props.loggedIn) {
-      this.props.fetchRecommendedVideos();
+      dataNeeded.push(this.props.fetchRecommendedVideos());
     }
+
+    Promise.all(dataNeeded).then( res => this.props.receiveSetting({ isLoading: false }));
   }
 
   componentWillReceiveProps(newProps) {
@@ -106,6 +111,7 @@ Home.propTypes = {
   fetchChannelVideos: PropTypes.func.isRequired,
   fetchCategories: PropTypes.func.isRequired,
   fetchRecommendedVideos: PropTypes.func.isRequired,
+  receiveSetting: PropTypes.func.isRequired,
   channels: propChecker.channels(),
   loggedIn: PropTypes.bool.isRequired,
   recommended: propChecker.recommended(),
