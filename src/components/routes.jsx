@@ -29,6 +29,10 @@ const routes = (
       System.import ('./player').then(loadRoute(cb)).catch(errorLoading);
     }}/>
 
+    <Route path='channels/:channelId' getComponent={(location, cb) => {
+      System.import ('./channels').then(loadRoute(cb)).catch(errorLoading);
+    }}/>
+
     <Route path='subscriptions' getComponent={(location, cb) => {
       System.import ('./subscriptions').then(loadRoute(cb)).catch(errorLoading);
     }}/>

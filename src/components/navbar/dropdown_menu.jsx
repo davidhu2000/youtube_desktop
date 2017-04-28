@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import enhanceWithClickOutside from 'react-click-outside';
+import { Link } from 'react-router';
 
 class DropdownMenu extends React.Component {
   constructor(props) {
@@ -22,6 +23,8 @@ class DropdownMenu extends React.Component {
 
   render() {
     const { user } = this.props;
+    const myChannelId = user.myChannelId;
+
     return (
       <div id='dropdown-menu'>
         <div className='user-info'>
@@ -29,11 +32,11 @@ class DropdownMenu extends React.Component {
           <h1><strong>{ user.name }</strong></h1>
         </div>
 
-        <div>    
+        <div>
           <div className='button-list'>
-            <button onClick={() => {}}>
+            <Link to={`channels/${myChannelId}`}>
               My channel
-            </button>
+            </Link>
             <button onClick={this.clearUser.bind(this)}>
               Sign Out
             </button>
