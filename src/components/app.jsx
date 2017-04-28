@@ -15,6 +15,9 @@ import { ProgressBar } from './common';
 class App extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      progress: 0
+    };
   }
 
   updateSetting() {
@@ -39,15 +42,40 @@ class App extends React.Component {
     }
   }
 
+  componentWillReceiveProps(newProps) {
+    if (this.props.location.pathname !== newProps.location.pathname) {
+      this.props.receiveSetting({ isLoading: true });
+    }
+  }
+
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateSetting.bind(this));
     window.removeEventListener('click', this.updateSetting.bind(this));
   }
 
+  updateProgress() {
+    this.setState({
+      progress: this.state.progress + 1
+    });
+  }
+
+  renderProgressBar() {
+    console.log(this.state)
+    let isLoading = this.props.setting.isLoading;
+    if (isLoading) {
+      return (
+        <ProgressBar 
+          isLoading={isLoading} 
+          progress={this.state.progress} 
+          updateProgress={this.updateProgress.bind(this)} />
+      );
+    }
+  }
+
   render() {
     return(
       <div className="relative-content">
-        <ProgressBar />
+        { this.renderProgressBar() }
         <Navbar />
         <Sidebar />
         { this.props.children }
