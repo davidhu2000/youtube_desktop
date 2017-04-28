@@ -18,7 +18,7 @@
 @keyframes slideIn {
   0% {
     left: -240px;
-  } 
+  }
   100% {
     left: 0px;
   }
@@ -104,6 +104,7 @@
 
 #sidebar-header {
   height: 57px;
+  border-bottom: none;
 }
 
 #sidebar-header .sidebar-item:hover {
@@ -147,7 +148,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start; 
+  justify-content: flex-start;
   height: 40px;
   cursor: pointer;
 }
@@ -188,5 +189,11 @@
 @media screen and (min-width: 1300px) {
   #sidebar {
     position: static;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  #sidebar-header {
+    border-bottom: 1px solid #e2e2e2;
   }
 }
