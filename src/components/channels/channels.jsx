@@ -1,4 +1,5 @@
 import React from 'react';
+import ChannelNavbar from './channel_navbar';
 
 class Channel extends React.Component {
   constructor(props) {
@@ -11,9 +12,16 @@ class Channel extends React.Component {
 
   render() {
     return (
-      <div className="channels-container">
-        <div className="channel-banner-container">
-          <img id="channel-banner" src="./app/assets/whiteburger.png" />
+      <div className="main-content">
+        <div className="channels-container">
+          <div className="channel-banner-container">
+            <img id="channel-banner"
+                 src="./app/assets/whiteburger.png" />
+          </div>
+          <div className="channel-banner-header">
+
+          </div>
+          <ChannelNavbar />
         </div>
       </div>
     )

@@ -1,9 +1,26 @@
+
 .channels-container {
-  margin-top: 55px;
   width: 100%;
+  display: block;
 }
 
 #channel-banner {
   width: 100%;
-  height: calc(100vw / 6.2 - 1px);
+  display: block;
+  height: calc(100vw / 6 - 1px);
+  margin: 0;
+}
+
+.channel-banner-header {
+  height: 96px;
+  background-color: #F5F5F5;
+}
+
+/*Channel Navbar*/
+.channel_navbar_container {
+  height: 48px;
+  background-color: #F5F5F5;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
