@@ -10,7 +10,7 @@ class VideoBoxItem extends React.Component {
 
   render () {
     const vid = this.props.vid;
-    const { channelTitle, publishedAt } = vid.snippet;
+    const { channelId, channelTitle, publishedAt } = vid.snippet;
     const { url } = vid.snippet.thumbnails.medium;
     const title = shortenString(vid.snippet.title, 60);
 
@@ -38,7 +38,7 @@ class VideoBoxItem extends React.Component {
     }
 
     return (
-      
+
       <div className="video-box-item">
 
         <Link to={`watch/${videoId}`} className="video-box-item-image">
@@ -50,7 +50,7 @@ class VideoBoxItem extends React.Component {
           <h1 className='video-title'>{title}</h1>
         </Link>
 
-        <Link to='#' className='video-box-item-channel'>
+        <Link to={`channels/${channelId}`} className='video-box-item-channel'>
           <p className='basic-text'>{channelTitle}</p>
         </Link>
 

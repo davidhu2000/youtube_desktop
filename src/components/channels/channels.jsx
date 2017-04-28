@@ -10,11 +10,11 @@ class Channel extends React.Component {
   }
 
   render() {
-    console.log(this.props);
-
     return (
       <div className="channels-container">
-        Hello Channels!
+        <div className="channel-banner-container">
+          <img id="channel-banner" src="./app/assets/whiteburger.png" />
+        </div>
       </div>
     )
   }

@@ -1,3 +1,9 @@
 .channels-container {
-  margin-top: 56px;
+  margin-top: 55px;
+  width: 100%;
+}
+
+#channel-banner {
+  width: 100%;
+  height: calc(100vw / 6.2 - 1px);
 }

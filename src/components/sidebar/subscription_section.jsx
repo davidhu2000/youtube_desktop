@@ -13,7 +13,7 @@ class SubscriptionSection extends React.Component {
     return subs.map(sub => (
       <SidebarItem
         key={Math.random()}
-        link='#'
+        link={`channels/${subs.channelId}`}
         span={sub.title}
         useImage={true}
         url={sub.thumbnails.default.url} />
