@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
-import { VideoList } from '../common';
+import { VideoList, Spinner } from '../common';
 import { propChecker } from 'helpers';
 
 class SearchIndex extends React.Component {
@@ -55,7 +55,8 @@ class SearchIndex extends React.Component {
 
       return (
         <div className="main-content">
-          <VideoList
+          
+          {/*<VideoList
             pageNumber={pageNumber}
             allPages={Object.keys(videos)}
             volume={volume}
@@ -63,7 +64,8 @@ class SearchIndex extends React.Component {
             previousPage={previousPage}
             goToPage={goToPage}
             videos={videos[pageNumber]}
-            windowWidth={this.props.setting.windowWidth} />
+            windowWidth={this.props.setting.windowWidth} />*/}
+          <Spinner />
         </div>
 
       );
