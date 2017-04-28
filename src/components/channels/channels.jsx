@@ -13,7 +13,7 @@ class Channel extends React.Component {
     console.log(this.props);
 
     return (
-      <div>
+      <div className="channels-container">
         Hello Channels!
       </div>
     )
