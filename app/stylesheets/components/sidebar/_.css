@@ -186,13 +186,13 @@
   margin-left: 8px;
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1313px) {
   #sidebar {
     position: static;
   }
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1312px) {
   #sidebar-header {
     border-bottom: 1px solid #e2e2e2;
   }
