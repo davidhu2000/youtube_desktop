@@ -37,7 +37,7 @@ class VideoList extends React.Component {
     switch (true) {
       case (width < 660 ):
         return 'small';
-      case (width >= 600 && width <875):
+      case (width >= 660 && width <875):
         return 'medium';
       case (width >= 865):
         return 'large';

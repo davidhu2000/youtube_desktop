@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain, shell } = require('electron');
 const path = require('path');
 const url = require('url');
 
@@ -26,7 +26,21 @@ const createWindow = () => {
 
 };
 
-app.on('ready', createWindow);
+app.on('ready', () => {
+  ipcMain.on('open-url', (event, arg) => {
+    shell.openExternal(arg);
+
+    // let newWin = new BrowserWindow({
+    //   width: 800,
+    //   height: 800
+    // });
+
+    // newWin.loadURL(arg);
+    // newWin.show();
+  });
+
+  createWindow();
+});
 
 app.on('window-all-closed', () => {
   if(process.platform !== 'darwin') {
@@ -37,3 +51,4 @@ app.on('window-all-closed', () => {
 app.on('activate', () => {
   if (win === null) createWindow();
 });
+

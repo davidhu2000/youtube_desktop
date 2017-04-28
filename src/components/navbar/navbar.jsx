@@ -1,7 +1,8 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router';
 import PropTypes from 'prop-types';
-import { SearchBar, DropdownMenu } from '../common';
+import { SearchBar } from '../common';
+import DropdownMenu from './dropdown_menu';
 import { authenticateUser } from 'util/oauth_util';
 import { toggleSidebar } from 'helpers';
 
@@ -13,6 +14,10 @@ class Navbar extends React.Component {
     };
   }
 
+  toggleDropdown() {
+    this.setState({ showDropdown: !this.state.showDropdown });
+  }
+
   renderRightMenu() {
     if(this.props.loggedIn) {
       return (
@@ -22,9 +27,10 @@ class Navbar extends React.Component {
             <img className='beads-image' src="./app/assets/ic_notifications_none_black_24px.svg"/>
           </button>
           <a onClick={this.toggleDropdown.bind(this)} style={{cursor: 'pointer'}}>
-            <img src={this.props.user.picture} />
+            <img className='navbar-user-picture' src={this.props.user.picture} />
           </a>
           { this.state.showDropdown ? <DropdownMenu
+            context={this}
             toggleDropdown={this.toggleDropdown.bind(this)}
             user={this.props.user}
             logout={this.props.logout}/> : null }
@@ -45,19 +51,12 @@ class Navbar extends React.Component {
     }
   }
 
-  toggleDropdown() {
-    this.setState({ showDropdown: !this.state.showDropdown });
-  }
-
   render() {
     return (
       <div className='navbar'>
         <div className='navbar-left-menu'>
           <i onClick={toggleSidebar} id="sidebar-menu" className="material-icons">menu</i>
           <i onClick={toggleSidebar} id="sidebar-carrot" className="material-icons hidden">keyboard_arrow_down</i>
-          <Link to='/' className='burger' id="burger">
-            <img src="./app/assets/burger.png"/>
-          </Link>
           <Link to='/' className='youtube-logo' id="sidebar-logo">
             <img src="./app/assets/Youtube-logo.png"/>
           </Link>

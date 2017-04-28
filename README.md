@@ -8,7 +8,7 @@ A desktop client of [youtube](https://www.youtube.com) that allows the user to b
 
 This project is still currently in development. A link will appear here upon our first release.
 
-### The Application
+## The Application
 
 #### The Search Page
 
@@ -52,20 +52,22 @@ We'd love to get contributions from you! Please take a look at the [Contribution
 
 ### Core Members
 
-[![David Hu][pic_dh]][git_dh] | [![Alex Sherman][pic_as]][git_as] | [![Carson Judge][pic_cj]][git_cj] | [![Kevin Nguyen][pic_kn]][git_kn] | [![Raymond Lee][pic_rl]][git_rl]
-:------------------:|:-----------------------:|:-----------------------:|:----------------------:|:---:
-[David Hu][git_dh]  | [Alex Sherman][git_as]  | [Carson Judge][git_cj]  | [Kevin Nguyen][git_kn] | [Raymond Lee][git_rl]
+[![David Hu][pic_dh]][git_dh] | [![Alex Sherman][pic_as]][git_as] | [![Carson Judge][pic_cj]][git_cj] | [![Kevin Nguyen][pic_kn]][git_kn] | [![Raymond Lee][pic_rl]][git_rl] | [![Katarina Ross][pic_kr]][git_kr]
+:------------------:|:-----------------------:|:-----------------------:|:----------------------:|:---:|:---:
+[David Hu][git_dh]  | [Alex Sherman][git_as]  | [Carson Judge][git_cj]  | [Kevin Nguyen][git_kn] | [Raymond Lee][git_rl] | [Katarina Rossi][git_kr]
 
 [pic_dh]: https://avatars2.githubusercontent.com/u/15827041?v=3&s=200
 [pic_as]: https://avatars0.githubusercontent.com/u/19175984?v=3&s=200
 [pic_cj]: https://avatars3.githubusercontent.com/u/22506482?v=3&s=200
 [pic_kn]: https://avatars0.githubusercontent.com/u/15253174?v=3&s=200
 [pic_rl]: https://avatars3.githubusercontent.com/u/20022799?v=3&s=200
+[pic_kr]: https://avatars2.githubusercontent.com/u/18646575?v=3&s=200
 [git_dh]: https://github.com/davidhu2000
 [git_as]: https://github.com/asherman-ca
 [git_cj]: https://github.com/cjudge1337
 [git_kn]: https://github.com/nguyenkevin16
 [git_rl]: https://github.com/rlee0525
+[git_kr]: https://github.com/dischorde
 
 ### Contributors
 

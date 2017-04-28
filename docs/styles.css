@@ -113,23 +113,23 @@ body {
   font-size: 20px;
   margin: 15px 0px;
 }
-.third ul {
+.third div {
   width: 800px;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.third li {
+.third a {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.third ul img {
+.third div img {
   height: 84px;
   width: 84px;
 }
-.third li:nth-child(3) img {
+.third a:nth-child(3) img {
   margin-left: 10px;
 }
 /****************************/

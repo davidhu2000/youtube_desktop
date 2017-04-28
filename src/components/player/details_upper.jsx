@@ -59,7 +59,7 @@ class DetailsUpper extends React.Component {
 
                     <i className="material-icons">thumb_up</i>
                     <span className="details-action-bar-count">
-                      {formatNumber(likeCount + (this.props.currentRating === 'like' ? 1 : 0) ).slice(0,1) + "K"}
+                      {formatNumber(likeCount + (this.props.currentRating === 'like' ? 1 : 0), true)}
                     </span>
                     <span className="details-action-bar-count-text">
                       I like this
@@ -75,7 +75,7 @@ class DetailsUpper extends React.Component {
 
                     <i className="material-icons">thumb_down</i>
                     <span className="details-action-bar-count">
-                      {formatNumber(dislikeCount + (this.props.currentRating === 'dislike' ? 1 : 0) ).slice(0,1) + "K"}
+                      {formatNumber(dislikeCount + (this.props.currentRating === 'dislike' ? 1 : 0), true)}
                     </span>
                     <span className="details-action-bar-count-text">
                       I dislike this

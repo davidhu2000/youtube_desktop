@@ -18,6 +18,7 @@ class Details extends React.Component {
     
     const { details, rating } = this.props;
     const { subs } = details;
+
     const { title, channelTitle, publishedAt, description } = details.snippet;
     const { viewCount, likeCount, dislikeCount } = details.statistics;
 

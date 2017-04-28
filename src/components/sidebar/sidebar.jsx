@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router';
 import { propChecker, toggleSidebar } from 'helpers';
 import { values } from 'lodash';
+
 import SidebarItem from './sidebar_item';
+import ContributorSection from './contributor_section';
+import SubscriptionSection from './subscription_section';
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -21,6 +24,7 @@ class Sidebar extends React.Component {
     let cover = document.getElementById('sidebar-cover');
     cover.classList.add('hidden');
 
+    // render sidebar with the correct behavior basd on window width
     if (window.innerWidth > 1312) {
       sidebar.classList.remove('fixed', 'offscreen');   
       sidebar.classList.add('absolute', 'ondocument');     
@@ -59,18 +63,6 @@ class Sidebar extends React.Component {
     if (narrowWindow && notShowMore && (correctClassName || correctTags)) {
       toggleSidebar();
     }  
-  }
-
-  renderSubscriptions() {
-    let subs = values(this.props.subscriptions);
-    return subs.map( sub => (
-      <SidebarItem 
-        key={Math.random()}
-        link='#' 
-        span={sub.title} 
-        useImage={true} 
-        url={sub.thumbnails.default.url} />
-    ));
   }
 
   // update with real playlists from api call
@@ -139,22 +131,18 @@ class Sidebar extends React.Component {
 
           </div>
 
-          {/* Subscription buttons */}
-          <div className="sidebar-section">
-            <div className="sidebar-header">
-              <Link to=''>SUBSCRIPTIONS</Link>
+          <SubscriptionSection subscriptions={this.props.subscriptions} />
+
+          <ContributorSection />
+
+           <div className="sidebar-section">
+              <div className='sidebar-header'>
+                This app is a collaborative effort from all of the contributors. We hope you enjoy using it.
+              </div>
             </div>
-            { this.renderSubscriptions() }
-            { this.renderSubscriptions() }
-            { this.renderSubscriptions() }
-            { this.renderSubscriptions() }
-            { this.renderSubscriptions() }
-            { this.renderSubscriptions() }
-            { this.renderSubscriptions() }
-            { this.renderSubscriptions() }
-          </div>
         </div>
 
+       
       </div>
     );
   }
