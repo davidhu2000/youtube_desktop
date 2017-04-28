@@ -2,9 +2,6 @@ import * as YoutubeVideoAPI from 'util/youtube_video_util';
 
 export const RECEIVE_VIDEOS = 'RECEIVE_VIDEOS';
 export const CLEAR_VIDEOS = 'CLEAR_VIDEOS';
-export const PREVIOUS_PAGE = 'PREVIOUS_PAGE';
-export const NEXT_PAGE = 'NEXT_PAGE';
-export const GO_TO_PAGE = 'GO_TO_PAGE';
 
 export const receiveVideos = videos => ({
   type: RECEIVE_VIDEOS,
@@ -13,19 +10,6 @@ export const receiveVideos = videos => ({
 
 export const clearVideos = () => ({
   type: CLEAR_VIDEOS
-});
-
-export const previousPage = () => ({
-  type: PREVIOUS_PAGE
-});
-
-export const nextPage = () => ({
-  type: NEXT_PAGE
-});
-
-export const goToPage = pageNumber => ({
-  type: GO_TO_PAGE,
-  pageNumber
 });
 
 export const searchVideos = (query, nextPageToken, pageNumber = 1) => dispatch => {
@@ -43,7 +27,6 @@ export const searchVideos = (query, nextPageToken, pageNumber = 1) => dispatch =
            }
  
            videos['query'] = query;
-           videos['pageNumber'] = pageNumber;
  
            return dispatch(receiveVideos(videos));
          }

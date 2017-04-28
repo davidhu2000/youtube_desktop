@@ -31,41 +31,28 @@ class SearchIndex extends React.Component {
   render() {
     if(this.props.searchResult.videos) {
       let {
-        pageNumber,
         nextPageToken,
         query,
         videos,
         pageInfo } = this.props.searchResult;
 
-      let { nextPage, previousPage, searchVideos, goToPage } = this.props;
+      let { searchVideos } = this.props;
 
       let volume;
       if(pageInfo) {
         volume = pageInfo.totalResults;
       }
-
-      let nextAction;
-      let maxPageNumber = Math.max(...Object.keys(videos).map( num => parseInt(num)));
-
-      if(maxPageNumber > pageNumber) {
-        nextAction = nextPage;
-      } else {
-        nextAction = () => searchVideos(query, nextPageToken, pageNumber+1);
-      }
+      let nextAction = () => searchVideos(query, nextPageToken);
 
       return (
         <div className="main-content">
           
-          {/*<VideoList
-            pageNumber={pageNumber}
-            allPages={Object.keys(videos)}
+          <VideoList
             volume={volume}
             nextAction={nextAction}
-            previousPage={previousPage}
-            goToPage={goToPage}
-            videos={videos[pageNumber]}
-            windowWidth={this.props.setting.windowWidth} />*/}
-          <Spinner />
+            videos={videos}
+            windowWidth={this.props.setting.windowWidth} />
+          
         </div>
 
       );
@@ -80,9 +67,6 @@ SearchIndex.propTypes = {
   receiveQuery: PropTypes.func.isRequired,
   searchVideos: PropTypes.func.isRequired, 
   clearVideos: PropTypes.func.isRequired, 
-  previousPage: PropTypes.func.isRequired,
-  nextPage: PropTypes.func.isRequired, 
-  goToPage: PropTypes.func.isRequired, 
   query: PropTypes.string,
   searchResult: propChecker.searchResult()
 };

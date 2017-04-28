@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { formatNumber } from 'helpers';
-import { VideoListItem }  from '../common';
+import { VideoListItem, Spinner }  from '../common';
 
 class VideoList extends React.Component {
   constructor(props) {
@@ -25,7 +25,8 @@ class VideoList extends React.Component {
         maxDescriptionLength: 180,
         maxChannelTitleLength: 200,
         itemWidth: 856
-      }
+      },
+      loading: true
     };
 
     this.renderPageNumbers = this.renderPageNumbers.bind(this);
@@ -121,7 +122,7 @@ class VideoList extends React.Component {
       <div className="search-index-container">
         {this.addSearchVolume()}
         {this.addSearchResults()}
-        {this.renderPageNavigtion()}
+        { this.state.loading ? <Spinner /> : null }
       </div>
     );
   }

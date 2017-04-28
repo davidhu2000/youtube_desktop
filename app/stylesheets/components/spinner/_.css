@@ -1,5 +1,7 @@
 .spinner {
   animation: rotator 1.4s linear infinite;
+  margin: 20px auto;
+  display: block;
 }
 
 @keyframes rotator {
