@@ -16,16 +16,28 @@ class SearchIndex extends React.Component {
     }
   }
 
+  handleScroll(e) {
+    let search = document.getElementById('search-container');
+    let main = document.getElementsByClassName('main-content')[0];
+    if (window.innerHeight + main.scrollTop > search.clientHeight - 50) {
+      this.props.searchVideos(this.props.query, this.props.searchResult.nextPageToken);
+    }
+  }
+
   componentDidMount() {
     if(this.props.query !== this.props.searchResult.query) {
       this._fetchResult(this.props.query);
     }
+    let main = document.getElementsByClassName('main-content')[0];
+    main.addEventListener('scroll', this.handleScroll.bind(this))
   }
 
   componentWillReceiveProps(newProps) {
     if(this.props.query !== newProps.query) {
       this._fetchResult(newProps.query);
     }
+    let main = document.getElementsByClassName('main-content')[0];
+    main.removeEventListener('scroll', this.handleScroll);
   }
 
   render() {
@@ -45,20 +57,14 @@ class SearchIndex extends React.Component {
       let nextAction = () => searchVideos(query, nextPageToken);
 
       return (
-        <div className="main-content">
-          
+        <div className="main-content">        
           <VideoList
             volume={volume}
             nextAction={nextAction}
             videos={videos}
-            windowWidth={this.props.setting.windowWidth} />
-          
+            windowWidth={this.props.setting.windowWidth} />          
         </div>
-
       );
-    } else {
-      // add spinner
-      return <div>Loading</div>;
     }
   }
 }
@@ -68,7 +74,11 @@ SearchIndex.propTypes = {
   searchVideos: PropTypes.func.isRequired, 
   clearVideos: PropTypes.func.isRequired, 
   query: PropTypes.string,
-  searchResult: propChecker.searchResult()
+  searchResult: propChecker.searchResult(),
+  setting: PropTypes.shape({
+    windowWidth: PropTypes.number,
+    sidebarVisible: PropTypes.bool
+  })
 };
 
 export default withRouter(SearchIndex);
