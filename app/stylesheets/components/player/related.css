@@ -1,5 +1,6 @@
 .related-container {
   padding: 20px 20px;
+  padding-top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -25,11 +25,14 @@ class Player extends React.Component {
   render() {
     return (
       <div>
-        {/*<div id="video-player"></div>*/}
-
-        <iframe id="video-player" type="text/html" width={this.state.width} height={this.state.height}
-          src={`https://www.youtube.com/embed/${this.props.videoId}`}
-          frameBorder="0" allowFullScreen></iframe>
+        <iframe 
+          id="video-player" 
+          type="text/html" 
+          width={this.state.width} 
+          height={this.state.height}
+          src={`https://www.youtube.com/embed/${this.props.videoId}?autoplay=1`}
+          frameBorder="0" 
+          allowFullScreen></iframe>
       </div>
     );
   }
