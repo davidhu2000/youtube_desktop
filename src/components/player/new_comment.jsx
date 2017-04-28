@@ -22,7 +22,7 @@ class NewComment extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    
+
   }
 
   render() {

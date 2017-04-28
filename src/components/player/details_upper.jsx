@@ -7,7 +7,7 @@ class DetailsUpper extends React.Component {
    constructor(props) {
      super(props);
      this.ratingVideo = this.ratingVideo.bind(this);
-    //  this.ratingButtonColor = this.ratingButtonColor.bind(this);
+     this.ratingButtonColor = this.ratingButtonColor.bind(this);
   }
 
   ratingVideo(rating) {
