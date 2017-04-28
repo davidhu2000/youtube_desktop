@@ -35,7 +35,7 @@ class DropdownMenu extends React.Component {
         <div>
           <div className='button-list'>
             <Link to={`channels/${myChannelId}`}>
-              My channel
+              My Channel
             </Link>
             <button onClick={this.clearUser.bind(this)}>
               Sign Out

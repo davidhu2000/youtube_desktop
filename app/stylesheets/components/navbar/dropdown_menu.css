@@ -9,7 +9,6 @@
   box-sizing: border-box;
 }
 
-
 .user-info {
   display: flex;
   flex-direction: column;
@@ -54,7 +53,18 @@
   vertical-align: center;
 }
 
-#dropdown-menu .button-list button:hover {
+#dropdown-menu .button-list a {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  padding: 7px 15px;
+  min-height: 36px;
+  cursor: pointer;
+  vertical-align: center;
+}
+
+#dropdown-menu .button-list button:hover,
+#dropdown-menu .button-list a:hover {
   background: #f4f4f4;
 }
 
