@@ -1,0 +1,56 @@
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+/*first section*/
+  .top h1 {
+    font-size: 75px;
+    margin-top: 0px;
+  }
+  .top img {
+    height: 260px;
+  }
+  .top p {
+    line-height: 24px;
+    font-size: 24px;
+  }
+  .under-button {
+    font-size: 18px !important;
+  }
+  .under-button-span {
+    font-size: 18px;
+  }
+/*second section*/
+  .second {
+    height: 1200px;
+    padding: 50px 0px;
+  }
+  .second h1 {
+    margin-bottom: 50px;
+  }
+  .image-box {
+    height: 1000px;
+    flex-direction: column;
+  }
+  .first-img {
+    top: 0px;
+    bottom: inherit;
+    right: inherit;
+  }
+  .second-img {
+   bottom: inherit;
+   margin: auto 0;
+  }
+  .third-img {
+    left: inherit;
+  }
+/*third section*/
+  .third div {
+    width: 500px;
+  }
+/*forth section*/
+  .forth ul {
+    width: 500px;
+  }
+}
