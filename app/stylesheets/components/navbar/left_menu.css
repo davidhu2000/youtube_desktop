@@ -17,15 +17,15 @@
   padding: 0px;
   margin: 0px;
   /*margin-right: 50%;*/
-  height: 56px;
-  width: 112px;
+  height: 24px;
+  width: 56px;
   display: flex;
   justify-content: flex-start;
 }
 
 .youtube-logo img {
-  height: 56px;
-  width: 112px;
+  height: 24px;
+  width: 56px;
 }
 
 .burger {
