@@ -57,6 +57,17 @@ class App extends React.Component {
     }
   }
 
+  componentWillReceiveProps(newProps) {
+    if (this.state && this.state.pathname !== newProps.location.pathname) {
+      this.props.receiveSetting({ isLoading: true });
+      this.setState({ 
+        progress: 0,
+        addition: 0.5,
+        pathname: newProps.location.pathname
+      });
+    }
+  }
+
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateSetting.bind(this));
     window.removeEventListener('click', this.updateSetting.bind(this));
