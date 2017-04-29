@@ -7,9 +7,9 @@ import { fetchSubscriptions } from 'actions/youtube_video_actions'; // TODO: upd
 import { receiveSetting } from 'common/setting/actions';
 import { propChecker, toggleSidebar } from 'helpers';
 
-import Navbar from './navbar'; // TODO: update!
-import Sidebar from './sidebar'; // TODO: update!
-import Footer from './footer'; // TODO: update!
+import Navbar from './navbar';
+import Sidebar from './sidebar';
+import Footer from './footer';
 import { ProgressBar } from 'common/components';
 
 class App extends React.Component {

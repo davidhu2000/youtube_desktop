@@ -1,9 +1,9 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router';
 import PropTypes from 'prop-types';
-import { SearchBar } from '../common';
+import { SearchBar } from 'common/components';
 import DropdownMenu from './dropdown_menu';
-import { authenticateUser } from 'util/oauth_util';
+import { authenticateUser } from 'common/modules/user/utils';
 import { toggleSidebar } from 'helpers';
 
 class Navbar extends React.Component {

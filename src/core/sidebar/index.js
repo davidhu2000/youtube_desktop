@@ -9,9 +9,10 @@ const mapStateToProps = ({ user, subscriptions, setting }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(Sidebar);
