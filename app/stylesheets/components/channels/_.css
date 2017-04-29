@@ -11,6 +11,24 @@
   margin: 0;
 }
 
+/*Sidebar*/
+.fixed-channel {
+  position: fixed !important;
+  height: 100vh !important;
+}
+
+.offscreen-channel {
+  z-index: 110 !important;
+  animation-name: slideOut !important;
+  animation-fill-mode: forwards !important;
+  animation-iteration-count: 1 !important;
+  animation-duration: 0.2s !important;
+}
+
+.hidden-channel {
+  display: none !important;
+}
+
 /*Channel Banner Header*/
 .channel-banner-header {
   height: 96px;
@@ -24,6 +42,12 @@
   justify-content: space-between;
 }
 
+.channel-detail-left {
+  display: flex;
+  flex-direction: row;
+  min-width: 350px;
+}
+
 #channel-profile-img {
   border-radius: 50px;
   width: 80px;
@@ -33,9 +57,10 @@
 .channel-detail {
   display: flex;
   flex-direction: column;
-  padding-right: 45vw;
+  /*padding-right: 45vw;*/
   padding-left: 40px;
   align-self: center;
+  white-space: nowrap;
 }
 
 #channel-name {
@@ -56,7 +81,7 @@
 }
 
 #channel-subscribers-button {
-  width: 160px;
+  min-width: 160px;
   background-color: hsl(0, 0%, 93.3%);
   color: hsla(0, 0%, 6.7%, .6);
   border-radius: 2px;
@@ -64,6 +89,7 @@
   letter-spacing: .5px;
   text-transform: uppercase;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  white-space:nowrap;
 }
 
 /*Channel Navbar*/

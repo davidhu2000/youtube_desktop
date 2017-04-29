@@ -21,6 +21,14 @@ class Channel extends React.Component {
   componentDidMount() {
     this.props.receiveSetting({ isLoading: true });
     this._getNewChannelInfo(this.state.channelId);
+
+    let sidebar = document.getElementById('sidebar');
+    sidebar.classList.add('hidden-channel');
+  }
+
+  componentWillUnmount() {
+    let sidebar = document.getElementById('sidebar');
+    sidebar.classList.remove('hidden-channel');
   }
 
   componentWillReceiveProps(newProps) {
@@ -59,14 +67,16 @@ class Channel extends React.Component {
             </div>
             <div className="channel-banner-header">
               <div className="channel-detail-container">
-                <div className="channel-profile-container">
-                  <img id="channel-profile-img"
-                    src={profileImg} />
-                </div>
+                <div className="channel-detail-left">
+                  <div className="channel-profile-container">
+                    <img id="channel-profile-img"
+                      src={profileImg} />
+                  </div>
 
-                <div className="channel-detail">
-                  <p id="channel-name">{channelName}</p>
-                  <p id="channel-subscribers">{formatNumber(subscriberNum)} subscribers</p>
+                  <div className="channel-detail">
+                    <p id="channel-name">{channelName}</p>
+                    <p id="channel-subscribers">{formatNumber(subscriberNum)} subscribers</p>
+                  </div>
                 </div>
 
                 <div className="subscriber-button">
