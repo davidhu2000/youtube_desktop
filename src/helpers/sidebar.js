@@ -1,7 +1,7 @@
 export const toggleSidebar = () => {
   let sidebar = document.getElementById('sidebar');
   let cover = document.getElementById('sidebar-cover');
-  
+
   if (window.innerWidth <= 1312) {
     sidebar.classList.remove('hidden', 'ondocument', 'absolute');
     sidebar.classList.add('fixed');
@@ -14,7 +14,7 @@ export const toggleSidebar = () => {
       sidebar.classList.add('offscreen');
       sidebar.classList.remove('onscreen');
       cover.classList.add('hidden');
-    }   
+    }
   } else {
     sidebar.classList.remove('offscreen', 'onscreen', 'fixed');
     sidebar.classList.add('absolute');

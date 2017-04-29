@@ -1,5 +1,5 @@
 import React from 'react';
-import ChannelNavbar from './channel_navbar';
+import ChannelNavbar from './navbar';
 import { formatNumber } from 'helpers';
 
 class Channel extends React.Component {
