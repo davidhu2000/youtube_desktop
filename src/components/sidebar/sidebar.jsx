@@ -24,7 +24,7 @@ class Sidebar extends React.Component {
     let cover = document.getElementById('sidebar-cover');
     cover.classList.add('hidden');
 
-    // render sidebar with the correct behavior basd on window width
+    // render sidebar with the correct behavior based on window width
     if (window.innerWidth > 1312) {
       sidebar.classList.remove('fixed', 'offscreen');
       sidebar.classList.add('absolute', 'ondocument');

@@ -23,7 +23,7 @@ class DropdownMenu extends React.Component {
 
   render() {
     const { user } = this.props;
-    const myChannelId = user.myChannelId;
+    const myChannelId = user.channelId;
 
     return (
       <div id='dropdown-menu'>

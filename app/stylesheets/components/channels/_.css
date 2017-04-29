@@ -11,9 +11,85 @@
   margin: 0;
 }
 
+/*Sidebar*/
+.fixed-channel {
+  position: fixed !important;
+  height: 100vh !important;
+}
+
+.offscreen-channel {
+  z-index: 110 !important;
+  animation-name: slideOut !important;
+  animation-fill-mode: forwards !important;
+  animation-iteration-count: 1 !important;
+  animation-duration: 0.2s !important;
+}
+
+.hidden-channel {
+  display: none !important;
+}
+
+/*Channel Banner Header*/
 .channel-banner-header {
   height: 96px;
   background-color: #F5F5F5;
+  padding: 16px 107px 0 107px;
+}
+
+.channel-detail-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.channel-detail-left {
+  display: flex;
+  flex-direction: row;
+  min-width: 350px;
+}
+
+#channel-profile-img {
+  border-radius: 50px;
+  width: 80px;
+  height: 80px;
+}
+
+.channel-detail {
+  display: flex;
+  flex-direction: column;
+  /*padding-right: 45vw;*/
+  padding-left: 40px;
+  align-self: center;
+  white-space: nowrap;
+}
+
+#channel-name {
+  font-size: 22px;
+  letter-spacing: 0.8px;
+  font-weight: 300;
+  padding-bottom: 5px;
+}
+
+#channel-subscribers {
+  font-size: 12px;
+  color: rgba(17, 17, 17, 0.6);
+  letter-spacing: 0.8px;
+}
+
+.subscriber-button {
+  align-self: center;
+}
+
+#channel-subscribers-button {
+  min-width: 160px;
+  background-color: hsl(0, 0%, 93.3%);
+  color: hsla(0, 0%, 6.7%, .6);
+  border-radius: 2px;
+  padding: 10px 16px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  white-space:nowrap;
 }
 
 /*Channel Navbar*/
@@ -28,24 +104,32 @@
 }
 
 .channel-navbar-lists > li:first-child {
-  margin-left: 90px;
+  margin-left: 120px;
 }
 
 .channel-navbar-lists > li {
-  padding: 0 20px 15px 20px;
-  margin-top: 13px;
+  padding: 0 30px 13px 30px;
+  margin-top: 16px;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 13px;
   color: #7C7C7C;
+  letter-spacing: 1px;
 }
 
 .channel-navbar-lists > li:last-child {
-  padding: 0 20px 8px 20px;
-  margin-top: 10px;
+  padding: 0 30px 5px 30px;
+  margin-top: 13px;
+  letter-spacing: 1px;
 }
 
-.channel-navbar-lists > li:hover {
+.current-channel {
   border-bottom: 3px solid #6C6C6C;
+}
+
+.channel-navbar-lists > li:hover,
+.current-channel {
+  font-weight: 500 !important;
   cursor: pointer;
-  color: #111111;
+  color: #111111 !important;
+  letter-spacing: 1px;
 }
