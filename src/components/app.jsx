@@ -35,7 +35,7 @@ class App extends React.Component {
     }
 
     if(this.props.loggedIn) {
-      this.props.fetchSubscriptions();
+      this.props.fetchSubscriptions(this.props.channelId);
     }
   }
 
@@ -70,12 +70,13 @@ App.propTypes = {
 const mapStateToProps = (state, ownProps) => ({
   setting: state.setting,
   searchResult: state.searchResult,
-  loggedIn: Boolean(state.user)
+  loggedIn: Boolean(state.user),
+  channelId: state.user ? state.user.channelId : null
 });
 
 const mapDispatchToProps = dispatch => ({
   receiveSetting: setting => dispatch(receiveSetting(setting)),
-  fetchSubscriptions: () => dispatch(fetchSubscriptions())
+  fetchSubscriptions: channelId => dispatch(fetchSubscriptions(channelId))
 });
 
 export default connect(

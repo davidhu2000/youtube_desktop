@@ -9,11 +9,12 @@ import { fetchSubscriptions, fetchSubscriptionUploads } from 'actions/youtube_vi
 const mapStateToProps = ({ setting, subscriptions, user }) => ({
   subscriptions,
   loggedIn: Boolean(user),
+  channelId: user ? user.channelId : null,
   setting
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchSubscriptions: () => dispatch(fetchSubscriptions()),
+  fetchSubscriptions: channelId => dispatch(fetchSubscriptions(channelId)),
   fetchSubscriptionUploads: id => dispatch(fetchSubscriptionUploads(id))
 });
 
