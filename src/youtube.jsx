@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from 'core/store';
 import Root from 'core/root';
-import { refreshToken } from './util/oauth_util';
+import { refreshToken } from './modules/user/utils.js'
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
