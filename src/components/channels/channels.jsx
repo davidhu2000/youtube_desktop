@@ -39,6 +39,21 @@ class Channel extends React.Component {
     }
   }
 
+  // TODO: dropdown doesn't work inside channel. how do you set props.params.channelId? 
+    // componentWillReceiveProps(newProps) {
+    //   let channelId = newProps.params.channelId;
+    //   console.log(this.state.channelId);
+    //
+    //   if (channelId === "undefined" && this.state.channelId !== this.props.user.channelId) {
+    //     let channelId = this.props.user.channelId;
+    //     this.setState({ channelId });
+    //     this._getNewChannelInfo(channelId);
+    //   } else if (this.state.channelId !== channelId) {
+    //     this.setState({ channelId });
+    //     this._getNewChannelInfo(channelId);
+    //   }
+    // }
+
   render() {
     console.log(this.props);
     let bannerImg;

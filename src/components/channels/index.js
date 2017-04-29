@@ -7,6 +7,7 @@ import { receiveSetting } from 'actions/setting_actions';
 const mapStateToProps = ({ channels, channelDetails, user, setting }) => ({
   channels,
   channelDetails,
+  user,
   loggedIn: Boolean(user),
   setting
 });
