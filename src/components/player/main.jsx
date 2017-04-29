@@ -24,20 +24,20 @@ class PlayerDetails extends React.Component {
     };
   }
 
-  _getNewVideoInfo() {
+  _getNewVideoInfo(videoId) {
     let dataNeeded = [];
   
-    dataNeeded.push(this.props.fetchDetails(this.state.videoId));
-    dataNeeded.push(this.props.fetchComments(this.state.videoId));
-    dataNeeded.push(this.props.fetchRelated(this.state.videoId));
-    dataNeeded.push(this.props.fetchVideoRating(this.state.videoId));
+    dataNeeded.push(this.props.fetchDetails(videoId));
+    dataNeeded.push(this.props.fetchComments(videoId));
+    dataNeeded.push(this.props.fetchRelated(videoId));
+    dataNeeded.push(this.props.fetchVideoRating(videoId));
 
     Promise.all(dataNeeded).then( res => this.props.receiveSetting({ isLoading: false }));
   }
 
   componentDidMount() {
     this.props.receiveSetting({ isLoading: true });
-    this._getNewVideoInfo();
+    this._getNewVideoInfo(this.state.videoId);
   }
 
   componentWillReceiveProps(newProps) {
@@ -45,7 +45,7 @@ class PlayerDetails extends React.Component {
     if (videoId !== this.state.videoId) {
       this.props.receiveSetting({ isLoading: true });
       this.setState({ videoId });
-      this._getNewVideoInfo();
+      this._getNewVideoInfo(videoId);
     }
   }
 
