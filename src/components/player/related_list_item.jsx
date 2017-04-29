@@ -23,7 +23,6 @@ class RelatedListItem extends React.Component {
     return (
       <div className="related-item">
         <Link to={`watch/${videoId}`}>
-
           <img src={url} />
         </Link>
 
