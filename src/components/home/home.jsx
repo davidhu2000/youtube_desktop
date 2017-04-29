@@ -83,9 +83,10 @@ class Home extends React.Component {
   }
 
   render() {
+    const { isLoading } = this.props.setting;
     const { videos } = this.props.trending;
 
-    if (videos) {
+    if (!isLoading) {
       return (
         <div className='main-content'>
           {this.renderRecommended()}
