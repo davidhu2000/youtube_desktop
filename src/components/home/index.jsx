@@ -2,6 +2,8 @@ import React       from 'react';
 import { connect } from 'react-redux';
 import Home        from './home.jsx';
 
+import { receiveSetting } from 'actions/setting_actions';
+
 import {
   fetchTrending,
   fetchCategories,
@@ -23,6 +25,7 @@ const mapDispatchToProps = dispatch => ({
   fetchChannelVideos: id => dispatch(fetchChannelVideos(id)),
   fetchCategories: () => dispatch(fetchCategories()),
   fetchRecommendedVideos: () => dispatch(fetchRecommendedVideos()),
+  receiveSetting: setting => dispatch(receiveSetting(setting))
 });
 
 export default connect(

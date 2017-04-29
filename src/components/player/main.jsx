@@ -1,5 +1,9 @@
-import React          from 'react';
+/* global Promise */
+import React from 'react';
 import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
+import { propChecker } from 'helpers';
+
 import Player         from './player';
 import Details        from './details';
 import Related        from './related';
@@ -17,11 +21,15 @@ class PlayerDetails extends React.Component {
   }
 
   componentDidMount() {
+    let dataNeeded = [];
+
     let videoId = this.props.router.params.videoId;
-    this.props.fetchDetails(videoId);
-    this.props.fetchComments(videoId);
-    this.props.fetchRelated(videoId);
-    this.props.fetchVideoRating(videoId);
+    dataNeeded.push(this.props.fetchDetails(videoId));
+    dataNeeded.push(this.props.fetchComments(videoId));
+    dataNeeded.push(this.props.fetchRelated(videoId));
+    dataNeeded.push(this.props.fetchVideoRating(videoId));
+
+    Promise.all(dataNeeded).then( res => this.props.receiveSetting({ isLoading: false }));
   }
 
   render() {
@@ -44,5 +52,16 @@ class PlayerDetails extends React.Component {
     );
   }
 }
+
+PlayerDetails.propTypes = {
+  fetchComments: PropTypes.func.isRequired,
+  fetchRelated: PropTypes.func.isRequired,
+  fetchDetails: PropTypes.func.isRequired,
+  fetchVideoRating: PropTypes.func.isRequired,
+  videosRate: PropTypes.func.isRequired,
+  receiveSetting: PropTypes.func.isRequired,
+  playerDetails: propChecker.playerDetails(),
+  setting: propChecker.setting()
+};
 
 export default withRouter(PlayerDetails);

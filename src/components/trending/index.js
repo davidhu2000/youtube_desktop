@@ -4,6 +4,7 @@ import { withRouter }    from 'react-router';
 
 import trendingIndex     from './trending_index';
 import { fetchTrending } from 'actions/youtube_video_actions';
+import { receiveSetting } from 'actions/setting_actions';
 
 const mapStateToProps = ({ trending, setting }) => ({
   trending,
@@ -11,7 +12,8 @@ const mapStateToProps = ({ trending, setting }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchTrending: () => dispatch(fetchTrending())
+  fetchTrending: () => dispatch(fetchTrending()),
+  receiveSetting: setting => dispatch(receiveSetting(setting))
 });
 
 export default connect(

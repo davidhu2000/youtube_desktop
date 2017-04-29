@@ -7,14 +7,19 @@ import { fetchSubscriptions } from 'actions/youtube_video_actions';
 import { receiveSetting } from 'actions/setting_actions';
 import { propChecker, toggleSidebar } from 'helpers';
 
-import Navbar  from './navbar';
+import Navbar from './navbar';
 import Sidebar from './sidebar';
-import Footer  from './footer';
-
+import Footer from './footer';
+import { ProgressBar } from './common';
 
 class App extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      progress: 0,
+      addition: 0.5,
+      pathname: 'home'
+    };
   }
 
   updateSetting() {
@@ -30,6 +35,8 @@ class App extends React.Component {
     window.addEventListener('resize', this.updateSetting.bind(this));
     window.addEventListener('click', this.updateSetting.bind(this));
 
+    this.setState({ pathname: this.props.location.pathname });
+
     if(this.props.location.pathname === '/search' && !this.props.searchResult.video) {
       this.props.router.replace('/home');
     }
@@ -39,14 +46,73 @@ class App extends React.Component {
     }
   }
 
+  componentWillReceiveProps(newProps) {
+    if (this.state && this.state.pathname !== newProps.location.pathname) {
+      this.props.receiveSetting({ isLoading: true });
+      this.setState({ 
+        progress: 0,
+        addition: 0.5,
+        pathname: newProps.location.pathname
+      });
+    }
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (this.state && this.state.pathname !== newProps.location.pathname) {
+      this.props.receiveSetting({ isLoading: true });
+      this.setState({ 
+        progress: 0,
+        addition: 0.5,
+        pathname: newProps.location.pathname
+      });
+    }
+  }
+
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateSetting.bind(this));
     window.removeEventListener('click', this.updateSetting.bind(this));
   }
 
+  updateProgress() {
+    let addition;
+    if (this.state.progress < 30) {
+      addition = 0.5;
+    } else if (this.state.progress < 40) {
+      addition = 0.25;
+    } else if (this.state.progress < 50) {
+      addition = 0.1;
+    } else {
+      addition = 0.001;
+    }
+
+    let isLoading = this.props.setting.isLoading;
+    if (!isLoading) {
+      addition = 5;
+    }
+
+    this.setState({
+      progress: this.state.progress + this.state.addition,
+      addition
+    });
+  }
+
+  renderProgressBar() {
+    let isLoading = this.props.setting.isLoading;
+
+    if (isLoading || (!isLoading && this.state.progress < 100 && this.state.progress > 0)) {
+      return (
+        <ProgressBar 
+          isLoading={isLoading} 
+          progress={this.state.progress} 
+          updateProgress={this.updateProgress.bind(this)} />
+      );
+    }
+  }
+
   render() {
     return(
       <div className="relative-content">
+        { this.renderProgressBar() }
         <Navbar />
         <Sidebar />
         { this.props.children }
