@@ -10,19 +10,22 @@ class Channel extends React.Component {
     };
   }
 
+  _getNewChannelInfo(channelId) {
+    let dataNeeded = [];
+    dataNeeded.push(this.props.fetchChannelDetails(channelId));
+    Promise.all(dataNeeded).then( res => this.props.receiveSetting({ isLoading: false }));
+  }
+
   componentDidMount() {
-    this.props.fetchChannelDetails(this.props.params.channelId);
+    this.props.receiveSetting({ isLoading: true });
+    this._getNewChannelInfo(this.state.channelId);
   }
 
   componentWillReceiveProps(newProps) {
-    if (this.state.channelId !== newProps.params.channelId) {
-      let channelId = this.props.params.channelId;
-
-      this.props.fetchChannelDetails(channelId);
-
-      this.setState({
-        channelId
-      });
+    let channelId = newProps.params.channelId;
+    if (this.state.channelId !== channelId) {
+      this.setState({ channelId });
+      this._getNewChannelInfo(channelId);
     }
   }
 
