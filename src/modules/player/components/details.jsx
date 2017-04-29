@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { fetchDetails, fetchVideoRating } from 'actions/youtube_video_actions';
-import { videosRate } from 'actions/interaction_actions';
+import { fetchDetails, fetchVideoRating } from '../actions';
+import { videosRate } from 'common/interaction/actions';
 import DetailsUpper from './details_upper';
 import DetailsLower from './details_lower';
 
 class Details extends React.Component {
-
   constructor(props) {
     super(props);
   }
@@ -15,7 +14,7 @@ class Details extends React.Component {
     if (!this.props.details.snippet) {
       return null;
     }
-    
+
     const { details, rating } = this.props;
     const { subs } = details;
 

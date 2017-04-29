@@ -1,4 +1,4 @@
-import * as YoutubeVideoAPI from 'util/youtube_video_util';
+import * as YoutubeVideoAPI from './util';
 
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 

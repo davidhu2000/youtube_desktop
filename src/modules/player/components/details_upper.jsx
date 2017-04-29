@@ -29,7 +29,6 @@ class DetailsUpper extends React.Component {
   }
 
   render() {
-
     let {
       title, channelTitle, subs,
       viewCount, likeCount, dislikeCount } = this.props;

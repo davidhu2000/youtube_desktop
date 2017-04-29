@@ -4,18 +4,17 @@ import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { propChecker } from 'helpers';
 
-import Player         from './player';
-import Details        from './details';
-import Related        from './related';
-import Comments       from './comments';
+import Player from './player';
+import Details from './details';
+import Related from './related';
+import Comments from './comments';
 
-// function ise used to render the video in a separate window,
+// function is used to render the video in a separate window,
 // put on backlog for now.
 // import videoWindow from '../../renderer/video_page';
 // <button onClick={() => videoWindow(videoId).show()}>Pop Off</button>
 
 class PlayerDetails extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -26,7 +25,7 @@ class PlayerDetails extends React.Component {
 
   _getNewVideoInfo(videoId) {
     let dataNeeded = [];
-  
+
     dataNeeded.push(this.props.fetchDetails(videoId));
     dataNeeded.push(this.props.fetchComments(videoId));
     dataNeeded.push(this.props.fetchRelated(videoId));
@@ -55,7 +54,7 @@ class PlayerDetails extends React.Component {
       let { comments, details, related, rating } = this.props.playerDetails;
 
       return (
-        <div className="main-content"> 
+        <div className="main-content">
           <div className="player-container">
             <div className="left-frame">
               <Player   videoId={videoId}/>
@@ -66,12 +65,12 @@ class PlayerDetails extends React.Component {
               <Related  related={this.props.playerDetails.related}/>
             </div>
           </div>
-        </div>    
+        </div>
       );
     } else {
       return <div></div>;
     }
-    
+
   }
 }
 

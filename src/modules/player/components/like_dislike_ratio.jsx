@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class LikeDislikeRatio extends React.Component {
-
   getPercent() {
     return `${this.props.ratio * 100}%`;
   }

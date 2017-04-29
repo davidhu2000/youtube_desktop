@@ -1,10 +1,9 @@
-import React            from 'react';
-import PropTypes        from 'prop-types';
-import RelatedListItem  from './related_list_item';
-import YT_API_KEY       from '../../../config/api_key';
+import React from 'react';
+import PropTypes from 'prop-types';
+import RelatedListItem from './related_list_item';
+import YT_API_KEY from '../../../config/api_key';
 
 class Related extends React.Component {
-
   constructor(props) {
     super(props);
 

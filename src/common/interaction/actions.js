@@ -1,5 +1,5 @@
-import * as InteractionAPI from '../util/interaction_util';
-import { receiveVideoRating } from './youtube_video_actions';
+import * as InteractionAPI from './util';
+import { receiveVideoRating } from 'modules/player/actions';
 
 export const RATING_STATUS = 'RATING_STATUS';
 

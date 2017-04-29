@@ -1,9 +1,7 @@
-import React         from 'react';
-import PropTypes     from 'prop-types';
-// import YouTubePlayer from 'youtube-player';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 class Player extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -12,7 +10,6 @@ class Player extends React.Component {
       height: 390,
       width: 640
     };
-
   }
 
   updateHeight() {
@@ -25,13 +22,13 @@ class Player extends React.Component {
   render() {
     return (
       <div>
-        <iframe 
-          id="video-player" 
-          type="text/html" 
-          width={this.state.width} 
+        <iframe
+          id="video-player"
+          type="text/html"
+          width={this.state.width}
           height={this.state.height}
           src={`https://www.youtube.com/embed/${this.props.videoId}?autoplay=1`}
-          frameBorder="0" 
+          frameBorder="0"
           allowFullScreen></iframe>
       </div>
     );

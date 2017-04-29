@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { parseDate } from 'helpers';
 
 class CommentsItem extends React.Component {
-
   constructor(props) {
     super(props);
   }

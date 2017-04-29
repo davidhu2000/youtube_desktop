@@ -1,7 +1,7 @@
 import { RECEIVE_COMMENTS,
          RECEIVE_DETAILS,
          RECEIVE_VIDEO_RATING,
-         RECEIVE_RELATED } from 'actions/youtube_video_actions';
+         RECEIVE_RELATED } from './actions';
 import merge from 'lodash/merge';
 
 let _defaultState = {
@@ -14,7 +14,6 @@ let _defaultState = {
 
 const playerDetailsReducer = ( state = _defaultState, action ) => {
   Object.freeze(state);
-  // console.log(action);
 
   switch(action.type) {
     case RECEIVE_COMMENTS:

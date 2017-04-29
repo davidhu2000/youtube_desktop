@@ -1,17 +1,16 @@
-import React             from 'react';
-import PropTypes         from 'prop-types';
-import CommentsItem      from './comments_item';
-import NewComment        from './new_comment';
+import React from 'react';
+import PropTypes from 'prop-types';
+import CommentsItem from './comments_item';
+import NewComment from './new_comment';
 
 class Comments extends React.Component {
-
   constructor(props) {
     super(props);
   }
 
   renderComments() {
     let comments = this.props.comments;
-    if (comments.length !== 0) {  
+    if (comments.length !== 0) {
       return comments.map(comment => <CommentsItem key={comment.etag} comment={comment} />);
     }
   }
