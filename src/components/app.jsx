@@ -47,11 +47,7 @@ class App extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    // console.log(this.state);
-    // console.log(newProps)
     if (this.state && this.state.pathname !== newProps.location.pathname) {
-
-      // console.log('app')
       this.props.receiveSetting({ isLoading: true });
       this.setState({ 
         progress: 0,
