@@ -1,5 +1,6 @@
 import React from 'react';
 import ChannelNavbar from './channel_navbar';
+import { formatNumber } from 'helpers';
 
 class Channel extends React.Component {
   constructor(props) {
@@ -35,11 +36,13 @@ class Channel extends React.Component {
     let bannerImg;
     let profileImg;
     let channelName;
+    let subscriberNum;
 
     if (this.props.channelDetails.detail) {
       bannerImg = this.props.channelDetails.detail.brandingSettings.image.bannerImageUrl;
       profileImg = this.props.channelDetails.detail.snippet.thumbnails.default.url;
       channelName = this.props.channelDetails.detail.snippet.title;
+      subscriberNum = this.props.channelDetails.detail.statistics.subscriberCount;
     }
 
     if (this.props.setting.isLoading) {
@@ -63,7 +66,13 @@ class Channel extends React.Component {
 
                 <div className="channel-detail">
                   <p id="channel-name">{channelName}</p>
-                  <p id="channel-subscribers"></p>
+                  <p id="channel-subscribers">{formatNumber(subscriberNum)} subscribers</p>
+                </div>
+
+                <div className="subscriber-button">
+                  <button id="channel-subscribers-button">
+                    Subscribed {formatNumber(subscriberNum, true)}
+                  </button>
                 </div>
               </div>
             </div>
