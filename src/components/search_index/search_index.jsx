@@ -1,3 +1,4 @@
+/* global Promise */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
@@ -10,10 +11,14 @@ class SearchIndex extends React.Component {
   }
 
   _fetchResult(query) {
+    let dataNeeded = [];
+
     if(query !== null) {
-      this.props.clearVideos();
-      this.props.searchVideos(query);
+      dataNeeded.push(this.props.clearVideos());
+      dataNeeded.push(this.props.searchVideos(query));
     }
+
+    Promise.all(dataNeeded).then( res => this.props.receiveSetting({ isLoading: false }));
   }
 
   componentDidMount() {
@@ -81,6 +86,7 @@ SearchIndex.propTypes = {
   previousPage: PropTypes.func.isRequired,
   nextPage: PropTypes.func.isRequired, 
   goToPage: PropTypes.func.isRequired, 
+  receiveSetting: PropTypes.func.isRequired,
   query: PropTypes.string,
   searchResult: propChecker.searchResult()
 };

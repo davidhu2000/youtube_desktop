@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import SearchIndex from './search_index';
 
 import { receiveQuery } from 'actions/query_actions';
+import { receiveSetting } from 'actions/setting_actions';
 import {
   searchVideos,
   clearVideos,
@@ -23,7 +24,8 @@ const mapDispatchToProps = dispatch => ({
   clearVideos: () => dispatch(clearVideos()),
   previousPage: () => dispatch(previousPage()),
   nextPage: () => dispatch(nextPage()),
-  goToPage: (pageNumber) => dispatch(goToPage(pageNumber))
+  goToPage: (pageNumber) => dispatch(goToPage(pageNumber)),
+  receiveSetting: setting => dispatch(receiveSetting(setting))
 });
 
 export default connect(
