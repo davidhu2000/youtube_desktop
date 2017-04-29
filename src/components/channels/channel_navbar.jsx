@@ -14,7 +14,7 @@ class ChannelNavbar extends React.Component {
   }
 
   activeLink(route) {
-    let menus = ["home", "videos", "playlists", "about"]
+    let menus = ["home", "videos", "playlists", "channels", "about"]
 
     for (var i = 0; i < menus.length; i++) {
       if (route == menus[i]) {
@@ -40,6 +40,11 @@ class ChannelNavbar extends React.Component {
     this.activeLink("playlists");
   }
 
+  renderPlaylists() {
+    this.setState({ currentRoute: "channels" });
+    this.activeLink("channels");
+  }
+
   renderAbout() {
     this.setState({ currentRoute: "about" });
     this.activeLink("about");
@@ -54,6 +59,7 @@ class ChannelNavbar extends React.Component {
           <li id="channel-home" onClick={this.renderHome.bind(this)}>Home</li>
           <li id="channel-videos" onClick={this.renderVideos.bind(this)}>Videos</li>
           <li id="channel-playlists" onClick={this.renderPlaylists.bind(this)}>Playlists</li>
+          <li id="channel-channels" onClick={this.renderPlaylists.bind(this)}>Channels</li>
           <li id="channel-about" onClick={this.renderAbout.bind(this)}>About</li>
           <li><i className="material-icons">search</i></li>
         </ul>
