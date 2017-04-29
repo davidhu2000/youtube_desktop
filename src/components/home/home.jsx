@@ -46,7 +46,7 @@ class Home extends React.Component {
   componentWillReceiveProps(newProps) {
     if (!this.props.loggedIn && newProps.loggedIn) {
       newProps.fetchRecommendedVideos();
-    } 
+    }
   }
 
   renderChannels() {
@@ -91,7 +91,7 @@ class Home extends React.Component {
         <div className='main-content'>
           {this.renderRecommended()}
           <VideoBox
-            title='Trending' 
+            title='Trending'
             sidebarVisible={this.props.setting.sidebarVisible}
             windowWidth={this.props.setting.windowWidth}
             vids={videos} />

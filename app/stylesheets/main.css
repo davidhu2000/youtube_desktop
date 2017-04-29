@@ -2,6 +2,7 @@
 @import url('base/color.css');
 
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900');
+@import url('components/channels/_.css');
 @import url('components/navbar/_.css');
 @import url('components/sidebar/_.css');
 @import url('components/searchindex/_.css');
