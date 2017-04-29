@@ -1,6 +1,7 @@
+const { ipcRenderer } = window.require('electron');
 import React from 'react';
 import PropTypes from 'prop-types';
-import { parseDate, formatNumber } from 'helpers';
+import { parseDate, formatNumber, parseStringForLinks } from 'helpers';
 
 class DetailsLower extends React.Component {
    constructor(props) {
@@ -11,12 +12,26 @@ class DetailsLower extends React.Component {
      };
   }
 
+  componentDidMount() {
+    let container = document.getElementsByClassName('details-lower-description-text')[0];
+    container.onclick = event => {
+      if (event.target.tagName === 'A') {
+        let url = event.target.innerHTML;
+        ipcRenderer.send('open-url', url);
+      }
+    };
+  }
+
+  componentWillUnMount() {
+    let container = document.getElementsByClassName('details-lower-description-text')[0];
+    container.onclick = null;
+  }
+
   parseDescription(description) {
     return description.map(line => {
       // TODO: parse description for links
       return (
-          <span key={Math.random()}>
-            {line}<br/>
+          <span key={Math.random()} dangerouslySetInnerHTML={{ __html: `${parseStringForLinks(line)}<br />` }}>
           </span>
       );
     });
@@ -32,7 +47,7 @@ class DetailsLower extends React.Component {
       }
 
       return (
-        <p className="description">
+        <p className="details-lower-description-text">
           { this.parseDescription(descript) }
         </p>
       );

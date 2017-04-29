@@ -1,38 +1,24 @@
 import React          from 'react';
-import { withRouter } from 'react-router';
-import Player         from './player';
-import Details        from './details';
-import Related        from './related';
-import Comments       from './comments';
+import { connect }    from 'react-redux';
+import PlayerDetails from './main';
 
-// function ise used to render the video in a separate window,
-// put on backlog for now.
-// import videoWindow from '../../renderer/video_page';
-// <button onClick={() => videoWindow(videoId).show()}>Pop Off</button>
+import { fetchComments, fetchVideoRating, fetchRelated, fetchDetails } from 'actions/youtube_video_actions';
+import { videosRate } from 'actions/interaction_actions';
 
-class VideoDetail extends React.Component {
+const mapStateToProps = ({ playerDetails, setting }) => ({
+  playerDetails,
+  setting
+});
 
-  constructor(props) {
-    super(props);
-  }
+const mapDispatchToProps = dispatch => ({
+  fetchComments: videoId => dispatch(fetchComments(videoId)),
+  fetchRelated: videoId => dispatch(fetchRelated(videoId)),
+  fetchDetails: videoId => dispatch(fetchDetails(videoId)),
+  fetchVideoRating: videoId => dispatch(fetchVideoRating(videoId)),
+  videosRate: (videoId, rating) => dispatch(videosRate(videoId, rating))
+});
 
-  render() {
-    let videoId = this.props.router.params.videoId;
-    return (
-      <div className="main-content"> 
-        <div className="player-container">
-          <div className="left-frame">
-            <Player   videoId={videoId}/>
-            <Details  videoId={videoId}/>
-            <Comments videoId={videoId}/>
-          </div>
-          <div className="right-frame">
-            <Related  videoId={videoId}/>
-          </div>
-        </div>
-      </div>    
-    );
-  }
-}
-
-export default withRouter(VideoDetail);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PlayerDetails);

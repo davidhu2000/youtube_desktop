@@ -15,7 +15,7 @@ body {
   text-align: center;
 }
 .top h1 {
-  font-size: 42px;
+  font-size: 50px;
   margin-top: 60px;
   margin-bottom: 20px;
 }
@@ -25,7 +25,7 @@ body {
 .top img {
   height: 160px;
 }
-.top a {
+.top-button {
   margin-top: 70px;
   margin-bottom: 12px;
   padding: 16px 24px 15px;
@@ -41,7 +41,7 @@ body {
 .top svg {
   margin-right: 10px;
 }
-.top a:hover{
+.top-button:hover{
   background-color: rgba(195,35,38,.8);
 }
 .under-button {
@@ -51,6 +51,7 @@ body {
   color: #C32326;
   text-decoration: underline;
   cursor: pointer;
+  font-size: 12px;
 }
 /****************************/
 /*SECOND SECTION*/
@@ -86,6 +87,7 @@ body {
  right: 40px;
 }
 .second-img {
+ height: 440px !important;
  z-index: 1;
  bottom: -20px;
  margin: 0 auto;
@@ -113,23 +115,23 @@ body {
   font-size: 20px;
   margin: 15px 0px;
 }
-.third ul {
+.third div {
   width: 800px;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.third li {
+.third a {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.third ul img {
+.third div img {
   height: 84px;
   width: 84px;
 }
-.third li:nth-child(3) img {
+.third a:nth-child(3) img {
   margin-left: 10px;
 }
 /****************************/
