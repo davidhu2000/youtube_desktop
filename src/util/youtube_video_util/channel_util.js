@@ -18,15 +18,15 @@ export const fetchChannelSubs = channelId => {
   return YoutubeApi.channels(params);
 };
 
-export const fetchChannelDetails = channelId => {
-  let params = {
-    id: channelId,
-    part: 'snippet,statistics,brandingSettings',
-    maxResults: 25
-  };
-
-  return YoutubeApi.channels(params);
-}
+// export const fetchChannelDetails = channelId => {
+//   let params = {
+//     id: channelId,
+//     part: 'snippet,statistics,brandingSettings',
+//     maxResults: 25
+//   };
+//
+//   return YoutubeApi.channels(params);
+// }
 
 export const fetchChannelVideos = channelId => {
   let params = {
