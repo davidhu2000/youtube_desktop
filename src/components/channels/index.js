@@ -4,12 +4,10 @@ import Channel from './channels.jsx';
 import { fetchChannelDetails } from 'actions/youtube_video_actions';
 import { receiveSetting } from 'actions/setting_actions';
 
-const mapStateToProps = ({ trending, channels, channelDetails, user, recommended, setting }) => ({
-  trending,
+const mapStateToProps = ({ channels, channelDetails, user, setting }) => ({
   channels,
   channelDetails,
   loggedIn: Boolean(user),
-  recommended,
   setting
 });
 

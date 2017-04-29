@@ -6,7 +6,8 @@ class Channel extends React.Component {
     super(props);
 
     this.state = {
-      channelId: this.props.params.channelId
+      channelId: this.props.params.channelId,
+      currentRoute: "home"
     };
   }
 
@@ -51,7 +52,7 @@ class Channel extends React.Component {
             <div className="channel-banner-header">
 
             </div>
-            <ChannelNavbar />
+            <ChannelNavbar currentRoute={this.state.currentRoute} />
           </div>
         </div>
       )
