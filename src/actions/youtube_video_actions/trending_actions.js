@@ -1,4 +1,5 @@
 import * as YoutubeVideoAPI from 'util/youtube_video_util';
+import { receiveSetting } from '../setting_actions';
 
 export const RECEIVE_TRENDING = 'RECEIVE_TRENDING';
 

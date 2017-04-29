@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { formatNumber } from 'helpers';
-import { VideoListItem }  from '../common';
+import { VideoListItem, Spinner }  from '../common';
 
 class VideoList extends React.Component {
   constructor(props) {
@@ -25,10 +25,10 @@ class VideoList extends React.Component {
         maxDescriptionLength: 180,
         maxChannelTitleLength: 200,
         itemWidth: 856
-      }
+      },
+      loading: true
     };
 
-    this.renderPageNumbers = this.renderPageNumbers.bind(this);
     this.addSearchResults = this.addSearchResults.bind(this);
   }
 
@@ -51,7 +51,7 @@ class VideoList extends React.Component {
 
        return vids.map(vid => (
          <VideoListItem
-           key={vid.etag}
+           key={Math.random()}
            vid={vid}
            itemWidth={this.state[size].itemWidth}
            maxTitleLength={this.state[size].maxTitleLength}
@@ -71,57 +71,12 @@ class VideoList extends React.Component {
     }
   }
 
-  // potentially replace this with infinite scroll?
-  renderPageNumbers() {
-    let { pageNumber, allPages } = this.props;
-
-    let count = pageNumber - 4;
-
-    if(count < 0 || allPages.length <= 7) {
-      count = 0;
-    } else if (pageNumber > allPages.length - 4) {
-      count = allPages.length - 7;
-    }
-    return allPages.slice(count, count + 7).map(num => {
-      if (num === pageNumber) {
-        return (
-          <button key={Math.random()} disabled={true}>{num}</button>
-        );
-      } else {
-        return (
-          <button
-            key={Math.random()}
-            onClick={() => this.props.goToPage(parseInt(num))}>{num}</button>
-        );
-      }
-    });
-  }
-
-  renderPageNavigtion() {
-    if(this.props.shouldShowPageNumber) {
-      let { pageNumber, previousPage, nextAction } = this.props;
-
-      return (
-        <div className='page-numbers'>
-          { pageNumber > 1 ? (
-            <button onClick={previousPage}>
-              {"« Previous"}
-            </button>) : '' }
-          { this.renderPageNumbers() }
-          <button onClick={nextAction}>
-            {"Next »"}
-          </button>
-        </div>
-      );
-    }
-  }
-
   render() {
     return (
-      <div className="search-index-container">
+      <div className="search-index-container" id='search-container'>
         {this.addSearchVolume()}
         {this.addSearchResults()}
-        {this.renderPageNavigtion()}
+        { this.state.loading ? <Spinner /> : null }
       </div>
     );
   }

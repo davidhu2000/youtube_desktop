@@ -8,6 +8,7 @@ import subscriptionsReducer from './subscriptions_reducer';
 import trendingReducer from './trending_reducer';
 import userReducer from './user_reducer';
 import settingReducer from './setting_reducer';
+import playlistsReducer from './playlists_reducer';
 import playerDetailsReducer from './player_details_reducer';
 
 const rootReducer = combineReducers({
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   trending: trendingReducer,
   user: userReducer,
   setting: settingReducer,
+  playlists: playlistsReducer,
   playerDetails: playerDetailsReducer
 });
 

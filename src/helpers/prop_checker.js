@@ -12,6 +12,16 @@ const channels = () => (
   }
 );
 
+const playerDetails = () => (
+  PropTypes.shape({
+    autoplay: PropTypes.bool,
+    comments: PropTypes.arrayOf(PropTypes.object),
+    details: PropTypes.object,
+    rating: PropTypes.string,
+    related: PropTypes.arrayOf(PropTypes.object)
+  })
+);
+
 const query = () => (
   PropTypes.string
 );
@@ -31,13 +41,15 @@ const searchResult= () => (
     }),
     pageNumber: PropTypes.number,
     query: PropTypes.string,
-    videos: PropTypes.object
+    videos: PropTypes.arrayOf(PropTypes.object)
   })
 );
 
 const setting = () => (
   PropTypes.shape({
-    windowWidth: PropTypes.number
+    windowWidth: PropTypes.number,
+    isLoading: PropTypes.bool,
+    sidebarVisible: PropTypes.bool
   })
 );
 
@@ -62,6 +74,7 @@ const trending = () => (
 
 const propChecker = {
   channels,
+  playerDetails,
   query,
   recommended,
   searchResult,
