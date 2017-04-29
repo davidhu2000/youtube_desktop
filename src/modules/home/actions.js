@@ -1,8 +1,7 @@
-import * as YoutubeVideoAPI from 'util/youtube_video_util/index.js';
+import * as YoutubeVideoAPI from './util';
 
 export const RECEIVE_CHANNEL_INFO = 'RECEIVE_CHANNEL_INFO';
 export const RECEIVE_CHANNEL_VIDEOS = 'RECEIVE_CHANNEL_VIDEOS';
-// export const RECEIVE_CHANNEL_DETAIL = 'RECEIVE_CHANNEL_DETAIL';
 
 export const receiveChannelInfo = channel => ({
   type: RECEIVE_CHANNEL_INFO,
@@ -13,21 +12,6 @@ export const receiveChannelVideos = videos => ({
   type: RECEIVE_CHANNEL_VIDEOS,
   videos
 });
-
-// export const receiveChannelDetail = detail => ({
-//   type: RECEIVE_CHANNEL_DETAIL,
-//   detail
-// });
-//
-// export const fetchChannelDetails = channelId => dispatch => {
-//   return YoutubeVideoAPI.fetchChannelDetails(channelId).then(
-//     res => res.json()
-//   ).then(
-//     detail => dispatch(receiveChannelDetail(detail))
-//   ).catch(
-//     err => console.log(err)
-//   );
-// };
 
 export const fetchChannelInfo = channelId => dispatch => {
   return YoutubeVideoAPI.fetchChannelInfo(channelId).then(
@@ -51,7 +35,6 @@ export const fetchChannelVideos = channelId => dispatch => {
 
 export const fetchCategories = () => dispatch => {
   // TODO: store in state ??
-
   YoutubeVideoAPI.fetchCategories().then(
     res => res.json()
   ).then (

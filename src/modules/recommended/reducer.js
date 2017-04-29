@@ -1,6 +1,5 @@
 import { merge } from 'lodash';
-import {
-  RECEIVE_RECOMMENDED_VIDEOS } from "../actions/youtube_video_actions";
+import { RECEIVE_RECOMMENDED_VIDEOS } from "./actions";
 
 let _defaultState = {
   videos: null
