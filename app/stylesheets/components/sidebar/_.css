@@ -130,8 +130,8 @@
 }
 
 #sidebar-header img {
-  height: 57px;
   margin: 0;
+  border-radius: 0;
 }
 
 .sidebar-header {
@@ -184,6 +184,7 @@
   height: 24px;
   border-radius: 24px;
   margin-left: 8px;
+  margin-right: 20px;
 }
 
 @media screen and (min-width: 1313px) {
