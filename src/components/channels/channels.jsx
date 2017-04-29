@@ -31,12 +31,12 @@ class Channel extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     let bannerImg;
     let profileImg;
 
     if (this.props.channelDetails.detail) {
-      bannerImg = this.props.channelDetails.detail.brandingSettings.image.bannerImageUrl
+      bannerImg = this.props.channelDetails.detail.brandingSettings.image.bannerImageUrl;
+      profileImg = this.props.channelDetails.detail.snippet.thumbnails.default.url;
     }
 
     if (this.props.setting.isLoading) {
