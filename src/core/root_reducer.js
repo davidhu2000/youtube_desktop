@@ -5,7 +5,7 @@ import channelDetailsReducer from 'modules/channels/reducer';
 // import recommendedReducer from './recommended_reducer';
 // import searchResultReducer from './search_result_reducer';
 // import subscriptionsReducer from './subscriptions_reducer';
-// import trendingReducer from './trending_reducer';
+import trendingReducer from 'modules/trending/reducer';
 import userReducer from 'modules/user/reducer';
 import settingReducer from 'common/setting/reducer';
 // import playlistsReducer from './playlists_reducer';
@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
   // recommended: recommendedReducer,
   // searchResult: searchResultReducer,
   // subscriptions: subscriptionsReducer,
-  // trending: trendingReducer,
+  trending: trendingReducer,
   user: userReducer,
   setting: settingReducer,
   // playlists: playlistsReducer,

@@ -1,8 +1,8 @@
 /* global Promise */
-import React          from 'react';
-import PropTypes      from 'prop-types';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
-import { VideoList }  from '../common';
+import { VideoList }  from 'common/components';
 
 class TrendingIndex extends React.Component {
   constructor(props) {
@@ -27,10 +27,10 @@ class TrendingIndex extends React.Component {
         <VideoList
           shouldShowVolume={false}
           shouldShowPageNumber={false}
-          videos={this.props.trending.videos} 
+          videos={this.props.trending.videos}
           windowWidth={this.props.setting.windowWidth} />
       </div>
-      
+
     );
   }
 }

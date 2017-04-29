@@ -1,10 +1,9 @@
-import React             from 'react';
-import { connect }       from 'react-redux';
-import { withRouter }    from 'react-router';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
-import trendingIndex     from './trending_index';
+import TrendingIndex from './trending';
 import { fetchTrending } from 'actions/youtube_video_actions';
-import { receiveSetting } from 'actions/setting_actions';
+import { receiveSetting } from 'common/setting/actions';
 
 const mapStateToProps = ({ trending, setting }) => ({
   trending,
@@ -19,4 +18,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(trendingIndex));
+)(withRouter(TrendingIndex));
