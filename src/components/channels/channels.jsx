@@ -31,12 +31,15 @@ class Channel extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     let bannerImg;
     let profileImg;
+    let channelName;
 
     if (this.props.channelDetails.detail) {
       bannerImg = this.props.channelDetails.detail.brandingSettings.image.bannerImageUrl;
       profileImg = this.props.channelDetails.detail.snippet.thumbnails.default.url;
+      channelName = this.props.channelDetails.detail.snippet.title;
     }
 
     if (this.props.setting.isLoading) {
@@ -52,9 +55,16 @@ class Channel extends React.Component {
                    src={bannerImg} />
             </div>
             <div className="channel-banner-header">
-              <div className="channel-profile-img-container">
-                <img id="channel-profile-img"
-                     src={profileImg} />
+              <div className="channel-detail-container">
+                <div className="channel-profile-container">
+                  <img id="channel-profile-img"
+                    src={profileImg} />
+                </div>
+
+                <div className="channel-detail">
+                  <p id="channel-name">{channelName}</p>
+                  <p id="channel-subscribers"></p>
+                </div>
               </div>
             </div>
             <ChannelNavbar currentRoute={this.state.currentRoute} />

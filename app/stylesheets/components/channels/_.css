@@ -11,9 +11,35 @@
   margin: 0;
 }
 
+/*Channel Banner Header*/
 .channel-banner-header {
   height: 96px;
   background-color: #F5F5F5;
+  padding: 16px 107px 0 107px;
+}
+
+.channel-detail-container {
+  display: flex;
+  flex-direction: row;
+}
+
+#channel-profile-img {
+  border-radius: 50px;
+  width: 80px;
+  height: 80px;
+}
+
+.channel-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+#channel-name {
+  
+}
+
+#channel-subscribers {
+
 }
 
 /*Channel Navbar*/
@@ -28,29 +54,32 @@
 }
 
 .channel-navbar-lists > li:first-child {
-  margin-left: 75px;
+  margin-left: 120px;
 }
 
 .channel-navbar-lists > li {
-  padding: 0 40px 14px 40px;
-  margin-top: 14px;
+  padding: 0 30px 13px 30px;
+  margin-top: 16px;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 13px;
   color: #7C7C7C;
   letter-spacing: 1px;
 }
 
 .channel-navbar-lists > li:last-child {
-  padding: 0 40px 6px 40px;
-  margin-top: 11px;
+  padding: 0 30px 5px 30px;
+  margin-top: 13px;
   letter-spacing: 1px;
+}
+
+.current-channel {
+  border-bottom: 3px solid #6C6C6C;
 }
 
 .channel-navbar-lists > li:hover,
 .current-channel {
-  border-bottom: 4px solid #6C6C6C;
-  font-weight: 500;
+  font-weight: 500 !important;
   cursor: pointer;
-  color: #111111;
+  color: #111111 !important;
   letter-spacing: 1px;
 }
