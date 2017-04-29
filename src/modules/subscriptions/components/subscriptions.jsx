@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter, hashHistory } from 'react-router';
 import { propChecker } from 'helpers';
-import { VideoList } from '../common';
+import { VideoList } from 'common/components';
 
 class Subscriptions extends React.Component {
   constructor(props){

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 // import channelsReducer from './channels_reducer';
 import channelDetailsReducer from 'modules/channels/reducer';
-// import queryReducer from './query_reducer';
+import queryReducer from 'common/query/reducer';
 // import recommendedReducer from './recommended_reducer';
 // import searchResultReducer from './search_result_reducer';
-// import subscriptionsReducer from './subscriptions_reducer';
+import subscriptionsReducer from 'modules/subscriptions/reducer';
 import trendingReducer from 'modules/trending/reducer';
 import userReducer from 'modules/user/reducer';
 import settingReducer from 'common/setting/reducer';
@@ -14,10 +14,10 @@ import settingReducer from 'common/setting/reducer';
 const rootReducer = combineReducers({
   // channels: channelsReducer,
   channelDetails: channelDetailsReducer,
-  // query: queryReducer,
+  query: queryReducer,
   // recommended: recommendedReducer,
   // searchResult: searchResultReducer,
-  // subscriptions: subscriptionsReducer,
+  subscriptions: subscriptionsReducer,
   trending: trendingReducer,
   user: userReducer,
   setting: settingReducer,

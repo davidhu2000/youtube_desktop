@@ -1,13 +1,13 @@
 import { merge } from 'lodash';
 import {
   RECEIVE_SUBSCRIPTIONS,
-  RECEIVE_SUBSCRIPTIONS_UPLOADS } from "../actions/youtube_video_actions";
+  RECEIVE_SUBSCRIPTIONS_UPLOADS } from "./actions";
 
 let _defaultState = {};
 
 const subscriptionsReducer = (state = _defaultState, action) => {
   Object.freeze(state);
-  // console.log(action);
+
   switch(action.type) {
     case RECEIVE_SUBSCRIPTIONS:
       let newState = {};

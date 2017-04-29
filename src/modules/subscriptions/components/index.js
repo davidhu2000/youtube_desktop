@@ -1,11 +1,9 @@
-import React       from 'react';
 import { connect } from 'react-redux';
-
 import Subscriptions from './subscriptions';
 
-import { receiveQuery } from 'actions/query_actions';
-import { receiveSetting } from 'actions/setting_actions';
-import { fetchSubscriptions, fetchSubscriptionUploads } from 'actions/youtube_video_actions';
+import { receiveQuery } from 'common/query/actions';
+import { receiveSetting } from 'common/setting/actions';
+import { fetchSubscriptions, fetchSubscriptionUploads } from '../actions';
 
 const mapStateToProps = ({ setting, subscriptions, user }) => ({
   subscriptions,

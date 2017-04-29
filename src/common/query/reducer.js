@@ -1,11 +1,10 @@
 import { merge } from 'lodash';
-import {
-  RECEIVE_QUERY,
-  CLEAR_QUERY } from "../actions/query_actions";
+import { RECEIVE_QUERY, CLEAR_QUERY } from "./actions";
 
 let _defaultState = null;
 
 const queryReducer = (state = _defaultState, action) => {
+  Object.freeze(state);
 
   switch(action.type) {
     case RECEIVE_QUERY:
