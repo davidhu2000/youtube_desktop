@@ -1,5 +1,7 @@
 import YT_API_KEY from '../../config/api_key';
 import { createUrlParams } from '../helpers';
+import { channels } from './youtube_api';
+
 const { BrowserWindow } = window.require('electron').remote;
 const request = window.require('superagent');
 
@@ -114,6 +116,14 @@ export const loginUser = dispatch => {
   dispatch(fetchUserInfo());
 };
 
+export const fetchAuthUserChannelId = () => {
+  let params = {
+    mine: 'true',
+    access_token: localStorage.getItem('google-access-token')
+  };
+  return channels(params);
+};
+
 export const fetchUserInfo = () => dispatch => {
   let accessToken = localStorage.getItem('google-access-token');
 
@@ -122,11 +132,22 @@ export const fetchUserInfo = () => dispatch => {
     .end((err, response) => {
       // console.log(response);
       if (response && response.ok) {
-        localStorage.setItem('google-user', JSON.stringify(response.body));
-        dispatch({
-          type: "RECEIVE_USER",
-          user: response.body
-        });
+        let user = response.body;
+
+        fetchAuthUserChannelId().then(
+          res => res.json()
+        ).then(
+          resJson => {
+            user.channelId = resJson.items[0].id;
+            console.log(user);
+            localStorage.setItem('google-user', JSON.stringify(user));
+            dispatch({
+              type: "RECEIVE_USER",
+              user
+            });
+          }).catch(
+            error => console.log(error)
+          );
       } else {
         // Error - Show messages.
         console.log("err");

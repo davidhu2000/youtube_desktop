@@ -26,8 +26,8 @@ class Sidebar extends React.Component {
 
     // render sidebar with the correct behavior basd on window width
     if (window.innerWidth > 1312) {
-      sidebar.classList.remove('fixed', 'offscreen');   
-      sidebar.classList.add('absolute', 'ondocument');     
+      sidebar.classList.remove('fixed', 'offscreen');
+      sidebar.classList.add('absolute', 'ondocument');
     } else {
       sidebar.classList.remove('absolute', 'ondocument');
       sidebar.classList.add('fixed', 'offscreen');
@@ -62,7 +62,7 @@ class Sidebar extends React.Component {
 
     if (narrowWindow && notShowMore && (correctClassName || correctTags)) {
       toggleSidebar();
-    }  
+    }
   }
 
   // update with real playlists from api call
@@ -88,7 +88,7 @@ class Sidebar extends React.Component {
 
     this.setState({ numPlaylistShowing, buttonVal, icon });
   }
-  
+
   render() {
     return (
       <div id="sidebar" className={`sidebar`} onClick={this.handleClick}>
@@ -116,7 +116,7 @@ class Sidebar extends React.Component {
             <div className="sidebar-header">
               <Link to=''>LIBRARY</Link>
             </div>
-            
+
             <SidebarItem link='history' span='History' icon='history' />
             <SidebarItem link='' span='Watch Later' icon='watch_later' />
 
@@ -142,7 +142,7 @@ class Sidebar extends React.Component {
             </div>
         </div>
 
-       
+
       </div>
     );
   }

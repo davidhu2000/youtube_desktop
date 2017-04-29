@@ -3,6 +3,7 @@ import Sidebar from './sidebar';
 
 const mapStateToProps = ({ user, subscriptions, setting }) => ({
   loggedIn: Boolean(user),
+  channelId: user ? user.channelId : null,
   subscriptions,
   setting
 });

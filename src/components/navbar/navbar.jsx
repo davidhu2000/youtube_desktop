@@ -22,10 +22,6 @@ class Navbar extends React.Component {
     if(this.props.loggedIn) {
       return (
         <div className='navbar-right-menu'>
-          <i className="material-icons">file_upload</i>
-          <button>
-            <img className='beads-image' src="./app/assets/ic_notifications_none_black_24px.svg"/>
-          </button>
           <a onClick={this.toggleDropdown.bind(this)} style={{cursor: 'pointer'}}>
             <img className='navbar-user-picture' src={this.props.user.picture} />
           </a>
@@ -39,10 +35,7 @@ class Navbar extends React.Component {
     } else {
       return (
         <div className='navbar-right-menu'>
-          <i className="material-icons">file_upload</i>
-          <button>
-            <img className='beads-image' src="./app/assets/ic_more_vert_black_24px.svg"/>
-          </button>
+
           <a onClick={this.props.loginUser} style={{cursor: 'pointer'}}>
             <p className="sign-in-text">SIGN IN</p>
           </a>

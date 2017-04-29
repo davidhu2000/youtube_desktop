@@ -37,6 +37,10 @@ const routes = (
       System.import ('./home').then(loadRoute(cb)).catch(errorLoading);
     }}/>
 
+    <Route path='*' getComponent={(location, cb) => {
+      System.import ('./home').then(loadRoute(cb)).catch(errorLoading);
+    }}/>
+
   </Route>
 );
 

@@ -1,3 +1,4 @@
+/* global Promise */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter, hashHistory } from 'react-router';
@@ -17,11 +18,12 @@ class Subscriptions extends React.Component {
   }
 
   getUploads(subs) {
+    let dataNeeded = [];
     Object.keys(subs).forEach( id => {
-      this.props.fetchSubscriptionUploads(id).then(
-        () => this.setState({ count: this.state.count + 1 })
-      );
+      dataNeeded.push(this.props.fetchSubscriptionUploads(id));
     });
+
+    Promise.all(dataNeeded).then( res => this.props.receiveSetting({ isLoading: false }));
   }
 
   componentDidMount() {
@@ -39,9 +41,8 @@ class Subscriptions extends React.Component {
       let oldNumSubs = Object.keys(this.props.subscriptions).length;
       let newNumSubs = Object.keys(newProps.subscriptions).length;
       if (oldNumSubs !== newNumSubs) {
-        this.props.fetchSubscriptions().then(
-          () => this.getUploads(newProps.subscriptions)
-        );
+        // this.props.receiveSetting({ isLoading: true });
+        this.getUploads(newProps.subscriptions);
       }
     }
   }
@@ -49,9 +50,9 @@ class Subscriptions extends React.Component {
   render() {
     let subs = this.props.subscriptions || [];
     let keys = Object.keys(subs);
-    
+
     // check to see if the number of times videos are fetches is equal to number of subs
-    if(this.state.count === keys.length) {
+    if(!this.props.setting.isLoading) {
       let videos = [];
       keys.forEach( key => {
         videos.push(...subs[key].videos);
@@ -74,7 +75,7 @@ class Subscriptions extends React.Component {
       );
     } else {
       return (
-        <div className='main-content'>Loading</div>
+        <div className='main-content'></div>
       );
     }
 
@@ -84,8 +85,10 @@ class Subscriptions extends React.Component {
 Subscriptions.propTypes = {
   fetchSubscriptions: PropTypes.func.isRequired,
   fetchSubscriptionUploads: PropTypes.func.isRequired,
+  receiveSetting: PropTypes.func.isRequired,
   loggedIn: PropTypes.bool.isRequired,
-  subscriptions: propChecker.subscriptions()
+  subscriptions: propChecker.subscriptions(),
+  setting: propChecker.setting()
 };
 
 export default withRouter(Subscriptions);

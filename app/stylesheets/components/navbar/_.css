@@ -9,7 +9,7 @@
   height: 56px;
   padding: 0px 16px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   box-shadow: 0px 4px 8px -3px rgba(17, 17, 17, .16);
   background-color: var(--background);

@@ -86,3 +86,32 @@ export const activities = params => {
 
   return fetch(`${baseUrl}?${urlParams}`);
 };
+
+export const playlists = params => {
+  let baseUrl = 'https://www.googleapis.com/youtube/v3/playlists';
+
+  let defaultParams = {
+    part: 'snippet',
+    maxResults: 10,
+    key: YT_API_KEY.publicDataKey
+  };
+
+  let mergedParams = merge(defaultParams, params);
+  let urlParams = createUrlParams(mergedParams);
+
+  return fetch(`${baseUrl}?${urlParams}`);
+};
+
+export const subscriptions = params => {
+  let baseUrl = 'https://www.googleapis.com/youtube/v3/subscriptions';
+
+  let defaultParams = {
+    part: 'snippet',
+    access_token: localStorage.getItem('google-access-token')
+  };
+
+  let mergedParams = merge(defaultParams, params);
+  let urlParams = createUrlParams(mergedParams);
+
+  return fetch(`${baseUrl}?${urlParams}`);
+};

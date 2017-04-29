@@ -8,18 +8,19 @@
 
   .navbar-center-menu {
     min-width: 100px;
+    flex-grow: 2;
   }
 
   .navbar-left-menu {
     min-width: 80px;
-    padding-right: 10px;
     justify-content: flex-start;
   }
 
   .navbar-right-menu {
-    min-width: 80px;
-    padding-left: 10px;
-    justify-content: flex-start;
+    min-width: 40px;
+    width: 10%;
+    margin-left: 20px;
+    justify-content: flex-end;
   }
 
   .upload-icon {

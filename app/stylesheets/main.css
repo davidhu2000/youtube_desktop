@@ -10,6 +10,9 @@
 @import url('components/player/_.css');
 @import url('components/spinner/_.css');
 
+@import url('components/common/_.css');
+
+
 @import url('./responsive.css');
 
 html {
