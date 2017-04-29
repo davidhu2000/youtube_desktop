@@ -26,7 +26,6 @@ const playerDetailsReducer = ( state = _defaultState, action ) => {
         details: action.details
       });
     case RECEIVE_VIDEO_RATING:
-      console.log(action)
       return merge({}, state, {
         rating: action.rating
       });

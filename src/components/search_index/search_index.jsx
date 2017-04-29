@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
-import { VideoList } from '../common';
+import { VideoList, Spinner } from '../common';
 import { propChecker } from 'helpers';
 
 class SearchIndex extends React.Component {
@@ -21,60 +21,55 @@ class SearchIndex extends React.Component {
     Promise.all(dataNeeded).then( res => this.props.receiveSetting({ isLoading: false }));
   }
 
+  handleScroll(e) {
+    let search = document.getElementById('search-container');
+    let main = document.getElementsByClassName('main-content')[0];
+    if (window.innerHeight + main.scrollTop > search.clientHeight - 50) {
+      this.props.searchVideos(this.props.query, this.props.searchResult.nextPageToken);
+    }
+  }
+
   componentDidMount() {
     if(this.props.query !== this.props.searchResult.query) {
       this._fetchResult(this.props.query);
     }
+    let main = document.getElementsByClassName('main-content')[0];
+    main.addEventListener('scroll', this.handleScroll.bind(this))
   }
 
   componentWillReceiveProps(newProps) {
     if(this.props.query !== newProps.query) {
       this._fetchResult(newProps.query);
     }
+    let main = document.getElementsByClassName('main-content')[0];
+    main.removeEventListener('scroll', this.handleScroll);
   }
 
   render() {
     if(this.props.searchResult.videos) {
       let {
-        pageNumber,
         nextPageToken,
         query,
         videos,
         pageInfo } = this.props.searchResult;
 
-      let { nextPage, previousPage, searchVideos, goToPage } = this.props;
+      let { searchVideos } = this.props;
 
       let volume;
       if(pageInfo) {
         volume = pageInfo.totalResults;
       }
-
-      let nextAction;
-      let maxPageNumber = Math.max(...Object.keys(videos).map( num => parseInt(num)));
-
-      if(maxPageNumber > pageNumber) {
-        nextAction = nextPage;
-      } else {
-        nextAction = () => searchVideos(query, nextPageToken, pageNumber+1);
-      }
+      let nextAction = () => searchVideos(query, nextPageToken);
 
       return (
-        <div className="main-content">
+        <div className="main-content">        
           <VideoList
-            pageNumber={pageNumber}
-            allPages={Object.keys(videos)}
             volume={volume}
             nextAction={nextAction}
-            previousPage={previousPage}
-            goToPage={goToPage}
-            videos={videos[pageNumber]}
-            windowWidth={this.props.setting.windowWidth} />
+            videos={videos}
+            windowWidth={this.props.setting.windowWidth} />          
         </div>
-
       );
-    } else {
-      // add spinner
-      return <div>Loading</div>;
     }
   }
 }
@@ -83,12 +78,13 @@ SearchIndex.propTypes = {
   receiveQuery: PropTypes.func.isRequired,
   searchVideos: PropTypes.func.isRequired, 
   clearVideos: PropTypes.func.isRequired, 
-  previousPage: PropTypes.func.isRequired,
-  nextPage: PropTypes.func.isRequired, 
-  goToPage: PropTypes.func.isRequired, 
   receiveSetting: PropTypes.func.isRequired,
   query: PropTypes.string,
-  searchResult: propChecker.searchResult()
+  searchResult: propChecker.searchResult(),
+  setting: PropTypes.shape({
+    windowWidth: PropTypes.number,
+    sidebarVisible: PropTypes.bool
+  })
 };
 
 export default withRouter(SearchIndex);

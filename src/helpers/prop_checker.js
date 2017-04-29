@@ -41,7 +41,7 @@ const searchResult= () => (
     }),
     pageNumber: PropTypes.number,
     query: PropTypes.string,
-    videos: PropTypes.object
+    videos: PropTypes.arrayOf(PropTypes.object)
   })
 );
 
