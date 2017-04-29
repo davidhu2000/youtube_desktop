@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import { RECEIVE_CHANNEL_DETAIL } from "./actions.js";
+import { RECEIVE_CHANNEL_DETAIL } from "./actions";
 
 let _defaultState = {};
 

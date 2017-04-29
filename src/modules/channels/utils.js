@@ -1,4 +1,4 @@
-import * as YoutubeApi from 'common/youtube_api.js';
+import * as YoutubeApi from 'core/youtube_api';
 import YT_API_KEY from '../../../config/api_key';
 import { createUrlParams } from 'helpers';
 

@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import { RECEIVE_USER } from "./actions.js";
+import { RECEIVE_USER } from "./actions";
 
 let _defaultState = {};
 

@@ -1,6 +1,6 @@
 import YT_API_KEY from '../../config/api_key';
 import { createUrlParams } from 'helpers';
-import { channels } from 'common/youtube_api.js';
+import { channels } from 'core/youtube_api.js';
 
 const { BrowserWindow } = window.require('electron').remote;
 const request = window.require('superagent');

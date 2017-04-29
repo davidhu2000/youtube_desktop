@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router';
 
 import { fetchSubscriptions } from 'actions/youtube_video_actions'; // TODO: update!
-import { receiveSetting } from 'common/setting_actions.js';
+import { receiveSetting } from 'common/setting/actions';
 import { propChecker, toggleSidebar } from 'helpers';
 
 import Navbar from './navbar'; // TODO: update!

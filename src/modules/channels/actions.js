@@ -1,4 +1,4 @@
-import * as YoutubeVideoAPI from './utils.js';
+import * as YoutubeVideoAPI from './utils';
 
 export const RECEIVE_CHANNEL_DETAIL = 'RECEIVE_CHANNEL_DETAIL';
 
