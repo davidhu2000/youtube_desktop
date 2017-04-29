@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
-import { VideoList, Spinner } from '../common';
+import { VideoList, Spinner } from 'common/components';
 import { propChecker } from 'helpers';
 
 class SearchIndex extends React.Component {
@@ -62,12 +62,12 @@ class SearchIndex extends React.Component {
       let nextAction = () => searchVideos(query, nextPageToken);
 
       return (
-        <div className="main-content">        
+        <div className="main-content">
           <VideoList
             volume={volume}
             nextAction={nextAction}
             videos={videos}
-            windowWidth={this.props.setting.windowWidth} />          
+            windowWidth={this.props.setting.windowWidth} />
         </div>
       );
     }
@@ -76,8 +76,8 @@ class SearchIndex extends React.Component {
 
 SearchIndex.propTypes = {
   receiveQuery: PropTypes.func.isRequired,
-  searchVideos: PropTypes.func.isRequired, 
-  clearVideos: PropTypes.func.isRequired, 
+  searchVideos: PropTypes.func.isRequired,
+  clearVideos: PropTypes.func.isRequired,
   receiveSetting: PropTypes.func.isRequired,
   query: PropTypes.string,
   searchResult: propChecker.searchResult(),

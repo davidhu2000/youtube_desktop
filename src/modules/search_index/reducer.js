@@ -1,7 +1,5 @@
 import merge from 'lodash/merge';
-import {
-  RECEIVE_VIDEOS,
-  CLEAR_VIDEOS } from "../actions/youtube_video_actions";
+import { RECEIVE_VIDEOS, CLEAR_VIDEOS } from "./actions";
 
 let _defaultState = {
   videos: [],
@@ -12,7 +10,7 @@ let _defaultState = {
 
 const searchResultReducer = (state = _defaultState, action) => {
   Object.freeze(state);
-  // console.log(action);
+
   switch(action.type) {
     case RECEIVE_VIDEOS:
       let res = action.videos;

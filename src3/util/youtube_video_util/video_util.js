@@ -30,16 +30,16 @@ export const fetchVideoRating = videoId => {
   };
   return YoutubeApi.videosGetRating(params);
 };
-
-export const fetchVideos = (query, nextPageToken = null) => {
-  let params = {
-    q: query,
-    type: 'video',
-    pageToken: nextPageToken,
-  };
-
-  return YoutubeApi.search(params);
-};
+// 
+// export const fetchVideos = (query, nextPageToken = null) => {
+//   let params = {
+//     q: query,
+//     type: 'video',
+//     pageToken: nextPageToken,
+//   };
+//
+//   return YoutubeApi.search(params);
+// };
 
 export const fetchRelated = videoId => {
   let params = {
@@ -49,12 +49,12 @@ export const fetchRelated = videoId => {
   };
   return YoutubeApi.search(params);
 };
-
-export const fetchVideoStats = videos => {
-  let params = {
-    part: 'statistics',
-    id: videos.items.map(item => item.id.videoId).join(','),
-  };
-
-  return YoutubeApi.videos(params);
-};
+//
+// export const fetchVideoStats = videos => {
+//   let params = {
+//     part: 'statistics',
+//     id: videos.items.map(item => item.id.videoId).join(','),
+//   };
+//
+//   return YoutubeApi.videos(params);
+// };
