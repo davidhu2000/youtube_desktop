@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { formatNumber } from 'helpers';
-import { VideoListItem, Spinner }  from '../common';
+import { VideoListItem, Spinner }  from '../components';
 
 class VideoList extends React.Component {
   constructor(props) {

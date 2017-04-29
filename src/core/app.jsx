@@ -10,7 +10,7 @@ import { propChecker, toggleSidebar } from 'helpers';
 import Navbar from './navbar'; // TODO: update!
 import Sidebar from './sidebar'; // TODO: update!
 import Footer from './footer'; // TODO: update!
-import { ProgressBar } from './common'; // TODO: update!
+import { ProgressBar } from 'common/components';
 
 class App extends React.Component {
   constructor(props){

@@ -1,7 +1,7 @@
 /* global Promise */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { VideoBox } from '../common'; // TODO: Update!
+import { VideoBox } from 'common/components';
 import { propChecker } from 'helpers';
 
 class Home extends React.Component {
