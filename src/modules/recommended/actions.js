@@ -1,4 +1,4 @@
-import * as YoutubeVideoAPI from './util';
+import * as YoutubeApi from 'core/youtube_api';
 
 export const RECEIVE_RECOMMENDED_VIDEOS = 'RECEIVE_RECOMMENDED_VIDEOS';
 
@@ -8,7 +8,12 @@ export const receiveRecommendedVideos = videos => ({
 });
 
 export const fetchRecommendedVideos = () => dispatch => {
-  return YoutubeVideoAPI.fetchRecommendedVideos().then(
+  let params = {
+    home: true,
+    access_token: localStorage.getItem('google-access-token')
+  };
+
+  return YoutubeApi.activities(params).then(
     response => response.json()
   ).then(responseJson => {
     return dispatch(receiveRecommendedVideos(responseJson.items));
