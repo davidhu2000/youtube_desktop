@@ -1,4 +1,4 @@
-import * as InteractionAPI from './util';
+import * as YoutubeApi from 'core/youtube_api';
 import { receiveVideoRating } from 'modules/player/actions';
 
 export const RATING_STATUS = 'RATING_STATUS';
@@ -9,7 +9,12 @@ export const ratingStatus = rating => ({
 });
 
 export const videosRate = (videoId, rating) => dispatch => {
-  return InteractionAPI.videosRate(videoId, rating).then(
+  let params = {
+    id: videoId,
+    rating
+  };
+
+  return YoutubeApi.videosRate(params).then(
     res => dispatch(receiveVideoRating(rating))
   ).catch(
     err => console.log(err)
