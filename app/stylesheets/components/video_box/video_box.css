@@ -29,36 +29,6 @@
   height: 100%;
 }
 
-/*@media screen and (min-width: 0px) {
-  .video-box {
-    width: 438px;
-  }
-}
-
-@media screen and (min-width: 694px) {
-  .video-box {
-    width: 644px;
-  }
-}
-
-@media screen and (min-width: 900px) {
-  .video-box {
-    width: 850px;
-  }
-}
-
-@media screen and (min-width: 1132px) {
-  .video-box {
-    width: 1056px;
-  }
-}
-
-@media screen and (min-width: 1312px) {
-  .video-box {
-    width: 1262px;
-  }
-}*/
-
 .prev, .next {
   display: flex;
   align-items: center;

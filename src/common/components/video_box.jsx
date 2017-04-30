@@ -117,8 +117,9 @@ class VideoBox extends React.Component {
   render() {
     if (this.props.multiline) {
       let buttonVal = this.state.numRows === 2 ? 'Show more' : 'Show less';
+      let height = this.state.numRows === 2 ? '500px' : '900px';
       return (
-        <div className='video-box multiline' style={{width: this.state.boxWidth}}>
+        <div className='video-box multiline-container' style={{width: this.state.boxWidth, height: height}}>
           <h1 className='video-box-title'>{this.props.title}</h1>
           <div className='video-box-videos multiline'>
             { this.renderVideos() }
