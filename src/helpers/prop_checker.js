@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const channels = () => (
+const homeChannels = () => (
   (props, propName, componentName) => {
     let type = 'object';
     if(!(new RegExp(type)).test(props[propName])) {
@@ -73,7 +73,7 @@ const trending = () => (
 );
 
 const propChecker = {
-  channels,
+  homeChannels,
   playerDetails,
   query,
   recommended,

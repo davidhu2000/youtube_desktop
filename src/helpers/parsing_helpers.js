@@ -6,7 +6,7 @@ export const parseStringForLinks = str => {
 			str = str.replace(matches[i], url => `<a className='detail-links'>${url}</a>`);
 		}
 	}
-	
+
 	return str;
 };
 
