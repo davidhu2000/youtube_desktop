@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import SearchIndex from './search_index';
+import SearchIndex from './component';
 
 import { receiveQuery } from 'common/query/actions';
 import { receiveSetting } from 'common/setting/actions';
-import { searchVideos, clearVideos } from '../actions';
+import { searchVideos, clearVideos } from './actions';
 
 const mapStateToProps = ({ query, searchResult, setting }) => ({
   query,

@@ -18,11 +18,11 @@ const routes = (
     }}/>
 
     <Route path='search' getComponent={(location, cb) => {
-      System.import('modules/search_index/components').then(loadRoute(cb)).catch(errorLoading);
+      System.import('modules/search_index').then(loadRoute(cb)).catch(errorLoading);
     }}/>
 
     <Route path='trending' getComponent={(location, cb) => {
-      System.import('modules/trending/components').then(loadRoute(cb)).catch(errorLoading);
+      System.import('modules/trending').then(loadRoute(cb)).catch(errorLoading);
     }}/>
 
     <Route path='watch/:videoId' getComponent={(location, cb) => {
@@ -34,7 +34,7 @@ const routes = (
     }}/>
 
     <Route path='subscriptions' getComponent={(location, cb) => {
-      System.import('modules/subscriptions/components').then(loadRoute(cb)).catch(errorLoading);
+      System.import('modules/subscriptions').then(loadRoute(cb)).catch(errorLoading);
     }}/>
 
     <Route path='home' getComponent={(location, cb) => {
