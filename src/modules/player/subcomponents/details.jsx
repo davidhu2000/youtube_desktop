@@ -50,4 +50,4 @@ Details.propTypes = {
   videoId: PropTypes.string
 };
 
-export default Details;
+export { Details };
