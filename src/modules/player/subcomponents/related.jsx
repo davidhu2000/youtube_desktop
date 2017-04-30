@@ -54,4 +54,4 @@ Related.propTypes = {
   videoId: PropTypes.string
 };
 
-export default Related;
+export { Related };
