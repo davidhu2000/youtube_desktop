@@ -1,4 +1,4 @@
-import * as YoutubeVideoAPI from './util';
+import * as YoutubeApi from 'core/youtube_api';
 
 export const RECEIVE_VIDEOS = 'RECEIVE_VIDEOS';
 export const CLEAR_VIDEOS = 'CLEAR_VIDEOS';
@@ -13,11 +13,22 @@ export const clearVideos = () => ({
 });
 
 export const searchVideos = (query, nextPageToken, pageNumber = 1) => dispatch => {
-  return YoutubeVideoAPI.fetchVideos(query, nextPageToken).then(
+  let params = {
+    q: query,
+    type: 'video',
+    pageToken: nextPageToken,
+  };
+
+  return YoutubeApi.search(params).then(
     res => res.json()
   ).then(
     videos => {
-       YoutubeVideoAPI.fetchVideoStats(videos).then(
+      let params = {
+        part: 'statistics',
+        id: videos.items.map(item => item.id.videoId).join(','),
+      };
+
+      return YoutubeApi.videos(params).then(
          res => res.json()
        ).then(
          videoStatResults => {
