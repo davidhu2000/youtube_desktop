@@ -81,7 +81,7 @@ SearchIndex.propTypes = {
   receiveSetting: PropTypes.func.isRequired,
   query: PropTypes.string,
   searchResult: propChecker.searchResult(),
-  setting: PropTypes.shape({
+  setting: propChecker.setting({
     windowWidth: PropTypes.number,
     sidebarVisible: PropTypes.bool
   })
