@@ -16,7 +16,7 @@ import userReducer from 'modules/user/reducer';
 const rootReducer = combineReducers({
   channelDetails: channelDetailsReducer,
   homeChannels: homeChannelsReducer,
-  playerDetails: playerDetailsReducer
+  playerDetails: playerDetailsReducer,
   playlists: playlistsReducer,
   query: queryReducer,
   recommended: recommendedReducer,
@@ -24,7 +24,7 @@ const rootReducer = combineReducers({
   setting: settingReducer,
   subscriptions: subscriptionsReducer,
   trending: trendingReducer,
-  user: userReducer,
+  user: userReducer
 });
 
 export default rootReducer;
