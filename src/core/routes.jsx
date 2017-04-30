@@ -26,7 +26,7 @@ const routes = (
     }}/>
 
     <Route path='watch/:videoId' getComponent={(location, cb) => {
-      System.import('modules/player/components').then(loadRoute(cb)).catch(errorLoading);
+      System.import('modules/player').then(loadRoute(cb)).catch(errorLoading);
     }}/>
 
     <Route path='channels/:channelId' getComponent={(location, cb) => {
@@ -38,11 +38,11 @@ const routes = (
     }}/>
 
     <Route path='home' getComponent={(location, cb) => {
-      System.import('modules/home/components').then(loadRoute(cb)).catch(errorLoading);
+      System.import('modules/home').then(loadRoute(cb)).catch(errorLoading);
     }}/>
 
     <Route path='*' getComponent={(location, cb) => {
-      System.import('modules/home/components').then(loadRoute(cb)).catch(errorLoading);
+      System.import('modules/home').then(loadRoute(cb)).catch(errorLoading);
     }}/>
 
   </Route>

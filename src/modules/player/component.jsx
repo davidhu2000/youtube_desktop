@@ -4,11 +4,10 @@ import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { propChecker } from 'helpers';
 
-import Player from './player';
-import Details from './details';
-import Related from './related';
-import Comments from './comments';
-
+import { Player,
+         Details,
+         Related,
+         Comments } from './subcomponents';
 
 // TODO: ??
 // function is used to render the video in a separate window,

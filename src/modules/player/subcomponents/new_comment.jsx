@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import YT_API_KEY from '../../../../config/api_key';
 
 class NewComment extends React.Component {
   constructor(props) {
@@ -40,4 +39,4 @@ NewComment.propTypes = {
   videoId: PropTypes.string
 }
 
-export default NewComment;
+export { NewComment };

@@ -35,4 +35,4 @@ CommentsItem.propTypes = {
   comment: PropTypes.object.isRequired
 };
 
-export default CommentsItem;
+export { CommentsItem };

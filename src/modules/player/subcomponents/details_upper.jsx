@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import LikeDislikeRatio from './like_dislike_ratio';
+import { LikeDislikeRatio } from './like_dislike_ratio';
 import { formatNumber } from 'helpers';
 
 class DetailsUpper extends React.Component {
@@ -114,4 +114,4 @@ DetailsUpper.propTypes = {
   viewCount: PropTypes.string
 };
 
-export default DetailsUpper;
+export { DetailsUpper };

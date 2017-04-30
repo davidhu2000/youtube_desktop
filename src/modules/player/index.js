@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
-import PlayerDetails from './main';
+import PlayerDetails from './component';
 
 import { videosRate } from 'common/interaction/actions';
 import { receiveSetting } from 'common/setting/actions';
 import { fetchDetails,
          fetchRelated,
          fetchComments,
-         fetchVideoRating } from '../actions';
+         fetchVideoRating } from './actions';
 
 const mapStateToProps = ({ playerDetails, setting }) => ({
   playerDetails,
