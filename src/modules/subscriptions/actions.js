@@ -1,16 +1,10 @@
 import * as YoutubeApi from 'core/youtube_api';
 
 export const RECEIVE_SUBSCRIPTIONS = 'RECEIVE_SUBSCRIPTIONS';
-export const RECEIVE_SUBSCRIPTIONS_UPLOADS = 'RECEIVE_SUBSCRIPTIONS_UPLOADS';
 
 export const receiveSubscriptions = subscriptions => ({
   type: RECEIVE_SUBSCRIPTIONS,
   subscriptions
-});
-
-export const receiveSubscriptionsUploads = sub => ({
-  type: RECEIVE_SUBSCRIPTIONS_UPLOADS,
-  sub
 });
 
 export const fetchSubscriptions = channelId => dispatch => {
@@ -24,6 +18,13 @@ export const fetchSubscriptions = channelId => dispatch => {
     resJson => dispatch(receiveSubscriptions(resJson.items))
   );
 };
+
+export const RECEIVE_SUBSCRIPTIONS_UPLOADS = 'RECEIVE_SUBSCRIPTIONS_UPLOADS';
+
+export const receiveSubscriptionsUploads = sub => ({
+  type: RECEIVE_SUBSCRIPTIONS_UPLOADS,
+  sub
+});
 
 export const fetchSubscriptionUploads = channelId => dispatch => {
   let params = {
