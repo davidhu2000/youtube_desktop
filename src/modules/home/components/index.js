@@ -9,9 +9,9 @@ import { fetchCategories,
          fetchChannelInfo,
          fetchChannelVideos } from '../actions';
 
-const mapStateToProps = ({ trending, channels, user, recommended, setting }) => ({
+const mapStateToProps = ({ trending, homeChannels, user, recommended, setting }) => ({
   trending,
-  channels,
+  homeChannels,
   loggedIn: Boolean(user),
   recommended,
   setting,

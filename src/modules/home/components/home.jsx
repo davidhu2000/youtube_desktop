@@ -113,7 +113,7 @@ Home.propTypes = {
   fetchCategories: PropTypes.func.isRequired,
   fetchRecommendedVideos: PropTypes.func.isRequired,
   receiveSetting: PropTypes.func.isRequired,
-  channels: propChecker.channels(),
+  homeChannels: propChecker.homeChannels(),
   loggedIn: PropTypes.bool.isRequired,
   recommended: propChecker.recommended(),
   trending: propChecker.trending()
