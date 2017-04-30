@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
-import TrendingIndex from './trending';
-import { fetchTrending } from '../actions';
+import TrendingIndex from './component';
+import { fetchTrending } from './actions';
 import { receiveSetting } from 'common/setting/actions';
 
 const mapStateToProps = ({ trending, setting }) => ({
