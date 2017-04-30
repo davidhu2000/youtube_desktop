@@ -1,6 +1,4 @@
 import * as YoutubeApi from 'core/youtube_api';
-import YT_API_KEY from '../../../config/api_key';
-import { createUrlParams } from 'helpers';
 
 export const RECEIVE_CHANNEL_DETAIL = 'RECEIVE_CHANNEL_DETAIL';
 

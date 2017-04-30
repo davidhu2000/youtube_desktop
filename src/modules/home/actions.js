@@ -1,4 +1,4 @@
-import * as YoutubeVideoAPI from './util';
+import * as YoutubeApi from 'core/youtube_api';
 
 export const RECEIVE_CHANNEL_INFO = 'RECEIVE_CHANNEL_INFO';
 export const RECEIVE_CHANNEL_VIDEOS = 'RECEIVE_CHANNEL_VIDEOS';
@@ -14,7 +14,11 @@ export const receiveChannelVideos = videos => ({
 });
 
 export const fetchChannelInfo = channelId => dispatch => {
-  return YoutubeVideoAPI.fetchChannelInfo(channelId).then(
+  let params = {
+    id: channelId
+  };
+
+  return YoutubeApi.channels(channelId).then(
     res => res.json()
   ).then(
     channels => dispatch(receiveChannelInfo(channels.items[0]))
@@ -24,29 +28,16 @@ export const fetchChannelInfo = channelId => dispatch => {
 };
 
 export const fetchChannelVideos = channelId => dispatch => {
-  return YoutubeVideoAPI.fetchChannelVideos(channelId).then(
+  let params = {
+    channelId,
+    order: 'date',
+    maxResults: 15
+  };
+
+  return YoutubeApi.search(params).then(
     res => res.json()
   ).then(
     videos => dispatch(receiveChannelVideos(videos.items))
-  ).catch(
-    err => console.log(err)
-  );
-};
-
-export const fetchCategories = () => dispatch => {
-  // TODO: store in state ??
-  YoutubeVideoAPI.fetchCategories().then(
-    res => res.json()
-  ).then (
-    responseJson => {
-      let channels = responseJson.items;
-      console.log(channels);
-      for(let i = 0; i < channels.length; i++) {
-        let id = channels[i].snippet.channelId;
-        console.log(id);
-        // dispatch(fetchChannelVideos(id)); TODO ??
-      }
-    }
   ).catch(
     err => console.log(err)
   );

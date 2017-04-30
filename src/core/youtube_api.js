@@ -115,3 +115,17 @@ export const subscriptions = params => {
 
   return fetch(`${baseUrl}?${urlParams}`);
 };
+
+export const commentThreads = params => {
+  let baseUrl = 'https://www.googleapis.com/youtube/v3/commentThreads';
+
+  let defaultParams = {
+    part: 'snippet,replies',
+    key: YT_API_KEY.publicDataKey
+  };
+
+  let mergedParams = merge(defaultParams, params);
+  let urlParams = createUrlParams(mergedParams);
+
+  return fetch(`${baseUrl}?${urlParams}`);
+};

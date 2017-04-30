@@ -1,4 +1,4 @@
-import * as YoutubeVideoAPI from './util';
+import * as YoutubeApi from 'core/youtube_api';
 
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 
@@ -8,7 +8,9 @@ export const receiveComments = comments => ({
 });
 
 export const fetchComments = videoId => dispatch => {
-  return YoutubeVideoAPI.fetchComments(videoId).then(
+  let params = { videoId };
+
+  return YoutubeApi.commentThreads(params).then(
     response => response.json()
   ).then(responseJson => {
     if (responseJson.items) {
@@ -29,13 +31,22 @@ export const receiveDetails = details => ({
 });
 
 export const fetchDetails = videoId => dispatch => {
-  return YoutubeVideoAPI.fetchDetails(videoId).then(
+  let params = {
+    id: videoId,
+    part: 'snippet,statistics'
+  };
+
+  return YoutubeApi.videos(params).then(
     response => response.json()
   ).then(responseJson => {
     let details = responseJson.items[0];
-
     let channelId = responseJson.items[0].snippet.channelId;
-    YoutubeVideoAPI.fetchChannelSubs(channelId).then(
+    let params = {
+      id: channelId,
+      part: 'statistics'
+    };
+
+    return YoutubeApi.channels(params).then(
       subsResponse => subsResponse.json()
     ).then(subsResponseJson => {
       details.subs = subsResponseJson.items[0].statistics.subscriberCount;
@@ -56,7 +67,11 @@ export const receiveVideoRating = rating => ({
 });
 
 export const fetchVideoRating = videoId => dispatch => {
-  return YoutubeVideoAPI.fetchVideoRating(videoId).then(
+  let params = {
+    id: videoId,
+  };
+
+  return YoutubeApi.videosGetRating(params).then(
     response => response.json()
   ).then(responseJson => {
     dispatch(receiveVideoRating(responseJson.items[0].rating));
@@ -71,7 +86,13 @@ export const receiveRelated = related => ({
 });
 
 export const fetchRelated = videoId => dispatch => {
-  return YoutubeVideoAPI.fetchRelated(videoId).then(
+  let params = {
+    type: 'video',
+    maxResults: 10,
+    relatedToVideoId: videoId,
+  };
+
+  return YoutubeApi.search(params).then(
     response => response.json()
   ).then(responseJson => {
     dispatch(receiveRelated(responseJson.items));
