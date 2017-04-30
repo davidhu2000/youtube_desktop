@@ -1,5 +1,5 @@
 import YT_API_KEY from '../../../config/api_key';
-import { createUrlParams } from 'helpers';
+import { createUrlParams, errorChecker } from 'helpers';
 import { channels } from 'core/youtube_api.js';
 
 const { BrowserWindow } = window.require('electron').remote;
@@ -159,25 +159,28 @@ export const fetchUserInfo = () => dispatch => {
 };
 
 export const refreshToken = () => {
-  // console.log('refreshing');
-  request.post('https://accounts.google.com/o/oauth2/token', {
+  let baseUrl = 'https://accounts.google.com/o/oauth2/token';
+  let body = {
     client_id: YT_API_KEY.clientId,
     client_secret: YT_API_KEY.clientSecret,
     refresh_token: localStorage.getItem('google-refresh-token'),
     grant_type: 'refresh_token'
-  })
-  .set("Content-Type", "application/x-www-form-urlencoded")
-  .end(function (err, response) {
-    // console.log(response.body);
-    if (response && response.ok) {
-      // Success - Received Token.
-      window.localStorage.setItem('google-access-token', response.body.access_token);
+  };
+
+  let headers = new Headers({ "Content-Type": "application/x-www-form-urlencoded" });
+
+  return fetch(baseUrl, {
+    headers, 
+    body: createUrlParams(body),
+    method: 'POST'
+  }).then(errorChecker).then(
+    res => res.json()
+  ).then(
+    resJson => {
+      window.localStorage.setItem('google-access-token', resJson.access_token);
       window.localStorage.setItem('google-token-start-time', Date.now());
-    } else {
-      // Error - Show messages.
-      console.log("err");
-      localStorage.setItem('google-user', null);
-      console.log(err);
     }
-  });
+  ).catch(
+    err => console.log(err)
+  );
 };

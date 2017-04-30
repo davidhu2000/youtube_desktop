@@ -81,3 +81,11 @@ export const shortenString = (string, maxLength) => {
   }
   return string;
 };
+
+// return 
+export const errorChecker = response => {
+  if (!response.ok) {
+      throw Error(response.statusText);
+  }
+  return response;
+};
