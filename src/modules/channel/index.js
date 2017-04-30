@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import Channel from './channel';
+import Channel from './component';
 
-import { fetchChannelDetails } from '../actions';
+import { fetchChannelDetails } from './actions';
 import { receiveSetting } from 'common/setting/actions';
 
 const mapStateToProps = ({ homeChannels, channelDetails, user, setting }) => ({

@@ -30,7 +30,7 @@ const routes = (
     }}/>
 
     <Route path='channels/:channelId' getComponent={(location, cb) => {
-      System.import('modules/channel/components').then(loadRoute(cb)).catch(errorLoading);
+      System.import('modules/channel').then(loadRoute(cb)).catch(errorLoading);
     }}/>
 
     <Route path='subscriptions' getComponent={(location, cb) => {

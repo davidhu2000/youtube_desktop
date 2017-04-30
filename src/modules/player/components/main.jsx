@@ -72,7 +72,6 @@ class PlayerDetails extends React.Component {
     } else {
       return <div></div>;
     }
-
   }
 }
 

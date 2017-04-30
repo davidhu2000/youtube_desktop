@@ -70,4 +70,4 @@ class ChannelNavbar extends React.Component {
   }
 }
 
-export default ChannelNavbar;
+export { ChannelNavbar };
