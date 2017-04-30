@@ -40,7 +40,6 @@ class Channel extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     let bannerImg;
     let profileImg;
     let channelName;

@@ -6,3 +6,13 @@ export const fetchAuthUserSubscriptions = channelId => {
   };
   return YoutubeApi.subscriptions(params);
 };
+
+// TODO: possibly remove duplicate
+export const fetchChannelVideos = channelId => {
+  let params = {
+    channelId,
+    order: 'date',
+    maxResults: 15
+  };
+  return YoutubeApi.search(params);
+};

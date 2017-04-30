@@ -34,3 +34,14 @@ export const fetchSubscriptionUploads = channelId => dispatch => {
     }
   );
 };
+
+// TODO: possibly remove duplicate
+export const fetchChannelVideos = channelId => dispatch => {
+  return YoutubeVideoAPI.fetchChannelVideos(channelId).then(
+    res => res.json()
+  ).then(
+    videos => dispatch(receiveChannelVideos(videos.items))
+  ).catch(
+    err => console.log(err)
+  );
+};

@@ -39,3 +39,13 @@ export const fetchRelated = videoId => {
   };
   return YoutubeApi.search(params);
 };
+
+// TODO: possibly remove duplicate
+export const fetchChannelSubs = channelId => {
+  let params = {
+    id: channelId,
+    part: 'statistics'
+  };
+
+  return YoutubeApi.channels(params);
+};
