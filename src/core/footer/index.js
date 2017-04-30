@@ -1,3 +1,4 @@
+import Footer from './footer';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 

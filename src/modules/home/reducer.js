@@ -4,7 +4,7 @@ import { RECEIVE_CHANNEL_INFO,
 
 let _defaultState = {};
 
-const channelsReducer = (state = _defaultState, action) => {
+const homeChannelsReducer = (state = _defaultState, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_CHANNEL_INFO:
@@ -22,4 +22,4 @@ const channelsReducer = (state = _defaultState, action) => {
   }
 };
 
-export default channelsReducer;
+export default homeChannelsReducer;

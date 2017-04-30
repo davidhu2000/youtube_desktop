@@ -50,7 +50,7 @@ class Home extends React.Component {
   }
 
   renderChannels() {
-    let channels = this.props.channels;
+    let channels = this.props.homeChannels;
 
     let ids = Object.keys(channels);
     if (ids[0]) {
