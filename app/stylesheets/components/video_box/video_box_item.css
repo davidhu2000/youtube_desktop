@@ -55,7 +55,7 @@
 }
 
 .video-box-item-channel:hover {
-  color: var(--video-title);
+  /*color: var(--video-title);*/
 }
 
 .video-box-item-channel > p {

@@ -10,7 +10,7 @@ class VideoListItem extends React.Component {
 
   render () {
     const vid = this.props.vid;
-    const { description, title, channelTitle, publishedAt } = vid.snippet;
+    const { description, title, channelTitle, publishedAt, channelId } = vid.snippet;
     const { url } = vid.snippet.thumbnails.medium;
 
     let viewCount = '---';
@@ -42,7 +42,9 @@ class VideoListItem extends React.Component {
             <h1>{ shortenString(title, maxTitleLength) }</h1>
           </Link>
           <div className='index-item-right-info'>
-            <span className='channel-title'>{ shortenString(channelTitle, maxChannelTitleLength) }</span>
+            <Link to={`channels/${channelId}`}>
+              <span className='channel-title'>{ shortenString(channelTitle, maxChannelTitleLength) }</span>
+            </Link>
             <span className='view-count'> { formatNumber(viewCount, true) + ' Views'}</span>
             <span className='publish-date'> { timeFromNow(publishedAt) }</span>
           </div>

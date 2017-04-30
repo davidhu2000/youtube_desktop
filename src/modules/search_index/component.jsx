@@ -31,16 +31,21 @@ class SearchIndex extends React.Component {
 
   componentDidMount() {
     if(this.props.query !== this.props.searchResult.query) {
+      this.props.receiveSetting({ isLoading: true });
       this._fetchResult(this.props.query);
     }
     let main = document.getElementsByClassName('main-content')[0];
-    main.addEventListener('scroll', this.handleScroll.bind(this))
+    main.addEventListener('scroll', this.handleScroll.bind(this));
   }
 
   componentWillReceiveProps(newProps) {
     if(this.props.query !== newProps.query) {
+      this.props.receiveSetting({ isLoading: true });
       this._fetchResult(newProps.query);
     }
+  }
+
+  componentWillUnmount() {
     let main = document.getElementsByClassName('main-content')[0];
     main.removeEventListener('scroll', this.handleScroll);
   }

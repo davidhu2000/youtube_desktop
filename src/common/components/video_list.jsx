@@ -25,8 +25,7 @@ class VideoList extends React.Component {
         maxDescriptionLength: 180,
         maxChannelTitleLength: 200,
         itemWidth: 856
-      },
-      loading: true
+      }
     };
 
     this.addSearchResults = this.addSearchResults.bind(this);
@@ -76,7 +75,7 @@ class VideoList extends React.Component {
       <div className="search-index-container" id='search-container'>
         {this.addSearchVolume()}
         {this.addSearchResults()}
-        { this.state.loading ? <Spinner /> : null }
+        <Spinner />
       </div>
     );
   }

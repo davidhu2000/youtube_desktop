@@ -30,7 +30,7 @@
 }
 
 .index-item-right h1 {
-  color: #111;
+  color: #222;
   font-weight: 500;
   font-size: 16px;
 }
@@ -54,14 +54,19 @@
 
 .index-item-right-info .channel-title {
   color: #313131;
-  padding-right: 10px;
+  /*padding-right: 10px;*/
 }
 
 .index-item-right-info span {
   color: var(--basic-text);
 }
 
-.view-count::after {
+.view-count::before {
+  content: '\002022';
+  margin: 0 5px;
+}
+
+.publish-date::before {
   content: '\002022';
   margin: 0 5px;
 }
