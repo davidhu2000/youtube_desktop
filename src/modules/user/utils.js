@@ -1,4 +1,4 @@
-import YT_API_KEY from '../../config/api_key';
+import YT_API_KEY from '../../../config/api_key';
 import { createUrlParams } from 'helpers';
 import { channels } from 'core/youtube_api.js';
 

@@ -3,7 +3,7 @@ import { withRouter, Link } from 'react-router';
 import PropTypes from 'prop-types';
 import { SearchBar } from 'common/components';
 import DropdownMenu from './dropdown_menu';
-import { authenticateUser } from 'common/modules/user/utils';
+import { authenticateUser } from 'modules/user/utils';
 import { toggleSidebar } from 'helpers';
 
 class Navbar extends React.Component {

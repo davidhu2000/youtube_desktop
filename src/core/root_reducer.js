@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import channelsReducer from 'modules/home/reducer'; // TODO: Change the name to HomeChannels
-import channelDetailsReducer from 'modules/channels/reducer';
+import channelDetailsReducer from 'modules/channel/reducer';
 import queryReducer from 'common/query/reducer';
 import recommendedReducer from 'modules/recommended/reducer';
 import searchResultReducer from 'modules/search_index/reducer';
