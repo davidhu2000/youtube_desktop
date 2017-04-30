@@ -12,6 +12,7 @@ export const clearVideos = () => ({
   type: CLEAR_VIDEOS
 });
 
+// TODO: David - add it to youtube api and refactor this code
 export const searchVideos = (query, nextPageToken, pageNumber = 1) => dispatch => {
   let params = {
     q: query,
