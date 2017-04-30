@@ -1,4 +1,4 @@
-import * as YoutubeVideoAPI from './util';
+import * as YoutubeApi from 'core/youtube_api';
 
 export const RECEIVE_SUBSCRIPTIONS = 'RECEIVE_SUBSCRIPTIONS';
 export const RECEIVE_SUBSCRIPTIONS_UPLOADS = 'RECEIVE_SUBSCRIPTIONS_UPLOADS';
@@ -14,7 +14,11 @@ export const receiveSubscriptionsUploads = sub => ({
 });
 
 export const fetchSubscriptions = channelId => dispatch => {
-  return YoutubeVideoAPI.fetchAuthUserSubscriptions(channelId).then(
+  let params = {
+    channelId
+  };
+
+  return YoutubeApi.subscriptions(params).then(
     res => res.json()
   ).then(
     resJson => dispatch(receiveSubscriptions(resJson.items))
@@ -22,7 +26,13 @@ export const fetchSubscriptions = channelId => dispatch => {
 };
 
 export const fetchSubscriptionUploads = channelId => dispatch => {
-  return YoutubeVideoAPI.fetchChannelVideos(channelId).then(
+  let params = {
+    channelId,
+    order: 'date',
+    maxResults: 15
+  };
+
+  return YoutubeApi.search(params).then(
     res => res.json()
   ).then(
     resJson => {
@@ -35,9 +45,14 @@ export const fetchSubscriptionUploads = channelId => dispatch => {
   );
 };
 
-// TODO: possibly remove duplicate
 export const fetchChannelVideos = channelId => dispatch => {
-  return YoutubeVideoAPI.fetchChannelVideos(channelId).then(
+  let params = {
+    channelId,
+    order: 'date',
+    maxResults: 15
+  };
+
+  return YoutubeApi.search(params).then(
     res => res.json()
   ).then(
     videos => dispatch(receiveChannelVideos(videos.items))
