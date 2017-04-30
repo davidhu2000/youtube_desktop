@@ -1,4 +1,4 @@
-import * as YoutubeVideoAPI from './util';
+import * as YoutubeApi from 'core/youtube_api';
 
 export const RECEIVE_PLAYLISTS = 'RECEIVE_PLAYLISTS';
 
@@ -8,7 +8,12 @@ export const receivePlaylists = list => ({
 });
 
 export const fetchAuthUserPlaylists = () => dispatch => {
-  return YoutubeVideoAPI.fetchAuthUserPlaylists().then(
+  let params = {
+    mine: 'true',
+    access_token: localStorage.getItem('google-access-token')
+  };
+
+  return YoutubeApi.playlists(params).then(
     res => res.json()
   ).then(
     resJson => {
@@ -22,7 +27,11 @@ export const fetchAuthUserPlaylists = () => dispatch => {
 };
 
 export const fetchChannelPlaylists = channelId => dispatch => {
-  return YoutubeVideoAPI.fetchChannelPlaylists(channelId).then(
+  let params = {
+    access_token: localStorage.getItem('google-access-token'),
+    channelId
+  };
+  return YoutubeApi.playlists(params).then(
     res => res.json()
   ).then(
     resJson => {
@@ -34,7 +43,3 @@ export const fetchChannelPlaylists = channelId => dispatch => {
     }
   );
 };
-
-// TODO: remove this
-window.fetchAuthUserPlaylists = fetchAuthUserPlaylists;
-window.fetchChannelPlaylists = fetchChannelPlaylists;
