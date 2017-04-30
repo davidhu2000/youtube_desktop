@@ -44,19 +44,3 @@ export const fetchSubscriptionUploads = channelId => dispatch => {
     }
   );
 };
-
-export const fetchChannelVideos = channelId => dispatch => {
-  let params = {
-    channelId,
-    order: 'date',
-    maxResults: 15
-  };
-
-  return YoutubeApi.search(params).then(
-    res => res.json()
-  ).then(
-    videos => dispatch(receiveChannelVideos(videos.items))
-  ).catch(
-    err => console.log(err)
-  );
-};
