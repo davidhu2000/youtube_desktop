@@ -39,4 +39,4 @@ NewComment.propTypes = {
   videoId: PropTypes.string
 }
 
-export { NewComment };
+export default NewComment;

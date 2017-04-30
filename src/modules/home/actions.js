@@ -1,16 +1,10 @@
 import * as YoutubeApi from 'core/youtube_api';
 
 export const RECEIVE_CHANNEL_INFO = 'RECEIVE_CHANNEL_INFO';
-export const RECEIVE_CHANNEL_VIDEOS = 'RECEIVE_CHANNEL_VIDEOS';
 
 export const receiveChannelInfo = channel => ({
   type: RECEIVE_CHANNEL_INFO,
   channel
-});
-
-export const receiveChannelVideos = videos => ({
-  type: RECEIVE_CHANNEL_VIDEOS,
-  videos
 });
 
 export const fetchChannelInfo = channelId => dispatch => {
@@ -26,6 +20,13 @@ export const fetchChannelInfo = channelId => dispatch => {
     err => console.log(err)
   );
 };
+
+export const RECEIVE_CHANNEL_VIDEOS = 'RECEIVE_CHANNEL_VIDEOS';
+
+export const receiveChannelVideos = videos => ({
+  type: RECEIVE_CHANNEL_VIDEOS,
+  videos
+});
 
 export const fetchChannelVideos = channelId => dispatch => {
   let params = {

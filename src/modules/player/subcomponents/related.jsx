@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { RelatedListItem } from './related_list_item';
+import RelatedListItem from './related_list_item';
 
 class Related extends React.Component {
   constructor(props) {
@@ -54,4 +54,4 @@ Related.propTypes = {
   videoId: PropTypes.string
 };
 
-export { Related };
+export default Related;

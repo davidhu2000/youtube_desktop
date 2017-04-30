@@ -39,4 +39,4 @@ RelatedListItem.propTypes = {
   vid: PropTypes.object.isRequired
 };
 
-export { RelatedListItem };
+export default RelatedListItem;

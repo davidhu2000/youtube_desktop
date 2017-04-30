@@ -19,4 +19,4 @@ LikeDislikeRatio.propTypes = {
   ratio: PropTypes.number
 };
 
-export { LikeDislikeRatio };
+export default LikeDislikeRatio;

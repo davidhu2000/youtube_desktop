@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { fetchDetails, fetchVideoRating } from '../actions';
 import { videosRate } from 'common/interaction/actions';
-import { DetailsUpper } from './details_upper';
-import { DetailsLower } from './details_lower';
+import DetailsUpper from './details_upper';
+import DetailsLower from './details_lower';
 
 class Details extends React.Component {
   constructor(props) {
@@ -50,4 +50,4 @@ Details.propTypes = {
   videoId: PropTypes.string
 };
 
-export { Details };
+export default Details;

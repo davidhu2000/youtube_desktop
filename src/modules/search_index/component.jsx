@@ -81,10 +81,7 @@ SearchIndex.propTypes = {
   receiveSetting: PropTypes.func.isRequired,
   query: PropTypes.string,
   searchResult: propChecker.searchResult(),
-  setting: propChecker.setting({
-    windowWidth: PropTypes.number,
-    sidebarVisible: PropTypes.bool
-  })
+  setting: propChecker.setting()
 };
 
 export default withRouter(SearchIndex);

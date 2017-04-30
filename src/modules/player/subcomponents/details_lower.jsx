@@ -95,4 +95,4 @@ DetailsLower.propTypes = {
   description: PropTypes.string
 };
 
-export { DetailsLower };
+export default DetailsLower;

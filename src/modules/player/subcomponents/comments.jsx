@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CommentsItem } from './comments_item';
+import CommentsItem from './comments_item';
 import { NewComment } from './new_comment';
 
 class Comments extends React.Component {
