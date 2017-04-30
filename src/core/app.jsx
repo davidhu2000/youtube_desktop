@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router';
 
-import { fetchSubscriptions } from 'actions/youtube_video_actions'; // TODO: update!
+import { fetchSubscriptions } from 'modules/subscriptions/actions';
 import { receiveSetting } from 'common/setting/actions';
 import { propChecker, toggleSidebar } from 'helpers';
 

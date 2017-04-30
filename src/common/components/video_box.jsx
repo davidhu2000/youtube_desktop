@@ -40,7 +40,7 @@ class VideoBox extends React.Component {
 
     if (width > 1312 && this.props.sidebarVisible) {
       width -= 240;
-    } 
+    }
 
     if(width > 1312) {
       numVideosPerRow = 6;
@@ -57,9 +57,9 @@ class VideoBox extends React.Component {
     }
     return { numVideosPerRow, boxWidth };
   }
-  
+
   // for multi-line video box
-  toggleMoreVideos() {  
+  toggleMoreVideos() {
     let numRows;
     if (this.state.numRows === 2) {
       numRows = Math.floor(this.props.vids.length / this.state.numVideosPerRow);
@@ -98,7 +98,7 @@ class VideoBox extends React.Component {
   }
 
   renderVideos() {
-    let { numVideosPerRow, numRows, startIndex, endIndex } = this.state; 
+    let { numVideosPerRow, numRows, startIndex, endIndex } = this.state;
     let startVal, endVal;
 
     if (this.props.multiline) {
@@ -115,7 +115,6 @@ class VideoBox extends React.Component {
   }
 
   render() {
-    // console.log(this.props)
     if (this.props.multiline) {
       let buttonVal = this.state.numRows === 2 ? 'Show more' : 'Show less';
       return (
@@ -123,11 +122,11 @@ class VideoBox extends React.Component {
           <h1 className='video-box-title'>{this.props.title}</h1>
           <div className='video-box-videos multiline'>
             { this.renderVideos() }
-            <button 
-            className='video-box-toggle' 
+            <button
+            className='video-box-toggle'
             onClick={this.toggleMoreVideos.bind(this)}>{ buttonVal }</button>
           </div>
-          
+
         </div>
       );
     } else {

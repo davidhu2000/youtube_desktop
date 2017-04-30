@@ -5,6 +5,8 @@ import { channels } from 'core/youtube_api.js';
 const { BrowserWindow } = window.require('electron').remote;
 const request = window.require('superagent');
 
+// TODO: Clear comments
+
 const requestGoogleToken = (options, code) => {
 
   request.post('https://accounts.google.com/o/oauth2/token', {

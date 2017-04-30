@@ -44,7 +44,7 @@ export const fetchCategories = () => dispatch => {
       for(let i = 0; i < channels.length; i++) {
         let id = channels[i].snippet.channelId;
         console.log(id);
-        // dispatch(fetchChannelVideos(id));
+        // dispatch(fetchChannelVideos(id)); TODO ??
       }
     }
   ).catch(

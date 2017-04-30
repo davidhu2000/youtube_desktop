@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 import TrendingIndex from './trending';
-import { fetchTrending } from 'actions/youtube_video_actions';
+import { fetchTrending } from '../actions';
 import { receiveSetting } from 'common/setting/actions';
 
 const mapStateToProps = ({ trending, setting }) => ({

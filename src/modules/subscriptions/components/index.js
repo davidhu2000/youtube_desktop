@@ -3,7 +3,8 @@ import Subscriptions from './subscriptions';
 
 import { receiveQuery } from 'common/query/actions';
 import { receiveSetting } from 'common/setting/actions';
-import { fetchSubscriptions, fetchSubscriptionUploads } from '../actions';
+import { fetchSubscriptions,
+         fetchSubscriptionUploads } from '../actions';
 
 const mapStateToProps = ({ setting, subscriptions, user }) => ({
   subscriptions,

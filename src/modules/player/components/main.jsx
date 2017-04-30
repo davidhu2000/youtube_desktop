@@ -9,6 +9,8 @@ import Details from './details';
 import Related from './related';
 import Comments from './comments';
 
+
+// TODO: ??
 // function is used to render the video in a separate window,
 // put on backlog for now.
 // import videoWindow from '../../renderer/video_page';

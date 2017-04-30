@@ -1,7 +1,6 @@
 import { merge } from 'lodash';
-import {
-  RECEIVE_SUBSCRIPTIONS,
-  RECEIVE_SUBSCRIPTIONS_UPLOADS } from "./actions";
+import { RECEIVE_SUBSCRIPTIONS,
+         RECEIVE_SUBSCRIPTIONS_UPLOADS } from "./actions";
 
 let _defaultState = {};
 

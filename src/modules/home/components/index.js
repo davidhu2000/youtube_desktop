@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import Home from './home';
 import { receiveSetting } from 'common/setting/actions';
 
-import {
-  fetchTrending,
-  fetchCategories,
-  fetchChannelInfo,
-  fetchChannelVideos,
-  fetchRecommendedVideos } from '../../actions/youtube_video_actions'; // TODO: Update!
+import { fetchTrending } from 'modules/trending/actions';
+import { fetchRecommendedVideos } from 'modules/recommended/actions';
+import { fetchCategories,
+         fetchChannelInfo,
+         fetchChannelVideos } from '../actions';
 
 const mapStateToProps = ({ trending, channels, user, recommended, setting }) => ({
   trending,
