@@ -14,7 +14,7 @@ const loadRoute = callback => {
 const routes = (
   <Route path='/' component={App}>
     <IndexRoute getComponent={(location, cb) => {
-      System.import('modules/home/components').then(loadRoute(cb)).catch(errorLoading);
+      System.import('modules/home').then(loadRoute(cb)).catch(errorLoading);
     }}/>
 
     <Route path='search' getComponent={(location, cb) => {

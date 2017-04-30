@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Home from './home';
+import Home from './component';
 import { receiveSetting } from 'common/setting/actions';
 
 import { fetchTrending } from 'modules/trending/actions';
 import { fetchRecommendedVideos } from 'modules/recommended/actions';
 import { fetchCategories,
          fetchChannelInfo,
-         fetchChannelVideos } from '../actions';
+         fetchChannelVideos } from './actions';
 
 const mapStateToProps = ({ trending, homeChannels, user, recommended, setting }) => ({
   trending,
