@@ -10,6 +10,7 @@ class Comments extends React.Component {
 
   renderComments() {
     let comments = this.props.comments;
+
     if (comments.length !== 0) {
       return comments.map(comment => <CommentsItem key={comment.etag} comment={comment} />);
     }
@@ -24,13 +25,16 @@ class Comments extends React.Component {
   }
 
   render() {
+    let user = this.props.user;
+
     if (this.props.comments === "disabled") {
       return (<div className="comments-container">Comments are disabled.</div>);
     }
 
     return (
       <div className="comments-container">
-        <NewComment videoId={this.props.videoId} />
+        <NewComment videoId={this.props.videoId}
+                    user={user}/>
         <div className="top-comments">
           {this.renderNumComments()}
           <p>Comments</p>

@@ -69,3 +69,17 @@
 .comment-right-lower p {
   font-size: 12px;
 }
+
+.new-comment-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.new-comment-left {
+  margin-right: 10px;
+}
+
+.new-comment-left img {
+  height: 48px;
+  border-radius: 50px;
+}

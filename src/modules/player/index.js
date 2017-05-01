@@ -8,9 +8,10 @@ import { fetchDetails,
          fetchComments,
          fetchVideoRating } from './actions';
 
-const mapStateToProps = ({ playerDetails, setting }) => ({
+const mapStateToProps = ({ playerDetails, setting, user }) => ({
   playerDetails,
-  setting
+  setting,
+  user
 });
 
 const mapDispatchToProps = dispatch => ({

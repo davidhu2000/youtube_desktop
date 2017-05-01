@@ -23,7 +23,6 @@ class Details extends React.Component {
     const { title, channelTitle, publishedAt, description } = details.snippet;
     const { viewCount, likeCount, dislikeCount } = details.statistics;
 
-    console.log(this.props);
     return (
       <div className="details-container">
         <DetailsUpper

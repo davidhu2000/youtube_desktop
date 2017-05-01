@@ -23,14 +23,22 @@ class NewComment extends React.Component {
   }
 
   render() {
+    let user = this.props.user.picture;
+
     return (
-      <form onSubmit={this.handleSubmit} className="new-comment-form">
-        <input type="text"
-               placeholder="Add a public comment..."
-               onChange={this.handleChange}
-               className="" />
-        <input type="submit" value="Comment" className="" />
-      </form>
+      <div className="new-comment-container">
+        <div className="new-comment-left">
+          <img src={user} />
+        </div>
+
+        <form onSubmit={this.handleSubmit} className="new-comment-form">
+          <input type="text"
+            placeholder="Add a public comment..."
+            onChange={this.handleChange}
+            className="" />
+          <input type="submit" value="Comment" className="" />
+        </form>
+      </div>
     );
   }
 }
