@@ -32,6 +32,7 @@ export const receiveChannelVideos = videos => ({
 
 export const fetchChannelVideos = channelId => dispatch => {
   let params = {
+    part:'snippet',
     channelId,
     order: 'date',
     maxResults: 25
@@ -40,7 +41,24 @@ export const fetchChannelVideos = channelId => dispatch => {
   return YoutubeApi.search(params).then(
     res => res.json()
   ).then(
-    videos => dispatch(receiveChannelVideos(videos.items))
+    videos => {
+      console.log(videos);
+      let params = {
+        part: 'statistics,contentDetails',
+        id: videos.items.map(item => item.id.videoId).join(',')
+      };
+
+      return YoutubeApi.videos(params).then(
+        res => res.json()
+      ).then( stat => {
+        for (let i = 0; i < videos.items.length; i++) {
+          videos.items[i]['statistics'] = stat.items[i].statistics;
+          videos.items[i]['contentDetails'] = stat.items[i].contentDetails;
+        }
+
+        return dispatch(receiveChannelVideos(videos.items));
+      });
+    }
   ).catch(
     err => console.log(err)
   );

@@ -38,9 +38,7 @@ class VideoBoxItem extends React.Component {
     }
 
     return (
-
       <div className="video-box-item">
-
         <Link to={`watch/${videoId}`} className="video-box-item-image">
           <img src={url} />
           <span className='duration-span'>{ duration }</span>

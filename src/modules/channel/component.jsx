@@ -1,5 +1,6 @@
 import React from 'react';
-import { ChannelNavbar } from './subcomponents';
+import { ChannelNavbar,
+         ChannelVideos } from './subcomponents';
 import { formatNumber } from 'helpers';
 
 class Channel extends React.Component {
@@ -72,17 +73,18 @@ class Channel extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     let bannerImg;
     let profileImg;
     let channelName;
     let subscriberNum;
+    let videos;
 
     if (this.props.channelDetails.detail) {
       bannerImg = this.props.channelDetails.detail.brandingSettings.image.bannerImageUrl;
       profileImg = this.props.channelDetails.detail.snippet.thumbnails.default.url;
       channelName = this.props.channelDetails.detail.snippet.title;
       subscriberNum = this.props.channelDetails.detail.statistics.subscriberCount;
+      videos = this.props.channelDetails.videos;
     }
 
     if (this.props.setting.isLoading) {
@@ -117,6 +119,8 @@ class Channel extends React.Component {
               </div>
             </div>
             <ChannelNavbar currentRoute={this.state.currentRoute} />
+
+            <ChannelVideos videos={videos} />
           </div>
         </div>
       )
