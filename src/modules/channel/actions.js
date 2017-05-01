@@ -63,3 +63,28 @@ export const fetchChannelVideos = channelId => dispatch => {
     err => console.log(err)
   );
 };
+
+export const ADD_SUBSCRIPTION = 'ADD_SUBSCRIPTION';
+
+export const addSubscription = channelId => ({
+  type: ADD_SUBSCRIPTION,
+  channelId
+});
+
+export const insertSubscription = channelId => dispatch => {
+  let snippet = {
+    resourceId: {
+      channelId,
+      kind: "youtube#channel"
+    }
+  };
+
+  return YoutubeApi.subscriptionsInsert(snippet).then(
+    res => {
+      console.log(res);
+      dispatch(addSubscription(channelId))
+    }
+  ).catch(
+    err => console.log(err)
+  );
+};

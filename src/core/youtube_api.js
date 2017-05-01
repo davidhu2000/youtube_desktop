@@ -117,6 +117,24 @@ export const subscriptions = params => {
   return fetch(`${baseUrl}?${urlParams}`);
 };
 
+export const subscriptionsInsert = snippet => {
+  let accessToken = localStorage.getItem('google-access-token');
+  let baseUrl = `https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&access_token=${accessToken}`;
+  let body = {
+    snippet
+  };
+
+  let headers = new Headers({ "Content-Type": "application/json" });
+
+  return fetch(baseUrl, {
+    headers,
+    body: JSON.stringify(body),
+    method: 'POST'
+  }).catch(
+    err => console.log(err)
+  );
+};
+
 export const commentThreads = params => {
   let baseUrl = 'https://www.googleapis.com/youtube/v3/commentThreads';
 
