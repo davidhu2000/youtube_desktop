@@ -51,7 +51,7 @@ export const fetchChannelVideos = channelId => dispatch => {
       return YoutubeApi.videos(params).then(
         res => res.json()
       ).then( stat => {
-        for (let i = 0; i < videos.items.length; i++) {
+        for (let i = 0; i < stat.items.length; i++) {
           videos.items[i]['statistics'] = stat.items[i].statistics;
           videos.items[i]['contentDetails'] = stat.items[i].contentDetails;
         }
