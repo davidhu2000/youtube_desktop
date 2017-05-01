@@ -58,8 +58,30 @@
   .third div {
     width: 500px;
   }
-/*forth section*/
-  .forth ul {
-    width: 500px;
+  .third h1 {
+    font-size: 50px;
   }
+  .third p {
+    font-size: 28px;
+  }
+/*forth section*/
+  .forth h1 {
+    font-size: 50px;
+  }
+  .forth p {
+    font-size: 28px;
+  }
+/*DOWNLOAD SECTION*/
+  .downloads h1 {
+    font-size: 50px;
+  }
+  .downloads p {
+    width: 50%;
+    font-size: 24px;
+  }
+/*FOOTER SECTION*/
+  footer p, a {
+    font-size: 24px;
+  }
+
 }
