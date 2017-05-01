@@ -22,3 +22,26 @@ export const fetchChannelDetails = channelId => dispatch => {
     err => console.log(err)
   );
 };
+
+export const RECEIVE_CHANNEL_VIDEOS = 'RECEIVE_CHANNEL_VIDEOS';
+
+export const receiveChannelVideos = videos => ({
+  type: RECEIVE_CHANNEL_VIDEOS,
+  videos
+});
+
+export const fetchChannelVideos = channelId => dispatch => {
+  let params = {
+    channelId,
+    order: 'date',
+    maxResults: 25
+  };
+
+  return YoutubeApi.search(params).then(
+    res => res.json()
+  ).then(
+    videos => dispatch(receiveChannelVideos(videos.items))
+  ).catch(
+    err => console.log(err)
+  );
+};
