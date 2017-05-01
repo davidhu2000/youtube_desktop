@@ -39,6 +39,30 @@ class Channel extends React.Component {
     }
   }
 
+  renderSubscription() {
+    let subscribed = Object.keys(this.props.subscriptions);
+    let channelId = this.props.params.channelId;
+    let subscriberNum;
+
+    if (this.props.channelDetails.detail) {
+      subscriberNum = this.props.channelDetails.detail.statistics.subscriberCount;
+    }
+
+    if (subscribed.includes(channelId)) {
+      return (
+        <button id="channel-subscribers-button-sub">
+          Subscribed {formatNumber(subscriberNum, true)}
+        </button>
+      )
+    } else {
+      return (
+        <button id="channel-subscribers-button">
+          Subscribe {formatNumber(subscriberNum, true)}
+        </button>
+      )
+    }
+  }
+
   render() {
     let bannerImg;
     let profileImg;
@@ -79,9 +103,7 @@ class Channel extends React.Component {
                 </div>
 
                 <div className="subscriber-button">
-                  <button id="channel-subscribers-button">
-                    Subscribed {formatNumber(subscriberNum, true)}
-                  </button>
+                  {this.renderSubscription()}
                 </div>
               </div>
             </div>
