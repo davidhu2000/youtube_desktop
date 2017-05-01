@@ -34,13 +34,13 @@ class Channel extends React.Component {
     this.props.receiveSetting({ isLoading: true });
     this._getNewChannelInfo(this.state.channelId, this.state.userId);
 
-    let sidebar = document.getElementById('sidebar');
-    sidebar.classList.add('hidden-channel');
+    // let sidebar = document.getElementById('sidebar');
+    // sidebar.classList.add('hidden-channel');
   }
 
   componentWillUnmount() {
-    let sidebar = document.getElementById('sidebar');
-    sidebar.classList.remove('hidden-channel');
+    // let sidebar = document.getElementById('sidebar');
+    // sidebar.classList.remove('hidden-channel');
   }
 
   componentWillReceiveProps(newProps) {
