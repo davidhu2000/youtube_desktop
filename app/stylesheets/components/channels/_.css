@@ -144,3 +144,14 @@
   color: #111111 !important;
   letter-spacing: 1px;
 }
+
+/*Channel Home*/
+.channel-videos-container {
+  margin-left: 120px;
+}
+
+.latest-uploaded-video {
+  padding: 20px 0;
+  width: 100%;
+  border-bottom: .5px solid rgba(51, 51, 51,.2);
+}

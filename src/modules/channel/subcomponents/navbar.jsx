@@ -66,7 +66,7 @@ class ChannelNavbar extends React.Component {
           <li><i className="material-icons">search</i></li>
         </ul>
       </div>
-    )
+    );
   }
 }
 
