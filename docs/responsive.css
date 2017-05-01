@@ -4,6 +4,9 @@
   and (-webkit-min-device-pixel-ratio: 2) {
 
 /*first section*/
+  .top {
+    padding-bottom: 25px;
+  }
   .top h1 {
     font-size: 75px;
     margin-top: 0px;
@@ -12,14 +15,18 @@
     height: 260px;
   }
   .top p {
-    line-height: 24px;
+    line-height: 28px;
+    font-size: 28px;
+  }
+  .top-button {
+    margin-top: 35px;
     font-size: 24px;
   }
   .under-button {
-    font-size: 18px !important;
+    font-size: 24px !important;
   }
   .under-button-span {
-    font-size: 18px;
+    font-size: 20px;
   }
 /*second section*/
   .second {
