@@ -10,14 +10,18 @@ class Channel extends React.Component {
     this.state = {
       channelId: this.props.params.channelId,
       currentRoute: "home",
-      userId: this.props.user.channelId
+      userId: this.props.user.channelId,
+      subscribed: false
     };
+
+    this.clickSubscribe = this.clickSubscribe.bind(this);
   }
 
   _getNewChannelInfo(channelId, userId) {
     let dataNeeded = [];
     dataNeeded.push(this.props.fetchChannelDetails(channelId));
     dataNeeded.push(this.props.fetchChannelVideos(channelId));
+    dataNeeded.push(this.isSubscribed());
 
     if (Object.keys(this.props.subscriptions).length === 0) {
       dataNeeded.push(this.props.fetchSubscriptions(userId));
@@ -48,6 +52,27 @@ class Channel extends React.Component {
     }
   }
 
+  isSubscribed() {
+    let subscribed = Object.keys(this.props.subscriptions);
+    let channelId = this.props.params.channelId;
+
+    if (subscribed.includes(channelId)) {
+      this.setState({ subscribed: true });
+    } else {
+      this.setState({ subscribed: false });
+    };
+  }
+
+  clickSubscribe() {
+    let channelId = this.state.channelId;
+
+    if (this.state.subscribed) {
+      console.log("hi");
+    } else {
+      this.props.insertSubscription(channelId);
+    }
+  }
+
   renderSubscription() {
     let subscribed = Object.keys(this.props.subscriptions);
     let channelId = this.props.params.channelId;
@@ -59,13 +84,17 @@ class Channel extends React.Component {
 
     if (subscribed.includes(channelId)) {
       return (
-        <button id="channel-subscribers-button-sub">
+        <button
+          id="channel-subscribers-button-sub"
+          onClick={this.clickSubscribe}>
           Subscribed {formatNumber(subscriberNum, true)}
         </button>
       )
     } else {
       return (
-        <button id="channel-subscribers-button">
+        <button
+          id="channel-subscribers-button"
+          onClick={this.clickSubscribe}>
           Subscribe {formatNumber(subscriberNum, true)}
         </button>
       )
