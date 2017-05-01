@@ -11,7 +11,7 @@ class Channel extends React.Component {
       channelId: this.props.params.channelId,
       currentRoute: "home",
       userId: this.props.user.channelId,
-      subscribed: false
+      subscribed: null
     };
 
     this.clickSubscribe = this.clickSubscribe.bind(this);
@@ -54,6 +54,7 @@ class Channel extends React.Component {
 
   isSubscribed() {
     let subscribed = Object.keys(this.props.subscriptions);
+    console.log(subscribed);
     let channelId = this.props.params.channelId;
 
     if (subscribed.includes(channelId)) {
@@ -65,11 +66,21 @@ class Channel extends React.Component {
 
   clickSubscribe() {
     let channelId = this.state.channelId;
+    let subscriptions = Object.keys(this.props.subscriptions);
+    let subscriptionId;
+
+    for (let i = 0; i < subscriptions.length; i++) {
+      if (this.props.subscriptions[subscriptions[i]].resourceId.channelId === channelId) {
+        subscriptionId = this.props.subscriptions[subscriptions[i]].subscriptionId;
+      }
+    }
 
     if (this.state.subscribed) {
-      console.log("hi");
+      this.props.deleteSubscription(subscriptionId);
+      this.setState({ subscribed: false });
     } else {
       this.props.insertSubscription(channelId);
+      this.setState({ subscribed: true });
     }
   }
 
@@ -102,6 +113,7 @@ class Channel extends React.Component {
   }
 
   render() {
+    console.log(this.state.subscribed);
     let bannerImg;
     let profileImg;
     let channelName;

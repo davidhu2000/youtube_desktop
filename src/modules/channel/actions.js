@@ -81,9 +81,27 @@ export const insertSubscription = channelId => dispatch => {
 
   return YoutubeApi.subscriptionsInsert(snippet).then(
     res => {
-      console.log(res);
       dispatch(addSubscription(channelId))
     }
+  ).catch(
+    err => console.log(err)
+  );
+};
+
+export const REMOVE_SUBSCRIPTION = 'REMOVE_SUBSCRIPTION';
+
+export const removeSubscription = subscriptionId => ({
+  type: REMOVE_SUBSCRIPTION,
+  subscriptionId
+});
+
+export const deleteSubscription = subscriptionId => dispatch => {
+  let params = {
+    id: subscriptionId
+  };
+
+  return YoutubeApi.subscriptionsDelete(params).then(
+    subscriptionId => dispatch(removeSubscription(subscriptionId))
   ).catch(
     err => console.log(err)
   );
