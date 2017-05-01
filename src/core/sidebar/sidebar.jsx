@@ -17,6 +17,8 @@ class Sidebar extends React.Component {
       buttonVal: 'Show More',
       icon: 'keyboard_arrow_down'
     };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -25,7 +27,7 @@ class Sidebar extends React.Component {
     cover.classList.add('hidden');
 
     // render sidebar with the correct behavior based on window width
-    if (window.innerWidth > 1312) {
+    if (window.innerWidth > 1312 && !this.props.params.channelId) {
       sidebar.classList.remove('fixed', 'offscreen');
       sidebar.classList.add('absolute', 'ondocument');
     } else {
@@ -43,10 +45,10 @@ class Sidebar extends React.Component {
     let oldWidth = this.props.setting.windowWidth;
 
     if (oldWidth > 1312 && newWidth <= 1312) {
-      sidebar.classList.remove('absolute', 'ondocument', 'hidden');
+      sidebar.classList.remove('absolute', 'ondocument', 'hidden', 'onscreen');
       sidebar.classList.add('fixed', 'offscreen');
       cover.classList.add('hidden');
-    } else if (oldWidth <= 1312 && newWidth > 1312) {
+    } else if (!this.props.params.channelId && oldWidth <= 1312 && newWidth > 1312) {
       sidebar.classList.remove('fixed', 'onscreen', 'offscreen');
       sidebar.classList.add('absolute', 'ondocument');
       cover.classList.add('hidden');
@@ -55,12 +57,13 @@ class Sidebar extends React.Component {
 
   handleClick(e) {
     let narrowWindow = window.innerWidth < 1312;
+    let notOnChannelPage =  !!this.props.params.channelId;
     let correctClassName = e.target.className;
     let correctTags = ['I', 'SPAN', 'IMG', 'A'].includes(e.target.tagName);
 
     let notShowMore = !e.target.innerHTML.includes('Show ') && !e.target.innerHTML.includes('keyboard_arrow_');
 
-    if (narrowWindow && notShowMore && (correctClassName || correctTags)) {
+    if ((narrowWindow || notOnChannelPage) && notShowMore && (correctClassName || correctTags)) {
       toggleSidebar();
     }
   }
