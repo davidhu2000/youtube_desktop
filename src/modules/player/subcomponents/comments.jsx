@@ -37,8 +37,7 @@ class Comments extends React.Component {
           {this.renderNumComments()}
           <p>Comments</p>
         </div>
-        <NewComment videoId={this.props.videoId}
-                    user={user}/>
+        <NewComment videoId={this.props.videoId} user={user}/>
         <div className="comments-list">
           {this.renderComments()}
         </div>

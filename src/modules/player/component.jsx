@@ -60,15 +60,11 @@ class PlayerDetails extends React.Component {
           <div className="player-container">
             <div className="left-frame">
               <Player   videoId={videoId}/>
-              <Details  details={details}
-                        rating={rating}
-                        videoId={videoId}
-                        videosRate={this.props.videosRate}/>
-              <Comments comments={comments}
-                        user={user}/>
+              <Details  details={details} rating={rating} videoId={videoId} videosRate={this.props.videosRate}/>
+              <Comments comments={comments} user={user}/>
             </div>
             <div className="right-frame">
-              <Related  related={this.props.playerDetails.related}/>
+              <Related related={this.props.playerDetails.related}/>
             </div>
           </div>
         </div>
