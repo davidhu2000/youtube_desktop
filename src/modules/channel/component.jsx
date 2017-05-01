@@ -2,6 +2,7 @@ import React from 'react';
 import { ChannelNavbar,
          ChannelVideos } from './subcomponents';
 import { formatNumber } from 'helpers';
+import Playlists from 'modules/playlists';
 
 class Channel extends React.Component {
   constructor(props) {
@@ -33,14 +34,6 @@ class Channel extends React.Component {
   componentDidMount() {
     this.props.receiveSetting({ isLoading: true });
     this._getNewChannelInfo(this.state.channelId, this.state.userId);
-
-    // let sidebar = document.getElementById('sidebar');
-    // sidebar.classList.add('hidden-channel');
-  }
-
-  componentWillUnmount() {
-    // let sidebar = document.getElementById('sidebar');
-    // sidebar.classList.remove('hidden-channel');
   }
 
   componentWillReceiveProps(newProps) {
@@ -158,6 +151,7 @@ class Channel extends React.Component {
             <ChannelNavbar currentRoute={this.state.currentRoute} />
 
             <ChannelVideos videos={videos} />
+            <Playlists />
           </div>
         </div>
       )

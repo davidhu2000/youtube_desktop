@@ -84,7 +84,6 @@ class ChannelVideos extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="channel-videos-container">
         {this.latestUpload()}
