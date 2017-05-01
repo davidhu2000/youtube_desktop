@@ -17,6 +17,8 @@ class Details extends React.Component {
 
     const { details, rating } = this.props;
     const { subs } = details;
+    const channelImg = details.channelSnippet.thumbnails.default.url;
+
 
     const { title, channelTitle, publishedAt, description } = details.snippet;
     const { viewCount, likeCount, dislikeCount } = details.statistics;
@@ -39,8 +41,8 @@ class Details extends React.Component {
           channelTitle={channelTitle}
           subs={subs}
           publishedAt={publishedAt}
-          description={description} />
-
+          description={description}
+          channelImg={channelImg} />
       </div>
     );
   }

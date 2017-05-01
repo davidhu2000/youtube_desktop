@@ -28,7 +28,7 @@ class Related extends React.Component {
     return (
       <div className="related-container">
         <div className="related-title">
-          <h2>Up Next</h2>
+          <h2>Up next</h2>
 
           <div className="row press">
             <h2>autoplay</h2>

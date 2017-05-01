@@ -53,6 +53,7 @@ class PlayerDetails extends React.Component {
     if (!this.props.setting.isLoading) {
       let videoId = this.props.router.params.videoId;
       let { comments, details, related, rating } = this.props.playerDetails;
+      let user = this.props.user;
 
       return (
         <div className="main-content">
@@ -60,10 +61,10 @@ class PlayerDetails extends React.Component {
             <div className="left-frame">
               <Player   videoId={videoId}/>
               <Details  details={details} rating={rating} videoId={videoId} videosRate={this.props.videosRate}/>
-              <Comments comments={comments}/>
+              <Comments comments={comments} user={user}/>
             </div>
             <div className="right-frame">
-              <Related  related={this.props.playerDetails.related}/>
+              <Related related={this.props.playerDetails.related}/>
             </div>
           </div>
         </div>
