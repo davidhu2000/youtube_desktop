@@ -42,7 +42,6 @@ export const fetchChannelVideos = channelId => dispatch => {
     res => res.json()
   ).then(
     videos => {
-      console.log(videos);
       let params = {
         part: 'statistics,contentDetails',
         id: videos.items.map(item => item.id.videoId).join(',')

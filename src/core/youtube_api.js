@@ -92,7 +92,7 @@ export const playlists = params => {
 
   let defaultParams = {
     part: 'snippet',
-    maxResults: 10,
+    maxResults: 25,
     key: YT_API_KEY.publicDataKey
   };
 

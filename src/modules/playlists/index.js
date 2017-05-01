@@ -4,12 +4,13 @@ import Playlists from './component';
 import { fetchChannelPlaylists } from './actions';
 import { receiveSetting } from 'common/setting/actions';
 
-const mapStateToProps = ({ channelDetails, user, setting, subscriptions }) => ({
+const mapStateToProps = ({ channelDetails, user, setting, subscriptions, playlists }) => ({
   channelDetails,
   loggedIn: Boolean(user),
   user,
   setting,
-  subscriptions
+  subscriptions,
+  playlists
 });
 
 const mapDispatchToProps = dispatch => ({
