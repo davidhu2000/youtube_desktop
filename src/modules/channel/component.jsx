@@ -5,7 +5,7 @@ import { formatNumber } from 'helpers';
 class Channel extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
+
     this.state = {
       channelId: this.props.params.channelId,
       currentRoute: "home",
@@ -16,6 +16,7 @@ class Channel extends React.Component {
   _getNewChannelInfo(channelId, userId) {
     let dataNeeded = [];
     dataNeeded.push(this.props.fetchChannelDetails(channelId));
+    dataNeeded.push(this.props.fetchChannelVideos(channelId));
 
     if (Object.keys(this.props.subscriptions).length === 0) {
       dataNeeded.push(this.props.fetchSubscriptions(userId));
@@ -71,6 +72,7 @@ class Channel extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     let bannerImg;
     let profileImg;
     let channelName;
