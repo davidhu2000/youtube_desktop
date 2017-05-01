@@ -1,33 +1,30 @@
 .video-box-item {
-  height: 199px;
-  width: 196px;
+  /*height: 199px;
+  width: 196px;*/
+  height: 204px;
+  width: 210px;
 }
 
 .video-box-item-image {
   position: relative;
   display: block;
-  height: 110px;
-  width: 196px;
+  /*height: 110px;
+  width: 196px;*/
+  height: 118px;
+  width: 210px;
   margin-bottom: 6px;
 }
 
 .video-box-item-image img {
-  height: 110px;
-  width: 196px;
+  height: 118px;
+  width: 210px;
 }
 
 .video-box-item-image span {
-  display: block;
-  position: absolute;
   right: 2px;
   bottom: 2px;
   font-size: 11px;
-  background-color: #000;
-  color: #fff;
   height: 14px;
-  line-height: 14px;
-  opacity: 0.75;
-  padding: 0 4px;
 }
 
 .video-box-item h1 {
@@ -55,7 +52,7 @@
 }
 
 .video-box-item-channel:hover {
-  color: var(--video-title);
+  /*color: var(--video-title);*/
 }
 
 .video-box-item-channel > p {

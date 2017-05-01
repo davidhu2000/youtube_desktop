@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
-import { shortenString, formatNumber, parseDate, timeFromNow } from 'helpers';
+import { shortenString, formatNumber, parseDate, timeFromNow, parseDuration } from 'helpers';
 
 class VideoListItem extends React.Component {
   constructor(props) {
@@ -10,12 +10,18 @@ class VideoListItem extends React.Component {
 
   render () {
     const vid = this.props.vid;
-    const { description, title, channelTitle, publishedAt } = vid.snippet;
+    const { description, title, channelTitle, publishedAt, channelId } = vid.snippet;
     const { url } = vid.snippet.thumbnails.medium;
 
     let viewCount = '---';
     if (vid.statistics) {
       viewCount = vid.statistics.viewCount;
+    }
+
+    let duration;
+    if(vid.contentDetails && vid.contentDetails.duration) {
+      duration = vid.contentDetails.duration;
+      duration = parseDuration(duration);
     }
 
     const { 
@@ -32,15 +38,15 @@ class VideoListItem extends React.Component {
     }
 
     return (
-      <div className={`index-item`} style={{width: this.props.itemWidth }}>
-        <Link to={`watch/${videoId}`} className={`index-item-left`}>
+      <Link className={`index-item`} style={{width: this.props.itemWidth }} to={`watch/${videoId}`}>
+        <div className={`index-item-left`}>
           <img src={url} />
-        </Link>
+          <span className='duration-span'>{ duration }</span>
+        </div>
 
         <div className={`index-item-right`}>
-          <Link to={`watch/${videoId}`}>
-            <h1>{ shortenString(title, maxTitleLength) }</h1>
-          </Link>
+          <h1>{ shortenString(title, maxTitleLength) }</h1>
+
           <div className='index-item-right-info'>
             <span className='channel-title'>{ shortenString(channelTitle, maxChannelTitleLength) }</span>
             <span className='view-count'> { formatNumber(viewCount, true) + ' Views'}</span>
@@ -48,7 +54,7 @@ class VideoListItem extends React.Component {
           </div>
           <p>{ shortenString(description, maxDescriptionLength) }</p>
         </div>
-      </div>
+      </Link>
     );
   }
 }

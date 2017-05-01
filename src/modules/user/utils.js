@@ -1,6 +1,7 @@
 import YT_API_KEY from '../../../config/api_key';
 import { createUrlParams, errorChecker } from 'helpers';
 import { channels } from 'core/youtube_api.js';
+import { fetchSubscriptions } from 'modules/subscriptions/actions'; // TODO: potentially coupling
 
 const { BrowserWindow } = window.require('electron').remote;
 const request = window.require('superagent');
@@ -137,16 +138,18 @@ export const fetchUserInfo = () => dispatch => {
         let user = response.body;
 
         fetchAuthUserChannelId().then(
-          res => res.json()
+          res  => res.json()
         ).then(
           resJson => {
-            user.channelId = resJson.items[0].id;
-            console.log(user);
+            let channelId = resJson.items[0].id;
+            user.channelId = channelId;
+
             localStorage.setItem('google-user', JSON.stringify(user));
             dispatch({
               type: "RECEIVE_USER",
               user
             });
+            dispatch(fetchSubscriptions(channelId));
           }).catch(
             error => console.log(error)
           );

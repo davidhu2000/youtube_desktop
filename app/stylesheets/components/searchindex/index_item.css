@@ -5,12 +5,24 @@
   align-items: center;
 }
 
+.index-item-left {
+  position: relative;
+}
+
 .index-item-left img {
   height: 138px;
   width: 246px;
   padding: 0px;
   margin: 0px;
 }
+
+.index-item-left span {
+  right: 4px;
+  bottom: 7px;
+  font-size: 12px;
+  height: 16px;
+}
+
 
 .index-item-right {
   height: 100%;
@@ -30,7 +42,7 @@
 }
 
 .index-item-right h1 {
-  color: #111;
+  color: #222;
   font-weight: 500;
   font-size: 16px;
 }
@@ -54,14 +66,19 @@
 
 .index-item-right-info .channel-title {
   color: #313131;
-  padding-right: 10px;
+  /*padding-right: 10px;*/
 }
 
 .index-item-right-info span {
   color: var(--basic-text);
 }
 
-.view-count::after {
+.view-count::before {
+  content: '\002022';
+  margin: 0 5px;
+}
+
+.publish-date::before {
   content: '\002022';
   margin: 0 5px;
 }

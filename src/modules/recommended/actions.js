@@ -14,9 +14,25 @@ export const fetchRecommendedVideos = () => dispatch => {
   };
 
   return YoutubeApi.activities(params).then(
-    response => response.json()
-  ).then(responseJson => {
-    return dispatch(receiveRecommendedVideos(responseJson.items));
+    res => res.json()
+  ).then(videos => {
+
+    let params = {
+      part: 'statistics,contentDetails',
+      id: videos.items.map(item => item.contentDetails.upload.videoId).join(',')
+    };
+
+    return YoutubeApi.videos(params).then(
+      res => res.json()
+    ).then( stat => {
+      for (let i = 0; i < videos.items.length; i++) {
+        videos.items[i]['statistics'] = stat.items[i].statistics;
+        videos.items[i]['contentDetails'] = stat.items[i].contentDetails;
+      }
+
+      return dispatch(receiveRecommendedVideos(videos.items));
+    });
+    
   }).catch(error => {
     console.log(error);
   });

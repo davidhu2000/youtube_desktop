@@ -25,7 +25,7 @@ export const searchVideos = (query, nextPageToken, pageNumber = 1) => dispatch =
   ).then(
     videos => {
       let params = {
-        part: 'statistics',
+        part: 'statistics,contentDetails',
         id: videos.items.map(item => item.id.videoId).join(','),
       };
 
@@ -35,6 +35,7 @@ export const searchVideos = (query, nextPageToken, pageNumber = 1) => dispatch =
          videoStatResults => {
            for (let i = 0; i < videos.items.length; i++) {
              videos.items[i]['statistics'] = videoStatResults.items[i].statistics;
+             videos.items[i]['contentDetails'] = videoStatResults.items[i].contentDetails;
            }
 
            videos['query'] = query;
