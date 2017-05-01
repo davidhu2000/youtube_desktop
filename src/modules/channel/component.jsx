@@ -54,7 +54,6 @@ class Channel extends React.Component {
 
   isSubscribed() {
     let subscribed = Object.keys(this.props.subscriptions);
-    console.log(subscribed);
     let channelId = this.props.params.channelId;
 
     if (subscribed.includes(channelId)) {
@@ -85,15 +84,13 @@ class Channel extends React.Component {
   }
 
   renderSubscription() {
-    let subscribed = Object.keys(this.props.subscriptions);
-    let channelId = this.props.params.channelId;
     let subscriberNum;
 
     if (this.props.channelDetails.detail) {
       subscriberNum = this.props.channelDetails.detail.statistics.subscriberCount;
     }
 
-    if (subscribed.includes(channelId)) {
+    if (this.state.subscribed) {
       return (
         <button
           id="channel-subscribers-button-sub"
@@ -113,7 +110,6 @@ class Channel extends React.Component {
   }
 
   render() {
-    console.log(this.state.subscribed);
     let bannerImg;
     let profileImg;
     let channelName;
