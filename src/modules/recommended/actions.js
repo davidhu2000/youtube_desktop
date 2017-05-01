@@ -18,7 +18,7 @@ export const fetchRecommendedVideos = () => dispatch => {
   ).then(videos => {
 
     let params = {
-      part: 'statistics',
+      part: 'statistics,contentDetails',
       id: videos.items.map(item => item.contentDetails.upload.videoId).join(',')
     };
 
@@ -27,6 +27,7 @@ export const fetchRecommendedVideos = () => dispatch => {
     ).then( stat => {
       for (let i = 0; i < videos.items.length; i++) {
         videos.items[i]['statistics'] = stat.items[i].statistics;
+        videos.items[i]['contentDetails'] = stat.items[i].contentDetails;
       }
 
       return dispatch(receiveRecommendedVideos(videos.items));
