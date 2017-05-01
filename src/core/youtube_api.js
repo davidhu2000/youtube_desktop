@@ -117,6 +117,7 @@ export const subscriptions = params => {
   return fetch(`${baseUrl}?${urlParams}`);
 };
 
+// TODO: refactor to make it reusable
 export const subscriptionsInsert = snippet => {
   let accessToken = localStorage.getItem('google-access-token');
   let baseUrl = `https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&access_token=${accessToken}`;
@@ -134,6 +135,19 @@ export const subscriptionsInsert = snippet => {
     err => console.log(err)
   );
 };
+
+export const subscriptionsDelete = params => {
+  let baseUrl = 'https://www.googleapis.com/youtube/v3/subscriptions';
+
+  let defaultParams = {
+    access_token: localStorage.getItem('google-access-token')
+  };
+
+  let mergedParams = merge(defaultParams, params);
+  let urlParams = createUrlParams(mergedParams);
+console.log("hello");
+  return fetch(`${baseUrl}?${urlParams}`, { method: 'DELETE' });
+}
 
 export const commentThreads = params => {
   let baseUrl = 'https://www.googleapis.com/youtube/v3/commentThreads';
