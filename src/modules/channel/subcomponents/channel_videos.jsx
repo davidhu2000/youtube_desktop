@@ -24,11 +24,13 @@ class ChannelVideos extends React.Component {
     this.setState({ videos });
   }
 
+  // TODO: parsing description method for longer description.
+
   latestUpload() {
     let vid = this.state.videos[0];
 
     if (vid) {
-      const { channelId, channelTitle, publishedAt } = vid.snippet;
+      const { channelId, description, publishedAt } = vid.snippet;
       const { url } = vid.snippet.thumbnails.medium;
       const title = shortenString(vid.snippet.title, 60);
 
@@ -56,23 +58,25 @@ class ChannelVideos extends React.Component {
       }
 
       return (
-        <div className="latest-uploaded-video">
-          <Link to={`watch/${videoId}`} className="video-box-item-image">
+        <div className="latest-uploaded-video-container">
+          <Link to={`watch/${videoId}`} className="latest-uploaded-left">
             <img src={url} />
             <span className='duration-span'>{ duration }</span>
           </Link>
 
-          <Link to={`watch/${videoId}`} className="video-box-item-title">
-            <h1 className='video-title'>{title}</h1>
-          </Link>
+          <div className="latest-uploaded-right">
+            <Link to={`watch/${videoId}`} className="latest-uploaded-title">
+              <h1 className='latest-video-title'>{title}</h1>
+            </Link>
 
-          <Link to={`channels/${channelId}`} className='video-box-item-channel'>
-            <p className='basic-text'>{channelTitle}</p>
-          </Link>
+            <div className="latest-video-info">
+              <span>{ formatNumber(viewCount, true) } views</span>
+              <span className='latest-video-date'>{ timeFromNow(publishedAt) } </span>
+            </div>
 
-          <div className="video-box-item-info">
-            <span>{ formatNumber(viewCount) } views</span>
-            <span className='video-box-item-date'>{ timeFromNow(publishedAt) } </span>
+            <div className='latest-video-description'>
+              <p className='basic-text'>{description}</p>
+            </div>
           </div>
         </div>
       )
