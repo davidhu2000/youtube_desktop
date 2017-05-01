@@ -50,6 +50,7 @@ class PlayerDetails extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     if (!this.props.setting.isLoading) {
       let videoId = this.props.router.params.videoId;
       let { comments, details, related, rating } = this.props.playerDetails;

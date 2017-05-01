@@ -147,11 +147,14 @@
 .details-lower-container {
   width: 100%;
   padding: 15px 10px;
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   background-color: var(--background);
+  border-bottom: .5px solid rgba(51, 51, 51,.2);
+  margin-bottom: 15px;
 }
 .details-lower-description a {
   color: hsl(206.1, 79.3%, 52.7%);
@@ -164,7 +167,7 @@
   font-size: 14px;
 }
 .details-lower-container p {
-  margin-top: 10px;
+  margin-top: 15px;
   font-size: 12px;
 }
 .details-lower-container-upper {
@@ -219,6 +222,7 @@
 
 .details-lower-description {
   width: 100%;
+  justify-content: flex-start;
 }
 
 .description {
@@ -231,7 +235,6 @@
 
 .details-description-button {
   width: 100%;
-  text-align: center;
   text-transform: uppercase;
   font-weight: bolder;
   opacity: 0.6;

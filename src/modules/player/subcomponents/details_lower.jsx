@@ -55,33 +55,39 @@ class DetailsLower extends React.Component {
   }
 
   render() {
-    let { subs, channelTitle } = this.props;
+    let { subs, channelTitle, channelImg } = this.props;
+
     return (
       <div className="details-lower-container">
-        <div className="details-lower-container-upper">
-          <div className="details-lower-container-upper-left">
-            <a href="" className="channel-name">{channelTitle}</a>
-            <h3 className="details-date">
-              Published on {parseDate(this.props.publishedAt)}
-            </h3>
-          </div>
-          <div className="details-lower-container-upper-right">
-            <div className="button-span">
-              <button type="button" className="sub-button">
-                <span>SUBSCRIBE</span>
-                <span className="sub-span">{formatNumber(subs, true)}</span>
-              </button>
+        <div className="details-lower-container-left">
+          <img src={ channelImg } />
+        </div>
+        <div className="details-lower-container-right">
+          <div className="details-lower-container-upper">
+            <div className="details-lower-container-upper-left">
+              <a href="" className="channel-name">{channelTitle}</a>
+              <h3 className="details-date">
+                Published on {parseDate(this.props.publishedAt)}
+              </h3>
+            </div>
+            <div className="details-lower-container-upper-right">
+              <div className="button-span">
+                <button type="button" className="sub-button">
+                  <span>SUBSCRIBE</span>
+                  <span className="sub-span">{formatNumber(subs, true)}</span>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="details-lower-description">
-          {this.addDescription()}
-          <button
-            className='details-description-button'
-            onClick={ () => this.setState({ showAllDecription: !this.state.showAllDecription }) }>
-            { this.state.showAllDecription ? 'Show less' : 'Show more' }
-          </button>
+          <div className="details-lower-description">
+            {this.addDescription()}
+            <button
+              className='details-description-button'
+              onClick={ () => this.setState({ showAllDecription: !this.state.showAllDecription }) }>
+              { this.state.showAllDecription ? 'Show less' : 'Show more' }
+            </button>
+          </div>
         </div>
       </div>
     );
