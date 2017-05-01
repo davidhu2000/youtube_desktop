@@ -70,6 +70,7 @@ body {
   font-size: 42px;
 }
 .image-box{
+  max-width: 1920px;
   width: 100%;
   display: flex;
   justify-content: center;
