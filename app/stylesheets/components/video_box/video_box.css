@@ -1,7 +1,8 @@
 .video-box {
   background: var(--background);
   min-width: 438px;
-  padding: 15px 18px 30px 18px;
+  /*padding: 15px 18px 30px 18px;*/
+  padding: 15px 0;
   height: 264px;
   border-bottom: 1px solid var(--border);
 }
@@ -75,7 +76,7 @@
   text-transform: uppercase;
   margin-bottom: 4px;
   cursor: pointer;
-  font-size: 11px;
+  font-size: 12px;
   margin-top: 0px;
   font-weight: 500;
   

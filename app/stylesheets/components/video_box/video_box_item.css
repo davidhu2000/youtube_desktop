@@ -1,19 +1,23 @@
 .video-box-item {
-  height: 199px;
-  width: 196px;
+  /*height: 199px;
+  width: 196px;*/
+  height: 204px;
+  width: 210px;
 }
 
 .video-box-item-image {
   position: relative;
   display: block;
-  height: 110px;
-  width: 196px;
+  /*height: 110px;
+  width: 196px;*/
+  height: 118px;
+  width: 210px;
   margin-bottom: 6px;
 }
 
 .video-box-item-image img {
-  height: 110px;
-  width: 196px;
+  height: 118px;
+  width: 210px;
 }
 
 .video-box-item-image span {

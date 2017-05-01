@@ -6,6 +6,8 @@ class VideoBox extends React.Component {
    constructor(props) {
      super(props);
 
+     this.calcBoxWidthAndNumVideos = this.calcBoxWidthAndNumVideos.bind(this);
+
      let data = this.calcBoxWidthAndNumVideos(props.sidebarVisible);
 
      this.state = {
@@ -35,7 +37,7 @@ class VideoBox extends React.Component {
 
   calcBoxWidthAndNumVideos() {
     let numVideosPerRow = 2;
-    let boxWidth = 438;
+    let boxWidth = 428;
     let width = window.innerWidth;
 
     if (width > 1312 && this.props.sidebarVisible) {
@@ -44,25 +46,31 @@ class VideoBox extends React.Component {
 
     if(width > 1312) {
       numVideosPerRow = 6;
-      boxWidth = 1262;
+      boxWidth = 1284;
     } else if(width > 1132) {
       numVideosPerRow = 5;
-      boxWidth = 1056;
+      boxWidth = 1070;
     } else if(width > 900) {
       numVideosPerRow = 4;
-      boxWidth = 850;
+      boxWidth = 856;
     } else if(width > 694) {
       numVideosPerRow = 3;
-      boxWidth = 644;
+      boxWidth = 642;
     }
-    return { numVideosPerRow, boxWidth };
+
+    let numRows = 2;
+    if (this.state && this.state.numRows !== 2) {
+      numRows = Math.ceil(this.props.vids.length / numVideosPerRow);
+    }
+
+    return { numVideosPerRow, boxWidth, numRows };
   }
 
   // for multi-line video box
   toggleMoreVideos() {
     let numRows;
     if (this.state.numRows === 2) {
-      numRows = Math.floor(this.props.vids.length / this.state.numVideosPerRow);
+      numRows = Math.ceil(this.props.vids.length / this.state.numVideosPerRow);
     } else {
       numRows = 2;
     }
@@ -117,15 +125,16 @@ class VideoBox extends React.Component {
   render() {
     if (this.props.multiline) {
       let buttonVal = this.state.numRows === 2 ? 'Show more' : 'Show less';
-      let height = this.state.numRows === 2 ? '500px' : '900px';
+      let height = 38 + 230 * this.state.numRows + 50;
+
       return (
         <div className='video-box multiline-container' style={{width: this.state.boxWidth, height: height}}>
           <h1 className='video-box-title'>{this.props.title}</h1>
           <div className='video-box-videos multiline'>
             { this.renderVideos() }
             <button
-            className='video-box-toggle'
-            onClick={this.toggleMoreVideos.bind(this)}>{ buttonVal }</button>
+              className='video-box-toggle'
+              onClick={this.toggleMoreVideos.bind(this)}>{ buttonVal }</button>
           </div>
 
         </div>
