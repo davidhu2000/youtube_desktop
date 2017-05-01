@@ -149,55 +149,75 @@
   padding: 15px 10px;
   padding-top: 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
   background-color: var(--background);
   border-bottom: .5px solid rgba(51, 51, 51,.2);
   margin-bottom: 15px;
 }
+
+.details-lower-container-left {
+  margin-right: 20px;
+}
+
+.details-lower-container-left img {
+  border-radius: 50px;
+  height: 40px;
+}
+
 .details-lower-description a {
   color: hsl(206.1, 79.3%, 52.7%);
   cursor: pointer;
 }
+
 .details-lower-description a:hover {
   text-decoration: underline;
 }
+
 .details-lower-container h3 {
   font-size: 14px;
 }
+
 .details-lower-container p {
   margin-top: 15px;
   font-size: 12px;
 }
+
 .details-lower-container-upper {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .details-lower-container-upper-left{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 }
+
 .details-date {
   color: #666666;
 }
+
 .channel-name {
   font-size: 14px;
   font-weight: bold;
 }
+
 .details-lower-container-upper-right{
   display: flex;
   align-items: flex-start;
 }
+
 .button-span {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .sub-button {
   height: 35px;
   width: 145px;
@@ -209,16 +229,18 @@
   background-color: hsl(3, 81.8%, 49.6%);
   color: white;
 }
+
 .sub-button span {
   font-size: 14px;
 }
+
 .sub-button span:first-child {
   margin-right: 10px;
 }
+
 .sub-button span:last-child {
   color: #FAD2D0;
 }
-
 
 .details-lower-description {
   width: 100%;
@@ -238,7 +260,7 @@
   text-transform: uppercase;
   font-weight: bolder;
   opacity: 0.6;
-  margin-top: 10px;
+  margin-top: 15px;
   font-size: 12px;
 }
 
