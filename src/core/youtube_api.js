@@ -145,7 +145,6 @@ export const subscriptionsDelete = params => {
 
   let mergedParams = merge(defaultParams, params);
   let urlParams = createUrlParams(mergedParams);
-console.log("hello");
   return fetch(`${baseUrl}?${urlParams}`, { method: 'DELETE' });
 }
 
