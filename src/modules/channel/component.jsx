@@ -5,22 +5,28 @@ import { formatNumber } from 'helpers';
 class Channel extends React.Component {
   constructor(props) {
     super(props);
-
+    console.log(props);
     this.state = {
       channelId: this.props.params.channelId,
-      currentRoute: "home"
+      currentRoute: "home",
+      userId: this.props.user.channelId
     };
   }
 
-  _getNewChannelInfo(channelId) {
+  _getNewChannelInfo(channelId, userId) {
     let dataNeeded = [];
     dataNeeded.push(this.props.fetchChannelDetails(channelId));
+
+    if (Object.keys(this.props.subscriptions).length === 0) {
+      dataNeeded.push(this.props.fetchSubscriptions(userId));
+    }
+
     Promise.all(dataNeeded).then( res => this.props.receiveSetting({ isLoading: false }));
   }
 
   componentDidMount() {
     this.props.receiveSetting({ isLoading: true });
-    this._getNewChannelInfo(this.state.channelId);
+    this._getNewChannelInfo(this.state.channelId, this.state.userId);
 
     let sidebar = document.getElementById('sidebar');
     sidebar.classList.add('hidden-channel');
@@ -33,9 +39,10 @@ class Channel extends React.Component {
 
   componentWillReceiveProps(newProps) {
     let channelId = newProps.params.channelId;
+    let userId = newProps.user.channelId;
     if (this.state.channelId !== channelId) {
-      this.setState({ channelId });
-      this._getNewChannelInfo(channelId);
+      this.setState({ channelId, userId });
+      this._getNewChannelInfo(channelId, userId);
     }
   }
 
