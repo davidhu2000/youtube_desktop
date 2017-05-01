@@ -107,7 +107,8 @@ export const subscriptions = params => {
 
   let defaultParams = {
     part: 'snippet',
-    access_token: localStorage.getItem('google-access-token')
+    access_token: localStorage.getItem('google-access-token'),
+    maxResults: 25
   };
 
   let mergedParams = merge(defaultParams, params);

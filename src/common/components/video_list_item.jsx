@@ -13,7 +13,7 @@ class VideoListItem extends React.Component {
     const { description, title, channelTitle, publishedAt, channelId } = vid.snippet;
     const { url } = vid.snippet.thumbnails.medium;
 
-    let viewCount = '---';
+    let viewCount = 301;
     if (vid.statistics) {
       viewCount = vid.statistics.viewCount;
     }
