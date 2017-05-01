@@ -25,7 +25,7 @@
 }
 
 .absolute {
-  position: absolute;
+  position: static;
 }
 
 .fixed {
@@ -188,9 +188,9 @@
 }
 
 @media screen and (min-width: 1313px) {
-  #sidebar {
+  /*#sidebar {
     position: static;
-  }
+  }*/
 }
 
 @media screen and (max-width: 1312px) {
