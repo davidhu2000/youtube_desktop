@@ -25,7 +25,7 @@ export const searchVideos = (query, nextPageToken, pageNumber = 1) => dispatch =
   ).then(
     videos => {
       let params = {
-        part: 'statistics',
+        part: 'statistics,contentDetails',
         id: videos.items.map(item => item.id.videoId).join(','),
       };
 

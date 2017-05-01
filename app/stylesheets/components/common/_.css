@@ -1,1 +1,11 @@
 @import url('./progress_bar.css');
+
+.duration-span {
+  display: block;
+  position: absolute;
+  background-color: hsl(0, 0%, 6.7%);
+  color: #fff;
+  opacity: 0.75;
+  padding: 2px 4px;
+  line-height: 12px;
+}

@@ -5,12 +5,24 @@
   align-items: center;
 }
 
+.index-item-left {
+  position: relative;
+}
+
 .index-item-left img {
   height: 138px;
   width: 246px;
   padding: 0px;
   margin: 0px;
 }
+
+.index-item-left span {
+  right: 4px;
+  bottom: 7px;
+  font-size: 12px;
+  height: 16px;
+}
+
 
 .index-item-right {
   height: 100%;

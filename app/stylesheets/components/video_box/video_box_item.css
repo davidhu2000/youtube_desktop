@@ -17,17 +17,10 @@
 }
 
 .video-box-item-image span {
-  display: block;
-  position: absolute;
   right: 2px;
   bottom: 2px;
   font-size: 11px;
-  background-color: #000;
-  color: #fff;
   height: 14px;
-  line-height: 14px;
-  opacity: 0.75;
-  padding: 0 4px;
 }
 
 .video-box-item h1 {

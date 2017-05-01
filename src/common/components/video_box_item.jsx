@@ -43,7 +43,7 @@ class VideoBoxItem extends React.Component {
 
         <Link to={`watch/${videoId}`} className="video-box-item-image">
           <img src={url} />
-          <span>{ duration }</span>
+          <span className='duration-span'>{ duration }</span>
         </Link>
 
         <Link to={`watch/${videoId}`} className="video-box-item-title">
