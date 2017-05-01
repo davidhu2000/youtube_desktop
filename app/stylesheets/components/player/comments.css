@@ -9,6 +9,7 @@
 
 .top-comments {
   display: flex;
+  margin: 10px 0 35px 5px;
 }
 
 .top-comments p {
@@ -31,16 +32,16 @@
   align-items: flex-start;
 }
 
-
 .comment-item img {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   padding: 0px;
   margin: 0px;
   border-radius: 50%;
 }
 
 .comment-right {
+  margin-left: 5px;
   height: 48px;
   width: 552px;
   padding: 0px 10px;
@@ -73,6 +74,7 @@
 .new-comment-container {
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 
 .new-comment-left {
@@ -80,6 +82,19 @@
 }
 
 .new-comment-left img {
-  height: 48px;
-  border-radius: 50px;
+  height: 40px;
+  border-radius: 40px;
+}
+
+.new-comment-form {
+  display: flex;
+  width: 100%;
+  font-size: 12px;
+  margin-left: 5px;
+  padding-bottom: 10px;
+}
+
+.new-comment-input {
+  width: 100%;
+  border-bottom: .5px solid rgba(51, 51, 51,.2);
 }

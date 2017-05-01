@@ -31,12 +31,12 @@ class NewComment extends React.Component {
           <img src={user} />
         </div>
 
-        <form onSubmit={this.handleSubmit} className="new-comment-form">
+        <form onSubmit={this.handleSubmit}
+              className="new-comment-form">
           <input type="text"
-            placeholder="Add a public comment..."
-            onChange={this.handleChange}
-            className="" />
-          <input type="submit" value="Comment" className="" />
+                 placeholder="Add a public comment..."
+                 onChange={this.handleChange}
+                 className="new-comment-input" />
         </form>
       </div>
     );
