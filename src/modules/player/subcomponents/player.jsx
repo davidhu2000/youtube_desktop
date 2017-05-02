@@ -4,30 +4,18 @@ import PropTypes from 'prop-types';
 class Player extends React.Component {
   constructor(props) {
     super(props);
-
-    this.player = null;
-    this.state = {
-      height: 390,
-      width: 640
-    };
-  }
-
-  updateHeight() {
-    this.setState({
-      height: this.state.height + 100,
-      width: this.state.width + 100
-    });
   }
 
   render() {
+    let { height, width } = this.props;
     return (
       <div>
         <iframe
           id="video-player"
           type="text/html"
-          width={this.state.width}
-          height={this.state.height}
-          src={`https://www.youtube.com/embed/${this.props.videoId}?autoplay=1`}
+          width={width}
+          height={height}
+          src={`https://www.youtube.com/embed/${this.props.videoId}?autoplay=1&rel=0`}
           frameBorder="0"
           allowFullScreen></iframe>
       </div>
@@ -36,7 +24,9 @@ class Player extends React.Component {
 }
 
 Player.propTypes = {
-  videoId: PropTypes.string
+  videoId: PropTypes.string,
+  height: PropTypes.number,
+  width: PropTypes.number
 };
 
 export { Player };

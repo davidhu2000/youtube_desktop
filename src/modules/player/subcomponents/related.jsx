@@ -6,6 +6,7 @@ class Related extends React.Component {
   constructor(props) {
     super(props);
 
+console.log(props)
     this.state = {
       autoplay: true
     };
@@ -26,7 +27,7 @@ class Related extends React.Component {
 
   render() {
     return (
-      <div className="related-container">
+      <div className="related-container" style={{width: this.props.width}}>
         <div className="related-title">
           <h2>Up next</h2>
 
@@ -51,7 +52,12 @@ class Related extends React.Component {
 }
 
 Related.propTypes = {
-  videoId: PropTypes.string
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  related: PropTypes.arrayOf(PropTypes.object)
+};
+
+Related.defaultProps = {
+  width: '100%'
 };
 
 export { Related };
