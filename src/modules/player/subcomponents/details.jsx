@@ -8,7 +8,6 @@ import DetailsLower from './details_lower';
 class Details extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props)
   }
 
   render() {

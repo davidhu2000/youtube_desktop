@@ -90,7 +90,9 @@ class PlayerDetails extends React.Component {
   renderRelated() {
     if (this.state.relatedPosition === 'bottom') {
       return (
-        <Related related={this.props.playerDetails.related}/>
+        <Related 
+          related={this.props.playerDetails.related}
+          width={this.state[this.state.playerSize].width} />
       );
     }
   }

@@ -8,6 +8,10 @@
   background-color: var(--background);
 }
 
+.related-list {
+  width: 100%;
+}
+
 .related-title {
   height: 30px;
   width: 100%;
