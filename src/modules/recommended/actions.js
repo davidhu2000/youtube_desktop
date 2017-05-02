@@ -19,7 +19,7 @@ export const fetchRecommendedVideos = () => dispatch => {
   ).then(videos => {
 
     let params = {
-      part: 'statistics,contentDetails,snippet',
+      part: 'statistics,contentDetails',
       id: videos.items.map(item => item.contentDetails.upload.videoId).join(',')
     };
 
