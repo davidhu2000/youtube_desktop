@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import Playlists from './component';
 
-import { fetchChannelPlaylists } from './actions';
+import { fetchChannelPlaylists,
+         fetchPlaylistItems } from './actions';
 import { receiveSetting } from 'common/setting/actions';
 
 const mapStateToProps = ({ channelDetails, user, setting, subscriptions, playlists }) => ({
@@ -14,7 +15,9 @@ const mapStateToProps = ({ channelDetails, user, setting, subscriptions, playlis
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchChannelPlaylists: channelId => dispatch(fetchChannelPlaylists(channelId))
+  fetchChannelPlaylists: channelId => dispatch(fetchChannelPlaylists(channelId)),
+  fetchPlaylistItems: playlistId => dispatch(fetchPlaylistItems(playlistId)),
+  receiveSetting: setting => dispatch(receiveSetting(setting))
 });
 
 export default connect(
