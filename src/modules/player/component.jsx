@@ -20,21 +20,9 @@ class PlayerDetails extends React.Component {
     super(props);
 
     this.state = {
-      videoId: this.props.router.params.videoId,
-      playerSize: {
-        small: { width: 426, height: 240 },
-        medium: { width: 640, height: 360 },
-        large: { width: 854, height: 480 } 
-      }
+      videoId: this.props.router.params.videoId
     };
   }
-
-  // >1300px large player, related on right
-  // >1000px <1300px, medium player, related on right
-  // >860px <1000px, large player, related on bottom
-  // >660px <860px, medium player, related on bottom
-  // <660px, small player, related on bottom
-
 
   _getNewVideoInfo(videoId) {
     let dataNeeded = [];
@@ -71,9 +59,20 @@ class PlayerDetails extends React.Component {
         <div className="main-content">
           <div className="player-container">
             <div className="left-frame">
-              <Player   videoId={videoId}/>
-              <Details  details={details} rating={rating} videoId={videoId} videosRate={this.props.videosRate}/>
-              <Comments comments={comments} user={user}/>
+              <Player 
+                videoId={videoId} 
+                windowWidth={this.props.setting.windowWidth} />
+
+              <Details  
+                details={details} 
+                rating={rating} 
+                videoId={videoId} 
+                videosRate={this.props.videosRate} />
+
+              <Comments 
+                comments={comments} 
+                user={user} />
+
             </div>
             <div className="right-frame">
               <Related related={this.props.playerDetails.related}/>
