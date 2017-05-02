@@ -84,4 +84,4 @@ Player.propTypes = {
   videoId: PropTypes.string
 };
 
-export default Player;
+export { Player };

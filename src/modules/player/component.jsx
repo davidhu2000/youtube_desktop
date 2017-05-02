@@ -54,7 +54,7 @@ class PlayerDetails extends React.Component {
       let videoId = this.props.router.params.videoId;
       let { comments, details, related, rating, autoplay } = this.props.playerDetails;
       let user = this.props.user;
-
+      
       return (
         <div className="main-content">
           <div className="player-container">

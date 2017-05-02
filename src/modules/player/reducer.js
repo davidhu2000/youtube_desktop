@@ -2,7 +2,7 @@ import { RECEIVE_COMMENTS,
          RECEIVE_DETAILS,
          RECEIVE_VIDEO_RATING,
          RECEIVE_RELATED,
-         RECEIVE_AUTOPLAY } from 'actions/youtube_video_actions';
+         RECEIVE_AUTOPLAY } from './actions';
 import merge from 'lodash/merge';
 
 let _defaultState = {
