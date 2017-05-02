@@ -52,14 +52,14 @@ class PlayerDetails extends React.Component {
   render() {
     if (!this.props.setting.isLoading) {
       let videoId = this.props.router.params.videoId;
-      let { comments, details, related, rating } = this.props.playerDetails;
+      let { comments, details, related, rating, autoplay } = this.props.playerDetails;
       let user = this.props.user;
 
       return (
         <div className="main-content">
           <div className="player-container">
             <div className="left-frame">
-              <Player   videoId={videoId}/>
+              <Player   videoId={videoId} related={related} autoplay={autoplay}/>
               <Details  details={details} rating={rating} videoId={videoId} videosRate={this.props.videosRate}/>
               <Comments comments={comments} user={user}/>
             </div>
