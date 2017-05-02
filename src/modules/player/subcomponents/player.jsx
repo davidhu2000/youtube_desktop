@@ -1,7 +1,6 @@
 import React         from 'react';
 import PropTypes     from 'prop-types';
 import { parseRelatedIds } from 'helpers';
-// import YouTubePlayer from 'youtube-player';
 
 class Player extends React.Component {
 
@@ -12,8 +11,6 @@ class Player extends React.Component {
     this.player = null;
     this.playlist = null;
     this.state = {
-      height: 390,
-      width: 640,
       autoplay: this.props.autoplay
     };
   }
@@ -57,22 +54,16 @@ class Player extends React.Component {
     }
   }
 
-  updateHeight() {
-    this.setState({
-      height: this.state.height + 100,
-      width: this.state.width + 100
-    });
-  }
-
   render() {
+    let { height, width } = this.props;
     return (
       <div>
         <iframe
           id="video-player"
           type="text/html"
-          width={this.state.width}
-          height={this.state.height}
-          src={`https://www.youtube.com/embed/${this.props.videoId}?enablejsapi=1&autoplay=1`}
+          width={width}
+          height={height}
+          src={`https://www.youtube.com/embed/${this.props.videoId}?enablejsapi=1&autoplay=1&rel=0`}
           frameBorder="0"
           allowFullScreen></iframe>
       </div>
@@ -81,7 +72,9 @@ class Player extends React.Component {
 }
 
 Player.propTypes = {
-  videoId: PropTypes.string
+  videoId: PropTypes.string,
+  height: PropTypes.number,
+  width: PropTypes.number
 };
 
 export { Player };

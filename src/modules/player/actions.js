@@ -88,6 +88,7 @@ export const receiveRelated = related => ({
 
 export const fetchRelated = videoId => dispatch => {
   let params = {
+    part: 'snippet',
     type: 'video',
     maxResults: 10,
     relatedToVideoId: videoId,

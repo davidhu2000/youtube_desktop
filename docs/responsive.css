@@ -4,6 +4,9 @@
   and (-webkit-min-device-pixel-ratio: 2) {
 
 /*first section*/
+  .top {
+    padding-bottom: 25px;
+  }
   .top h1 {
     font-size: 75px;
     margin-top: 0px;
@@ -12,24 +15,28 @@
     height: 260px;
   }
   .top p {
-    line-height: 24px;
+    line-height: 28px;
+    font-size: 28px;
+  }
+  .top-button {
+    margin-top: 35px;
     font-size: 24px;
   }
   .under-button {
-    font-size: 18px !important;
+    font-size: 24px !important;
   }
   .under-button-span {
-    font-size: 18px;
+    font-size: 20px;
   }
 /*second section*/
   .second {
-    height: 1200px;
-    padding: 50px 0px;
+    /*height: 1200px;
+    padding: 50px 0px;*/
   }
   .second h1 {
-    margin-bottom: 50px;
+    /*margin-bottom: 50px;*/
   }
-  .image-box {
+  /*.image-box {
     height: 1000px;
     flex-direction: column;
   }
@@ -46,13 +53,36 @@
   }
   .third-img {
     left: 170px;
-  }
+  }*/
 /*third section*/
   .third div {
     width: 500px;
   }
-/*forth section*/
-  .forth ul {
-    width: 500px;
+  .third h1 {
+    font-size: 50px;
   }
+  .third p {
+    font-size: 28px;
+  }
+/*forth section*/
+  .forth h1 {
+    font-size: 50px;
+  }
+  .forth p {
+    font-size: 28px;
+  }
+/*DOWNLOAD SECTION*/
+  .downloads h1 {
+    font-size: 50px;
+  }
+  .downloads p {
+    width: 50%;
+    font-size: 24px;
+    line-height: 24px;
+  }
+/*FOOTER SECTION*/
+  footer p, a {
+    font-size: 24px;
+  }
+
 }

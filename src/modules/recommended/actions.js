@@ -1,4 +1,5 @@
 import * as YoutubeApi from 'core/youtube_api';
+import { merge } from 'lodash';
 
 export const RECEIVE_RECOMMENDED_VIDEOS = 'RECEIVE_RECOMMENDED_VIDEOS';
 
@@ -27,7 +28,7 @@ export const fetchRecommendedVideos = () => dispatch => {
     ).then( stat => {
       for (let i = 0; i < videos.items.length; i++) {
         videos.items[i]['statistics'] = stat.items[i].statistics;
-        videos.items[i]['contentDetails'] = stat.items[i].contentDetails;
+        videos.items[i]['contentDetails'] = merge(videos.items[i].contentDetails, stat.items[i].contentDetails);
       }
 
       return dispatch(receiveRecommendedVideos(videos.items));
