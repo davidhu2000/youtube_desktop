@@ -9,8 +9,13 @@ class PlaylistVideos extends React.Component {
     };
   }
 
+  componentDidMount() {
+    console.log("hi");
+  }
+
   render() {
     console.log(this.props);
+
     return (
       <div>
         <img src={this.props.playlist.snippet.thumbnails.default.url}/>
