@@ -1,7 +1,8 @@
 import { RECEIVE_COMMENTS,
          RECEIVE_DETAILS,
          RECEIVE_VIDEO_RATING,
-         RECEIVE_RELATED } from './actions';
+         RECEIVE_RELATED,
+         RECEIVE_AUTOPLAY } from './actions';
 import merge from 'lodash/merge';
 
 let _defaultState = {
@@ -31,6 +32,10 @@ const playerDetailsReducer = ( state = _defaultState, action ) => {
     case RECEIVE_RELATED:
       return merge({}, state, {
         related: action.related
+      });
+    case RECEIVE_AUTOPLAY:
+      return merge({}, state, {
+        autoplay: action.autoplay
       });
     default:
       return state;

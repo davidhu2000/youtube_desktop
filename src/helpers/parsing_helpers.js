@@ -57,3 +57,13 @@ export const parseDate = date => {
 
   return newDate;
 };
+
+export const parseRelatedIds = relatedArray => {
+	let idsArray = [];
+
+	relatedArray.forEach(relatedObject => {
+		idsArray.push(relatedObject.id.videoId);
+	});
+
+	return idsArray;
+};

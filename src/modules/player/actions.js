@@ -102,3 +102,14 @@ export const fetchRelated = videoId => dispatch => {
     console.error(error);
   });
 };
+
+export const RECEIVE_AUTOPLAY = 'RECEIVE_AUTOPLAY';
+
+export const receiveAutoplay = autoplay => ({
+  type: RECEIVE_AUTOPLAY,
+  autoplay
+});
+
+export const switchAutoplay = status => dispatch => {
+  dispatch(receiveAutoplay({ autoplay: status }));
+};
