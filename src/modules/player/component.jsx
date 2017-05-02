@@ -20,7 +20,9 @@ class PlayerDetails extends React.Component {
     super(props);
 
     this.state = {
-      videoId: this.props.router.params.videoId
+      videoId: this.props.router.params.videoId,
+      playerSize: 'medium',
+      relatedPosition: 'left'
     };
   }
 
@@ -38,6 +40,7 @@ class PlayerDetails extends React.Component {
   componentDidMount() {
     this.props.receiveSetting({ isLoading: true });
     this._getNewVideoInfo(this.state.videoId);
+    this.updateHeight(this.props.setting.windowWidth);
   }
 
   componentWillReceiveProps(newProps) {
@@ -46,6 +49,39 @@ class PlayerDetails extends React.Component {
       this.props.receiveSetting({ isLoading: true });
       this.setState({ videoId });
       this._getNewVideoInfo(videoId);
+    }
+    this.updateHeight(this.props.setting.windowWidth);
+  }
+
+  updateHeight(width) {
+    if (width > 1300) {
+      this.setState({ playerSize: 'large', relatedPosition: 'left' });
+    } else if (width > 1000) {
+      this.setState({ playerSize: 'medium', relatedPosition: 'left' });
+    } else if (width > 860) {
+      this.setState({ playerSize: 'large', relatedPosition: 'bottom' });
+    } else if (width > 660) {
+      this.setState({ playerSize: 'medium', relatedPosition: 'bottom' });
+    } else {
+      this.setState({ playerSize: 'small', relatedPosition: 'bottom' });
+    }
+  }
+
+  renderRightFrame() {
+    if (this.state.relatedPosition === 'left') {
+      return (
+        <div className="right-frame">
+          <Related related={this.props.playerDetails.related}/>
+        </div>
+      );
+    } 
+  }
+
+  renderRelated() {
+    if (this.state.relatedPosition === 'bottom') {
+      return (
+        <Related related={this.props.playerDetails.related}/>
+      );
     }
   }
 
@@ -61,7 +97,7 @@ class PlayerDetails extends React.Component {
             <div className="left-frame">
               <Player 
                 videoId={videoId} 
-                windowWidth={this.props.setting.windowWidth} />
+                playerSize={this.state.playerSize} />
 
               <Details  
                 details={details} 
@@ -69,14 +105,14 @@ class PlayerDetails extends React.Component {
                 videoId={videoId} 
                 videosRate={this.props.videosRate} />
 
+              { this.renderRelated() }
+              
               <Comments 
                 comments={comments} 
                 user={user} />
 
             </div>
-            <div className="right-frame">
-              <Related related={this.props.playerDetails.related}/>
-            </div>
+            { this.renderRightFrame() }
           </div>
         </div>
       );
