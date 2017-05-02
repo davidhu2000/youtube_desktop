@@ -56,16 +56,20 @@ body {
 /****************************/
 /*SECOND SECTION*/
 /****************************/
+#wowslider-container1 {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
 .second {
-  height: 740px;
-  padding: 100px 0px;
+  /*height: 700px;*/
+  padding: 50px 0px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   background-color: #C32326;
 }
 .second h1 {
+  margin-bottom: 50px;
   color: white;
   font-size: 42px;
 }

@@ -30,13 +30,13 @@
   }
 /*second section*/
   .second {
-    height: 1200px;
-    padding: 50px 0px;
+    /*height: 1200px;
+    padding: 50px 0px;*/
   }
   .second h1 {
-    margin-bottom: 50px;
+    /*margin-bottom: 50px;*/
   }
-  .image-box {
+  /*.image-box {
     height: 1000px;
     flex-direction: column;
   }
@@ -53,7 +53,7 @@
   }
   .third-img {
     left: 170px;
-  }
+  }*/
 /*third section*/
   .third div {
     width: 500px;
