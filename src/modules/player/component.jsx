@@ -15,6 +15,13 @@ import { Player,
 // import videoWindow from '../../renderer/video_page';
 // <button onClick={() => videoWindow(videoId).show()}>Pop Off</button>
 
+
+  // >1300px large player, related on right
+  // >1000px <1300px, medium player, related on right
+  // >860px <1000px, large player, related on bottom
+  // >660px <860px, medium player, related on bottom
+  // <660px, small player, related on bottom
+
 class PlayerDetails extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +29,10 @@ class PlayerDetails extends React.Component {
     this.state = {
       videoId: this.props.router.params.videoId,
       playerSize: 'medium',
-      relatedPosition: 'left'
+      relatedPosition: 'left',
+      small: { width: 426, height: 240 },
+      medium: { width: 640, height: 360 },
+      large: { width: 854, height: 480 } 
     };
   }
 
@@ -91,18 +101,21 @@ class PlayerDetails extends React.Component {
       let { comments, details, related, rating } = this.props.playerDetails;
       let user = this.props.user;
 
+      let { height, width } = this.state[this.state.playerSize];
+
       return (
         <div className="main-content">
           <div className="player-container">
             <div className="left-frame">
               <Player 
                 videoId={videoId} 
-                playerSize={this.state.playerSize} />
+                height={height} 
+                width={width} />
 
               <Details  
                 details={details} 
                 rating={rating} 
-                videoId={videoId} 
+                width={width}
                 videosRate={this.props.videosRate} />
 
               { this.renderRelated() }

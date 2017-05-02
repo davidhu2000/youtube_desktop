@@ -1,26 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-  // >1300px large player, related on right
-  // >1000px <1300px, medium player, related on right
-  // >860px <1000px, large player, related on bottom
-  // >660px <860px, medium player, related on bottom
-  // <660px, small player, related on bottom
-
 class Player extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      small: { width: 426, height: 240 },
-      medium: { width: 640, height: 360 },
-      large: { width: 854, height: 480 } 
-    };
   }
 
   render() {
-    let { playerSize } = this.props;
-    let { height, width } = this.state[playerSize];
+    let { height, width } = this.props;
     return (
       <div>
         <iframe
@@ -38,7 +25,8 @@ class Player extends React.Component {
 
 Player.propTypes = {
   videoId: PropTypes.string,
-  playerSize: PropTypes.string
+  height: PropTypes.number,
+  width: PropTypes.number
 };
 
 export { Player };

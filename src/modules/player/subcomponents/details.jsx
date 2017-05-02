@@ -8,6 +8,7 @@ import DetailsLower from './details_lower';
 class Details extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props)
   }
 
   render() {
@@ -24,7 +25,7 @@ class Details extends React.Component {
     const { viewCount, likeCount, dislikeCount } = details.statistics;
 
     return (
-      <div className="details-container">
+      <div className="details-container" style={{width: this.props.width}}>
         <DetailsUpper
           subs={subs}
           title={title}
@@ -49,7 +50,10 @@ class Details extends React.Component {
 }
 
 Details.propTypes = {
-  videoId: PropTypes.string
+  rating: PropTypes.string,
+  width: PropTypes.number,
+  videosRate: PropTypes.func,
+  details: PropTypes.object
 };
 
 export { Details };

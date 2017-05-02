@@ -13,7 +13,7 @@ export const formatNumber = (number = 301, shouldAbbreviate = false) => {
 		  { divider: 1e12 , suffix: 'T' },
 		  { divider: 1e09 , suffix: 'G' },
 		  { divider: 1e06 , suffix: 'M' },
-		  { divider: 1e03 , suffix: 'k' }
+		  { divider: 1e03 , suffix: 'K' }
 		];
 
 	  for (var i = 0; i < ranges.length; i++) {
