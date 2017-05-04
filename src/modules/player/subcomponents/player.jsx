@@ -1,6 +1,7 @@
 import React         from 'react';
 import PropTypes     from 'prop-types';
 import { parseRelatedIds } from 'helpers';
+import { hashHistory } from 'react-router';
 
 class Player extends React.Component {
 
@@ -9,7 +10,7 @@ class Player extends React.Component {
 
     this.loadYT = null;
     this.player = null;
-    this.playlist = null;
+    this.nextVideoId = this.props.nextVideoId;
     this.state = {
       autoplay: this.props.autoplay
     };
@@ -37,25 +38,27 @@ class Player extends React.Component {
     })
   }
 
-  componentWillUpdate(nextProps) {
-    if (nextProps.related.length != 0 && !this.playlist) {
-      this.playlist = parseRelatedIds(nextProps.related);
-    }
-  }
+  // componentWillUpdate(nextProps) {
+  //   if (nextProps.nextVideoId) {
+  //     this.nextVideoId = this.props.nextVideoId;
+  //   }
+  // }
 
   onPlayerReady(event) {
     event.target.playVideo();
   }
-
+  //sidebar is blocking related from rendering, but it also triggers a player props
+  //change when it opens or closes. also, player does not fire any events after
+  //loading up a new page with hashHistory. not firing any events on the next page
   onPlayerStateChange(event) {
     if (event.data === 0 && this.state.autoplay) {
-      let nextVideoId = this.playlist.shift();
-      this.player.loadVideoById(nextVideoId);
+      hashHistory.push(`watch/${this.nextVideoId}`);
     }
   }
 
   render() {
     let { height, width } = this.props;
+    debugger
     return (
       <div>
         <iframe
