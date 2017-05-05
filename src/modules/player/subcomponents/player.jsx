@@ -1,6 +1,5 @@
 import React         from 'react';
 import PropTypes     from 'prop-types';
-import { parseRelatedIds } from 'helpers';
 import { hashHistory } from 'react-router';
 
 class Player extends React.Component {
@@ -47,27 +46,19 @@ class Player extends React.Component {
     }
   }
 
-  // componentWillUpdate(nextProps) {
-  //   if (nextProps.nextVideoId) {
-  //     this.nextVideoId = this.props.nextVideoId;
-  //   }
-  // }
-
   onPlayerReady(event) {
     event.target.playVideo();
   }
-  //sidebar is blocking related from rendering, but it also triggers a player props
-  //change when it opens or closes. also, player does not fire any events after
-  //loading up a new page with hashHistory. not firing any events on the next page
+
   onPlayerStateChange(event) {
-    if (event.data === 0 && this.state.autoplay) {
+    if (event.data === 0 && this.props.autoplay) {
       hashHistory.push(`watch/${this.nextVideoId}`);
     }
   }
 
   render() {
     let { height, width } = this.props;
-    
+
     return (
       <div>
         <iframe

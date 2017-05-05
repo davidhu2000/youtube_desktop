@@ -81,7 +81,10 @@ class PlayerDetails extends React.Component {
     if (this.state.relatedPosition === 'left') {
       return (
         <div className="right-frame">
-          <Related related={this.props.playerDetails.related}/>
+          <Related
+            related={this.props.playerDetails.related}
+            autoplay={this.props.playerDetails.autoplay}
+            switchAutoplay={this.props.switchAutoplay} />
         </div>
       );
     }
@@ -92,7 +95,9 @@ class PlayerDetails extends React.Component {
       return (
         <Related
           related={this.props.playerDetails.related}
-          width={this.state[this.state.playerSize].width} />
+          width={this.state[this.state.playerSize].width}
+          autoplay={this.props.playerDetails.autoplay}
+          switchAutoplay={this.props.switchAutoplay} />
       );
     }
   }
@@ -103,7 +108,7 @@ class PlayerDetails extends React.Component {
       let { comments, details, related, rating, autoplay } = this.props.playerDetails;
       let user = this.props.user;
       let { height, width } = this.state[this.state.playerSize];
-      
+
       return (
         <div className="main-content">
           <div className="player-container">

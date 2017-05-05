@@ -5,11 +5,6 @@ import RelatedListItem from './related_list_item';
 class Related extends React.Component {
   constructor(props) {
     super(props);
-
-console.log(props)
-    this.state = {
-      autoplay: true
-    };
   }
 
   renderRelatedVideos() {
@@ -20,9 +15,7 @@ console.log(props)
   }
 
   updateAutoplay(e) {
-    this.setState({
-      autoplay: e.target.checked
-    });
+    this.props.autoplay ? this.props.switchAutoplay(false) : this.props.switchAutoplay(true)
   }
 
   render() {
@@ -36,7 +29,7 @@ console.log(props)
             <input
               type="checkbox"
               id="checked"
-              checked={this.state.autoplay}
+              checked={this.props.autoplay}
               onChange={this.updateAutoplay.bind(this)}
               className="cbx hidden"/>
             <label htmlFor="checked" className="lbl"></label>
