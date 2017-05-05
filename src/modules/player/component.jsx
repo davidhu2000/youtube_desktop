@@ -103,7 +103,7 @@ class PlayerDetails extends React.Component {
       let { comments, details, related, rating, autoplay } = this.props.playerDetails;
       let user = this.props.user;
       let { height, width } = this.state[this.state.playerSize];
-      debugger
+      
       return (
         <div className="main-content">
           <div className="player-container">

@@ -19,23 +19,32 @@ class Player extends React.Component {
   //Youtube iframe API loads asynchronously, so we use a Promise here to load it
   //so the component doesn't break
   componentDidMount () {
-    if (!this.loadYT) {
-      this.loadYT = new Promise(resolve => {
-        const tag = document.createElement('script');
-        tag.src = 'https://www.youtube.com/iframe_api';
-        const firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        window.onYouTubeIframeAPIReady = () => resolve(window.YT);
-      })
-    }
-    this.loadYT.then(YT => {
+    if (window.YT) {
       this.player = new YT.Player('video-player', {
         events: {
           onReady: this.onPlayerReady,
           onStateChange: this.onPlayerStateChange.bind(this)
         }
       });
-    })
+    } else {
+      if (!this.loadYT) {
+        this.loadYT = new Promise(resolve => {
+          const tag = document.createElement('script');
+          tag.src = 'https://www.youtube.com/iframe_api';
+          const firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+          window.onYouTubeIframeAPIReady = () => resolve(window.YT);
+        })
+      }
+      this.loadYT.then(YT => {
+        this.player = new YT.Player('video-player', {
+          events: {
+            onReady: this.onPlayerReady,
+            onStateChange: this.onPlayerStateChange.bind(this)
+          }
+        });
+      })
+    }
   }
 
   // componentWillUpdate(nextProps) {
@@ -58,7 +67,7 @@ class Player extends React.Component {
 
   render() {
     let { height, width } = this.props;
-    debugger
+    
     return (
       <div>
         <iframe
