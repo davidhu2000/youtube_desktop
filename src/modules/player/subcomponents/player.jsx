@@ -10,9 +10,6 @@ class Player extends React.Component {
     this.loadYT = null;
     this.player = null;
     this.nextVideoId = this.props.nextVideoId;
-    this.state = {
-      autoplay: this.props.autoplay
-    };
   }
 
   //Youtube iframe API loads asynchronously, so we use a Promise here to load it

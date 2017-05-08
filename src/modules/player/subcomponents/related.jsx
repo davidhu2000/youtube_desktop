@@ -46,7 +46,8 @@ class Related extends React.Component {
 
 Related.propTypes = {
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  related: PropTypes.arrayOf(PropTypes.object)
+  related: PropTypes.arrayOf(PropTypes.object),
+  switchAutoplay: PropTypes.func
 };
 
 Related.defaultProps = {
