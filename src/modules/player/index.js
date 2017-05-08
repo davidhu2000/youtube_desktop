@@ -11,7 +11,8 @@ import { fetchDetails,
 const mapStateToProps = ({ playerDetails, setting, user }) => ({
   playerDetails,
   setting,
-  user
+  user,
+  loggedIn: Boolean(user)
 });
 
 const mapDispatchToProps = dispatch => ({
