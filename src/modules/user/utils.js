@@ -1,7 +1,7 @@
-import YT_API_KEY from '../../../config/api_key';
 import { createUrlParams, errorChecker } from 'helpers';
 import { channels } from 'core/youtube_api.js';
 import { fetchSubscriptions } from 'modules/subscriptions/actions'; // TODO: potentially coupling
+import YT_API_KEY from '../../../config/api_key';
 
 const { BrowserWindow } = window.require('electron').remote;
 const request = window.require('superagent');

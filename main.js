@@ -23,7 +23,6 @@ const createWindow = () => {
   win.on('closed', () => {
     win = null;
   });
-
 };
 
 app.on('ready', () => {
@@ -34,7 +33,7 @@ app.on('ready', () => {
 });
 
 app.on('window-all-closed', () => {
-  if(process.platform !== 'darwin') {
+  if (process.platform !== 'darwin') {
     app.quit();
   }
 });
