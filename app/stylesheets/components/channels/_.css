@@ -1,6 +1,9 @@
 /*Channel*/
 .channels-container {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   display: block;
 }
 
@@ -9,6 +12,7 @@
   display: block;
   height: calc(100vw / 6 - 1px);
   margin: 0;
+  /*flex: 1;*/
 }
 
 /*Sidebar*/

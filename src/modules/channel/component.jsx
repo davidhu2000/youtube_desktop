@@ -1,5 +1,6 @@
 /* global Promise */
 import React from 'react';
+import { values } from 'lodash';
 import {
   ChannelNavbar,
   ChannelVideos
@@ -38,8 +39,6 @@ class Channel extends React.Component {
     Promise.all(dataNeeded).then(() => {
       let playlists = this.props.playlists;
       let plDataNeeded = [];
-
-      console.log(playlists)
 
       for(let playlistId of Object.keys(playlists)) {
         plDataNeeded.push(this.props.fetchPlaylistItems(playlistId));
@@ -98,14 +97,16 @@ class Channel extends React.Component {
   }
 
   renderPlaylists() {
-    /*return this.props.playlists.playlistsList.map( playlist => (
+    return values(this.props.playlists).map( playlist => (
       <VideoBox 
-        title='test' 
-        vids={[]}
+        key={playlist.id}
+        title={playlist.snippet.title} 
+        vids={playlist.items}
+        maxNumber={playlist.items.length}
         windowWidth={this.props.setting.windowWidth}
         sidebarVisible={this.props.setting.sidebarVisible}
       />
-    ));*/
+    ));
   }
 
   render() {
@@ -128,7 +129,6 @@ class Channel extends React.Component {
         <div></div>
       );
     } else {
-      console.log(this.state)
       return (
         <div className="main-content">
           <div className="channels-container">
@@ -136,6 +136,7 @@ class Channel extends React.Component {
               <img id="channel-banner"
                 src={bannerImg} />
             </div>
+
             <div className="channel-banner-header">
               <div className="channel-detail-container">
                 <div className="channel-detail-left">
@@ -157,12 +158,13 @@ class Channel extends React.Component {
                 />
               </div>
             </div>
+
             <ChannelNavbar currentRoute={this.state.currentRoute} />
 
             <ChannelVideos videos={videos} />
 
             { this.renderPlaylists() }
-            {/* Render Playlist subcomponent here */}
+
           </div>
         </div>
       );
