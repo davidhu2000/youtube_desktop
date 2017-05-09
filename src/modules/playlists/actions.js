@@ -29,7 +29,8 @@ export const fetchAuthUserPlaylists = () => dispatch => {
 export const fetchChannelPlaylists = channelId => dispatch => {
   let params = {
     access_token: localStorage.getItem('google-access-token'),
-    channelId
+    channelId,
+    maxResults: 5 // TODO: remove after fixing bug
   };
   return YoutubeApi.playlists(params).then(
     res => res.json()

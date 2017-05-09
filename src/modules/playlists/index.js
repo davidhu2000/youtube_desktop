@@ -5,12 +5,11 @@ import { fetchChannelPlaylists,
          fetchPlaylistItems } from './actions';
 import { receiveSetting } from 'common/setting/actions';
 
-const mapStateToProps = ({ channelDetails, user, setting, subscriptions, playlists }) => ({
+const mapStateToProps = ({ channelDetails, user, setting, playlists }) => ({
   channelDetails,
   loggedIn: Boolean(user),
   user,
   setting,
-  subscriptions,
   playlists
 });
 

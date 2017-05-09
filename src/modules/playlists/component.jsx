@@ -20,22 +20,36 @@ class Playlists extends React.Component {
     let channelId = this.props.channelDetails.detail.id;
     let playlists = this.props.playlists[channelId];
 
-    playlists.forEach(playlist => {
+    // playlists.forEach(playlist => {
+    //   // console.log(playlist)
+    //   dataNeeded.push(this.props.fetchPlaylistItems(playlist.id));
+    // });
+
+    for(let playlist of playlists) {
+      // console.log(playlist)
       dataNeeded.push(this.props.fetchPlaylistItems(playlist.id));
-    });
+      // console.log(dataNeeded)
+    }
+
+    // console.log(playlists)
+
+    // console.log(dataNeeded)
 
     Promise.all(dataNeeded).then( res => this.props.receiveSetting({ isLoading: false }));
   }
 
   renderPlaylist() {
     let channelId = this.props.channelDetails.detail.id;
-    let playlistsList = this.props.playlists.playlistsList;
+    let playlistsList = this.props.playlists.playlistsList || {};
 
     return Object.keys(playlistsList).map(playlistId => {
-      <PlaylistVideos
-        id={Math.random()}
-        playlistId={playlistId}
-        playlistItems={playlistsList[playlistId]} />
+      return (
+        <PlaylistVideos
+          key={playlistId}
+          playlistId={playlistId}
+          playlistItems={playlistsList[playlistId]} 
+        />
+      );
     });
   }
 

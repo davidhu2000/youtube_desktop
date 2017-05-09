@@ -36,7 +36,22 @@ class Channel extends React.Component {
       }
     }
 
-    Promise.all(dataNeeded); //.then(res => this.props.receiveSetting({ isLoading: false }));
+    Promise.all(dataNeeded).then(() => {
+      let playlists = this.props.playlists[channelId];
+
+      console.log(playlists)
+
+      let plDataNeeded = [];
+
+      for(let playlist of playlists) {
+        plDataNeeded.push(this.props.fetchPlaylistItems(playlist.id));
+      }
+
+      Promise.all(plDataNeeded).then(() => {
+        this.props.receiveSetting({ isLoading: false });
+      });
+           
+    });
   }
 
   componentDidMount() {
@@ -135,7 +150,7 @@ class Channel extends React.Component {
             <ChannelNavbar currentRoute={this.state.currentRoute} />
 
             <ChannelVideos videos={videos} />
-            <Playlists channelDetails={this.props.channelDetails} />
+            {/* Render Playlist subcomponent here */}
           </div>
         </div>
       );
