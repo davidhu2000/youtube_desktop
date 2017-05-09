@@ -41,23 +41,28 @@ class VideoBoxItem extends React.Component {
 
       <div className="video-box-item">
 
-        <Link to={`watch/${videoId}`} className="video-box-item-image">
-          <img src={url} />
-          <span className='duration-span'>{ duration }</span>
-        </Link>
+        <div className="video-box-item-upper">
+          <Link to={`watch/${videoId}`} className="video-box-item-image">
+            <img src={url} />
+            <span className='duration-span'>{ duration }</span>
+          </Link>
 
-        <Link to={`watch/${videoId}`} className="video-box-item-title">
-          <h1 className='video-title'>{title}</h1>
-        </Link>
-
-        <Link to={`channels/${channelId}`} className='video-box-item-channel'>
-          <p className='basic-text'>{channelTitle}</p>
-        </Link>
-
-        <div className="video-box-item-info">
-          <span>{ formatNumber(viewCount) } views</span>
-          <span className='video-box-item-date'>{ timeFromNow(publishedAt) } </span>
+          <Link to={`watch/${videoId}`} className="video-box-item-title">
+            <h1 className='video-title'>{title}</h1>
+          </Link>
         </div>
+
+        <div className="video-box-item-lower">
+          <Link to={`channels/${channelId}`} className='video-box-item-channel'>
+            <p className='basic-text'>{channelTitle}</p>
+          </Link>
+
+          <div className="video-box-item-info">
+            <span>{ formatNumber(viewCount) } views</span>
+            <span className='video-box-item-date'>{ timeFromNow(publishedAt) } </span>
+          </div>
+        </div>
+
       </div>
     );
   }

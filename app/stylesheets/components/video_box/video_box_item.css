@@ -1,8 +1,11 @@
 .video-box-item {
   /*height: 199px;
   width: 196px;*/
-  height: 204px;
+  height: 190px;
   width: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .video-box-item-image {
@@ -18,6 +21,7 @@
 .video-box-item-image img {
   height: 118px;
   width: 210px;
+  border-radius: 2px;
 }
 
 .video-box-item-image span {
@@ -48,7 +52,7 @@
   color: #444;
   display: block;
   font-weight: 500;
-  margin-bottom: 5px;
+  margin-bottom: 2.5px;
 }
 
 .video-box-item-channel:hover {
