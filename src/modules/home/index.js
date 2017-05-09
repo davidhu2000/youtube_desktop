@@ -4,9 +4,7 @@ import { receiveSetting } from 'common/setting/actions';
 import { fetchTrending } from 'modules/trending/actions';
 import { fetchRecommendedVideos } from 'modules/recommended/actions';
 import Home from './component';
-import { fetchCategories,
-         fetchChannelInfo,
-         fetchChannelVideos } from './actions';
+import { fetchChannelVideos } from './actions';
 
 const mapStateToProps = ({ trending, homeChannels, user, recommended, setting }) => ({
   trending,
@@ -18,9 +16,7 @@ const mapStateToProps = ({ trending, homeChannels, user, recommended, setting })
 
 const mapDispatchToProps = dispatch => ({
   fetchTrending: () => dispatch(fetchTrending()),
-  fetchChannelInfo: id => dispatch(fetchChannelInfo(id)),
   fetchChannelVideos: id => dispatch(fetchChannelVideos(id)),
-  fetchCategories: () => dispatch(fetchCategories()),
   fetchRecommendedVideos: () => dispatch(fetchRecommendedVideos()),
   receiveSetting: setting => dispatch(receiveSetting(setting))
 });
