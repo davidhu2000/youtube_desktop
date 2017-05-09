@@ -25,7 +25,7 @@ class ContributorSection extends React.Component {
         github: 'https://www.github.com/cjudge1337'
       },
       4: {
-        name: 'Kevin Nyugen',
+        name: 'Kevin Nguyen',
         img: 'https://avatars0.githubusercontent.com/u/15253174?v=3&s=200',
         github: 'https://www.github.com/nguyenkevin16'
       },
