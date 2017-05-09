@@ -98,3 +98,16 @@
   width: 100%;
   border-bottom: .5px solid rgba(51, 51, 51,.2);
 }
+
+@media screen and (max-width: 660px) {
+  .comments-container {
+    padding: 0px;
+    width: 386px;
+  }
+  .comments-list {
+    width: 386px;
+  }
+  .comment-item {
+    width: 386px;
+  }
+}
