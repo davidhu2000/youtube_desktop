@@ -141,7 +141,9 @@ class Sidebar extends React.Component {
 
           <div className="sidebar-section">
             <div className='sidebar-header'>
-              This app is a collaborative effort from all of the contributors. We hope you enjoy using it.
+              This app is a collaborative effort from all of the contributors.
+              <br />
+              We hope you enjoy using it.
             </div>
           </div>
         </div>
