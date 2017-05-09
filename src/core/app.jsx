@@ -1,33 +1,26 @@
+/* global window, document */
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { withRouter, Link } from 'react-router';
+import { withRouter } from 'react-router';
 
 import { fetchSubscriptions } from 'modules/subscriptions/actions';
 import { receiveSetting } from 'common/setting/actions';
+import { ProgressBar } from 'common/components';
 import { propChecker, toggleSidebar } from 'helpers';
 
 import Navbar from './navbar';
 import Sidebar from './sidebar';
-import Footer from './footer';
-import { ProgressBar } from 'common/components';
 
 class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       progress: 0,
       addition: 0.5,
-      pathname: 'home'
+      pathname: this.props.location.pathname
     };
-  }
-
-  updateSetting() {
-    let windowWidth = window.innerWidth;
-    let sidebar = document.getElementById('sidebar');
-    let sidebarVisible = sidebar.classList.contains('ondocument') || sidebar.classList.contains('onscreen');
-
-    this.props.receiveSetting({ windowWidth, sidebarVisible });
+    this.updateProgress = this.updateProgress.bind(this);
   }
 
   componentDidMount() {
@@ -35,25 +28,12 @@ class App extends React.Component {
     window.addEventListener('resize', this.updateSetting.bind(this));
     window.addEventListener('click', this.updateSetting.bind(this));
 
-    this.setState({ pathname: this.props.location.pathname });
-
-    if(this.props.location.pathname === '/search' && !this.props.searchResult.video) {
+    if (this.props.location.pathname === '/search' && !this.props.searchResult.video) {
       this.props.router.replace('/home');
     }
 
-    if(this.props.loggedIn) {
+    if (this.props.loggedIn) {
       this.props.fetchSubscriptions(this.props.channelId);
-    }
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (this.state && this.state.pathname !== newProps.location.pathname) {
-      this.props.receiveSetting({ isLoading: true });
-      this.setState({
-        progress: 0,
-        addition: 0.5,
-        pathname: newProps.location.pathname
-      });
     }
   }
 
@@ -72,6 +52,15 @@ class App extends React.Component {
     window.removeEventListener('resize', this.updateSetting.bind(this));
     window.removeEventListener('click', this.updateSetting.bind(this));
   }
+
+  updateSetting() {
+    let windowWidth = window.innerWidth;
+    let sidebar = document.getElementById('sidebar');
+    let sidebarVisible = sidebar.classList.contains('ondocument') || sidebar.classList.contains('onscreen');
+
+    this.props.receiveSetting({ windowWidth, sidebarVisible });
+  }
+
 
   updateProgress() {
     let addition;
@@ -104,40 +93,40 @@ class App extends React.Component {
         <ProgressBar
           isLoading={isLoading}
           progress={this.state.progress}
-          updateProgress={this.updateProgress.bind(this)} />
+          updateProgress={this.updateProgress}
+        />
       );
     }
+    return null;
   }
 
   render() {
-    return(
+    return (
       <div className="relative-content">
-        { this.renderProgressBar() }
+        {this.renderProgressBar()}
         <Navbar />
         <Sidebar />
-        { this.props.children }
-        <Footer />
-        <div id='sidebar-cover' className='hidden' onClick={toggleSidebar}></div>
+        {this.props.children}
+        <div id='sidebar-cover' className='hidden' role='button' onClick={toggleSidebar} />
       </div>
     );
   }
 }
 
-
-
 App.propTypes = {
-  setting: propChecker.setting(),
-  searchResult: propChecker.searchResult(),
-  loggedIn: PropTypes.bool,
-  receiveSetting: PropTypes.func,
-  fetchSubscriptions: PropTypes.func
+  setting: propChecker.setting().isRequired,
+  searchResult: propChecker.searchResult().isRequired,
+  loggedIn: PropTypes.bool.isRequired,
+  receiveSetting: PropTypes.func.isRequired,
+  fetchSubscriptions: PropTypes.func.isRequired,
+  channelId: PropTypes.string.isRequired
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  setting: state.setting,
-  searchResult: state.searchResult,
-  loggedIn: Boolean(state.user),
-  channelId: state.user ? state.user.channelId : null
+const mapStateToProps = ({ setting, searchResult, user }) => ({
+  setting,
+  searchResult,
+  loggedIn: Boolean(user),
+  channelId: user ? user.channelId : null
 });
 
 const mapDispatchToProps = dispatch => ({

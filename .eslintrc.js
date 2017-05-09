@@ -26,6 +26,8 @@ module.exports = {
         "no-case-declarations": "off",
         "prefer-const": "off",
         "no-param-reassign": "off",
-        "no-plusplus": "off"
+        "no-plusplus": "off",
+        "jsx-quotes": "off",
+        "react/prop-types": [2, { ignore: ['location', 'router', 'children']}]
     }
 };
