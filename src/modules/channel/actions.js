@@ -80,7 +80,7 @@ export const insertSubscription = channelId => dispatch => {
 
   return YoutubeApi.subscriptionsInsert(snippet).then(
     res => {
-      dispatch(addSubscription(channelId))
+      dispatch(addSubscription(channelId));
     }
   ).catch(
     err => console.log(err)
@@ -100,7 +100,7 @@ export const deleteSubscription = subscriptionId => dispatch => {
   };
 
   return YoutubeApi.subscriptionsDelete(params).then(
-    subscriptionId => dispatch(removeSubscription(subscriptionId))
+    subId => dispatch(removeSubscription(subId))
   ).catch(
     err => console.log(err)
   );

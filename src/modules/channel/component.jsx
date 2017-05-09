@@ -5,7 +5,6 @@ import {
   ChannelVideos
 } from './subcomponents';
 import { formatNumber } from 'helpers';
-import Playlists from 'modules/playlists';
 import { SubscribeButton } from 'common/components';
 
 class Channel extends React.Component {
@@ -116,6 +115,7 @@ class Channel extends React.Component {
         <div></div>
       );
     } else {
+      console.log(this.state)
       return (
         <div className="main-content">
           <div className="channels-container">

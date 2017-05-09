@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { formatNumber } from 'helpers';
 
 const SubscribeButton = ({ clickSubscribe, subscriberNum, isSubscribed }) => {
-  let cssClass = '-sub';
+  let cssClass = '';
   let text = 'Subscribe';
 
   if (isSubscribed) {
     cssClass = '-sub';
     text = 'Subscribed';
+    subscriberNum++;
   }
 
   return (

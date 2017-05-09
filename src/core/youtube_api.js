@@ -161,7 +161,7 @@ export const subscriptionsDelete = params => {
   let mergedParams = merge(defaultParams, params);
   let urlParams = createUrlParams(mergedParams);
   return fetch(`${baseUrl}?${urlParams}`, { method: 'DELETE' });
-}
+};
 
 export const commentThreads = params => {
   let baseUrl = 'https://www.googleapis.com/youtube/v3/commentThreads';
