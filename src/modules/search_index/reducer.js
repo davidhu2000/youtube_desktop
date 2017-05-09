@@ -5,13 +5,13 @@ let _defaultState = {
   videos: [],
   pageInfo: null,
   nextPageToken: null,
-  query: null,
+  query: null
 };
 
 const searchResultReducer = (state = _defaultState, action) => {
   Object.freeze(state);
 
-  switch(action.type) {
+  switch (action.type) {
     case RECEIVE_VIDEOS:
       let res = action.videos;
 
