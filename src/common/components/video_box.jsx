@@ -123,6 +123,7 @@ class VideoBox extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     if (this.props.multiline) {
       let buttonVal = this.state.numRows === 2 ? 'Show more' : 'Show less';
       let height = 38 + 230 * this.state.numRows + 50;
