@@ -6,6 +6,7 @@ import { fetchChannelDetails,
          insertSubscription,
          deleteSubscription } from './actions';
 import { fetchSubscriptions } from 'modules/subscriptions/actions';
+import { fetchChannelPlaylists } from 'modules/playlists/actions';
 import { receiveSetting } from 'common/setting/actions';
 
 const mapStateToProps = ({ channelDetails, user, setting, subscriptions }) => ({
@@ -21,6 +22,7 @@ const mapDispatchToProps = dispatch => ({
   receiveSetting: setting => dispatch(receiveSetting(setting)),
   fetchSubscriptions: channelId => dispatch(fetchSubscriptions(channelId)),
   fetchChannelVideos: id => dispatch(fetchChannelVideos(id)),
+  fetchChannelPlaylists: id => dispatch(fetchChannelPlaylists(id)),
   insertSubscription: channelId => dispatch(insertSubscription(channelId)),
   deleteSubscription: subscriptionId => dispatch(deleteSubscription(subscriptionId))
 });

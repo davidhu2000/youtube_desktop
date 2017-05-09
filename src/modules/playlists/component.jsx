@@ -9,31 +9,22 @@ class Playlists extends React.Component {
     this.getPlaylistsItems = this.getPlaylistsItems.bind(this);
   }
 
-  _getNewChannelInfo(channelId, userId) {
-    let dataNeeded = [];
-    dataNeeded.push(this.props.getPlaylistsItems());
-
-    Promise.all(dataNeeded).then( res => this.props.receiveSetting({ isLoading: false }));
-  }
-
   componentDidMount() {
-    let channelId = this.props.channelDetails.detail.id;
-
-    this.props.fetchChannelPlaylists(channelId).then(
-      this.getPlaylistsItems
-    );
-
     this.props.receiveSetting({ isLoading: true });
-    this._getNewChannelInfo(this.state.channelId, this.state.userId);
+    this.getPlaylistsItems();
   }
 
   getPlaylistsItems() {
+    let dataNeeded = [];
+
     let channelId = this.props.channelDetails.detail.id;
     let playlists = this.props.playlists[channelId];
 
-    return playlists.map(playlist => {
-      this.props.fetchPlaylistItems(playlist.id);
+    playlists.forEach(playlist => {
+      dataNeeded.push(this.props.fetchPlaylistItems(playlist.id));
     });
+
+    Promise.all(dataNeeded).then( res => this.props.receiveSetting({ isLoading: false }));
   }
 
   renderPlaylist() {
@@ -52,21 +43,16 @@ class Playlists extends React.Component {
     let channelId = this.props.channelDetails.detail.id;
     let playlists = this.props.playlists[channelId];
 
-    if (this.props.playlists.playlistsList) {
-      if (Object.keys(this.props.playlists.playlistsList).length === playlists.length) {
-        return (
-          <div>
-            {this.renderPlaylist()}
-          </div>
-        );
-      } else {
-        return (
-          <div></div>
-        );
-      }
+    if (this.props.setting.isLoading) {
+      return (
+        <div>       
+        </div>
+      );    
     } else {
       return (
-        <div></div>
+        <div>
+          {this.renderPlaylist()}
+        </div>
       );
     }
   }
