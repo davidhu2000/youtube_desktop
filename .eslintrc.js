@@ -24,6 +24,8 @@ module.exports = {
         "indent": [2, 2, {"SwitchCase": 1}],
         "no-console": "off", // TODO: remove during production,
         "no-case-declarations": "off",
-        "prefer-const": "off"
+        "prefer-const": "off",
+        "no-param-reassign": "off",
+        "no-plusplus": "off"
     }
 };

@@ -13,32 +13,32 @@ export const clearVideos = () => ({
 });
 
 // TODO: David - add it to youtube api and refactor this code
-export const searchVideos = (query, nextPageToken, pageNumber = 1) => dispatch => {
+export const searchVideos = (query, nextPageToken) => dispatch => {
   let params = {
     q: query,
     type: 'video',
-    pageToken: nextPageToken,
+    pageToken: nextPageToken
   };
 
   return YoutubeApi.search(params).then(
     res => res.json()
   ).then(
     videos => {
-      let params = {
+      let newParams = {
         part: 'statistics,contentDetails',
-        id: videos.items.map(item => item.id.videoId).join(','),
+        id: videos.items.map(item => item.id.videoId).join(',')
       };
 
-      return YoutubeApi.videos(params).then(
+      return YoutubeApi.videos(newParams).then(
          res => res.json()
        ).then(
          videoStatResults => {
            for (let i = 0; i < videoStatResults.items.length; i++) {
-             videos.items[i]['statistics'] = videoStatResults.items[i].statistics;
-             videos.items[i]['contentDetails'] = videoStatResults.items[i].contentDetails;
+             videos.items[i].statistics = videoStatResults.items[i].statistics;
+             videos.items[i].contentDetails = videoStatResults.items[i].contentDetails;
            }
 
-           videos['query'] = query;
+           videos.query = query;
 
            return dispatch(receiveVideos(videos));
          }
