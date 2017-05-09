@@ -6,7 +6,8 @@ import { receiveSetting } from 'common/setting/actions';
 import { fetchDetails,
          fetchRelated,
          fetchComments,
-         fetchVideoRating } from './actions';
+         fetchVideoRating,
+         switchAutoplay } from './actions';
 
 const mapStateToProps = ({ playerDetails, setting, user }) => ({
   playerDetails,
@@ -21,7 +22,8 @@ const mapDispatchToProps = dispatch => ({
   fetchDetails: videoId => dispatch(fetchDetails(videoId)),
   fetchVideoRating: videoId => dispatch(fetchVideoRating(videoId)),
   videosRate: (videoId, rating) => dispatch(videosRate(videoId, rating)),
-  receiveSetting: setting => dispatch(receiveSetting(setting))
+  receiveSetting: setting => dispatch(receiveSetting(setting)),
+  switchAutoplay: status => dispatch(switchAutoplay(status))
 });
 
 export default connect(

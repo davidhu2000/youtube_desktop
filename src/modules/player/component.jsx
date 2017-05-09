@@ -32,7 +32,7 @@ class PlayerDetails extends React.Component {
       relatedPosition: 'left',
       small: { width: 426, height: 240 },
       medium: { width: 640, height: 360 },
-      large: { width: 854, height: 480 } 
+      large: { width: 854, height: 480 }
     };
   }
 
@@ -84,18 +84,23 @@ class PlayerDetails extends React.Component {
     if (this.state.relatedPosition === 'left') {
       return (
         <div className="right-frame">
-          <Related related={this.props.playerDetails.related}/>
+          <Related
+            related={this.props.playerDetails.related}
+            autoplay={this.props.playerDetails.autoplay}
+            switchAutoplay={this.props.switchAutoplay} />
         </div>
       );
-    } 
+    }
   }
 
   renderRelated() {
     if (this.state.relatedPosition === 'bottom') {
       return (
-        <Related 
+        <Related
           related={this.props.playerDetails.related}
-          width={this.state[this.state.playerSize].width} />
+          width={this.state[this.state.playerSize].width}
+          autoplay={this.props.playerDetails.autoplay}
+          switchAutoplay={this.props.switchAutoplay} />
       );
     }
   }
@@ -112,21 +117,21 @@ class PlayerDetails extends React.Component {
           <div className="player-container">
             <div className="left-frame">
 
-              <Player 
-                videoId={videoId} 
-                related={related}
+              <Player
+                videoId={videoId}
+                nextVideoId={related[0].id.videoId}
                 autoplay={autoplay}
-                height={height} 
+                height={height}
                 width={width} />
 
-              <Details  
-                details={details} 
-                rating={rating} 
+              <Details
+                details={details}
+                rating={rating}
                 width={width}
                 videosRate={this.props.videosRate} />
 
               { this.renderRelated() }
-              
+   
               <Comments 
                 loggedIn={this.props.loggedIn}
                 comments={comments} 
@@ -152,7 +157,7 @@ PlayerDetails.propTypes = {
   receiveSetting: PropTypes.func.isRequired,
   playerDetails: propChecker.playerDetails(),
   setting: propChecker.setting(),
-  user: PropTypes.object,
+  user: PropTypes.shape(),
   loggedIn: PropTypes.bool.isRequired
 };
 
