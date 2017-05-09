@@ -42,7 +42,10 @@ class PlayerDetails extends React.Component {
     dataNeeded.push(this.props.fetchDetails(videoId));
     dataNeeded.push(this.props.fetchComments(videoId));
     dataNeeded.push(this.props.fetchRelated(videoId));
-    dataNeeded.push(this.props.fetchVideoRating(videoId));
+
+    if(this.props.loggedIn) {
+      dataNeeded.push(this.props.fetchVideoRating(videoId));
+    }
 
     Promise.all(dataNeeded).then( res => this.props.receiveSetting({ isLoading: false }));
   }
@@ -128,9 +131,10 @@ class PlayerDetails extends React.Component {
                 videosRate={this.props.videosRate} />
 
               { this.renderRelated() }
-
-              <Comments
-                comments={comments}
+   
+              <Comments 
+                loggedIn={this.props.loggedIn}
+                comments={comments} 
                 user={user} />
 
             </div>
@@ -152,7 +156,9 @@ PlayerDetails.propTypes = {
   videosRate: PropTypes.func.isRequired,
   receiveSetting: PropTypes.func.isRequired,
   playerDetails: propChecker.playerDetails(),
-  setting: propChecker.setting()
+  setting: propChecker.setting(),
+  user: PropTypes.shape(),
+  loggedIn: PropTypes.bool.isRequired
 };
 
 export default withRouter(PlayerDetails);

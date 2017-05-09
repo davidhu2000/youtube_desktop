@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
-import Subscriptions from './component';
 
-import { receiveQuery } from 'common/query/actions';
 import { receiveSetting } from 'common/setting/actions';
+import Subscriptions from './component';
 import { fetchSubscriptions,
          fetchSubscriptionUploads } from './actions';
 

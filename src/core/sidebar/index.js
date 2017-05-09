@@ -8,10 +8,6 @@ const mapStateToProps = ({ user, subscriptions, setting }) => ({
   setting
 });
 
-const mapDispatchToProps = dispatch => ({
-  
-});
-
 export default connect(
   mapStateToProps,
   null

@@ -6,24 +6,11 @@ import { propChecker } from 'helpers';
 import { VideoList } from 'common/components';
 
 class Subscriptions extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       count: 0
     };
-  }
-
-  _redirect() {
-    hashHistory.replace('/home');
-  }
-
-  getUploads(subs) {
-    let dataNeeded = [];
-    Object.keys(subs).forEach( id => {
-      dataNeeded.push(this.props.fetchSubscriptionUploads(id));
-    });
-
-    Promise.all(dataNeeded).then( res => this.props.receiveSetting({ isLoading: false }));
   }
 
   componentDidMount() {
@@ -35,7 +22,7 @@ class Subscriptions extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if(!newProps.loggedIn) {
+    if (!newProps.loggedIn) {
       this._redirect();
     } else {
       let oldNumSubs = Object.keys(this.props.subscriptions).length;
@@ -45,6 +32,19 @@ class Subscriptions extends React.Component {
         this.getUploads(newProps.subscriptions);
       }
     }
+  }
+
+  getUploads(subs) {
+    const dataNeeded = [];
+    Object.keys(subs).forEach(id => {
+      dataNeeded.push(this.props.fetchSubscriptionUploads(id));
+    });
+
+    Promise.all(dataNeeded).then(() => this.props.receiveSetting({ isLoading: false }));
+  }
+  
+  _redirect() {
+    hashHistory.replace('/home');
   }
 
   render() {

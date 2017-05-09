@@ -1,11 +1,10 @@
-import { merge } from 'lodash';
 import { RECEIVE_USER } from "./actions";
 
-let _defaultState = {};
+const _defaultState = {};
 
 const userReducer = (state = _defaultState, action) => {
   Object.freeze(state);
-  switch(action.type) {
+  switch (action.type) {
     case RECEIVE_USER:
       return action.user;
     default:
