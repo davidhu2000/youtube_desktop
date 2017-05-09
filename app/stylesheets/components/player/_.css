@@ -3,9 +3,7 @@
 @import url('./comments.css');
 
 .player-container {
-  padding-top: 20px;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding: 20px 50px 0px 50px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -13,7 +11,6 @@
 }
 
 .left-frame {
-  /*width: 640px;*/
   margin-right: 10px;
   display: flex;
   flex-direction: column;
@@ -21,7 +18,7 @@
 }
 
 .right-frame {
-  /*width: 320px;*/
+  width: 402px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
