@@ -26,14 +26,8 @@ class Playlists extends React.Component {
     // });
 
     for(let playlist of playlists) {
-      // console.log(playlist)
       dataNeeded.push(this.props.fetchPlaylistItems(playlist.id));
-      // console.log(dataNeeded)
     }
-
-    // console.log(playlists)
-
-    // console.log(dataNeeded)
 
     Promise.all(dataNeeded).then( res => this.props.receiveSetting({ isLoading: false }));
   }

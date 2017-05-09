@@ -38,9 +38,6 @@ class Channel extends React.Component {
 
     Promise.all(dataNeeded).then(() => {
       let playlists = this.props.playlists[channelId];
-
-      console.log(playlists)
-
       let plDataNeeded = [];
 
       for(let playlist of playlists) {
