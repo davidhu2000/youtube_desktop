@@ -1,9 +1,9 @@
 import * as YoutubeApi from 'core/youtube_api';
 
-export const RECEIVE_PLAYLISTS = 'RECEIVE_PLAYLISTS';
+export const RECEIVE_CHANNEL_PLAYLISTS = 'RECEIVE_CHANNEL_PLAYLISTS';
 
 export const receivePlaylists = list => ({
-  type: RECEIVE_PLAYLISTS,
+  type: RECEIVE_CHANNEL_PLAYLISTS,
   list
 });
 

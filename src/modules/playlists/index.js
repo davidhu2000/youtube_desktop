@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { values } from 'lodash';
 import Playlists from './component';
 
 import { fetchChannelPlaylists,
@@ -10,7 +11,7 @@ const mapStateToProps = ({ channelDetails, user, setting, playlists }) => ({
   loggedIn: Boolean(user),
   user,
   setting,
-  playlists
+  playlists: playlists
 });
 
 const mapDispatchToProps = dispatch => ({

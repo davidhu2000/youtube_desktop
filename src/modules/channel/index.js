@@ -15,7 +15,7 @@ const mapStateToProps = ({ channelDetails, user, setting, subscriptions, playlis
   user,
   setting,
   subscriptions,
-  playlists
+  playlists: playlists.list
 });
 
 const mapDispatchToProps = dispatch => ({

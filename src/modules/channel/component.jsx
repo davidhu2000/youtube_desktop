@@ -5,7 +5,7 @@ import {
   ChannelVideos
 } from './subcomponents';
 import { formatNumber } from 'helpers';
-import { SubscribeButton } from 'common/components';
+import { SubscribeButton, VideoBox } from 'common/components';
 
 class Channel extends React.Component {
   constructor(props) {
@@ -36,11 +36,13 @@ class Channel extends React.Component {
     }
 
     Promise.all(dataNeeded).then(() => {
-      let playlists = this.props.playlists[channelId];
+      let playlists = this.props.playlists;
       let plDataNeeded = [];
 
-      for(let playlist of playlists) {
-        plDataNeeded.push(this.props.fetchPlaylistItems(playlist.id));
+      console.log(playlists)
+
+      for(let playlistId of Object.keys(playlists)) {
+        plDataNeeded.push(this.props.fetchPlaylistItems(playlistId));
       }
 
       Promise.all(plDataNeeded).then(() => {
@@ -95,6 +97,17 @@ class Channel extends React.Component {
     }
   }
 
+  renderPlaylists() {
+    /*return this.props.playlists.playlistsList.map( playlist => (
+      <VideoBox 
+        title='test' 
+        vids={[]}
+        windowWidth={this.props.setting.windowWidth}
+        sidebarVisible={this.props.setting.sidebarVisible}
+      />
+    ));*/
+  }
+
   render() {
     let bannerImg;
     let profileImg;
@@ -147,6 +160,8 @@ class Channel extends React.Component {
             <ChannelNavbar currentRoute={this.state.currentRoute} />
 
             <ChannelVideos videos={videos} />
+
+            { this.renderPlaylists() }
             {/* Render Playlist subcomponent here */}
           </div>
         </div>
