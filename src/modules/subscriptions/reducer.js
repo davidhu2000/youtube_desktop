@@ -9,8 +9,9 @@ const subscriptionsReducer = (state = _defaultState, action) => {
 
   switch (action.type) {
     case RECEIVE_SUBSCRIPTIONS:
-      const newState = {};
-      action.subscriptions.forEach(sub => {
+      let newState = {};
+      action.subscriptions.forEach( sub => {
+        sub.snippet.subscriptionId = sub.id;
         newState[sub.snippet.resourceId.channelId] = sub.snippet;
       });
       return newState;

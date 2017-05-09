@@ -31,6 +31,10 @@ class VideoBoxItem extends React.Component {
       videoId = vid.contentDetails.upload.videoId;
     }
 
+    if (vid.snippet.resourceId && vid.snippet.resourceId.videoId) {
+      videoId = vid.snippet.resourceId.videoId;
+    }
+
     let duration;
     if(vid.contentDetails && vid.contentDetails.duration) {
       duration = vid.contentDetails.duration;
@@ -38,9 +42,7 @@ class VideoBoxItem extends React.Component {
     }
 
     return (
-
       <div className="video-box-item">
-
         <Link to={`watch/${videoId}`} className="video-box-item-image">
           <img src={url} />
           <span className='duration-span'>{ duration }</span>
