@@ -88,33 +88,37 @@ class Home extends React.Component {
     const { isLoading } = this.props.setting;
     const { videos } = this.props.trending;
 
-    if (!isLoading) {
+    if (isLoading) {
       return (
-        <div className='main-content'>
-          {this.renderRecommended()}
-          <VideoBox
-            title='Trending'
-            sidebarVisible={this.props.setting.sidebarVisible}
-            windowWidth={this.props.setting.windowWidth}
-            vids={videos}
-          />
-          {this.renderChannels()}
-        </div>
+        <div className='home-page' />
       );
     }
 
     return (
-      <div className='home-page' />
+      <div className='main-content'>
+        {this.renderRecommended()}
+        <VideoBox
+          title='Trending'
+          sidebarVisible={this.props.setting.sidebarVisible}
+          windowWidth={this.props.setting.windowWidth}
+          vids={videos}
+        />
+        {this.renderChannels()}
+      </div>
     );
   }
 }
+
+Home.defaultProps = {
+  homeChannels: {}
+};
 
 Home.propTypes = {
   fetchTrending: PropTypes.func.isRequired,
   fetchChannelVideos: PropTypes.func.isRequired,
   fetchRecommendedVideos: PropTypes.func.isRequired,
   receiveSetting: PropTypes.func.isRequired,
-  homeChannels: propChecker.homeChannels().isRequired,
+  homeChannels: propChecker.homeChannels(),
   loggedIn: PropTypes.bool.isRequired,
   recommended: propChecker.recommended().isRequired,
   trending: propChecker.trending().isRequired,

@@ -1,8 +1,8 @@
+/* global window */
 import React from 'react';
-const { ipcRenderer } = window.require('electron');
-
-import SidebarItem from './sidebar_item';
 import { shortenString } from 'helpers';
+
+const { ipcRenderer } = window.require('electron');
 
 class ContributorSection extends React.Component {
   constructor(props) {
@@ -42,16 +42,12 @@ class ContributorSection extends React.Component {
     };
   }
 
-  openNewWindow(url) {
-    ipcRenderer.send('open-url', url);
-  }
-
   renderContributors() {
-    return Object.keys(this.state).map( id => {
+    return Object.keys(this.state).map(id => {
       let contributor = this.state[id];
       return (
         <div className={`sidebar-item`} key={id}>
-          <a onClick={() => this.openNewWindow(contributor.github)}>
+          <a onClick={() => ipcRenderer.send('open-url', contributor.github)} role="button">
             <img src={contributor.img} />
             <span>{shortenString(contributor.name, 19)}</span>
           </a>
@@ -67,7 +63,7 @@ class ContributorSection extends React.Component {
           CONTRIBUTORS
         </div>
 
-       { this.renderContributors() }
+        { this.renderContributors() }
 
       </div>
     );
