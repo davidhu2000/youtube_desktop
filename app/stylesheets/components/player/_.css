@@ -3,22 +3,20 @@
 @import url('./comments.css');
 
 .player-container {
-  padding: 20px 50px 0px 50px;
+  padding-top: 20px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  /*margin-top: 56px;*/
 }
 
 .left-frame {
-  margin-right: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .right-frame {
-  width: 402px;
+  width: 380px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
