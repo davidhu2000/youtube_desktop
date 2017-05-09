@@ -28,6 +28,8 @@ module.exports = {
         "no-param-reassign": "off",
         "no-plusplus": "off",
         "jsx-quotes": "off",
-        "react/prop-types": [2, { ignore: ['location', 'router', 'children']}]
+        "react/prop-types": [2, { ignore: ['location', 'router', 'children']}],
+        "import/prefer-default-export": "off",
+        "consistent-return": "off"
     }
 };
