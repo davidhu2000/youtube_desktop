@@ -69,4 +69,4 @@ export const fetchPlaylistItems = playlistId => dispatch => {
       return dispatch(receivePlaylistItems(list));
     }
   );
-}
+};

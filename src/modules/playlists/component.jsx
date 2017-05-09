@@ -1,3 +1,4 @@
+/* global Promise */
 import React from 'react';
 import { PlaylistVideos } from './subcomponents';
 
@@ -31,7 +32,7 @@ class Playlists extends React.Component {
     let playlists = this.props.playlists[channelId];
 
     return playlists.map(playlist => {
-      this.props.fetchPlaylistItems(playlist.id)
+      this.props.fetchPlaylistItems(playlist.id);
     });
   }
 
@@ -57,16 +58,16 @@ class Playlists extends React.Component {
           <div>
             {this.renderPlaylist()}
           </div>
-        )
+        );
       } else {
         return (
           <div></div>
-        )
+        );
       }
     } else {
       return (
         <div></div>
-      )
+      );
     }
   }
 }

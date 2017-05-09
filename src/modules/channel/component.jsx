@@ -1,8 +1,12 @@
+/* global Promise */
 import React from 'react';
-import { ChannelNavbar,
-         ChannelVideos } from './subcomponents';
+import {
+  ChannelNavbar,
+  ChannelVideos
+} from './subcomponents';
 import { formatNumber } from 'helpers';
 import Playlists from 'modules/playlists';
+import { SubscribeButton } from 'common/components';
 
 class Channel extends React.Component {
   constructor(props) {
@@ -16,19 +20,22 @@ class Channel extends React.Component {
     };
 
     this.clickSubscribe = this.clickSubscribe.bind(this);
+    this._getNewChannelInfo = this._getNewChannelInfo.bind(this);
   }
 
   _getNewChannelInfo(channelId, userId) {
     let dataNeeded = [];
     dataNeeded.push(this.props.fetchChannelDetails(channelId));
     dataNeeded.push(this.props.fetchChannelVideos(channelId));
-    dataNeeded.push(this.isSubscribed());
 
-    if (Object.keys(this.props.subscriptions).length === 0) {
-      dataNeeded.push(this.props.fetchSubscriptions(userId));
+    if (this.props.loggedIn) {
+      dataNeeded.push(this.isSubscribed());
+      if (Object.keys(this.props.subscriptions).length === 0) {
+        dataNeeded.push(this.props.fetchSubscriptions(userId));
+      }
     }
 
-    Promise.all(dataNeeded).then( res => this.props.receiveSetting({ isLoading: false }));
+    Promise.all(dataNeeded).then(res => this.props.receiveSetting({ isLoading: false }));
   }
 
   componentDidMount() {
@@ -53,7 +60,7 @@ class Channel extends React.Component {
       this.setState({ subscribed: true });
     } else {
       this.setState({ subscribed: false });
-    };
+    }
   }
 
   clickSubscribe() {
@@ -76,32 +83,6 @@ class Channel extends React.Component {
     }
   }
 
-  renderSubscription() {
-    let subscriberNum;
-
-    if (this.props.channelDetails.detail) {
-      subscriberNum = this.props.channelDetails.detail.statistics.subscriberCount;
-    }
-
-    if (this.state.subscribed) {
-      return (
-        <button
-          id="channel-subscribers-button-sub"
-          onClick={this.clickSubscribe}>
-          Subscribed {formatNumber(subscriberNum, true)}
-        </button>
-      )
-    } else {
-      return (
-        <button
-          id="channel-subscribers-button"
-          onClick={this.clickSubscribe}>
-          Subscribe {formatNumber(subscriberNum, true)}
-        </button>
-      )
-    }
-  }
-
   render() {
     let bannerImg;
     let profileImg;
@@ -113,21 +94,21 @@ class Channel extends React.Component {
       bannerImg = this.props.channelDetails.detail.brandingSettings.image.bannerImageUrl;
       profileImg = this.props.channelDetails.detail.snippet.thumbnails.default.url;
       channelName = this.props.channelDetails.detail.snippet.title;
-      subscriberNum = this.props.channelDetails.detail.statistics.subscriberCount;
+      subscriberNum = parseInt(this.props.channelDetails.detail.statistics.subscriberCount);
       videos = this.props.channelDetails.videos;
     }
 
     if (this.props.setting.isLoading) {
       return (
         <div></div>
-      )
+      );
     } else {
       return (
         <div className="main-content">
           <div className="channels-container">
             <div className="channel-banner-container">
               <img id="channel-banner"
-                   src={bannerImg} />
+                src={bannerImg} />
             </div>
             <div className="channel-banner-header">
               <div className="channel-detail-container">
@@ -143,18 +124,20 @@ class Channel extends React.Component {
                   </div>
                 </div>
 
-                <div className="subscriber-button">
-                  {this.renderSubscription()}
-                </div>
+                <SubscribeButton 
+                  clickSubscribe={this.clickSubscribe}
+                  subscriberNum={subscriberNum} 
+                  isSubscribed={this.state.subscribed}
+                />
               </div>
             </div>
             <ChannelNavbar currentRoute={this.state.currentRoute} />
 
             <ChannelVideos videos={videos} />
-            <Playlists />
+            {/*<Playlists channelDetails={this.props.channelDetails} />*/}
           </div>
         </div>
-      )
+      );
     }
   }
 }
