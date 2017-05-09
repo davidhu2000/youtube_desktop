@@ -1,18 +1,18 @@
+/* global localStorage */
 import React from 'react';
 import PropTypes from 'prop-types';
 import enhanceWithClickOutside from 'react-click-outside';
 import { Link } from 'react-router';
 
 class DropdownMenu extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   handleClickOutside(e) {
     let notNavbarButton = !e.target.classList.contains('navbar-user-picture');
-    if(notNavbarButton) {
+    if (notNavbarButton) {
       this.props.toggleDropdown();
     }
+
+    this.clearUser = this.clearUser.bind(this);
   }
 
   clearUser() {
@@ -37,7 +37,7 @@ class DropdownMenu extends React.Component {
             <Link to={`channels/${myChannelId}`}>
               My Channel
             </Link>
-            <button onClick={this.clearUser.bind(this)}>
+            <button onClick={this.clearUser}>
               Sign Out
             </button>
           </div>
@@ -55,8 +55,9 @@ class DropdownMenu extends React.Component {
 }
 
 DropdownMenu.propTypes = {
-  logout: PropTypes.func,
-  user: PropTypes.object
+  logout: PropTypes.func.isRequired,
+  user: PropTypes.shape().isRequired,
+  toggleDropdown: PropTypes.func.isRequired
 };
 
 export default enhanceWithClickOutside(DropdownMenu);

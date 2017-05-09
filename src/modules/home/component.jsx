@@ -1,4 +1,4 @@
-/* global Promise */
+/* global Promise, window */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { VideoBox } from 'common/components';
@@ -28,7 +28,7 @@ class Home extends React.Component {
       'UCOpNcN46UbXVtpKMrmU4Abg',
       'UClgRkhTL3_hImCAmdLfDE4g',
       'UCYfdidRxbB8Qhf0Nx7ioOYw',
-      'UCBR8-60-B28hp2BmDPdntcQ',
+      'UCBR8-60-B28hp2BmDPdntcQ'
     ];
 
     for (let i = 0; i < channelIds.length; i++) {
@@ -40,7 +40,7 @@ class Home extends React.Component {
       dataNeeded.push(this.props.fetchRecommendedVideos());
     }
 
-    Promise.all(dataNeeded).then( res => this.props.receiveSetting({ isLoading: false }));
+    Promise.all(dataNeeded).then(() => this.props.receiveSetting({ isLoading: false }));
   }
 
   componentWillReceiveProps(newProps) {
@@ -63,7 +63,8 @@ class Home extends React.Component {
             title={title}
             sidebarVisible={this.props.setting.sidebarVisible}
             windowWidth={this.props.setting.windowWidth}
-            vids={channel.videos} />
+            vids={channel.videos}
+          />
         );
       });
     }
@@ -75,9 +76,10 @@ class Home extends React.Component {
         <VideoBox
           title='Recommended'
           sidebarVisible={this.props.setting.sidebarVisible}
-          multiline={true}
+          multiline
           vids={this.props.recommended.videos || []}
-          windowWidth={this.props.setting.windowWidth} />
+          windowWidth={this.props.setting.windowWidth}
+        />
       );
     }
   }
@@ -86,37 +88,41 @@ class Home extends React.Component {
     const { isLoading } = this.props.setting;
     const { videos } = this.props.trending;
 
-    if (!isLoading) {
+    if (isLoading) {
       return (
-        <div className='main-content'>
-          {this.renderRecommended()}
-          <VideoBox
-            title='Trending'
-            sidebarVisible={this.props.setting.sidebarVisible}
-            windowWidth={this.props.setting.windowWidth}
-            vids={videos} />
-          {this.renderChannels()}
-        </div>
-      );
-    } else {
-      return (
-        <div className='home-page'></div>
+        <div className='home-page' />
       );
     }
+
+    return (
+      <div className='main-content'>
+        {this.renderRecommended()}
+        <VideoBox
+          title='Trending'
+          sidebarVisible={this.props.setting.sidebarVisible}
+          windowWidth={this.props.setting.windowWidth}
+          vids={videos}
+        />
+        {this.renderChannels()}
+      </div>
+    );
   }
 }
 
+Home.defaultProps = {
+  homeChannels: {}
+};
+
 Home.propTypes = {
   fetchTrending: PropTypes.func.isRequired,
-  fetchChannelInfo: PropTypes.func.isRequired,
   fetchChannelVideos: PropTypes.func.isRequired,
-  fetchCategories: PropTypes.func.isRequired,
   fetchRecommendedVideos: PropTypes.func.isRequired,
   receiveSetting: PropTypes.func.isRequired,
   homeChannels: propChecker.homeChannels(),
   loggedIn: PropTypes.bool.isRequired,
-  recommended: propChecker.recommended(),
-  trending: propChecker.trending()
+  recommended: propChecker.recommended().isRequired,
+  trending: propChecker.trending().isRequired,
+  setting: propChecker.setting().isRequired
 };
 
 export default Home;

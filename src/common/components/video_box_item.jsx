@@ -8,7 +8,7 @@ class VideoBoxItem extends React.Component {
     super(props);
   }
 
-  render () {
+  render() {
     const vid = this.props.vid;
     const { channelId, channelTitle, publishedAt } = vid.snippet;
     const { url } = vid.snippet.thumbnails.medium;

@@ -1,3 +1,4 @@
+/* global localStorage */
 import * as YoutubeApi from 'core/youtube_api';
 import { merge } from 'lodash';
 
@@ -17,23 +18,22 @@ export const fetchRecommendedVideos = () => dispatch => {
   return YoutubeApi.activities(params).then(
     res => res.json()
   ).then(videos => {
-
-    let params = {
+    let newParams = {
       part: 'statistics,contentDetails',
       id: videos.items.map(item => item.contentDetails.upload.videoId).join(',')
     };
 
-    return YoutubeApi.videos(params).then(
+    return YoutubeApi.videos(newParams).then(
       res => res.json()
-    ).then( stat => {
+    ).then(stat => {
       for (let i = 0; i < videos.items.length; i++) {
-        videos.items[i]['statistics'] = stat.items[i].statistics;
-        videos.items[i]['contentDetails'] = merge(videos.items[i].contentDetails, stat.items[i].contentDetails);
+        videos.items[i].statistics = stat.items[i].statistics;
+        videos.items[i].contentDetails =
+          merge(videos.items[i].contentDetails, stat.items[i].contentDetails);
       }
 
       return dispatch(receiveRecommendedVideos(videos.items));
     });
-    
   }).catch(error => {
     console.log(error);
   });

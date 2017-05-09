@@ -7,7 +7,7 @@ let _defaultState = {};
 const subscriptionsReducer = (state = _defaultState, action) => {
   Object.freeze(state);
 
-  switch(action.type) {
+  switch (action.type) {
     case RECEIVE_SUBSCRIPTIONS:
       let newState = {};
       action.subscriptions.forEach( sub => {
@@ -17,7 +17,7 @@ const subscriptionsReducer = (state = _defaultState, action) => {
       return newState;
     case RECEIVE_SUBSCRIPTIONS_UPLOADS:
       return merge({}, state, {
-        [action.sub.channelId]:{
+        [action.sub.channelId]: {
           videos: action.sub.videos
         }
       });

@@ -1,8 +1,8 @@
+/* global window, document */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router';
 import { propChecker, toggleSidebar } from 'helpers';
-import { values } from 'lodash';
 
 import SidebarItem from './sidebar_item';
 import ContributorSection from './contributor_section';
@@ -19,6 +19,7 @@ class Sidebar extends React.Component {
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.togglePlaylists = this.togglePlaylists.bind(this);
   }
 
   componentDidMount() {
@@ -68,33 +69,33 @@ class Sidebar extends React.Component {
     }
   }
 
-  // update with real playlists from api call
-  renderUserPlaylists() {
-    return ['playlist1', 'playlist2', 'playlist3', 'playlist4'].slice(0, this.state.numPlaylistShowing).map( playlist => {
-      return (
-        <SidebarItem key={playlist} link='' span={playlist} icon="playlist_play" />
-      );
-    });
-  }
-
   togglePlaylists() {
-    let numPlaylistShowing, buttonVal, icon;
+    let numPlaylistShowing;
+    let buttonVal;
+    let icon;
     if (this.state.numPlaylistShowing === 2) {
       numPlaylistShowing = 4;
       buttonVal = 'Show Less';
-      icon='keyboard_arrow_up';
+      icon = 'keyboard_arrow_up';
     } else {
       numPlaylistShowing = 2;
       buttonVal = 'Show More';
-      icon='keyboard_arrow_down';
+      icon = 'keyboard_arrow_down';
     }
 
     this.setState({ numPlaylistShowing, buttonVal, icon });
   }
 
+  // update with real playlists from api call
+  renderUserPlaylists() {
+    return ['playlist1', 'playlist2', 'playlist3', 'playlist4'].slice(0, this.state.numPlaylistShowing).map(playlist => (
+      <SidebarItem key={playlist} link='' span={playlist} icon="playlist_play" />
+    ));
+  }
+
   render() {
     return (
-      <div id="sidebar" className={`sidebar`} onClick={this.handleClick}>
+      <div id="sidebar" className={`sidebar`} onClick={this.handleClick} role="button">
         {/* Header section */}
         <div className='sidebar-section' id='sidebar-header'>
           <div className='sidebar-item'>
@@ -126,7 +127,7 @@ class Sidebar extends React.Component {
             { this.renderUserPlaylists() }
 
             <div className='sidebar-item'>
-              <a onClick={this.togglePlaylists.bind(this)}>
+              <a onClick={this.togglePlaylists} role="button">
                 <i className="material-icons">{this.state.icon}</i>
                 <span>{this.state.buttonVal}</span>
               </a>
@@ -138,11 +139,11 @@ class Sidebar extends React.Component {
 
           <ContributorSection />
 
-           <div className="sidebar-section">
-              <div className='sidebar-header'>
-                This app is a collaborative effort from all of the contributors. We hope you enjoy using it.
-              </div>
+          <div className="sidebar-section">
+            <div className='sidebar-header'>
+              This app is a collaborative effort from all of the contributors. We hope you enjoy using it.
             </div>
+          </div>
         </div>
 
 
@@ -154,10 +155,7 @@ class Sidebar extends React.Component {
 Sidebar.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   subscriptions: propChecker.subscriptions(),
-  setting: PropTypes.shape({
-    windowWidth: PropTypes.number,
-    sidebarVisible: PropTypes.bool
-  })
+  setting: propChecker.setting()
 };
 
 export default withRouter(Sidebar);

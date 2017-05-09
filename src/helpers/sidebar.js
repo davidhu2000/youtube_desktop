@@ -1,3 +1,4 @@
+/* global document, window */
 export const toggleSidebar = () => {
   let sidebar = document.getElementById('sidebar');
   let cover = document.getElementById('sidebar-cover');
@@ -28,4 +29,4 @@ export const toggleSidebar = () => {
       sidebar.classList.remove('ondocument');
     }
   }
-}; 
+};

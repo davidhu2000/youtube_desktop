@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 const homeChannels = () => (
   (props, propName, componentName) => {
     let type = 'object';
-    if(!(new RegExp(type)).test(props[propName])) {
+    if (!(new RegExp(type)).test(props[propName])) {
       return new Error(
         `Invalid prop "${propName}" supplied to ${componentName}.
         Expecting an object with id as keys and ${type} as values.`
@@ -32,10 +32,10 @@ const recommended = () => (
   })
 );
 
-const searchResult= () => (
+const searchResult = () => (
   PropTypes.shape({
     nextPageToken: PropTypes.string,
-      pageInfo: PropTypes.shape({
+    pageInfo: PropTypes.shape({
       resultsPerPage: PropTypes.number,
       totalResults: PropTypes.number
     }),
@@ -56,7 +56,7 @@ const setting = () => (
 const subscriptions = () => (
   (props, propName, componentName) => {
     let type = 'object';
-    if(!(new RegExp(type)).test(props[propName])) {
+    if (!(new RegExp(type)).test(props[propName])) {
       return new Error(
         `Invalid prop ${propName} supplied to ${componentName}.
         Expecting an object with id as keys and ${type} as values.`

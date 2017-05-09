@@ -2,9 +2,8 @@ import React from 'react';
 import { withRouter, Link } from 'react-router';
 import PropTypes from 'prop-types';
 import { SearchBar } from 'common/components';
-import DropdownMenu from './dropdown_menu';
-import { authenticateUser } from 'modules/user/utils';
 import { toggleSidebar } from 'helpers';
+import DropdownMenu from './dropdown_menu';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -12,6 +11,8 @@ class Navbar extends React.Component {
     this.state = {
       showDropdown: false
     };
+
+    this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
   toggleDropdown() {
@@ -19,24 +20,26 @@ class Navbar extends React.Component {
   }
 
   renderRightMenu() {
-    if(this.props.loggedIn) {
+    if (this.props.loggedIn) {
       return (
         <div className='navbar-right-menu'>
-          <a onClick={this.toggleDropdown.bind(this)} style={{cursor: 'pointer'}}>
+          <a onClick={this.toggleDropdown} style={{ cursor: 'pointer' }} role="button">
             <img className='navbar-user-picture' src={this.props.user.picture} />
           </a>
-          { this.state.showDropdown ? <DropdownMenu
-            context={this}
-            toggleDropdown={this.toggleDropdown.bind(this)}
-            user={this.props.user}
-            logout={this.props.logout}/> : null }
+          { this.state.showDropdown ? (
+            <DropdownMenu
+              context={this}
+              toggleDropdown={this.toggleDropdown}
+              user={this.props.user}
+              logout={this.props.logout}
+            />
+            ) : null }
         </div>
       );
     } else {
       return (
         <div className='navbar-right-menu'>
-
-          <a onClick={this.props.loginUser} style={{cursor: 'pointer'}}>
+          <a onClick={this.props.loginUser} role='button' style={{ cursor: 'pointer' }}>
             <p className="sign-in-text">SIGN IN</p>
           </a>
         </div>
@@ -48,17 +51,19 @@ class Navbar extends React.Component {
     return (
       <div className='navbar'>
         <div className='navbar-left-menu'>
-          <i onClick={toggleSidebar} id="sidebar-menu" className="material-icons">menu</i>
-          <i onClick={toggleSidebar} id="sidebar-carrot" className="material-icons hidden">keyboard_arrow_down</i>
+          <i onClick={toggleSidebar} id="sidebar-menu" className="material-icons" role="button">
+            menu
+          </i>
           <Link to='/' className='youtube-logo' id="sidebar-logo">
-            <img src="./app/assets/Youtube-logo.png"/>
+            <img src="./app/assets/Youtube-logo.png" />
           </Link>
         </div>
 
         <div className='navbar-center-menu'>
           <SearchBar
-            receiveQuery={ this.props.receiveQuery }
-            router={ this.props.router } />
+            receiveQuery={this.props.receiveQuery}
+            router={this.props.router}
+          />
         </div>
 
         { this.renderRightMenu() }
@@ -69,11 +74,11 @@ class Navbar extends React.Component {
 }
 
 Navbar.propTypes = {
-  user: PropTypes.object,
-  loggedIn: PropTypes.bool,
-  receiveQuery: PropTypes.func,
-  loginUser: PropTypes.func,
-  logout: PropTypes.func
+  user: PropTypes.shape().isRequired,
+  loggedIn: PropTypes.bool.isRequired,
+  receiveQuery: PropTypes.func.isRequired,
+  loginUser: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired
 };
 
 export default withRouter(Navbar);

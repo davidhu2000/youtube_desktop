@@ -1,6 +1,7 @@
+/* global fetch, localStorage */
 import merge from 'lodash/merge';
-import YT_API_KEY from '../../config/api_key';
 import { createUrlParams } from 'helpers';
+import YT_API_KEY from '../../config/api_key';
 
 export const search = params => {
   let baseUrl = 'https://www.googleapis.com/youtube/v3/search';
@@ -64,7 +65,7 @@ export const videosGetRating = params => {
 
   let defaultParams = {
     access_token: localStorage.getItem('google-access-token'),
-    key: YT_API_KEY.clientId,
+    key: YT_API_KEY.clientId
   };
 
   let mergedParams = merge(defaultParams, params);

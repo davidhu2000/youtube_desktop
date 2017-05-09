@@ -1,36 +1,14 @@
-/* global Promise */
+/* global Promise, document, window */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
-import { VideoList, Spinner } from 'common/components';
+import { VideoList } from 'common/components';
 import { propChecker } from 'helpers';
 
 class SearchIndex extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  _fetchResult(query) {
-    let dataNeeded = [];
-
-    if(query !== null) {
-      dataNeeded.push(this.props.clearVideos());
-      dataNeeded.push(this.props.searchVideos(query));
-    }
-
-    Promise.all(dataNeeded).then( res => this.props.receiveSetting({ isLoading: false }));
-  }
-
-  handleScroll(e) {
-    let search = document.getElementById('search-container');
-    let main = document.getElementsByClassName('main-content')[0];
-    if (window.innerHeight + main.scrollTop > search.clientHeight - 50) {
-      this.props.searchVideos(this.props.query, this.props.searchResult.nextPageToken);
-    }
-  }
 
   componentDidMount() {
-    if(this.props.query !== this.props.searchResult.query) {
+    if (this.props.query !== this.props.searchResult.query) {
       this.props.receiveSetting({ isLoading: true });
       this._fetchResult(this.props.query);
     }
@@ -39,7 +17,7 @@ class SearchIndex extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if(this.props.query !== newProps.query) {
+    if (this.props.query !== newProps.query) {
       this.props.receiveSetting({ isLoading: true });
       this._fetchResult(newProps.query);
     }
@@ -50,8 +28,27 @@ class SearchIndex extends React.Component {
     main.removeEventListener('scroll', this.handleScroll);
   }
 
+  handleScroll(e) {
+    let search = document.getElementById('search-container');
+    let main = document.getElementsByClassName('main-content')[0];
+    if (window.innerHeight + main.scrollTop > search.clientHeight - 50) {
+      this.props.searchVideos(this.props.query, this.props.searchResult.nextPageToken);
+    }
+  }
+
+  _fetchResult(query) {
+    let dataNeeded = [];
+
+    if (query !== null) {
+      dataNeeded.push(this.props.clearVideos());
+      dataNeeded.push(this.props.searchVideos(query));
+    }
+
+    Promise.all(dataNeeded).then(() => this.props.receiveSetting({ isLoading: false }));
+  }
+
   render() {
-    if(this.props.searchResult.videos) {
+    if (this.props.searchResult.videos) {
       let {
         nextPageToken,
         query,
@@ -61,7 +58,7 @@ class SearchIndex extends React.Component {
       let { searchVideos } = this.props;
 
       let volume;
-      if(pageInfo) {
+      if (pageInfo) {
         volume = pageInfo.totalResults;
       }
       let nextAction = () => searchVideos(query, nextPageToken);
@@ -72,8 +69,13 @@ class SearchIndex extends React.Component {
             volume={volume}
             nextAction={nextAction}
             videos={videos}
-            windowWidth={this.props.setting.windowWidth} />
+            windowWidth={this.props.setting.windowWidth} 
+          />
         </div>
+      );
+    } else {
+      return (
+        <div></div>
       );
     }
   }
