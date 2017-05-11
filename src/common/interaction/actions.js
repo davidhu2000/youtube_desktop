@@ -15,7 +15,7 @@ export const videosRate = (videoId, rating) => dispatch => {
   };
 
   return YoutubeApi.videosRate(params).then(
-    res => dispatch(receiveVideoRating(rating))
+    () => dispatch(receiveVideoRating(rating))
   ).catch(
     err => console.log(err)
   );

@@ -12,7 +12,7 @@ export const fetchChannelInfo = channelId => dispatch => {
     id: channelId
   };
 
-  return YoutubeApi.channels(channelId).then(
+  return YoutubeApi.channels(params).then(
     res => res.json()
   ).then(
     channels => dispatch(receiveChannelInfo(channels.items[0]))

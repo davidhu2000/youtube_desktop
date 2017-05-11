@@ -1,6 +1,9 @@
 /*Channel*/
 .channels-container {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   display: block;
 }
 
@@ -9,6 +12,7 @@
   display: block;
   height: calc(100vw / 6 - 1px);
   margin: 0;
+  /*flex: 1;*/
 }
 
 /*Sidebar*/
@@ -57,7 +61,6 @@
 .channel-detail {
   display: flex;
   flex-direction: column;
-  /*padding-right: 45vw;*/
   padding-left: 40px;
   align-self: center;
   white-space: nowrap;
@@ -80,10 +83,22 @@
   align-self: center;
 }
 
-#channel-subscribers-button {
+#channel-subscribers-button-sub {
   min-width: 160px;
   background-color: hsl(0, 0%, 93.3%);
   color: hsla(0, 0%, 6.7%, .6);
+  border-radius: 2px;
+  padding: 10px 16px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  white-space:nowrap;
+}
+
+#channel-subscribers-button {
+  background-color: hsl(3, 81.8%, 49.6%);
+  color: white;
+  min-width: 160px;
   border-radius: 2px;
   padding: 10px 16px;
   letter-spacing: .5px;
@@ -132,4 +147,89 @@
   cursor: pointer;
   color: #111111 !important;
   letter-spacing: 1px;
+}
+
+/*Channel Home*/
+.channel-videos-container {
+  margin-left: 120px;
+}
+
+.latest-uploaded-video-container {
+  padding: 25px 0;
+  width: 100%;
+  border-bottom: .5px solid rgba(51, 51, 51,.2);
+  display: flex;
+  flex-direction: row;
+}
+
+.latest-uploaded-left {
+  position: relative;
+  display: block;
+  height: 118px;
+  width: 210px;
+}
+
+.latest-uploaded-left img {
+  height: 118px;
+  width: 210px;
+}
+
+.latest-uploaded-left span {
+  right: 2px;
+  bottom: 2px;
+  font-size: 11px;
+  height: 14px;
+}
+
+.latest-uploaded-right {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+.video-box-item h1 {
+  color: #111;
+  font-weight: 500;
+  font-size: 12px;
+  padding-bottom: 10px;
+}
+
+.latest-uploaded-title {
+  width: 100%;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.latest-uploaded-title:hover {
+  text-decoration: underline;
+}
+
+.latest-video-description {
+  width: 60%;
+  font-size: 11px;
+  color: #888;
+  display: block;
+}
+
+.latest-video-description:hover {
+  /*color: var(--video-title);*/
+}
+
+.latest-video-description > p {
+  display: inline;
+}
+
+.latest-video-description > p:hover {
+  text-decoration: underline;
+}
+
+.latest-video-info {
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.latest-video-date::before {
+  content: '\002022';
+  margin: 0 5px;
 }

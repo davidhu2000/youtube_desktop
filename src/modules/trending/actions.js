@@ -8,11 +8,9 @@ export const receiveTrending = videos => ({
 });
 
 export const fetchTrending = () => dispatch => {
-  let baseUrl = `https://www.googleapis.com/youtube/v3/videos`;
-
-  let params = {
+  const params = {
     part: 'snippet,statistics,contentDetails',
-    chart: 'mostPopular',
+    chart: 'mostPopular'
   };
 
   return YoutubeApi.videos(params).then(

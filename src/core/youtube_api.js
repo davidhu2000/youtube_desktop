@@ -1,6 +1,7 @@
+/* global fetch, localStorage */
 import merge from 'lodash/merge';
-import YT_API_KEY from '../../config/api_key';
 import { createUrlParams } from 'helpers';
+import YT_API_KEY from '../../config/api_key';
 
 export const search = params => {
   let baseUrl = 'https://www.googleapis.com/youtube/v3/search';
@@ -64,7 +65,7 @@ export const videosGetRating = params => {
 
   let defaultParams = {
     access_token: localStorage.getItem('google-access-token'),
-    key: YT_API_KEY.clientId,
+    key: YT_API_KEY.clientId
   };
 
   let mergedParams = merge(defaultParams, params);
@@ -92,7 +93,7 @@ export const playlists = params => {
 
   let defaultParams = {
     part: 'snippet',
-    maxResults: 10,
+    maxResults: 25,
     key: YT_API_KEY.publicDataKey
   };
 
@@ -101,6 +102,21 @@ export const playlists = params => {
 
   return fetch(`${baseUrl}?${urlParams}`);
 };
+
+export const playlistItems = params => {
+  let baseUrl = 'https://www.googleapis.com/youtube/v3/playlistItems';
+
+  let defaultParams = {
+    part: 'snippet',
+    maxResults: 50,
+    key: YT_API_KEY.publicDataKey
+  };
+
+  let mergedParams = merge(defaultParams, params);
+  let urlParams = createUrlParams(mergedParams);
+
+  return fetch(`${baseUrl}?${urlParams}`);
+}
 
 export const subscriptions = params => {
   let baseUrl = 'https://www.googleapis.com/youtube/v3/subscriptions';
@@ -115,6 +131,37 @@ export const subscriptions = params => {
   let urlParams = createUrlParams(mergedParams);
 
   return fetch(`${baseUrl}?${urlParams}`);
+};
+
+// TODO: refactor to make it reusable
+export const subscriptionsInsert = snippet => {
+  let accessToken = localStorage.getItem('google-access-token');
+  let baseUrl = `https://www.googleapis.com/youtube/v3/subscriptions?part=snippet&access_token=${accessToken}`;
+  let body = {
+    snippet
+  };
+
+  let headers = new Headers({ "Content-Type": "application/json" });
+
+  return fetch(baseUrl, {
+    headers,
+    body: JSON.stringify(body),
+    method: 'POST'
+  }).catch(
+    err => console.log(err)
+  );
+};
+
+export const subscriptionsDelete = params => {
+  let baseUrl = 'https://www.googleapis.com/youtube/v3/subscriptions';
+
+  let defaultParams = {
+    access_token: localStorage.getItem('google-access-token')
+  };
+
+  let mergedParams = merge(defaultParams, params);
+  let urlParams = createUrlParams(mergedParams);
+  return fetch(`${baseUrl}?${urlParams}`, { method: 'DELETE' });
 };
 
 export const commentThreads = params => {

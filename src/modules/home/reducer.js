@@ -6,14 +6,14 @@ let _defaultState = {};
 
 const homeChannelsReducer = (state = _defaultState, action) => {
   Object.freeze(state);
-  switch(action.type) {
+  switch (action.type) {
     case RECEIVE_CHANNEL_INFO:
       return merge({}, state, {
         [action.channel.id]: action.channel
       });
     case RECEIVE_CHANNEL_VIDEOS:
       return merge({}, state, {
-        [action.videos[0].snippet.channelId]:{
+        [action.videos[0].snippet.channelId]: {
           videos: action.videos
         }
       });

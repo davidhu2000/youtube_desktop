@@ -8,7 +8,7 @@ class VideoBoxItem extends React.Component {
     super(props);
   }
 
-  render () {
+  render() {
     const vid = this.props.vid;
     const { channelId, channelTitle, publishedAt } = vid.snippet;
     const { url } = vid.snippet.thumbnails.medium;
@@ -31,6 +31,10 @@ class VideoBoxItem extends React.Component {
       videoId = vid.contentDetails.upload.videoId;
     }
 
+    if (vid.snippet.resourceId && vid.snippet.resourceId.videoId) {
+      videoId = vid.snippet.resourceId.videoId;
+    }
+
     let duration;
     if(vid.contentDetails && vid.contentDetails.duration) {
       duration = vid.contentDetails.duration;
@@ -38,7 +42,6 @@ class VideoBoxItem extends React.Component {
     }
 
     return (
-
       <div className="video-box-item">
 
         <div className="video-box-item-upper">

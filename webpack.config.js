@@ -3,7 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = env => {
-  const isProduction = plugin => env.prod ? plugin : undefined;
+  const isProduction = plugin => (
+    env.prod ? plugin : undefined
+  );
   const removeEmpty = array => array.filter(p => Boolean(p));
 
   return {
@@ -32,7 +34,7 @@ module.exports = env => {
     },
     devtool: 'source-map',
     resolve: {
-      extensions: ['.js', '.jsx', '*' ],
+      extensions: ['.js', '.jsx', '*'],
       modules: [
         path.resolve(__dirname, 'src'),
         path.resolve(__dirname, 'node_modules')
@@ -56,10 +58,10 @@ module.exports = env => {
       })),
       isProduction(new webpack.optimize.UglifyJsPlugin({
         compress: {
-          'screw_ie8': true,
-          'warnings': false,
-          'unused': true,
-          'dead_code': true
+          screw_ie8: true,
+          warnings: false,
+          unused: true,
+          dead_code: true
         },
         output: {
           comments: false

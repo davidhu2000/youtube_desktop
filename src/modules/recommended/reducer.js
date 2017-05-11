@@ -1,4 +1,3 @@
-import { merge } from 'lodash';
 import { RECEIVE_RECOMMENDED_VIDEOS } from "./actions";
 
 let _defaultState = {
@@ -8,7 +7,7 @@ let _defaultState = {
 const recommendedReducer = (state = _defaultState, action) => {
   Object.freeze(state);
 
-  switch(action.type) {
+  switch (action.type) {
     case RECEIVE_RECOMMENDED_VIDEOS:
       return {
         videos: action.videos

@@ -111,5 +111,5 @@ export const receiveAutoplay = autoplay => ({
 });
 
 export const switchAutoplay = status => dispatch => {
-  dispatch(receiveAutoplay({ autoplay: status }));
+  dispatch(receiveAutoplay(status));
 };

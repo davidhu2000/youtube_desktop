@@ -1,13 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { values } from 'lodash';
+import { propChecker } from 'helpers';
 import SidebarItem from './sidebar_item';
 
 class SubscriptionSection extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   renderSubscriptions() {
     let subs = values(this.props.subscriptions);
     return subs.map(sub => (
@@ -15,8 +12,9 @@ class SubscriptionSection extends React.Component {
         key={Math.random()}
         link={`channels/${sub.resourceId.channelId}`}
         span={sub.title}
-        useImage={true}
-        url={sub.thumbnails.default.url} />
+        useImage
+        url={sub.thumbnails.default.url}
+      />
     ));
   }
 
@@ -31,5 +29,13 @@ class SubscriptionSection extends React.Component {
     );
   }
 }
+
+SubscriptionSection.defaultProps = {
+  subscriptions: {}
+};
+
+SubscriptionSection.propTypes = {
+  subscriptions: propChecker.subscriptions()
+};
 
 export default SubscriptionSection;

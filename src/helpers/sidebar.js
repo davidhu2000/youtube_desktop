@@ -1,8 +1,10 @@
+/* global document, window */
 export const toggleSidebar = () => {
   let sidebar = document.getElementById('sidebar');
   let cover = document.getElementById('sidebar-cover');
+  let channel = document.getElementsByClassName('channels-container')[0];
 
-  if (window.innerWidth <= 1312) {
+  if (window.innerWidth <= 1312 || channel) {
     sidebar.classList.remove('hidden', 'ondocument', 'absolute');
     sidebar.classList.add('fixed');
 
@@ -27,4 +29,4 @@ export const toggleSidebar = () => {
       sidebar.classList.remove('ondocument');
     }
   }
-}; 
+};

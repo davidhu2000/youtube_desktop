@@ -24,10 +24,17 @@ Start up the electron window in a separate terminal:
 
     npm run start
 
-Make or add changes, commit your changes, and push up to Github:
+Make or add changes, commit your changes:
 
     git add -A;
     git commit -m 'Awesome new feature';
+
+Make sure to run the necessary tests and lints and fix any errors:
+
+    npm run lint;
+
+Push up to Github:
+
     git push origin awesome-feature;
 
 [Create a Pull Request][pr], add appropriate label(s).

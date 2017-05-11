@@ -97,8 +97,8 @@ class VideoBox extends React.Component {
       endIndex = numVideos;
     }
 
-    if (endIndex > 15) {
-      endIndex = 15;
+    if (endIndex > this.props.maxNumber) {
+      endIndex = this.props.maxNumber;
       startIndex = endIndex - numVideos;
     }
 
@@ -123,6 +123,7 @@ class VideoBox extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     if (this.props.multiline) {
       let buttonVal = this.state.numRows === 2 ? 'Show more' : 'Show less';
       let height = 38 + 230 * this.state.numRows + 50;
@@ -146,7 +147,7 @@ class VideoBox extends React.Component {
           <div className='video-box-videos'>
             { this.renderVideos() }
             { this.state.startIndex === 0 ? '' : <a className="prev" onClick={() => this.slideVideos(-1)}>&#10094;</a> }
-            { this.state.endIndex  === 15 ? '' : <a className="next" onClick={() => this.slideVideos(1) }>&#10095;</a> }
+            { this.state.endIndex  === this.props.maxNumber ? '' : <a className="next" onClick={() => this.slideVideos(1) }>&#10095;</a> }
           </div>
         </div>
       );
@@ -159,11 +160,13 @@ VideoBox.propTypes = {
   title: PropTypes.string,
   windowWidth: PropTypes.number,
   vids: PropTypes.arrayOf(PropTypes.object),
-  sidebarVisible: PropTypes.bool
+  sidebarVisible: PropTypes.bool,
+  maxNumber: PropTypes.number
 };
 
 VideoBox.defaultProps = {
-  multiline: false
+  multiline: false,
+  maxNumber: 15
 };
 
 export { VideoBox };

@@ -1,4 +1,3 @@
-import { merge } from 'lodash';
 import { RECEIVE_TRENDING } from "./actions";
 
 let _defaultState = {
@@ -9,7 +8,7 @@ let _defaultState = {
 const trendingReducer = (state = _defaultState, action) => {
   Object.freeze(state);
 
-  switch(action.type) {
+  switch (action.type) {
     case RECEIVE_TRENDING:
       return {
         date: Date.now(),
