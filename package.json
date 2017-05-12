@@ -13,7 +13,7 @@
     "prod": "NODE_ENV=production webpack --progress --env.prod",
     "lint": "./node_modules/.bin/eslint . --ext .js,.jsx",
     "lint-file": "./node_modules/.bin/eslint",
-    "test": "echo \"No tests specified\" && exist 0"
+    "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
     "electron": "^1.6.2",
