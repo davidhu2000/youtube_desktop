@@ -1,4 +1,4 @@
-/* global fetch, localStorage */
+/* global fetch, localStorage, Headers */
 import merge from 'lodash/merge';
 import { createUrlParams } from 'helpers';
 import YT_API_KEY from '../../config/api_key';
@@ -116,7 +116,7 @@ export const playlistItems = params => {
   let urlParams = createUrlParams(mergedParams);
 
   return fetch(`${baseUrl}?${urlParams}`);
-}
+};
 
 export const subscriptions = params => {
   let baseUrl = 'https://www.googleapis.com/youtube/v3/subscriptions';

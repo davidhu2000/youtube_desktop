@@ -1,17 +1,16 @@
 import { connect } from 'react-redux';
-import { values } from 'lodash';
-import Playlists from './component';
-
-import { fetchChannelPlaylists,
-         fetchPlaylistItems } from './actions';
 import { receiveSetting } from 'common/setting/actions';
+import Playlists from './component';
+import {
+  fetchChannelPlaylists,
+  fetchPlaylistItems } from './actions';
 
 const mapStateToProps = ({ channelDetails, user, setting, playlists }) => ({
   channelDetails,
   loggedIn: Boolean(user),
   user,
   setting,
-  playlists: playlists
+  playlists
 });
 
 const mapDispatchToProps = dispatch => ({

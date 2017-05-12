@@ -1,3 +1,4 @@
+/* global localStorage */
 import * as YoutubeApi from 'core/youtube_api';
 
 export const RECEIVE_CHANNEL_PLAYLISTS = 'RECEIVE_CHANNEL_PLAYLISTS';

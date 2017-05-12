@@ -6,7 +6,7 @@ let _defaultState = {};
 
 const channelDetailsReducer = (state = _defaultState, action) => {
   Object.freeze(state);
-  switch(action.type) {
+  switch (action.type) {
     case RECEIVE_CHANNEL_DETAIL:
       return merge({}, state, {
         detail: action.detail.items[0]
