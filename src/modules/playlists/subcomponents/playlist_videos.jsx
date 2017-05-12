@@ -14,14 +14,11 @@ class PlaylistVideos extends React.Component {
   }
 
   render() {
-    // console.log(this.props);
-    console.log('rednering')
-
     return (
       <div>
-        {/*<img src={this.props.playlist.snippet.thumbnails.default.url}/>*/}
+        Test
       </div>
-    )
+    );
   }
 }
 

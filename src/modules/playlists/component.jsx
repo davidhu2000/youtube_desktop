@@ -1,5 +1,7 @@
 /* global Promise */
 import React from 'react';
+import PropTypes from 'prop-types';
+import { propChecker } from 'helpers';
 import { PlaylistVideos } from './subcomponents';
 
 class Playlists extends React.Component {
@@ -20,42 +22,33 @@ class Playlists extends React.Component {
     let channelId = this.props.channelDetails.detail.id;
     let playlists = this.props.playlists[channelId];
 
-    // playlists.forEach(playlist => {
-    //   // console.log(playlist)
-    //   dataNeeded.push(this.props.fetchPlaylistItems(playlist.id));
-    // });
+    Object.keys(playlists).forEach(id => {
+      dataNeeded.push(this.props.fetchPlaylistItems(id));
+    });
 
-    for(let playlist of playlists) {
-      dataNeeded.push(this.props.fetchPlaylistItems(playlist.id));
-    }
-
-    Promise.all(dataNeeded).then( res => this.props.receiveSetting({ isLoading: false }));
+    Promise.all(dataNeeded).then(() => this.props.receiveSetting({ isLoading: false }));
   }
 
   renderPlaylist() {
-    let channelId = this.props.channelDetails.detail.id;
     let playlistsList = this.props.playlists.playlistsList || {};
 
-    return Object.keys(playlistsList).map(playlistId => {
-      return (
-        <PlaylistVideos
-          key={playlistId}
-          playlistId={playlistId}
-          playlistItems={playlistsList[playlistId]} 
-        />
-      );
-    });
+    return Object.keys(playlistsList).map(playlistId => (
+      <PlaylistVideos
+        key={playlistId}
+        playlistId={playlistId}
+        playlistItems={playlistsList[playlistId]}
+      />
+    ));
   }
 
   render() {
-    let channelId = this.props.channelDetails.detail.id;
-    let playlists = this.props.playlists[channelId];
+    // let channelId = this.props.channelDetails.detail.id;
+    // let playlists = this.props.playlists[channelId];
 
     if (this.props.setting.isLoading) {
       return (
-        <div>       
-        </div>
-      );    
+        <div />
+      );
     } else {
       return (
         <div>
@@ -65,5 +58,14 @@ class Playlists extends React.Component {
     }
   }
 }
+
+// TODO: update type checks for channelDetails and playlists
+Playlists.propTypes = {
+  receiveSetting: PropTypes.func.isRequired,
+  fetchPlaylistItems: PropTypes.func.isRequired,
+  setting: propChecker.setting().isRequired,
+  channelDetails: PropTypes.shape().isRequired,
+  playlists: PropTypes.shape().isRequired
+};
 
 export default Playlists;
