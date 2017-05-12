@@ -1,4 +1,4 @@
-/* global Promise */
+/* global Promise, document, localStorage, window */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from 'core/store';
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // fetch for new access token before the current expires.
     setInterval(refreshToken, 3400000);
 
-    ReactDOM.render(<Root store={store}/>, root);
+    ReactDOM.render(<Root store={store} />, root);
     window.store = store;
     window.s = store.getState;
   });

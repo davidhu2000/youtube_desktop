@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
-
 import { receiveSetting } from 'common/setting/actions';
+
 import Subscriptions from './component';
-import { fetchSubscriptions,
-         fetchSubscriptionUploads } from './actions';
+import { fetchSubscriptionUploads } from './actions';
 
 const mapStateToProps = ({ setting, subscriptions, user }) => ({
   subscriptions,
@@ -13,7 +12,6 @@ const mapStateToProps = ({ setting, subscriptions, user }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchSubscriptions: channelId => dispatch(fetchSubscriptions(channelId)),
   fetchSubscriptionUploads: id => dispatch(fetchSubscriptionUploads(id)),
   receiveSetting: setting => dispatch(receiveSetting(setting))
 });
