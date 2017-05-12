@@ -38,8 +38,15 @@ TrendingIndex.propTypes = {
   trending: PropTypes.shape({
     date: PropTypes.number,
     videos: PropTypes.arrayOf(PropTypes.object)
-  }).isRequired,
+  }),
   setting: propChecker.setting().isRequired
+};
+
+TrendingIndex.defaultProps = {
+  trending: {
+    date: '',
+    videos: []
+  }
 };
 
 export default withRouter(TrendingIndex);

@@ -86,8 +86,12 @@ Subscriptions.propTypes = {
   fetchSubscriptionUploads: PropTypes.func.isRequired,
   receiveSetting: PropTypes.func.isRequired,
   loggedIn: PropTypes.bool.isRequired,
-  subscriptions: propChecker.subscriptions().isRequired,
+  subscriptions: propChecker.subscriptions(),
   setting: propChecker.setting().isRequired
+};
+
+Subscriptions.defaultProps = {
+  subscriptions: {}
 };
 
 export default withRouter(Subscriptions);

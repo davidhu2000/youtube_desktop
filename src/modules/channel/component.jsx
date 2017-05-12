@@ -1,7 +1,7 @@
 /* global Promise */
 import React from 'react';
 import { values } from 'lodash';
-import PropTypes from 'propt-types';
+import PropTypes from 'prop-types';
 import { formatNumber, propChecker } from 'helpers';
 import { SubscribeButton, VideoBox } from 'common/components';
 
@@ -182,15 +182,16 @@ Channel.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   user: PropTypes.shape(),
   setting: propChecker.setting().isRequired,
-  subscriptions: propChecker.subscriptions().isRequired,
-  playlists: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  subscriptions: propChecker.subscriptions(),
+  playlists: PropTypes.shape().isRequired,
   params: PropTypes.shape({
     channelId: PropTypes.string
   }).isRequired
 };
 
 Channel.defaultProps = {
-  user: {}
+  user: {},
+  subscriptions: {}
 };
 
 export default Channel;

@@ -58,7 +58,7 @@ class VideoList extends React.Component {
           itemWidth={this.state[size].itemWidth}
           maxTitleLength={this.state[size].maxTitleLength}
           maxDescriptionLength={this.state[size].maxDescriptionLength}
-          maxChannelTitleLength={this.state[size].maxChannelTitleLength} 
+          maxChannelTitleLength={this.state[size].maxChannelTitleLength}
         />
       ));
     }
@@ -87,13 +87,16 @@ class VideoList extends React.Component {
 
 VideoList.propTypes = {
   shouldShowVolume: PropTypes.bool,
-  videos: PropTypes.arrayOf(PropTypes.object).isRequired,
-  windowWidth: PropTypes.number.isRequired,
-  volume: PropTypes.number.isRequired
+  videos: PropTypes.arrayOf(PropTypes.object),
+  windowWidth: PropTypes.number,
+  volume: PropTypes.number
 };
 
 VideoList.defaultProps = {
-  shouldShowVolume: true
+  shouldShowVolume: true,
+  volume: null,
+  videos: [],
+  windowWidth: window.innerWidth
 };
 
 export { VideoList };

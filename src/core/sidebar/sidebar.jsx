@@ -157,12 +157,16 @@ class Sidebar extends React.Component {
 }
 
 Sidebar.propTypes = {
-  loggedIn: PropTypes.bool.isRequired.isRequired,
-  subscriptions: propChecker.subscriptions().isRequired,
+  loggedIn: PropTypes.bool.isRequired,
+  subscriptions: propChecker.subscriptions(),
   setting: propChecker.setting().isRequired,
   params: PropTypes.shape({
     channelId: PropTypes.string
   }).isRequired
+};
+
+Sidebar.defaultProps = {
+  subscriptions: []
 };
 
 export default withRouter(Sidebar);

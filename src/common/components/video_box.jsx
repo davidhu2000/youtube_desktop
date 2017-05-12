@@ -30,13 +30,13 @@ class VideoBox extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.sidebarVisible !== prevProps.sidebarVisible) {
-      let newState = this.calcBoxWidthAndNumVideos();
-      this.setState(newState);
-      this.updateEndIndex();
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.sidebarVisible !== prevProps.sidebarVisible) {
+  //     let newState = this.calcBoxWidthAndNumVideos();
+  //     this.setState(newState);
+  //     this.updateEndIndex();
+  //   }
+  // }
 
   calcBoxWidthAndNumVideos() {
     let numVideosPerRow = 2;

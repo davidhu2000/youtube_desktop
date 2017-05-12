@@ -87,7 +87,7 @@ class ChannelVideos extends React.Component {
 }
 
 ChannelVideos.propTypes = {
-  videos: PropTypes.shape().isRequired
+  videos: PropTypes.arrayOf(PropTypes.shape()).isRequired
 };
 
 export { ChannelVideos };
