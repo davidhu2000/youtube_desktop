@@ -12,7 +12,8 @@
     "dev": "NODE_ENV=development webpack --env.dev",
     "prod": "NODE_ENV=production webpack --progress --env.prod",
     "lint": "./node_modules/.bin/eslint .",
-    "lint-file": "./node_modules/.bin/eslint"
+    "lint-file": "./node_modules/.bin/eslint",
+    "test": "echo \"No tests specified\" && exist 0"
   },
   "dependencies": {
     "electron": "^1.6.2",
