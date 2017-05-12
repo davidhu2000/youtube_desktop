@@ -33,6 +33,7 @@ module.exports = {
         "consistent-return": "off",
         "no-else-return": "off",
         "class-methods-use-this": "off",
-        "jsx-a11y/no-static-element-interactions": "off"
+        "jsx-a11y/no-static-element-interactions": "off",
+        "react/no-danger": "off"
     }
 };
