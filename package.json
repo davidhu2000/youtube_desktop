@@ -17,7 +17,7 @@
     "prod": "NODE_ENV=production webpack --progress --env.prod",
     "lint": "./node_modules/.bin/eslint . --ext .js,.jsx",
     "lint-file": "./node_modules/.bin/eslint",
-    "test": "$npm_execpath run lint"
+    "test": "npm run lint"
   },
   "dependencies": {
     "electron": "^1.6.2",
