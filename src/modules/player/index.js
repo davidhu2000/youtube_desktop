@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import PlayerDetails from './component';
-
 import { videosRate } from 'common/interaction/actions';
 import { receiveSetting } from 'common/setting/actions';
+
+import PlayerDetails from './component';
 import { fetchDetails,
          fetchRelated,
          fetchComments,

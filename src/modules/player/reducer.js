@@ -1,9 +1,9 @@
+import merge from 'lodash/merge';
 import { RECEIVE_COMMENTS,
          RECEIVE_DETAILS,
          RECEIVE_VIDEO_RATING,
          RECEIVE_RELATED,
          RECEIVE_AUTOPLAY } from './actions';
-import merge from 'lodash/merge';
 
 let _defaultState = {
   comments: [],
@@ -13,10 +13,10 @@ let _defaultState = {
   autoplay: true
 };
 
-const playerDetailsReducer = ( state = _defaultState, action ) => {
+const playerDetailsReducer = (state = _defaultState, action) => {
   Object.freeze(state);
 
-  switch(action.type) {
+  switch (action.type) {
     case RECEIVE_COMMENTS:
       return merge({}, state, {
         comments: action.comments

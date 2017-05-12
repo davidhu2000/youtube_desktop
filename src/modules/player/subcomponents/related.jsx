@@ -5,22 +5,25 @@ import RelatedListItem from './related_list_item';
 class Related extends React.Component {
   constructor(props) {
     super(props);
+    this.updateAutoplay = this.updateAutoplay.bind(this);
+  }
+
+  updateAutoplay() {
+    this.props.switchAutoplay(!this.props.autoplay);
   }
 
   renderRelatedVideos() {
     if (this.props.related.length !== 0) {
       let vids = this.props.related;
-      return vids.map(vid => <RelatedListItem key={vid.etag} vid={vid} />)
+      return vids.map(vid => (
+        <RelatedListItem key={vid.etag} vid={vid} />
+      ));
     }
-  }
-
-  updateAutoplay(e) {
-    this.props.autoplay ? this.props.switchAutoplay(false) : this.props.switchAutoplay(true)
   }
 
   render() {
     return (
-      <div className="related-container" style={{width: this.props.width}}>
+      <div className="related-container" style={{ width: this.props.width }}>
         <div className="related-title">
           <h2>Up next</h2>
 
@@ -30,9 +33,10 @@ class Related extends React.Component {
               type="checkbox"
               id="checked"
               checked={this.props.autoplay}
-              onChange={this.updateAutoplay.bind(this)}
-              className="cbx hidden"/>
-            <label htmlFor="checked" className="lbl"></label>
+              onChange={this.updateAutoplay}
+              className="cbx hidden"
+            />
+            <label htmlFor="checked" className="lbl" />
           </div>
         </div>
 
@@ -46,8 +50,9 @@ class Related extends React.Component {
 
 Related.propTypes = {
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  related: PropTypes.arrayOf(PropTypes.object),
-  switchAutoplay: PropTypes.func
+  related: PropTypes.arrayOf(PropTypes.object).isRequired,
+  switchAutoplay: PropTypes.func.isRequired,
+  autoplay: PropTypes.bool.isRequired
 };
 
 Related.defaultProps = {

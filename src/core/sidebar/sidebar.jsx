@@ -58,7 +58,7 @@ class Sidebar extends React.Component {
 
   handleClick(e) {
     let narrowWindow = window.innerWidth < 1312;
-    let notOnChannelPage =  !!this.props.params.channelId;
+    let notOnChannelPage = !!this.props.params.channelId;
     let correctClassName = e.target.className;
     let correctTags = ['I', 'SPAN', 'IMG', 'A'].includes(e.target.tagName);
 
@@ -135,7 +135,9 @@ class Sidebar extends React.Component {
 
           </div>
 
-          <SubscriptionSection subscriptions={this.props.subscriptions} />
+          { this.props.loggedIn ? (
+            <SubscriptionSection subscriptions={this.props.subscriptions} />
+          ) : null }
 
           <ContributorSection />
 
@@ -157,7 +159,14 @@ class Sidebar extends React.Component {
 Sidebar.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   subscriptions: propChecker.subscriptions(),
-  setting: propChecker.setting()
+  setting: propChecker.setting().isRequired,
+  params: PropTypes.shape({
+    channelId: PropTypes.string
+  }).isRequired
+};
+
+Sidebar.defaultProps = {
+  subscriptions: []
 };
 
 export default withRouter(Sidebar);

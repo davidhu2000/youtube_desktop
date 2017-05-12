@@ -28,7 +28,7 @@ class SearchIndex extends React.Component {
     main.removeEventListener('scroll', this.handleScroll);
   }
 
-  handleScroll(e) {
+  handleScroll() {
     let search = document.getElementById('search-container');
     let main = document.getElementsByClassName('main-content')[0];
     if (window.innerHeight + main.scrollTop > search.clientHeight - 50) {
@@ -69,26 +69,25 @@ class SearchIndex extends React.Component {
             volume={volume}
             nextAction={nextAction}
             videos={videos}
-            windowWidth={this.props.setting.windowWidth} 
+            windowWidth={this.props.setting.windowWidth}
           />
         </div>
       );
     } else {
       return (
-        <div></div>
+        <div />
       );
     }
   }
 }
 
 SearchIndex.propTypes = {
-  receiveQuery: PropTypes.func.isRequired,
   searchVideos: PropTypes.func.isRequired,
   clearVideos: PropTypes.func.isRequired,
   receiveSetting: PropTypes.func.isRequired,
-  query: PropTypes.string,
-  searchResult: propChecker.searchResult(),
-  setting: propChecker.setting()
+  query: PropTypes.string.isRequired,
+  searchResult: propChecker.searchResult().isRequired,
+  setting: propChecker.setting().isRequired
 };
 
 export default withRouter(SearchIndex);

@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
-import Channel from './component';
+import { fetchSubscriptions } from 'modules/subscriptions/actions';
+import { fetchChannelPlaylists, fetchPlaylistItems } from 'modules/playlists/actions';
+import { receiveSetting } from 'common/setting/actions';
 
+import Channel from './component';
 import { fetchChannelDetails,
          fetchChannelVideos,
          insertSubscription,
          deleteSubscription } from './actions';
-import { fetchSubscriptions } from 'modules/subscriptions/actions';
-import { fetchChannelPlaylists, fetchPlaylistItems } from 'modules/playlists/actions';
-import { receiveSetting } from 'common/setting/actions';
 
 const mapStateToProps = ({ channelDetails, user, setting, subscriptions, playlists }) => ({
   channelDetails,

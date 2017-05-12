@@ -41,12 +41,12 @@ export const fetchDetails = videoId => dispatch => {
   ).then(responseJson => {
     let details = responseJson.items[0];
     let channelId = responseJson.items[0].snippet.channelId;
-    let params = {
+    let newParams = {
       id: channelId,
       part: 'statistics,snippet'
     };
 
-    return YoutubeApi.channels(params).then(
+    return YoutubeApi.channels(newParams).then(
       subsResponse => subsResponse.json()
     ).then(subsResponseJson => {
       details.subs = subsResponseJson.items[0].statistics.subscriberCount;
@@ -69,7 +69,7 @@ export const receiveVideoRating = rating => ({
 
 export const fetchVideoRating = videoId => dispatch => {
   let params = {
-    id: videoId,
+    id: videoId
   };
 
   return YoutubeApi.videosGetRating(params).then(
@@ -91,7 +91,7 @@ export const fetchRelated = videoId => dispatch => {
     part: 'snippet',
     type: 'video',
     maxResults: 10,
-    relatedToVideoId: videoId,
+    relatedToVideoId: videoId
   };
 
   return YoutubeApi.search(params).then(

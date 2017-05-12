@@ -47,10 +47,12 @@ class SidebarItem extends React.Component {
 }
 
 SidebarItem.defaultProps = {
-  useImage: false
+  useImage: false,
+  url: '',
+  icon: ''
 };
 
-SidebarItem.propsTypes = {
+SidebarItem.propTypes = {
   useImage: PropTypes.bool.isRequired,
   url: PropTypes.string,
   icon: PropTypes.string,

@@ -1,9 +1,12 @@
-/* global promise */
-import React         from 'react';
-import PropTypes     from 'prop-types';
+/* global promise, window, YT, document */
+import React from 'react';
+import PropTypes from 'prop-types';
 import { hashHistory } from 'react-router';
 
 class Player extends React.Component {
+  static onPlayerReady(event) {
+    event.target.playVideo();
+  }
 
   constructor(props) {
     super(props);
@@ -13,9 +16,9 @@ class Player extends React.Component {
     this.nextVideoId = this.props.nextVideoId;
   }
 
-  //Youtube iframe API loads asynchronously, so we use a Promise here to load it
-  //so the component doesn't break
-  componentDidMount () {
+  // Youtube iframe API loads asynchronously, so we use a Promise here to load it
+  // so the component doesn't break
+  componentDidMount() {
     if (window.YT) {
       this.player = new YT.Player('video-player', {
         events: {
@@ -31,7 +34,7 @@ class Player extends React.Component {
           const firstScriptTag = document.getElementsByTagName('script')[0];
           firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
           window.onYouTubeIframeAPIReady = () => resolve(window.YT);
-        })
+        });
       }
       this.loadYT.then(YT => {
         this.player = new YT.Player('video-player', {
@@ -40,12 +43,8 @@ class Player extends React.Component {
             onStateChange: this.onPlayerStateChange.bind(this)
           }
         });
-      })
+      });
     }
-  }
-
-  onPlayerReady(event) {
-    event.target.playVideo();
   }
 
   onPlayerStateChange(event) {
@@ -66,16 +65,19 @@ class Player extends React.Component {
           height={height}
           src={`https://www.youtube.com/embed/${this.props.videoId}?enablejsapi=1&autoplay=1&rel=0`}
           frameBorder="0"
-          allowFullScreen></iframe>
+          allowFullScreen
+        />
       </div>
     );
   }
 }
 
 Player.propTypes = {
-  videoId: PropTypes.string,
-  height: PropTypes.number,
-  width: PropTypes.number
+  videoId: PropTypes.string.isRequired,
+  height: PropTypes.number.isRequired,
+  width: PropTypes.number.isRequired,
+  nextVideoId: PropTypes.string.isRequired,
+  autoplay: PropTypes.bool.isRequired
 };
 
 export { Player };

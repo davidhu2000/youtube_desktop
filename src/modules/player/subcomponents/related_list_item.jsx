@@ -14,9 +14,9 @@ class RelatedListItem extends React.Component {
     hashHistory.push(`watch/${videoId}`);
   }
 
-  render () {
+  render() {
     const vid = this.props.vid;
-    const { description, title, channelTitle, publishedAt } = vid.snippet;
+    const { title, channelTitle } = vid.snippet;
     const { url } = vid.snippet.thumbnails.medium;
     const { videoId } = vid.id;
 
@@ -27,8 +27,8 @@ class RelatedListItem extends React.Component {
         </Link>
 
         <div className="related-item-info">
-            <h1>{title}</h1>
-            <p>{channelTitle}</p>
+          <h1>{title}</h1>
+          <p>{channelTitle}</p>
         </div>
       </div>
     );
@@ -36,7 +36,7 @@ class RelatedListItem extends React.Component {
 }
 
 RelatedListItem.propTypes = {
-  vid: PropTypes.object.isRequired
+  vid: PropTypes.shape().isRequired
 };
 
 export default RelatedListItem;

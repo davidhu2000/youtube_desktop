@@ -1,27 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router';
+import PropTypes from 'prop-types';
 import { formatNumber, parseDuration, shortenString, timeFromNow } from 'helpers';
 
 class ChannelVideos extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      videos: []
-    };
-  }
-
-  componentDidMount() {
-    let channelVideos = this.props.videos;
     let videos = [];
 
-    if (this.props.videos) {
-      Object.keys(channelVideos).map(video => {
-        videos.push(channelVideos[video])
-      });
+    if (props.videos) {
+      Object.keys(props.videos).map(video => videos.push(props.videos[video]));
     }
 
-    this.setState({ videos });
+    this.state = {
+      videos
+    };
   }
 
   // TODO: parsing description method for longer description.
@@ -30,7 +24,7 @@ class ChannelVideos extends React.Component {
     let vid = this.state.videos[0];
 
     if (vid) {
-      const { channelId, description, publishedAt } = vid.snippet;
+      const { description, publishedAt } = vid.snippet;
       const { url } = vid.snippet.thumbnails.medium;
       const title = shortenString(vid.snippet.title, 60);
 
@@ -52,7 +46,7 @@ class ChannelVideos extends React.Component {
       }
 
       let duration;
-      if(vid.contentDetails && vid.contentDetails.duration) {
+      if (vid.contentDetails && vid.contentDetails.duration) {
         duration = vid.contentDetails.duration;
         duration = parseDuration(duration);
       }
@@ -79,7 +73,7 @@ class ChannelVideos extends React.Component {
             </div>
           </div>
         </div>
-      )
+      );
     }
   }
 
@@ -91,5 +85,9 @@ class ChannelVideos extends React.Component {
     );
   }
 }
+
+ChannelVideos.propTypes = {
+  videos: PropTypes.arrayOf(PropTypes.shape()).isRequired
+};
 
 export { ChannelVideos };

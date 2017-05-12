@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { hashHistory } from 'react-router';
 
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state ={
+    this.state = {
       query: ''
     };
 
@@ -27,7 +26,7 @@ class SearchBar extends React.Component {
   }
 
   handleKeyPress(e) {
-    if(e.key === 'Enter') {
+    if (e.key === 'Enter') {
       this.submit(e);
     }
   }
@@ -38,10 +37,11 @@ class SearchBar extends React.Component {
         <input
           type='text'
           placeholder="Search"
-          onChange={ this.update }
-          onKeyPress={ this.handleKeyPress } />
+          onChange={this.update}
+          onKeyPress={this.handleKeyPress}
+        />
 
-        <button type='submit' onClick={ this.submit } >
+        <button type='submit' onClick={this.submit} >
           <i className="material-icons">search</i>
         </button>
       </div>

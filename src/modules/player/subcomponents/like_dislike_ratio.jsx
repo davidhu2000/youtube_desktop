@@ -9,14 +9,14 @@ class LikeDislikeRatio extends React.Component {
   render() {
     return (
       <div className='like-dislike-ratio-background'>
-        <div className='like-dislike-ratio' style={{width: this.getPercent()}}></div>
+        <div className='like-dislike-ratio' style={{ width: this.getPercent() }} />
       </div>
     );
   }
 }
 
 LikeDislikeRatio.propTypes = {
-  ratio: PropTypes.number
+  ratio: PropTypes.number.isRequired
 };
 
 export default LikeDislikeRatio;

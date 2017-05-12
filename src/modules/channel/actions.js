@@ -32,7 +32,7 @@ export const receiveChannelVideos = videos => ({
 
 export const fetchChannelVideos = channelId => dispatch => {
   let params = {
-    part:'snippet',
+    part: 'snippet',
     channelId,
     order: 'date',
     maxResults: 25
@@ -42,17 +42,17 @@ export const fetchChannelVideos = channelId => dispatch => {
     res => res.json()
   ).then(
     videos => {
-      let params = {
+      let newParams = {
         part: 'statistics,contentDetails',
         id: videos.items.map(item => item.id.videoId).join(',')
       };
 
-      return YoutubeApi.videos(params).then(
+      return YoutubeApi.videos(newParams).then(
         res => res.json()
-      ).then( stat => {
+      ).then(stat => {
         for (let i = 0; i < stat.items.length; i++) {
-          videos.items[i]['statistics'] = stat.items[i].statistics;
-          videos.items[i]['contentDetails'] = stat.items[i].contentDetails;
+          videos.items[i].statistics = stat.items[i].statistics;
+          videos.items[i].contentDetails = stat.items[i].contentDetails;
         }
 
         return dispatch(receiveChannelVideos(videos.items));
@@ -79,7 +79,7 @@ export const insertSubscription = channelId => dispatch => {
   };
 
   return YoutubeApi.subscriptionsInsert(snippet).then(
-    res => {
+    () => {
       dispatch(addSubscription(channelId));
     }
   ).catch(

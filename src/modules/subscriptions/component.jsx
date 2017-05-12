@@ -6,6 +6,11 @@ import { propChecker } from 'helpers';
 import { VideoList } from 'common/components';
 
 class Subscriptions extends React.Component {
+
+  static _redirect() {
+    hashHistory.replace('/home');
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -14,7 +19,7 @@ class Subscriptions extends React.Component {
   }
 
   componentDidMount() {
-    if(this.props.loggedIn) {
+    if (this.props.loggedIn) {
       this.getUploads(this.props.subscriptions);
     } else {
       this._redirect();
@@ -42,22 +47,18 @@ class Subscriptions extends React.Component {
 
     Promise.all(dataNeeded).then(() => this.props.receiveSetting({ isLoading: false }));
   }
-  
-  _redirect() {
-    hashHistory.replace('/home');
-  }
 
   render() {
     let subs = this.props.subscriptions || [];
     let keys = Object.keys(subs);
 
-    if(!this.props.setting.isLoading) {
+    if (!this.props.setting.isLoading) {
       let videos = [];
-      keys.forEach( key => {
+      keys.forEach(key => {
         videos.push(...subs[key].videos);
       });
 
-      videos = videos.sort( (v1, v2) => {
+      videos = videos.sort((v1, v2) => {
         let date1 = new Date(v1.snippet.publishedAt);
         let date2 = new Date(v2.snippet.publishedAt);
         return date2 - date1;
@@ -69,25 +70,28 @@ class Subscriptions extends React.Component {
             windowWidth={this.props.setting.windowWidth}
             shouldShowPageNumber={false}
             shouldShowVolume={false}
-            videos={videos} />
+            videos={videos}
+          />
         </div>
       );
     } else {
       return (
-        <div className='main-content'></div>
+        <div className='main-content' />
       );
     }
-
   }
 }
 
 Subscriptions.propTypes = {
-  fetchSubscriptions: PropTypes.func.isRequired,
   fetchSubscriptionUploads: PropTypes.func.isRequired,
   receiveSetting: PropTypes.func.isRequired,
   loggedIn: PropTypes.bool.isRequired,
   subscriptions: propChecker.subscriptions(),
-  setting: propChecker.setting()
+  setting: propChecker.setting().isRequired
+};
+
+Subscriptions.defaultProps = {
+  subscriptions: {}
 };
 
 export default withRouter(Subscriptions);

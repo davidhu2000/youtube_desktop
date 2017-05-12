@@ -9,7 +9,7 @@ let _defaultState = {
 
 const playlistsReducer = (state = _defaultState, action) => {
   Object.freeze(state);
-  switch(action.type) {
+  switch (action.type) {
     case RECEIVE_CHANNEL_PLAYLISTS:
       return merge({}, {
         channelId: action.list.channelId,
@@ -18,7 +18,7 @@ const playlistsReducer = (state = _defaultState, action) => {
     case RECEIVE_PLAYLIST_ITEMS:
       return merge({}, state, {
         list: {
-          [action.list.playlistId]: { 
+          [action.list.playlistId]: {
             items: action.list.playlistItems
           }
         }

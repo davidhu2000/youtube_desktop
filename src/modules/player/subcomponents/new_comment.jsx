@@ -20,6 +20,8 @@ class NewComment extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    let videoId = this.props.videoId;
+    console.log(videoId);
   }
 
   render() {
@@ -36,7 +38,8 @@ class NewComment extends React.Component {
             type="text"
             placeholder="Add a public comment..."
             onChange={this.handleChange}
-            className="new-comment-input" />
+            className="new-comment-input"
+          />
         </form>
       </div>
     );
@@ -44,7 +47,8 @@ class NewComment extends React.Component {
 }
 
 NewComment.propTypes = {
-  videoId: PropTypes.string
-}
+  videoId: PropTypes.string.isRequired,
+  user: PropTypes.shape().isRequired
+};
 
 export default NewComment;

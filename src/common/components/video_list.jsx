@@ -1,26 +1,28 @@
+/* global window */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { formatNumber } from 'helpers';
-import { VideoListItem, Spinner }  from '../components';
+
+import { VideoListItem, Spinner } from '../components';
 
 class VideoList extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      "small": {
+      small: {
         maxTitleLength: 34,
         maxDescriptionLength: 40,
         maxChannelTitleLength: 15,
         itemWidth: 430
       },
-      "medium": {
+      medium: {
         maxTitleLength: 80,
         maxDescriptionLength: 123,
         maxChannelTitleLength: 200,
         itemWidth: 642
       },
-      "large": {
+      large: {
         maxTitleLength: 150,
         maxDescriptionLength: 180,
         maxChannelTitleLength: 200,
@@ -32,31 +34,33 @@ class VideoList extends React.Component {
   }
 
   determineListItemSize() {
-    let width = window.innerWidth;
+    let width = this.props.windowWidth;
+    // let width = window.innerWidth;
     switch (true) {
-      case (width < 660 ):
+      case (width < 660):
         return 'small';
-      case (width >= 660 && width <875):
+      case (width >= 660 && width < 875):
         return 'medium';
-      case (width >= 865):
+      default:
         return 'large';
     }
   }
 
   addSearchResults() {
-     if (this.props.videos) {
-       let size = this.determineListItemSize();
-       let vids = this.props.videos;
+    if (this.props.videos) {
+      let size = this.determineListItemSize();
+      let vids = this.props.videos;
 
-       return vids.map(vid => (
-         <VideoListItem
-           key={Math.random()}
-           vid={vid}
-           itemWidth={this.state[size].itemWidth}
-           maxTitleLength={this.state[size].maxTitleLength}
-           maxDescriptionLength={this.state[size].maxDescriptionLength}
-           maxChannelTitleLength={this.state[size].maxChannelTitleLength} />)
-       );
+      return vids.map(vid => (
+        <VideoListItem
+          key={Math.random()}
+          vid={vid}
+          itemWidth={this.state[size].itemWidth}
+          maxTitleLength={this.state[size].maxTitleLength}
+          maxDescriptionLength={this.state[size].maxDescriptionLength}
+          maxChannelTitleLength={this.state[size].maxChannelTitleLength}
+        />
+      ));
     }
   }
 
@@ -82,15 +86,17 @@ class VideoList extends React.Component {
 }
 
 VideoList.propTypes = {
-  showShowPageNumber: PropTypes.bool,
-  showShowVolume: PropTypes.bool,
+  shouldShowVolume: PropTypes.bool,
   videos: PropTypes.arrayOf(PropTypes.object),
-  windowWidth: PropTypes.number
+  windowWidth: PropTypes.number,
+  volume: PropTypes.number
 };
 
 VideoList.defaultProps = {
-  shouldShowPageNumber: true,
-  shouldShowVolume: true
+  shouldShowVolume: true,
+  volume: null,
+  videos: [],
+  windowWidth: window.innerWidth
 };
 
 export { VideoList };

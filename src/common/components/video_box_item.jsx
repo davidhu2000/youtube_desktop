@@ -3,46 +3,42 @@ import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 import { formatNumber, parseDuration, shortenString, timeFromNow } from 'helpers';
 
-class VideoBoxItem extends React.Component {
-  constructor(props) {
-    super(props);
+const VideoBoxItem = ({ vid }) => {
+  const { channelId, channelTitle, publishedAt } = vid.snippet;
+  const { url } = vid.snippet.thumbnails.medium;
+  const title = shortenString(vid.snippet.title, 60);
+
+  let viewCount = '------';
+  if (vid.statistics) {
+    viewCount = vid.statistics.viewCount;
+  }
+  viewCount = viewCount || '------';
+
+  let videoId;
+  if (typeof vid.id === 'string') {
+    videoId = vid.id;
+  } else {
+    videoId = vid.id.videoId;
   }
 
-  render() {
-    const vid = this.props.vid;
-    const { channelId, channelTitle, publishedAt } = vid.snippet;
-    const { url } = vid.snippet.thumbnails.medium;
-    const title = shortenString(vid.snippet.title, 60);
+  if (vid.contentDetails && vid.contentDetails.upload) {
+    videoId = vid.contentDetails.upload.videoId;
+  }
 
-    let viewCount = '------';
-    if (vid.statistics) {
-      viewCount = vid.statistics.viewCount;
-    }
-    viewCount = viewCount || '------';
+  if (vid.snippet.resourceId && vid.snippet.resourceId.videoId) {
+    videoId = vid.snippet.resourceId.videoId;
+  }
 
-    let videoId;
-    if (typeof vid.id === 'string') {
-      videoId = vid.id;
-    } else {
-      videoId = vid.id.videoId;
-    }
+  let duration;
+  if (vid.contentDetails && vid.contentDetails.duration) {
+    duration = vid.contentDetails.duration;
+    duration = parseDuration(duration);
+  }
 
-    if (vid.contentDetails && vid.contentDetails.upload) {
-      videoId = vid.contentDetails.upload.videoId;
-    }
+  return (
+    <div className="video-box-item">
 
-    if (vid.snippet.resourceId && vid.snippet.resourceId.videoId) {
-      videoId = vid.snippet.resourceId.videoId;
-    }
-
-    let duration;
-    if(vid.contentDetails && vid.contentDetails.duration) {
-      duration = vid.contentDetails.duration;
-      duration = parseDuration(duration);
-    }
-
-    return (
-      <div className="video-box-item">
+      <div className="video-box-item-upper">
         <Link to={`watch/${videoId}`} className="video-box-item-image">
           <img src={url} />
           <span className='duration-span'>{ duration }</span>
@@ -51,7 +47,9 @@ class VideoBoxItem extends React.Component {
         <Link to={`watch/${videoId}`} className="video-box-item-title">
           <h1 className='video-title'>{title}</h1>
         </Link>
+      </div>
 
+      <div className="video-box-item-lower">
         <Link to={`channels/${channelId}`} className='video-box-item-channel'>
           <p className='basic-text'>{channelTitle}</p>
         </Link>
@@ -61,12 +59,14 @@ class VideoBoxItem extends React.Component {
           <span className='video-box-item-date'>{ timeFromNow(publishedAt) } </span>
         </div>
       </div>
-    );
-  }
-}
+
+    </div>
+  );
+};
+
 
 VideoBoxItem.propTypes = {
-  vid: PropTypes.object
+  vid: PropTypes.shape().isRequired
 };
 
 export { VideoBoxItem };
