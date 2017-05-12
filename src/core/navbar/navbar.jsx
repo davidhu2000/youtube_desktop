@@ -74,11 +74,15 @@ class Navbar extends React.Component {
 }
 
 Navbar.propTypes = {
-  user: PropTypes.shape().isRequired,
+  user: PropTypes.shape(),
   loggedIn: PropTypes.bool.isRequired,
   receiveQuery: PropTypes.func.isRequired,
   loginUser: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired
+};
+
+Navbar.defaultProps = {
+  user: {}
 };
 
 export default withRouter(Navbar);

@@ -119,7 +119,11 @@ App.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   receiveSetting: PropTypes.func.isRequired,
   fetchSubscriptions: PropTypes.func.isRequired,
-  channelId: PropTypes.string.isRequired
+  channelId: PropTypes.string
+};
+
+App.defaultProps = {
+  channelId: null
 };
 
 const mapStateToProps = ({ setting, searchResult, user }) => ({
