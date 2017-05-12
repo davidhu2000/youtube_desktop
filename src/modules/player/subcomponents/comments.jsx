@@ -4,10 +4,6 @@ import CommentsItem from './comments_item';
 import NewComment from './new_comment';
 
 class Comments extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   renderComments() {
     let comments = this.props.comments;
 
@@ -37,7 +33,7 @@ class Comments extends React.Component {
           {this.renderNumComments()}
           <p>Comments</p>
         </div>
-        { this.props.loggedIn ? <NewComment videoId={this.props.videoId} user={user}/> : null }
+        { this.props.loggedIn ? <NewComment videoId={this.props.videoId} user={user} /> : null }
         <div className="comments-list">
           {this.renderComments()}
         </div>
@@ -47,7 +43,14 @@ class Comments extends React.Component {
 }
 
 Comments.propTypes = {
-  videoId: PropTypes.string
+  videoId: PropTypes.string.isRequired,
+  loggedIn: PropTypes.bool.isRequired,
+  user: PropTypes.shape(),
+  comments: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.shape()), PropTypes.string]).isRequired
+};
+
+Comments.defaultProps = {
+  user: {}
 };
 
 export { Comments };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import PropTypes from 'prop-types';
 import { formatNumber, parseDuration, shortenString, timeFromNow } from 'helpers';
 
 class ChannelVideos extends React.Component {
@@ -16,9 +17,7 @@ class ChannelVideos extends React.Component {
     let videos = [];
 
     if (this.props.videos) {
-      Object.keys(channelVideos).map(video => {
-        videos.push(channelVideos[video])
-      });
+      Object.keys(channelVideos).map(video => videos.push(channelVideos[video]));
     }
 
     this.setState({ videos });
@@ -52,7 +51,7 @@ class ChannelVideos extends React.Component {
       }
 
       let duration;
-      if(vid.contentDetails && vid.contentDetails.duration) {
+      if (vid.contentDetails && vid.contentDetails.duration) {
         duration = vid.contentDetails.duration;
         duration = parseDuration(duration);
       }
@@ -79,7 +78,7 @@ class ChannelVideos extends React.Component {
             </div>
           </div>
         </div>
-      )
+      );
     }
   }
 
@@ -91,5 +90,9 @@ class ChannelVideos extends React.Component {
     );
   }
 }
+
+ChannelVideos.propTypes = {
+  videos: PropTypes.shape().isRequired
+};
 
 export { ChannelVideos };

@@ -36,20 +36,6 @@ class PlayerDetails extends React.Component {
     };
   }
 
-  _getNewVideoInfo(videoId) {
-    let dataNeeded = [];
-
-    dataNeeded.push(this.props.fetchDetails(videoId));
-    dataNeeded.push(this.props.fetchComments(videoId));
-    dataNeeded.push(this.props.fetchRelated(videoId));
-
-    if(this.props.loggedIn) {
-      dataNeeded.push(this.props.fetchVideoRating(videoId));
-    }
-
-    Promise.all(dataNeeded).then( res => this.props.receiveSetting({ isLoading: false }));
-  }
-
   componentDidMount() {
     this.props.receiveSetting({ isLoading: true });
     this._getNewVideoInfo(this.state.videoId);
@@ -64,6 +50,20 @@ class PlayerDetails extends React.Component {
       this._getNewVideoInfo(videoId);
     }
     this.updateHeight(this.props.setting.windowWidth);
+  }
+
+  _getNewVideoInfo(videoId) {
+    let dataNeeded = [];
+
+    dataNeeded.push(this.props.fetchDetails(videoId));
+    dataNeeded.push(this.props.fetchComments(videoId));
+    dataNeeded.push(this.props.fetchRelated(videoId));
+
+    if (this.props.loggedIn) {
+      dataNeeded.push(this.props.fetchVideoRating(videoId));
+    }
+
+    Promise.all(dataNeeded).then(() => this.props.receiveSetting({ isLoading: false }));
   }
 
   updateHeight(width) {
@@ -87,7 +87,8 @@ class PlayerDetails extends React.Component {
           <Related
             related={this.props.playerDetails.related}
             autoplay={this.props.playerDetails.autoplay}
-            switchAutoplay={this.props.switchAutoplay} />
+            switchAutoplay={this.props.switchAutoplay} 
+          />
         </div>
       );
     }
@@ -100,7 +101,8 @@ class PlayerDetails extends React.Component {
           related={this.props.playerDetails.related}
           width={this.state[this.state.playerSize].width}
           autoplay={this.props.playerDetails.autoplay}
-          switchAutoplay={this.props.switchAutoplay} />
+          switchAutoplay={this.props.switchAutoplay}
+        />
       );
     }
   }
@@ -122,20 +124,25 @@ class PlayerDetails extends React.Component {
                 nextVideoId={related[0].id.videoId}
                 autoplay={autoplay}
                 height={height}
-                width={width} />
+                width={width}
+              />
 
               <Details
                 details={details}
                 rating={rating}
                 width={width}
-                videosRate={this.props.videosRate} />
+                videoId={videoId}
+                videosRate={this.props.videosRate}
+              />
 
               { this.renderRelated() }
-   
-              <Comments 
+
+              <Comments
                 loggedIn={this.props.loggedIn}
-                comments={comments} 
-                user={user} />
+                comments={comments}
+                videoId={videoId}
+                user={user}
+              />
 
             </div>
             { this.renderRightFrame() }
@@ -143,7 +150,7 @@ class PlayerDetails extends React.Component {
         </div>
       );
     } else {
-      return <div></div>;
+      return <div />;
     }
   }
 }
@@ -155,10 +162,15 @@ PlayerDetails.propTypes = {
   fetchVideoRating: PropTypes.func.isRequired,
   videosRate: PropTypes.func.isRequired,
   receiveSetting: PropTypes.func.isRequired,
-  playerDetails: propChecker.playerDetails(),
-  setting: propChecker.setting(),
+  switchAutoplay: PropTypes.func.isRequired,
+  playerDetails: propChecker.playerDetails().isRequired,
+  setting: propChecker.setting().isRequired,
   user: PropTypes.shape(),
   loggedIn: PropTypes.bool.isRequired
+};
+
+PlayerDetails.defaultProps = {
+  user: {}
 };
 
 export default withRouter(PlayerDetails);

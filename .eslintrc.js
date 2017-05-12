@@ -31,6 +31,7 @@ module.exports = {
         "react/prop-types": [2, { ignore: ['location', 'router', 'children']}],
         "import/prefer-default-export": "off",
         "consistent-return": "off",
-        "no-else-return": "off"
+        "no-else-return": "off",
+        "class-methods-use-this": "off"
     }
 };

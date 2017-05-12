@@ -1,4 +1,6 @@
+/* global document */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class ChannelNavbar extends React.Component {
   constructor(props) {
@@ -7,6 +9,12 @@ class ChannelNavbar extends React.Component {
     this.state = {
       currentRoute: this.props.currentRoute
     };
+
+    this.renderHome = this.renderHome.bind(this);
+    this.renderVideos = this.renderVideos.bind(this);
+    this.renderPlaylists = this.renderPlaylists.bind(this);
+    this.renderChannels = this.renderChannels.bind(this);
+    this.renderAbout = this.renderAbout.bind(this);
   }
 
   componentDidMount() {
@@ -18,8 +26,8 @@ class ChannelNavbar extends React.Component {
   activeLink(route) {
     let menus = ["home", "videos", "playlists", "channels", "about"]
 
-    for (var i = 0; i < menus.length; i++) {
-      if (route == menus[i]) {
+    for (let i = 0; i < menus.length; i++) {
+      if (route === menus[i]) {
         document.getElementById(`channel-${route}`).classList.add('current-channel');
       } else {
         document.getElementById(`channel-${menus[i]}`).classList.remove('current-channel');
@@ -53,21 +61,23 @@ class ChannelNavbar extends React.Component {
   }
 
   render() {
-    let currentRoute = this.props.currentRoute;
-
     return (
       <div className="channel-navbar-container">
         <ul className="channel-navbar-lists">
-          <li id="channel-home" onClick={this.renderHome.bind(this)}>Home</li>
-          <li id="channel-videos" onClick={this.renderVideos.bind(this)}>Videos</li>
-          <li id="channel-playlists" onClick={this.renderPlaylists.bind(this)}>Playlists</li>
-          <li id="channel-channels" onClick={this.renderChannels.bind(this)}>Channels</li>
-          <li id="channel-about" onClick={this.renderAbout.bind(this)}>About</li>
+          <li id="channel-home" onClick={this.renderHome}>Home</li>
+          <li id="channel-videos" onClick={this.renderVideos}>Videos</li>
+          <li id="channel-playlists" onClick={this.renderPlaylists}>Playlists</li>
+          <li id="channel-channels" onClick={this.renderChannels}>Channels</li>
+          <li id="channel-about" onClick={this.renderAbout}>About</li>
           <li><i className="material-icons">search</i></li>
         </ul>
       </div>
     );
   }
 }
+
+ChannelNavbar.propTypes = {
+  currentRoute: PropTypes.string.isRequired
+};
 
 export { ChannelNavbar };

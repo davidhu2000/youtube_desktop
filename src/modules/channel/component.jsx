@@ -1,12 +1,14 @@
 /* global Promise */
 import React from 'react';
 import { values } from 'lodash';
+import PropTypes from 'propt-types';
+import { formatNumber, propChecker } from 'helpers';
+import { SubscribeButton, VideoBox } from 'common/components';
+
 import {
   ChannelNavbar,
   ChannelVideos
 } from './subcomponents';
-import { formatNumber } from 'helpers';
-import { SubscribeButton, VideoBox } from 'common/components';
 
 class Channel extends React.Component {
   constructor(props) {
@@ -21,6 +23,20 @@ class Channel extends React.Component {
 
     this.clickSubscribe = this.clickSubscribe.bind(this);
     this._getNewChannelInfo = this._getNewChannelInfo.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.receiveSetting({ isLoading: true });
+    this._getNewChannelInfo(this.state.channelId, this.state.userId);
+  }
+
+  componentWillReceiveProps(newProps) {
+    let channelId = newProps.params.channelId;
+    let userId = newProps.user.channelId;
+    if (this.state.channelId !== channelId) {
+      this.setState({ channelId, userId });
+      this._getNewChannelInfo(channelId, userId);
+    }
   }
 
   _getNewChannelInfo(channelId, userId) {
@@ -40,29 +56,12 @@ class Channel extends React.Component {
       let playlists = this.props.playlists;
       let plDataNeeded = [];
 
-      for(let playlistId of Object.keys(playlists)) {
-        plDataNeeded.push(this.props.fetchPlaylistItems(playlistId));
-      }
+      Object.keys(playlists).forEach(id => plDataNeeded.push(this.props.fetchPlaylistItems(id)));
 
       Promise.all(plDataNeeded).then(() => {
         this.props.receiveSetting({ isLoading: false });
       });
-           
     });
-  }
-
-  componentDidMount() {
-    this.props.receiveSetting({ isLoading: true });
-    this._getNewChannelInfo(this.state.channelId, this.state.userId);
-  }
-
-  componentWillReceiveProps(newProps) {
-    let channelId = newProps.params.channelId;
-    let userId = newProps.user.channelId;
-    if (this.state.channelId !== channelId) {
-      this.setState({ channelId, userId });
-      this._getNewChannelInfo(channelId, userId);
-    }
   }
 
   isSubscribed() {
@@ -97,10 +96,10 @@ class Channel extends React.Component {
   }
 
   renderPlaylists() {
-    return values(this.props.playlists).map( playlist => (
-      <VideoBox 
+    return values(this.props.playlists).map(playlist => (
+      <VideoBox
         key={playlist.id}
-        title={playlist.snippet.title} 
+        title={playlist.snippet.title}
         vids={playlist.items}
         maxNumber={playlist.items.length}
         windowWidth={this.props.setting.windowWidth}
@@ -120,29 +119,27 @@ class Channel extends React.Component {
       bannerImg = this.props.channelDetails.detail.brandingSettings.image.bannerImageUrl;
       profileImg = this.props.channelDetails.detail.snippet.thumbnails.default.url;
       channelName = this.props.channelDetails.detail.snippet.title;
-      subscriberNum = parseInt(this.props.channelDetails.detail.statistics.subscriberCount);
+      subscriberNum = parseInt(this.props.channelDetails.detail.statistics.subscriberCount, 10);
       videos = this.props.channelDetails.videos;
     }
 
     if (this.props.setting.isLoading) {
       return (
-        <div></div>
+        <div />
       );
     } else {
       return (
         <div className="main-content">
           <div className="channels-container">
             <div className="channel-banner-container">
-              <img id="channel-banner"
-                src={bannerImg} />
+              <img id="channel-banner" src={bannerImg} />
             </div>
 
             <div className="channel-banner-header">
               <div className="channel-detail-container">
                 <div className="channel-detail-left">
                   <div className="channel-profile-container">
-                    <img id="channel-profile-img"
-                      src={profileImg} />
+                    <img id="channel-profile-img" src={profileImg} />
                   </div>
 
                   <div className="channel-detail">
@@ -151,9 +148,9 @@ class Channel extends React.Component {
                   </div>
                 </div>
 
-                <SubscribeButton 
+                <SubscribeButton
                   clickSubscribe={this.clickSubscribe}
-                  subscriberNum={subscriberNum} 
+                  subscriberNum={subscriberNum}
                   isSubscribed={this.state.subscribed}
                 />
               </div>
@@ -171,5 +168,29 @@ class Channel extends React.Component {
     }
   }
 }
+
+Channel.propTypes = {
+  fetchChannelDetails: PropTypes.func.isRequired,
+  receiveSetting: PropTypes.func.isRequired,
+  fetchSubscriptions: PropTypes.func.isRequired,
+  fetchChannelVideos: PropTypes.func.isRequired,
+  fetchChannelPlaylists: PropTypes.func.isRequired,
+  fetchPlaylistItems: PropTypes.func.isRequired,
+  insertSubscription: PropTypes.func.isRequired,
+  deleteSubscription: PropTypes.func.isRequired,
+  channelDetails: PropTypes.shape().isRequired,
+  loggedIn: PropTypes.bool.isRequired,
+  user: PropTypes.shape(),
+  setting: propChecker.setting().isRequired,
+  subscriptions: propChecker.subscriptions().isRequired,
+  playlists: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  params: PropTypes.shape({
+    channelId: PropTypes.string
+  }).isRequired
+};
+
+Channel.defaultProps = {
+  user: {}
+};
 
 export default Channel;

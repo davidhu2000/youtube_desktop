@@ -1,15 +1,17 @@
-const { ipcRenderer } = window.require('electron');
+/* global window, document */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { parseDate, formatNumber, parseStringForLinks } from 'helpers';
 
-class DetailsLower extends React.Component {
-   constructor(props) {
-     super(props);
+const { ipcRenderer } = window.require('electron');
 
-     this.state = {
-       showAllDecription: false
-     };
+class DetailsLower extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showAllDecription: false
+    };
   }
 
   componentDidMount() {
@@ -28,22 +30,18 @@ class DetailsLower extends React.Component {
   }
 
   parseDescription(description) {
-    return description.map(line => {
-      // TODO: parse description for links
-      return (
-          <span key={Math.random()} dangerouslySetInnerHTML={{ __html: `${parseStringForLinks(line)}<br />` }}>
-          </span>
-      );
-    });
+    return description.map(line => (
+      <span key={Math.random()} dangerouslySetInnerHTML={{ __html: `${parseStringForLinks(line)}<br />` }} />
+    ));
   }
 
   addDescription() {
-    if (this.props.description){
+    if (this.props.description) {
       let descript;
-      if(this.state.showAllDecription) {
+      if (this.state.showAllDecription) {
         descript = this.props.description.split('\n');
       } else {
-        descript = [this.props.description.slice(0,200)];
+        descript = [this.props.description.slice(0, 200)];
       }
 
       return (
@@ -60,7 +58,7 @@ class DetailsLower extends React.Component {
     return (
       <div className="details-lower-container">
         <div className="details-lower-container-left">
-          <img src={ channelImg } />
+          <img src={channelImg} />
         </div>
         <div className="details-lower-container-right">
           <div className="details-lower-container-upper">
@@ -84,7 +82,8 @@ class DetailsLower extends React.Component {
             {this.addDescription()}
             <button
               className='details-description-button'
-              onClick={ () => this.setState({ showAllDecription: !this.state.showAllDecription }) }>
+              onClick={() => this.setState({ showAllDecription: !this.state.showAllDecription })}
+            >
               { this.state.showAllDecription ? 'Show less' : 'Show more' }
             </button>
           </div>
@@ -95,10 +94,11 @@ class DetailsLower extends React.Component {
 }
 
 DetailsLower.propTypes = {
-  channelTitle: PropTypes.string,
-  subs: PropTypes.string,
-  publishedAt: PropTypes.string,
-  description: PropTypes.string
+  channelTitle: PropTypes.string.isRequired,
+  subs: PropTypes.string.isRequired,
+  publishedAt: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  channelImg: PropTypes.string.isRequired
 };
 
 export default DetailsLower;
