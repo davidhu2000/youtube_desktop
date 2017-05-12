@@ -7,20 +7,15 @@ class ChannelVideos extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      videos: []
-    };
-  }
-
-  componentDidMount() {
-    let channelVideos = this.props.videos;
     let videos = [];
 
-    if (this.props.videos) {
-      Object.keys(channelVideos).map(video => videos.push(channelVideos[video]));
+    if (props.videos) {
+      Object.keys(props.videos).map(video => videos.push(props.videos[video]));
     }
 
-    this.setState({ videos });
+    this.state = {
+      videos
+    };
   }
 
   // TODO: parsing description method for longer description.
@@ -29,7 +24,7 @@ class ChannelVideos extends React.Component {
     let vid = this.state.videos[0];
 
     if (vid) {
-      const { channelId, description, publishedAt } = vid.snippet;
+      const { description, publishedAt } = vid.snippet;
       const { url } = vid.snippet.thumbnails.medium;
       const title = shortenString(vid.snippet.title, 60);
 

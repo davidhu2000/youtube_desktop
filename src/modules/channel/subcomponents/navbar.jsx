@@ -24,7 +24,7 @@ class ChannelNavbar extends React.Component {
   // TODO: Logic for sidebar to override resize behavior and have sliding effect in full size screen
 
   activeLink(route) {
-    let menus = ["home", "videos", "playlists", "channels", "about"]
+    let menus = ["home", "videos", "playlists", "channels", "about"];
 
     for (let i = 0; i < menus.length; i++) {
       if (route === menus[i]) {

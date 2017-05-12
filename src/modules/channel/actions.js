@@ -46,7 +46,7 @@ export const fetchChannelVideos = channelId => dispatch => {
         part: 'statistics,contentDetails',
         id: videos.items.map(item => item.id.videoId).join(',')
       };
-      console.log(videos)
+
       return YoutubeApi.videos(newParams).then(
         res => res.json()
       ).then(stat => {

@@ -87,7 +87,7 @@ class PlayerDetails extends React.Component {
           <Related
             related={this.props.playerDetails.related}
             autoplay={this.props.playerDetails.autoplay}
-            switchAutoplay={this.props.switchAutoplay} 
+            switchAutoplay={this.props.switchAutoplay}
           />
         </div>
       );

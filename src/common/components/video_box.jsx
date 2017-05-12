@@ -1,22 +1,25 @@
+/* global window */
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { VideoBoxItem } from './video_box_item';
 
 class VideoBox extends React.Component {
-   constructor(props) {
-     super(props);
+  constructor(props) {
+    super(props);
 
-     this.calcBoxWidthAndNumVideos = this.calcBoxWidthAndNumVideos.bind(this);
+    this.calcBoxWidthAndNumVideos = this.calcBoxWidthAndNumVideos.bind(this);
+    this.toggleMoreVideos = this.toggleMoreVideos.bind(this);
 
-     let data = this.calcBoxWidthAndNumVideos(props.sidebarVisible);
+    let data = this.calcBoxWidthAndNumVideos(props.sidebarVisible);
 
-     this.state = {
-       startIndex: 0,
-       endIndex: data.numVideosPerRow,
-       numVideosPerRow: data.numVideosPerRow,
-       numRows: 2,
-       boxWidth: data.boxWidth
-     };
+    this.state = {
+      startIndex: 0,
+      endIndex: data.numVideosPerRow,
+      numVideosPerRow: data.numVideosPerRow,
+      numRows: 2,
+      boxWidth: data.boxWidth
+    };
   }
 
   componentWillReceiveProps(newProps) {
@@ -27,7 +30,7 @@ class VideoBox extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (this.props.sidebarVisible !== prevProps.sidebarVisible) {
       let newState = this.calcBoxWidthAndNumVideos();
       this.setState(newState);
@@ -44,16 +47,16 @@ class VideoBox extends React.Component {
       width -= 240;
     }
 
-    if(width > 1312) {
+    if (width > 1312) {
       numVideosPerRow = 6;
       boxWidth = 1284;
-    } else if(width > 1132) {
+    } else if (width > 1132) {
       numVideosPerRow = 5;
       boxWidth = 1070;
-    } else if(width > 900) {
+    } else if (width > 900) {
       numVideosPerRow = 4;
       boxWidth = 856;
-    } else if(width > 694) {
+    } else if (width > 694) {
       numVideosPerRow = 3;
       boxWidth = 642;
     }
@@ -89,8 +92,8 @@ class VideoBox extends React.Component {
   slideVideos(direction) {
     let numVideos = this.calcBoxWidthAndNumVideos(this.props.sidebarVisible).numVideosPerRow;
 
-    let startIndex = this.state.startIndex + direction * numVideos;
-    let endIndex   = this.state.endIndex + direction * numVideos;
+    let startIndex = this.state.startIndex + (direction * numVideos);
+    let endIndex = this.state.endIndex + (direction * numVideos);
 
     if (startIndex < 0) {
       startIndex = 0;
@@ -107,7 +110,8 @@ class VideoBox extends React.Component {
 
   renderVideos() {
     let { numVideosPerRow, numRows, startIndex, endIndex } = this.state;
-    let startVal, endVal;
+    let startVal;
+    let endVal;
 
     if (this.props.multiline) {
       startVal = 0;
@@ -117,37 +121,42 @@ class VideoBox extends React.Component {
       endVal = endIndex;
     }
 
-    return this.props.vids.slice(startVal, endVal).map( vid => (
+    return this.props.vids.slice(startVal, endVal).map(vid => (
       <VideoBoxItem key={vid.etag} vid={vid} />
     ));
   }
 
   render() {
-    console.log(this.props)
     if (this.props.multiline) {
       let buttonVal = this.state.numRows === 2 ? 'Show more' : 'Show less';
-      let height = 38 + 230 * this.state.numRows + 50;
+      let height = 38 + (230 * this.state.numRows) + 50;
 
       return (
-        <div className='video-box multiline-container' style={{width: this.state.boxWidth, height: height}}>
+        <div
+          className='video-box multiline-container'
+          style={{ width: this.state.boxWidth, height }}
+        >
           <h1 className='video-box-title'>{this.props.title}</h1>
           <div className='video-box-videos multiline'>
             { this.renderVideos() }
             <button
               className='video-box-toggle'
-              onClick={this.toggleMoreVideos.bind(this)}>{ buttonVal }</button>
+              onClick={this.toggleMoreVideos}
+            >
+              { buttonVal }
+            </button>
           </div>
 
         </div>
       );
     } else {
       return (
-        <div className='video-box' style={{width: this.state.boxWidth}}>
+        <div className='video-box' style={{ width: this.state.boxWidth }}>
           <h1 className='video-box-title'>{this.props.title}</h1>
           <div className='video-box-videos'>
             { this.renderVideos() }
             { this.state.startIndex === 0 ? '' : <a className="prev" onClick={() => this.slideVideos(-1)}>&#10094;</a> }
-            { this.state.endIndex  === this.props.maxNumber ? '' : <a className="next" onClick={() => this.slideVideos(1) }>&#10095;</a> }
+            { this.state.endIndex === this.props.maxNumber ? '' : <a className="next" onClick={() => this.slideVideos(1)}>&#10095;</a> }
           </div>
         </div>
       );
@@ -157,10 +166,10 @@ class VideoBox extends React.Component {
 
 VideoBox.propTypes = {
   multiline: PropTypes.bool,
-  title: PropTypes.string,
-  windowWidth: PropTypes.number,
-  vids: PropTypes.arrayOf(PropTypes.object),
-  sidebarVisible: PropTypes.bool,
+  title: PropTypes.string.isRequired,
+  windowWidth: PropTypes.number.isRequired,
+  vids: PropTypes.arrayOf(PropTypes.object).isRequired,
+  sidebarVisible: PropTypes.bool.isRequired,
   maxNumber: PropTypes.number
 };
 
