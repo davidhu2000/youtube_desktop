@@ -4,6 +4,10 @@
   "description": "Youtube Desktop Application",
   "main": "main.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidhu2000/youtube_desktop.git"
+  },
   "scripts": {
     "start": "electron .",
     "clear": "rm -rf app/javascripts/* | rm index.html",
