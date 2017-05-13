@@ -5,6 +5,10 @@ import enhanceWithClickOutside from 'react-click-outside';
 import { Link } from 'react-router';
 
 class DropdownMenu extends React.Component {
+  constructor(props) {
+    super(props);
+    this.clearUser = this.clearUser.bind(this);
+  }
 
   handleClickOutside(e) {
     let notNavbarButton = !e.target.classList.contains('navbar-user-picture');

@@ -23,12 +23,12 @@ class Home extends React.Component {
     }
 
     let channelIds = [
-      'UC-9-kyTW8ZkZNDHQJ6FgpwQ',
-      'UCEgdi0XIXXZ-qJOFPf4JSKw',
-      'UCOpNcN46UbXVtpKMrmU4Abg',
-      'UClgRkhTL3_hImCAmdLfDE4g',
-      'UCYfdidRxbB8Qhf0Nx7ioOYw',
-      'UCBR8-60-B28hp2BmDPdntcQ'
+      'UC9-y-6csu5WGm29I7JiwpnA',
+      'UCsooa4yRKGN_zEE8iknghZA',
+      'UCsTcErHg8oDvUnTzoqsYeNw',
+      'UCYUQQgogVeQY8cMQamhHJcg',
+      'UCOpcACMWblDls9Z6GERVi1A',
+      'UCJkMlOu7faDgqh4PfzbpLdg'
     ];
 
     for (let i = 0; i < channelIds.length; i++) {

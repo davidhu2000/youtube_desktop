@@ -6,11 +6,6 @@ import { propChecker } from 'helpers';
 import { VideoList } from 'common/components';
 
 class Subscriptions extends React.Component {
-
-  static _redirect() {
-    hashHistory.replace('/home');
-  }
-
   constructor(props) {
     super(props);
     this.state = {
@@ -46,6 +41,10 @@ class Subscriptions extends React.Component {
     });
 
     Promise.all(dataNeeded).then(() => this.props.receiveSetting({ isLoading: false }));
+  }
+
+  _redirect() {
+    hashHistory.replace('/home');
   }
 
   render() {
