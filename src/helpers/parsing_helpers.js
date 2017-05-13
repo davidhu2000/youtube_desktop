@@ -18,7 +18,7 @@ export const parseDuration = str => {
     if (idx === 0 || val.length === 2) {
       return val;
     }
-    return `0 ${val}`;
+    return `0${val}`;
   });
 
   if (values.length === 1) {
