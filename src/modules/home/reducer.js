@@ -6,6 +6,7 @@ let _defaultState = {};
 
 const homeChannelsReducer = (state = _defaultState, action) => {
   Object.freeze(state);
+  console.log(action)
   switch (action.type) {
     case RECEIVE_CHANNEL_INFO:
       return merge({}, state, {
