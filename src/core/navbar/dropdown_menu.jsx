@@ -13,15 +13,13 @@ class DropdownMenu extends React.Component {
   handleClickOutside(e) {
     let notNavbarButton = !e.target.classList.contains('navbar-user-picture');
     if (notNavbarButton) {
-      this.props.toggleDropdown();
+      this.props.toggleDropdown('dropDown');
     }
-
-    this.clearUser = this.clearUser.bind(this);
   }
 
   clearUser() {
     this.props.logout();
-    this.props.toggleDropdown();
+    this.props.toggleDropdown('dropDown');
     localStorage.removeItem('google-user');
   }
 
