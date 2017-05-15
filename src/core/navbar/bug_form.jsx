@@ -6,6 +6,12 @@ import enhanceWithClickOutside from 'react-click-outside';
 class BugForm extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      input: ''
+    };
+
+    this.updateInput = this.updateInput.bind(this);
   }
 
   handleClickOutside(e) {
@@ -15,10 +21,29 @@ class BugForm extends React.Component {
     }
   }
 
+  updateInput(e) {
+    this.setState({
+      input: e.target.value
+    });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log('submitting bug')
+  }
+
   render() {
     return (
-      <div id='dropdown-menu'>
-        bug form
+      <div className='dropdown-menu'>
+        <h1 className='bug-form-title'>Submit a bug</h1>
+        <textarea
+          cols="30"
+          rows="10"
+          onChange={this.updateInput}
+          value={this.state.input}
+          className='bug-form-input'
+        />
+        <input type="submit" onClick={this.handleSubmit} className='bug-form-submit' />
       </div>
     );
   }
