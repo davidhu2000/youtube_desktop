@@ -28,7 +28,7 @@ class DropdownMenu extends React.Component {
     const myChannelId = user.channelId;
 
     return (
-      <div id='dropdown-menu'>
+      <div id='dropdown-menu' className='dropdown-menu'>
         <div className='user-info'>
           <img src={user.picture} />
           <h1><strong>{ user.name }</strong></h1>
