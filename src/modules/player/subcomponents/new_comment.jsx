@@ -26,7 +26,7 @@ class NewComment extends React.Component {
 
   render() {
     let user = this.props.user.picture;
-
+    
     return (
       <div className="new-comment-container">
         <div className="new-comment-left">

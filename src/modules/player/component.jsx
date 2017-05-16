@@ -142,6 +142,7 @@ class PlayerDetails extends React.Component {
                 comments={comments}
                 videoId={videoId}
                 user={user}
+                details={details}
               />
 
             </div>
