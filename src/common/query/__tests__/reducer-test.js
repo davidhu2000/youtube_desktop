@@ -1,3 +1,5 @@
+// Jest testing: QueryReducer
+
 import QueryReducer from '../reducer';
 
 describe('QueryReducer', () => {
