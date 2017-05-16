@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { submitCommentThread } from 'core/youtube_api';
 
 class NewComment extends React.Component {
   constructor(props) {
@@ -13,20 +14,27 @@ class NewComment extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(e) {
-    e.preventDefault();
-    this.setState({ body: e.target.value });
+  handleChange(event) {
+    event.preventDefault();
+    this.setState({ body: event.target.value });
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+  handleSubmit(event) {
+    event.preventDefault();
     let videoId = this.props.videoId;
-    console.log(videoId);
+    let channelId = this.props.channelId;
+    let body = this.state.body;
+
+    submitCommentThread(videoId, channelId, body).then(
+      response => response.json()
+    ).then(responseJson => {
+      console.log(responseJson);
+    })
   }
 
   render() {
     let user = this.props.user.picture;
-    
+
     return (
       <div className="new-comment-container">
         <div className="new-comment-left">
