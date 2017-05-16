@@ -18,6 +18,7 @@ describe('QueryReducer', () => {
   describe('handling RECEIVE_QUERY action', () => {
     let testQuery;
     let action;
+
     beforeEach(() => {
       testQuery = 'test';
       action = {
@@ -28,6 +29,27 @@ describe('QueryReducer', () => {
 
     it('should return the testQuery', () => {
       expect(QueryReducer(undefined, action)).toEqual('test');
+    });
+
+    it('should not modify the old state', () => {
+      const oldState = QueryReducer(undefined, {});
+      QueryReducer(oldState, action);
+      expect(oldState).toEqual(null);
+    });
+  });
+
+  describe('handling CLEAR_QUERY action', () => {
+    let action;
+
+    beforeEach(() => {
+      action = {
+        type: 'CLEAR_QUERY'
+      };
+    });
+
+    it('should retun a null query', () => {
+      const oldState = 'test';
+      expect(QueryReducer(oldState, action)).toEqual(null);
     });
 
     it('should not modify the old state', () => {
