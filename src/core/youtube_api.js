@@ -183,7 +183,8 @@ export const submitCommentThread = (videoId, channelId, textBody) => {
 
   let params = {
     part: 'snippet',
-    key: YT_API_KEY.publicDataKey
+    key: YT_API_KEY.publicDataKey,
+    access_token: localStorage.getItem('google-access-token')
   };
 
   let urlParams = createUrlParams(params);
@@ -203,6 +204,6 @@ export const submitCommentThread = (videoId, channelId, textBody) => {
     }
   }
 
-
+debugger
   return fetch(`${baseUrl}?${urlParams}`, init);
 };
