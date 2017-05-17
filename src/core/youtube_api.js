@@ -205,7 +205,7 @@ export const submitCommentThread = (videoId, channelId, textBody) => {
         }
       }
     })
-  }
+  };
 
   return fetch(`${baseUrl}?${urlParams}`, init);
 };

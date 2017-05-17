@@ -26,9 +26,7 @@ class NewComment extends React.Component {
     let body = this.state.body;
     let that = this;
 
-    submitCommentThread(videoId, channelId, body).then(
-      response => response.json()
-    ).then(responseJson => {
+    submitCommentThread(videoId, channelId, body).then(() => {
       that.props.fetchComments(videoId);
 
       let input = document.getElementsByClassName("new-comment-input")[0];
@@ -36,6 +34,9 @@ class NewComment extends React.Component {
 
       that.setState({ body: "" });
     });
+    //   response => response.json()
+    // ).then(() => {
+    // });
   }
 
   render() {
