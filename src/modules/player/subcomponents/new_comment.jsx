@@ -34,9 +34,6 @@ class NewComment extends React.Component {
 
       that.setState({ body: "" });
     });
-    //   response => response.json()
-    // ).then(() => {
-    // });
   }
 
   render() {
