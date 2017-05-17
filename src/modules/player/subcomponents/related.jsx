@@ -10,7 +10,7 @@ class Related extends React.Component {
   }
 
   updateAutoplay() {
-    this.props.autoplay ? this.props.switchAutoplay(false) : this.props.switchAutoplay(true);
+    this.props.switchAutoplay(!this.props.autoplay);
   }
 
   renderRelatedVideos() {
