@@ -23,12 +23,12 @@ class Comments extends React.Component {
   render() {
     let user = this.props.user;
     let videoId = this.props.details.id;
-    let channelId = this.props.details.snippet.channelId
+    let channelId = this.props.details.snippet.channelId;
 
     if (this.props.comments === "disabled") {
       return (<div className="comments-container">Comments are disabled.</div>);
     }
-    
+
     return (
       <div className="comments-container">
         <div className="top-comments">
@@ -45,14 +45,16 @@ class Comments extends React.Component {
 }
 
 Comments.propTypes = {
-  videoId: PropTypes.string.isRequired,
   loggedIn: PropTypes.bool.isRequired,
   user: PropTypes.shape(),
-  comments: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.shape()), PropTypes.string]).isRequired
+  comments: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.shape()), PropTypes.string]).isRequired,
+  details: PropTypes.shape(),
+  fetchComments: PropTypes.func.isRequired
 };
 
 Comments.defaultProps = {
-  user: {}
+  user: {},
+  details: {}
 };
 
 export { Comments };

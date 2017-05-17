@@ -140,7 +140,6 @@ class PlayerDetails extends React.Component {
               <Comments
                 loggedIn={this.props.loggedIn}
                 comments={comments}
-                videoId={videoId}
                 user={user}
                 details={details}
                 fetchComments={this.props.fetchComments}
