@@ -28,14 +28,14 @@ class Comments extends React.Component {
     if (this.props.comments === "disabled") {
       return (<div className="comments-container">Comments are disabled.</div>);
     }
-
+    
     return (
       <div className="comments-container">
         <div className="top-comments">
           {this.renderNumComments()}
           <p>Comments</p>
         </div>
-        { this.props.loggedIn ? <NewComment videoId={videoId} user={user} channelId={channelId} /> : null }
+        { this.props.loggedIn ? <NewComment videoId={videoId} user={user} channelId={channelId} fetchComments={this.props.fetchComments} /> : null }
         <div className="comments-list">
           {this.renderComments()}
         </div>

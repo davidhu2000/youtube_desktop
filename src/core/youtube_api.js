@@ -195,18 +195,17 @@ export const submitCommentThread = (videoId, channelId, textBody) => {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      "snippet": {
-        "channelId": channelId,
-        "videoId": videoId,
-        "topLevelComment": {
-          "snippet": {
-            "textOriginal": textBody
+      snippet: {
+        channelId,
+        videoId,
+        topLevelComment: {
+          snippet: {
+            textOriginal: textBody
           }
         }
       }
     })
   }
 
-debugger
   return fetch(`${baseUrl}?${urlParams}`, init);
 };

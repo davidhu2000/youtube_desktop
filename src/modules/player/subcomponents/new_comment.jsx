@@ -24,12 +24,18 @@ class NewComment extends React.Component {
     let videoId = this.props.videoId;
     let channelId = this.props.channelId;
     let body = this.state.body;
+    let that = this;
 
     submitCommentThread(videoId, channelId, body).then(
       response => response.json()
     ).then(responseJson => {
-      console.log(responseJson);
-    })
+      that.props.fetchComments(videoId);
+
+      let input = document.getElementsByClassName("new-comment-input")[0];
+      input.value = "";
+
+      that.setState({ body: "" });
+    });
   }
 
   render() {
@@ -56,7 +62,9 @@ class NewComment extends React.Component {
 
 NewComment.propTypes = {
   videoId: PropTypes.string.isRequired,
-  user: PropTypes.shape().isRequired
+  user: PropTypes.shape().isRequired,
+  channelId: PropTypes.string.isRequired,
+  fetchComments: PropTypes.func.isRequired
 };
 
 export default NewComment;
