@@ -2967,6 +2967,10 @@ react-dom@^15.4.2:
     object-assign "^4.1.0"
     prop-types "~15.5.7"
 
+react-html-email@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-html-email/-/react-html-email-1.2.0.tgz#13f40df6f24728e9e0f9bd6d6bae5fc0d21fe3de"
+
 react-redux@^5.0.3:
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.4.tgz#1563babadcfb2672f57f9ceaa439fb16bf85d55b"
