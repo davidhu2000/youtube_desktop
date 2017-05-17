@@ -191,17 +191,20 @@ export const submitCommentThread = (videoId, channelId, textBody) => {
 
   let init = {
     method: 'POST',
-    body: {
-      'snippet': {
-        'channelId': channelId,
-        'videoId': videoId,
-        'topLevelComment': {
-          'snippet': {
-            'textOriginal': textBody
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      "snippet": {
+        "channelId": channelId,
+        "videoId": videoId,
+        "topLevelComment": {
+          "snippet": {
+            "textOriginal": textBody
           }
         }
       }
-    }
+    })
   }
 
 debugger
