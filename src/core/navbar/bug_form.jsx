@@ -12,6 +12,7 @@ class BugForm extends React.Component {
     };
 
     this.updateInput = this.updateInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleClickOutside(e) {
@@ -29,7 +30,7 @@ class BugForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('submitting bug')
+    this.props.toggleDropdown('bugForm');
   }
 
   render() {
