@@ -35,7 +35,15 @@ class Comments extends React.Component {
           {this.renderNumComments()}
           <p>Comments</p>
         </div>
-        { this.props.loggedIn ? <NewComment videoId={videoId} user={user} channelId={channelId} fetchComments={this.props.fetchComments} /> : null }
+
+        { this.props.loggedIn ? (
+          <NewComment
+            videoId={videoId}
+            user={user}
+            channelId={channelId}
+            fetchComments={this.props.fetchComments}
+          />) : null }
+
         <div className="comments-list">
           {this.renderComments()}
         </div>
@@ -47,7 +55,9 @@ class Comments extends React.Component {
 Comments.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   user: PropTypes.shape(),
-  comments: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.shape()), PropTypes.string]).isRequired,
+  comments: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.shape()), PropTypes.string
+  ]).isRequired,
   details: PropTypes.shape(),
   fetchComments: PropTypes.func.isRequired
 };

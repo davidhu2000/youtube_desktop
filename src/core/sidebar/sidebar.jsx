@@ -95,14 +95,18 @@ class Sidebar extends React.Component {
 
   render() {
     return (
-      <div id="sidebar" className={`sidebar`} onClick={this.handleClick} role="button">
+      <div id="sidebar" className={`sidebar`} onClick={this.handleClick} role="presentation">
         {/* Header section */}
         <div className='sidebar-section' id='sidebar-header'>
           <div className='sidebar-item'>
 
             <i className="material-icons">menu</i>
             <Link to='/home'>
-              <img className='youtube-logo' src="./app/assets/Youtube-logo.png" />
+              <img
+                className='youtube-logo'
+                src="./app/assets/Youtube-logo.png"
+                alt="Youtube Logo"
+              />
             </Link>
           </div>
         </div>
@@ -127,7 +131,7 @@ class Sidebar extends React.Component {
             { this.renderUserPlaylists() }
 
             <div className='sidebar-item'>
-              <a onClick={this.togglePlaylists} role="button">
+              <a onClick={this.togglePlaylists} role="presentation">
                 <i className="material-icons">{this.state.icon}</i>
                 <span>{this.state.buttonVal}</span>
               </a>

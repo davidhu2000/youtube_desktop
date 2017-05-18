@@ -47,8 +47,8 @@ class ContributorSection extends React.Component {
       let contributor = this.state[id];
       return (
         <div className={`sidebar-item`} key={id}>
-          <a onClick={() => ipcRenderer.send('open-url', contributor.github)} role="button">
-            <img src={contributor.img} />
+          <a onClick={() => ipcRenderer.send('open-url', contributor.github)} role="presentation">
+            <img src={contributor.img} alt={`${contributor.name}`} />
             <span>{shortenString(contributor.name, 19)}</span>
           </a>
         </div>

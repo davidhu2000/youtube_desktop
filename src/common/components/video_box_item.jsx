@@ -40,7 +40,7 @@ const VideoBoxItem = ({ vid }) => {
 
       <div className="video-box-item-upper">
         <Link to={`watch/${videoId}`} className="video-box-item-image">
-          <img src={url} />
+          <img src={url} alt={title} />
           <span className='duration-span'>{ duration }</span>
         </Link>
 

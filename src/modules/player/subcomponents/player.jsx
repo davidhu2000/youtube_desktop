@@ -1,4 +1,4 @@
-/* global promise, window, YT, document */
+/* global window, YT, document */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { hashHistory } from 'react-router';
@@ -60,6 +60,7 @@ class Player extends React.Component {
       <div>
         <iframe
           id="video-player"
+          title="video-player"
           type="text/html"
           width={width}
           height={height}

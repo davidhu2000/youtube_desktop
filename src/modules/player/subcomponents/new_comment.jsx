@@ -1,3 +1,4 @@
+/* global document */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { submitCommentThread } from 'core/youtube_api';
@@ -42,7 +43,7 @@ class NewComment extends React.Component {
     return (
       <div className="new-comment-container">
         <div className="new-comment-left">
-          <img src={user} />
+          <img src={user} alt={user.name} />
         </div>
 
         <form onSubmit={this.handleSubmit} className="new-comment-form">
@@ -61,8 +62,7 @@ class NewComment extends React.Component {
 NewComment.propTypes = {
   videoId: PropTypes.string.isRequired,
   user: PropTypes.shape().isRequired,
-  channelId: PropTypes.string.isRequired,
-  fetchComments: PropTypes.func.isRequired
+  channelId: PropTypes.string.isRequired
 };
 
 export default NewComment;

@@ -34,7 +34,7 @@ const VideoListItem = props => {
       to={`watch/${videoId}`}
     >
       <div className={`index-item-left`}>
-        <img src={url} />
+        <img src={url} alt={title} />
         <span className='duration-span'>{duration}</span>
       </div>
 
