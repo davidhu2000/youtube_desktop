@@ -45,7 +45,7 @@ class NewComment extends React.Component {
           <button type="button" onClick={() => this.setState({ active: false })}>
             Cancel
           </button>
-          <input type="submit"></input>
+          <input type="submit" value="Comment" />
         </div>
       );
     }
