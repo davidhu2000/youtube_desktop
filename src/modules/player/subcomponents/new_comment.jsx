@@ -8,7 +8,8 @@ class NewComment extends React.Component {
     super(props);
 
     this.state = {
-      body: ""
+      body: "",
+      active: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -33,8 +34,21 @@ class NewComment extends React.Component {
       let input = document.getElementsByClassName("new-comment-input")[0];
       input.value = "";
 
-      that.setState({ body: "" });
+      that.setState({ body: "", active: false });
     });
+  }
+
+  showButtons() {
+    if (this.state.active) {
+      return (
+        <div>
+          <button type="button" onClick={() => this.setState({ active: false })}>
+            Cancel
+          </button>
+          <input type="submit"></input>
+        </div>
+      );
+    }
   }
 
   render() {
@@ -51,8 +65,10 @@ class NewComment extends React.Component {
             type="text"
             placeholder="Add a public comment..."
             onChange={this.handleChange}
+            onFocus={() => this.setState({ active: true })}
             className="new-comment-input"
           />
+          { this.showButtons() }
         </form>
       </div>
     );
