@@ -14,6 +14,7 @@ class NewComment extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.clearInput = this.clearInput.bind(this);
   }
 
   handleChange(event) {
@@ -38,11 +39,19 @@ class NewComment extends React.Component {
     });
   }
 
+  clearInput(event) {
+    event.preventDefault();
+    this.setState({ active: false, body: "" });
+
+    let input = document.getElementsByClassName("new-comment-input")[0];
+    input.value = "";
+  }
+
   showButtons() {
     if (this.state.active) {
       return (
         <div>
-          <button type="button" onClick={() => this.setState({ active: false })}>
+          <button type="button" onClick={this.clearInput}>
             Cancel
           </button>
           <input type="submit" value="Comment" />
