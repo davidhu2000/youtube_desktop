@@ -20,13 +20,28 @@ class Comments extends React.Component {
     }
   }
 
-  render() {
+  renderAddComment() {
     let user = this.props.user;
     let videoId = this.props.details.id;
     let channelId = this.props.details.snippet.channelId;
 
+    if (this.props.loggedIn) {
+      return (
+        <NewComment
+          videoId={videoId}
+          user={user}
+          channelId={channelId}
+          fetchComments={this.props.fetchComments}
+        />
+      );
+    }
+  }
+
+  render() {
     if (this.props.comments === "disabled") {
-      return (<div className="comments-container">Comments are disabled.</div>);
+      return (
+        <div className="comments-container">Comments are disabled.</div>
+      );
     }
 
     return (
@@ -36,13 +51,7 @@ class Comments extends React.Component {
           <p>Comments</p>
         </div>
 
-        { this.props.loggedIn ? (
-          <NewComment
-            videoId={videoId}
-            user={user}
-            channelId={channelId}
-            fetchComments={this.props.fetchComments}
-          />) : null }
+        { this.renderAddComment() }
 
         <div className="comments-list">
           {this.renderComments()}
