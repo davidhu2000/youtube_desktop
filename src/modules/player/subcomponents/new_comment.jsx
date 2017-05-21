@@ -32,9 +32,6 @@ class NewComment extends React.Component {
     submitCommentThread(videoId, channelId, body).then(() => {
       that.props.fetchComments(videoId);
 
-      let input = document.getElementsByClassName("new-comment-input")[0];
-      input.value = "";
-
       that.setState({ body: "", active: false });
     });
   }
@@ -42,18 +39,20 @@ class NewComment extends React.Component {
   clearInput(event) {
     event.preventDefault();
     this.setState({ active: false, body: "" });
-
-    let input = document.getElementsByClassName("new-comment-input")[0];
-    input.value = "";
   }
 
   showButtons() {
     if (this.state.active) {
       return (
         <div className='comment-buttons'>
-          <button type="button" onClick={this.clearInput} className='comment-button comment-button-cancel'>
+          <button
+            type="button"
+            onClick={this.clearInput}
+            className='comment-button comment-button-cancel'
+          >
             Cancel
           </button>
+
           <input type="submit" value="Comment" className='comment-button comment-button-submit' />
         </div>
       );
@@ -74,6 +73,7 @@ class NewComment extends React.Component {
             type="text"
             placeholder="Add a public comment..."
             onChange={this.handleChange}
+            value={this.state.body}
             onFocus={() => this.setState({ active: true })}
             className="new-comment-input"
           />
