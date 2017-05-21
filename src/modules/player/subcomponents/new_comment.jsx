@@ -50,11 +50,11 @@ class NewComment extends React.Component {
   showButtons() {
     if (this.state.active) {
       return (
-        <div>
-          <button type="button" onClick={this.clearInput}>
+        <div className='comment-buttons'>
+          <button type="button" onClick={this.clearInput} className='comment-button comment-button-cancel'>
             Cancel
           </button>
-          <input type="submit" value="Comment" />
+          <input type="submit" value="Comment" className='comment-button comment-button-submit' />
         </div>
       );
     }
