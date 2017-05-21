@@ -5,6 +5,7 @@ import RelatedListItem from './related_list_item';
 class Related extends React.Component {
   constructor(props) {
     super(props);
+
     this.updateAutoplay = this.updateAutoplay.bind(this);
   }
 
@@ -15,6 +16,7 @@ class Related extends React.Component {
   renderRelatedVideos() {
     if (this.props.related.length !== 0) {
       let vids = this.props.related;
+
       return vids.map(vid => (
         <RelatedListItem key={vid.etag} vid={vid} />
       ));

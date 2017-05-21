@@ -22,7 +22,7 @@ class SidebarItem extends React.Component {
   renderIcon() {
     if (this.props.useImage) {
       return (
-        <img src={this.props.url} />
+        <img src={this.props.url} alt={this.props.span} />
       );
     } else {
       return (

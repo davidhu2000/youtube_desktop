@@ -1,27 +1,61 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { submitCommentThread } from 'core/youtube_api';
 
 class NewComment extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      body: ""
+      body: "",
+      active: false
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.clearInput = this.clearInput.bind(this);
   }
 
-  handleChange(e) {
-    e.preventDefault();
-    this.setState({ body: e.target.value });
+  handleChange(event) {
+    event.preventDefault();
+    this.setState({ body: event.target.value });
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+  handleSubmit(event) {
+    event.preventDefault();
     let videoId = this.props.videoId;
-    console.log(videoId);
+    let channelId = this.props.channelId;
+    let body = this.state.body;
+    let that = this;
+
+    submitCommentThread(videoId, channelId, body).then(() => {
+      that.props.fetchComments(videoId);
+
+      that.setState({ body: "", active: false });
+    });
+  }
+
+  clearInput(event) {
+    event.preventDefault();
+    this.setState({ active: false, body: "" });
+  }
+
+  showButtons() {
+    if (this.state.active) {
+      return (
+        <div className='comment-buttons'>
+          <button
+            type="button"
+            onClick={this.clearInput}
+            className='comment-button comment-button-cancel'
+          >
+            Cancel
+          </button>
+
+          <input type="submit" value="Comment" className='comment-button comment-button-submit' />
+        </div>
+      );
+    }
   }
 
   render() {
@@ -30,7 +64,7 @@ class NewComment extends React.Component {
     return (
       <div className="new-comment-container">
         <div className="new-comment-left">
-          <img src={user} />
+          <img src={user} alt={user.name} />
         </div>
 
         <form onSubmit={this.handleSubmit} className="new-comment-form">
@@ -38,8 +72,11 @@ class NewComment extends React.Component {
             type="text"
             placeholder="Add a public comment..."
             onChange={this.handleChange}
+            value={this.state.body}
+            onFocus={() => this.setState({ active: true })}
             className="new-comment-input"
           />
+          { this.showButtons() }
         </form>
       </div>
     );
@@ -48,7 +85,8 @@ class NewComment extends React.Component {
 
 NewComment.propTypes = {
   videoId: PropTypes.string.isRequired,
-  user: PropTypes.shape().isRequired
+  user: PropTypes.shape().isRequired,
+  channelId: PropTypes.string.isRequired
 };
 
 export default NewComment;

@@ -20,11 +20,28 @@ class Comments extends React.Component {
     }
   }
 
-  render() {
+  renderAddComment() {
     let user = this.props.user;
+    let videoId = this.props.details.id;
+    let channelId = this.props.details.snippet.channelId;
 
+    if (this.props.loggedIn) {
+      return (
+        <NewComment
+          videoId={videoId}
+          user={user}
+          channelId={channelId}
+          fetchComments={this.props.fetchComments}
+        />
+      );
+    }
+  }
+
+  render() {
     if (this.props.comments === "disabled") {
-      return (<div className="comments-container">Comments are disabled.</div>);
+      return (
+        <div className="comments-container">Comments are disabled.</div>
+      );
     }
 
     return (
@@ -33,7 +50,9 @@ class Comments extends React.Component {
           {this.renderNumComments()}
           <p>Comments</p>
         </div>
-        { this.props.loggedIn ? <NewComment videoId={this.props.videoId} user={user} /> : null }
+
+        { this.renderAddComment() }
+
         <div className="comments-list">
           {this.renderComments()}
         </div>
@@ -43,14 +62,18 @@ class Comments extends React.Component {
 }
 
 Comments.propTypes = {
-  videoId: PropTypes.string.isRequired,
   loggedIn: PropTypes.bool.isRequired,
   user: PropTypes.shape(),
-  comments: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.shape()), PropTypes.string]).isRequired
+  comments: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.shape()), PropTypes.string
+  ]).isRequired,
+  details: PropTypes.shape(),
+  fetchComments: PropTypes.func.isRequired
 };
 
 Comments.defaultProps = {
-  user: {}
+  user: {},
+  details: {}
 };
 
 export { Comments };

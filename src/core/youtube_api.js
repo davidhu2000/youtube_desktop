@@ -177,3 +177,35 @@ export const commentThreads = params => {
 
   return fetch(`${baseUrl}?${urlParams}`);
 };
+
+export const submitCommentThread = (videoId, channelId, textBody) => {
+  let baseUrl = 'https://www.googleapis.com/youtube/v3/commentThreads';
+
+  let params = {
+    part: 'snippet',
+    key: YT_API_KEY.publicDataKey,
+    access_token: localStorage.getItem('google-access-token')
+  };
+
+  let urlParams = createUrlParams(params);
+
+  let init = {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      snippet: {
+        channelId,
+        videoId,
+        topLevelComment: {
+          snippet: {
+            textOriginal: textBody
+          }
+        }
+      }
+    })
+  };
+
+  return fetch(`${baseUrl}?${urlParams}`, init);
+};

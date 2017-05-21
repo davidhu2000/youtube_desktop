@@ -58,7 +58,7 @@ class DetailsLower extends React.Component {
     return (
       <div className="details-lower-container">
         <div className="details-lower-container-left">
-          <img src={channelImg} />
+          <img src={channelImg} alt={channelTitle} />
         </div>
         <div className="details-lower-container-right">
           <div className="details-lower-container-upper">

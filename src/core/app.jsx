@@ -107,7 +107,7 @@ class App extends React.Component {
         <Navbar />
         <Sidebar />
         {this.props.children}
-        <div id='sidebar-cover' className='hidden' role='button' onClick={toggleSidebar} />
+        <div id='sidebar-cover' className='hidden' onClick={toggleSidebar} />
       </div>
     );
   }

@@ -12,7 +12,7 @@ const CommentsItem = ({ comment }) => {
 
   return (
     <div className="comment-item">
-      <img src={authorProfileImageUrl} />
+      <img src={authorProfileImageUrl} alt={authorDisplayName} />
       <div className="comment-right">
         <div className="comment-right-upper">
           <h4 className="display-name">{authorDisplayName}</h4>

@@ -23,8 +23,12 @@ class Navbar extends React.Component {
     if (this.props.loggedIn) {
       return (
         <div className='navbar-right-menu'>
-          <a onClick={this.toggleDropdown} style={{ cursor: 'pointer' }} role="button">
-            <img className='navbar-user-picture' src={this.props.user.picture} />
+          <a onClick={this.toggleDropdown} style={{ cursor: 'pointer' }} role="presentation">
+            <img
+              className='navbar-user-picture'
+              src={this.props.user.picture}
+              alt={this.props.user.name}
+            />
           </a>
           { this.state.showDropdown ? (
             <DropdownMenu
@@ -39,7 +43,7 @@ class Navbar extends React.Component {
     } else {
       return (
         <div className='navbar-right-menu'>
-          <a onClick={this.props.loginUser} role='button' style={{ cursor: 'pointer' }}>
+          <a onClick={this.props.loginUser} role='presentation' style={{ cursor: 'pointer' }}>
             <p className="sign-in-text">SIGN IN</p>
           </a>
         </div>
@@ -51,11 +55,16 @@ class Navbar extends React.Component {
     return (
       <div className='navbar'>
         <div className='navbar-left-menu'>
-          <i onClick={toggleSidebar} id="sidebar-menu" className="material-icons" role="button">
+          <i
+            onClick={toggleSidebar}
+            id="sidebar-menu"
+            className="material-icons"
+            role="presentation"
+          >
             menu
           </i>
           <Link to='/' className='youtube-logo' id="sidebar-logo">
-            <img src="./app/assets/Youtube-logo.png" />
+            <img src="./app/assets/Youtube-logo.png" alt="Youtube Logo" />
           </Link>
         </div>
 

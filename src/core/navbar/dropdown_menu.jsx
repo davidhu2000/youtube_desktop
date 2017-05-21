@@ -32,7 +32,7 @@ class DropdownMenu extends React.Component {
     return (
       <div id='dropdown-menu'>
         <div className='user-info'>
-          <img src={user.picture} />
+          <img src={user.picture} alt={`${user.name}`} />
           <h1><strong>{ user.name }</strong></h1>
         </div>
 
