@@ -18,7 +18,7 @@ class DetailsUpper extends React.Component {
     } else {
       ratingString = rating;
     }
-    this.props.videosRate(this.props.videoId, ratingString, this.props.context);
+    this.props.videosRate(this.props.videoId, ratingString);
   }
 
   ratingButtonColor(ratingType) {
@@ -103,7 +103,6 @@ class DetailsUpper extends React.Component {
 }
 
 DetailsUpper.propTypes = {
-  context: PropTypes.shape().isRequired,
   currentRating: PropTypes.string.isRequired,
   dislikeCount: PropTypes.string.isRequired,
   likeCount: PropTypes.string.isRequired,

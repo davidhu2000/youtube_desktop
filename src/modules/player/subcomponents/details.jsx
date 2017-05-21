@@ -9,23 +9,21 @@ const Details = props => {
     return null;
   }
 
-  const { details, rating } = props;
+  const { details, rating, width } = props;
   const { subs } = details;
   const channelImg = details.channelSnippet.thumbnails.default.url;
-
 
   const { title, channelTitle, publishedAt, description } = details.snippet;
   const { viewCount, likeCount, dislikeCount } = details.statistics;
 
   return (
-    <div className="details-container" style={{ width: props.width }}>
+    <div className="details-container" style={{ width }}>
       <DetailsUpper
         subs={subs}
         title={title}
         likeCount={likeCount}
         viewCount={viewCount}
         videosRate={props.videosRate}
-        context={this}
         currentRating={rating}
         videoId={props.videoId}
         channelTitle={channelTitle}
