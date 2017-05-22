@@ -13,15 +13,13 @@ class DropdownMenu extends React.Component {
   handleClickOutside(e) {
     let notNavbarButton = !e.target.classList.contains('navbar-user-picture');
     if (notNavbarButton) {
-      this.props.toggleDropdown();
+      this.props.toggleDropdown('dropDown');
     }
-
-    this.clearUser = this.clearUser.bind(this);
   }
 
   clearUser() {
     this.props.logout();
-    this.props.toggleDropdown();
+    this.props.toggleDropdown('dropDown');
     localStorage.removeItem('google-user');
   }
 
@@ -30,7 +28,7 @@ class DropdownMenu extends React.Component {
     const myChannelId = user.channelId;
 
     return (
-      <div id='dropdown-menu'>
+      <div id='dropdown-menu' className='dropdown-menu'>
         <div className='user-info'>
           <img src={user.picture} alt={`${user.name}`} />
           <h1><strong>{ user.name }</strong></h1>

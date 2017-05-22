@@ -4,33 +4,39 @@ import PropTypes from 'prop-types';
 import { SearchBar } from 'common/components';
 import { toggleSidebar } from 'helpers';
 import DropdownMenu from './dropdown_menu';
+import BugForm from './bug_form';
 
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showDropdown: false
+      dropDown: false,
+      bugForm: false
     };
 
     this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
-  toggleDropdown() {
-    this.setState({ showDropdown: !this.state.showDropdown });
+  toggleDropdown(type) {
+    this.setState({ [type]: !this.state[type] });
   }
 
   renderRightMenu() {
     if (this.props.loggedIn) {
       return (
         <div className='navbar-right-menu'>
-          <a onClick={this.toggleDropdown} style={{ cursor: 'pointer' }} role="presentation">
+          <i onClick={() => this.toggleDropdown('bugForm')} className="material-icons navbar-bug-icon" style={{ paddingRight: 20 }}>
+            bug_report
+          </i>
+          <a onClick={() => this.toggleDropdown('dropDown')} style={{ cursor: 'pointer' }} role="presentation">
             <img
               className='navbar-user-picture'
               src={this.props.user.picture}
               alt={this.props.user.name}
             />
           </a>
-          { this.state.showDropdown ? (
+
+          { this.state.dropDown ? (
             <DropdownMenu
               context={this}
               toggleDropdown={this.toggleDropdown}
@@ -38,11 +44,22 @@ class Navbar extends React.Component {
               logout={this.props.logout}
             />
             ) : null }
+
+          { this.state.bugForm ? (
+            <BugForm
+              context={this}
+              toggleDropdown={this.toggleDropdown}
+              location={this.props.location.pathname.slice(1)}
+            />
+            ) : null }
         </div>
       );
     } else {
       return (
         <div className='navbar-right-menu'>
+          <i onClick={() => this.toggleDropdown('bugForm')} className="material-icons" style={{ paddingRight: 20 }}>
+            bug_report
+          </i>
           <a onClick={this.props.loginUser} role='presentation' style={{ cursor: 'pointer' }}>
             <p className="sign-in-text">SIGN IN</p>
           </a>
