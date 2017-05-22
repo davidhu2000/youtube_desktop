@@ -28,13 +28,14 @@ class Navbar extends React.Component {
           <i onClick={() => this.toggleDropdown('bugForm')} className="material-icons navbar-bug-icon" style={{ paddingRight: 20 }}>
             bug_report
           </i>
-          <a onClick={() => this.toggleDropdown('dropDown')} style={{ cursor: 'pointer' }} role="button">
+          <a onClick={() => this.toggleDropdown('dropDown')} style={{ cursor: 'pointer' }} role="presentation">
             <img
               className='navbar-user-picture'
               src={this.props.user.picture}
               alt={this.props.user.name}
             />
           </a>
+
           { this.state.dropDown ? (
             <DropdownMenu
               context={this}
@@ -48,6 +49,7 @@ class Navbar extends React.Component {
             <BugForm
               context={this}
               toggleDropdown={this.toggleDropdown}
+              location={this.props.location.pathname.slice(1)}
             />
             ) : null }
         </div>
@@ -67,7 +69,6 @@ class Navbar extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className='navbar'>
         <div className='navbar-left-menu'>

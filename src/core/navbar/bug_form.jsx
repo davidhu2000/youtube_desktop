@@ -1,6 +1,7 @@
-/* global localStorage */
+/* global fetch */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { createUrlParams } from 'helpers';
 import enhanceWithClickOutside from 'react-click-outside';
 
 class BugForm extends React.Component {
@@ -8,7 +9,8 @@ class BugForm extends React.Component {
     super(props);
 
     this.state = {
-      input: ''
+      input: '',
+      submitted: false
     };
 
     this.updateInput = this.updateInput.bind(this);
@@ -30,23 +32,50 @@ class BugForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.toggleDropdown('bugForm');
+
+    let url = 'https://youtube-bugs.herokuapp.com/bugs';
+
+    let body = {
+      "bug[component]": this.props.location,
+      "bug[description]": this.state.input
+    };
+
+    fetch(`${url}?${createUrlParams(body)}`, {
+      method: "POST"
+    });
+
+    this.setState({ submitted: true });
+
+    setTimeout(() => {
+      this.props.toggleDropdown('bugForm');
+    }, 3000);
   }
 
   render() {
-    return (
-      <div className='dropdown-menu'>
-        <h1 className='bug-form-title'>Submit a bug</h1>
-        <textarea
-          cols="30"
-          rows="10"
-          onChange={this.updateInput}
-          value={this.state.input}
-          className='bug-form-input'
-        />
-        <input type="submit" onClick={this.handleSubmit} className='bug-form-submit' />
-      </div>
-    );
+    if (this.state.submitted) {
+      return (
+        <div className='dropdown-menu'>
+          <h1 className='bug-form-title'>
+            Thank you for reporting this bug.
+            We will fix it ASAP.
+          </h1>
+        </div>
+      );
+    } else {
+      return (
+        <div className='dropdown-menu'>
+          <h1 className='bug-form-title'>Submit a bug</h1>
+          <textarea
+            cols="30"
+            rows="10"
+            onChange={this.updateInput}
+            value={this.state.input}
+            className='bug-form-input'
+          />
+          <input type="submit" onClick={this.handleSubmit} className='bug-form-submit' />
+        </div>
+      );
+    }
   }
 }
 
