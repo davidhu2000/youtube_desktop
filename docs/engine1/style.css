@@ -89,11 +89,7 @@
 	margin:0;
 }
 #wowslider-container1 .ws_images > div > img {
-<<<<<<< Updated upstream
-	max-height:880px;
-=======
 	max-height:600px;
->>>>>>> Stashed changes
 }
 
 #wowslider-container1 .ws_images iframe {
