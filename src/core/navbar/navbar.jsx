@@ -55,14 +55,10 @@ class Navbar extends React.Component {
     } else {
       return (
         <div className='navbar-right-menu'>
-<<<<<<< HEAD
-          <a onClick={this.props.loginUser} role='presentation' style={{ cursor: 'pointer' }}>
-=======
           <i onClick={() => this.toggleDropdown('bugForm')} className="material-icons" style={{ paddingRight: 20 }}>
             bug_report
           </i>
-          <a onClick={this.props.loginUser} role='button' style={{ cursor: 'pointer' }}>
->>>>>>> implement basic bug form and add toggle functionality
+          <a onClick={this.props.loginUser} role='presentation' style={{ cursor: 'pointer' }}>
             <p className="sign-in-text">SIGN IN</p>
           </a>
         </div>
