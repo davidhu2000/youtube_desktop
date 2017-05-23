@@ -31,8 +31,12 @@ class SearchIndex extends React.Component {
   handleScroll() {
     let search = document.getElementById('search-container');
     let main = document.getElementsByClassName('main-content')[0];
-    if (window.innerHeight + main.scrollTop > search.clientHeight - 50) {
-      this.props.searchVideos(this.props.query, this.props.searchResult.nextPageToken);
+    let inRange = window.innerHeight + main.scrollTop > search.clientHeight - 50;
+    if (inRange && !this.props.setting.isLoading) {
+      this.props.receiveSetting({ isLoading: true });
+      this.props.searchVideos(this.props.query, this.props.searchResult.nextPageToken).then(
+        () => this.props.receiveSetting({ isLoading: false })
+      );
     }
   }
 
@@ -54,6 +58,8 @@ class SearchIndex extends React.Component {
         query,
         videos,
         pageInfo } = this.props.searchResult;
+
+      console.log(videos.length)
 
       let { searchVideos } = this.props;
 
