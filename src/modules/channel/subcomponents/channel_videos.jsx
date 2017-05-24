@@ -54,7 +54,7 @@ class ChannelVideos extends React.Component {
       return (
         <div className="latest-uploaded-video-container">
           <Link to={`watch/${videoId}`} className="latest-uploaded-left">
-            <img src={url} />
+            <img src={url} alt={title} />
             <span className='duration-span'>{ duration }</span>
           </Link>
 

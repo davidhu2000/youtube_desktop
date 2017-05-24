@@ -104,6 +104,7 @@ class Channel extends React.Component {
         maxNumber={playlist.items.length}
         windowWidth={this.props.setting.windowWidth}
         sidebarVisible={this.props.setting.sidebarVisible}
+        widthDeduction={120}
       />
     ));
   }
@@ -132,14 +133,14 @@ class Channel extends React.Component {
         <div className="main-content">
           <div className="channels-container">
             <div className="channel-banner-container">
-              <img id="channel-banner" src={bannerImg} />
+              <img id="channel-banner" src={bannerImg} alt={channelName} />
             </div>
 
             <div className="channel-banner-header">
               <div className="channel-detail-container">
                 <div className="channel-detail-left">
                   <div className="channel-profile-container">
-                    <img id="channel-profile-img" src={profileImg} />
+                    <img id="channel-profile-img" src={profileImg} alt={channelName} />
                   </div>
 
                   <div className="channel-detail">
@@ -159,8 +160,9 @@ class Channel extends React.Component {
             <ChannelNavbar currentRoute={this.state.currentRoute} />
 
             <ChannelVideos videos={videos} />
-
-            { this.renderPlaylists() }
+            <div className="channel-playlists">
+              { this.renderPlaylists() }
+            </div>
 
           </div>
         </div>
