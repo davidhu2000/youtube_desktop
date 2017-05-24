@@ -133,6 +133,8 @@ class PlayerDetails extends React.Component {
                 width={width}
                 videoId={videoId}
                 videosRate={this.props.videosRate}
+                insertSubscription={this.props.insertSubscription}
+                deleteSubscription={this.props.deleteSubscription}
               />
 
               { this.renderRelated() }
@@ -164,6 +166,8 @@ PlayerDetails.propTypes = {
   videosRate: PropTypes.func.isRequired,
   receiveSetting: PropTypes.func.isRequired,
   switchAutoplay: PropTypes.func.isRequired,
+  insertSubscription: PropTypes.func.isRequired,
+  deleteSubscription: PropTypes.func.isRequired,
   playerDetails: propChecker.playerDetails().isRequired,
   setting: propChecker.setting().isRequired,
   user: PropTypes.shape(),
