@@ -7,7 +7,9 @@ import { SubscribeButton, VideoBox } from 'common/components';
 
 import {
   ChannelNavbar,
-  ChannelVideos
+  ChannelVideos,
+  FeaturedVideo,
+  ChannelHome
 } from './subcomponents';
 
 class Channel extends React.Component {
@@ -23,6 +25,7 @@ class Channel extends React.Component {
 
     this.clickSubscribe = this.clickSubscribe.bind(this);
     this._getNewChannelInfo = this._getNewChannelInfo.bind(this);
+    this.updateRoute = this.updateRoute.bind(this);
   }
 
   componentDidMount() {
@@ -95,6 +98,10 @@ class Channel extends React.Component {
     }
   }
 
+  updateRoute(currentRoute) {
+    this.setState({ currentRoute });
+  }
+
   renderPlaylists() {
     return values(this.props.playlists).map(playlist => (
       <VideoBox
@@ -107,6 +114,16 @@ class Channel extends React.Component {
         widthDeduction={120}
       />
     ));
+  }
+
+  renderRoute() {
+    console.log(this.state.currentRoute)
+    switch (this.state.currentRoute) {
+      case 'videos':
+        return <ChannelVideos />;
+      default:
+        return <ChannelHome />;
+    }
   }
 
   render() {
@@ -157,11 +174,18 @@ class Channel extends React.Component {
               </div>
             </div>
 
-            <ChannelNavbar currentRoute={this.state.currentRoute} />
+            <ChannelNavbar
+              updateRoute={this.updateRoute}
+              currentRoute={this.state.currentRoute}
+            />
 
-            <ChannelVideos videos={videos} />
-            <div className="channel-playlists">
-              { this.renderPlaylists() }
+            { this.renderRoute() }
+
+            <div className='channel-home'>
+              <FeaturedVideo videos={videos} />
+              <div className="channel-playlists">
+                { this.renderPlaylists() }
+              </div>
             </div>
 
           </div>

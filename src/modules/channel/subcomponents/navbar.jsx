@@ -3,25 +3,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class ChannelNavbar extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      currentRoute: this.props.currentRoute
-    };
-
-    this.renderHome = this.renderHome.bind(this);
-    this.renderVideos = this.renderVideos.bind(this);
-    this.renderPlaylists = this.renderPlaylists.bind(this);
-    this.renderChannels = this.renderChannels.bind(this);
-    this.renderAbout = this.renderAbout.bind(this);
-  }
-
   componentDidMount() {
-    this.activeLink("home");
+    this.activeLink(this.props.currentRoute);
   }
 
-  // TODO: Logic for sidebar to override resize behavior and have sliding effect in full size screen
+  componentWillReceiveProps(newProps) {
+    this.activeLink(newProps.currentRoute);
+  }
 
   activeLink(route) {
     let menus = ["home", "videos", "playlists", "channels", "about"];
@@ -35,48 +23,24 @@ class ChannelNavbar extends React.Component {
     }
   }
 
-  renderHome() {
-    this.setState({ currentRoute: "home" });
-    this.activeLink("home");
-  }
-
-  renderVideos() {
-    this.setState({ currentRoute: "videos" });
-    this.activeLink("videos");
-  }
-
-  renderPlaylists() {
-    this.setState({ currentRoute: "playlists" });
-    this.activeLink("playlists");
-  }
-
-  renderChannels() {
-    this.setState({ currentRoute: "channels" });
-    this.activeLink("channels");
-  }
-
-  renderAbout() {
-    this.setState({ currentRoute: "about" });
-    this.activeLink("about");
-  }
-
   render() {
+    const { updateRoute } = this.props;
     return (
       <div className="channel-navbar-container">
         <ul className="channel-navbar-lists">
-          <li role="presentation" id="channel-home" onClick={this.renderHome}>
+          <li role="presentation" id="channel-home" onClick={() => updateRoute('home')}>
             Home
           </li>
-          <li role="presentation" id="channel-videos" onClick={this.renderVideos}>
+          <li role="presentation" id="channel-videos" onClick={() => updateRoute('videos')}>
             Videos
           </li>
-          <li role="presentation" id="channel-playlists" onClick={this.renderPlaylists}>
+          <li role="presentation" id="channel-playlists" onClick={() => updateRoute('playlists')}>
             Playlists
           </li>
-          <li role="presentation" id="channel-channels" onClick={this.renderChannels}>
+          <li role="presentation" id="channel-channels" onClick={() => updateRoute('channels')}>
             Channels
           </li>
-          <li role="presentation" id="channel-about" onClick={this.renderAbout}>
+          <li role="presentation" id="channel-about" onClick={() => updateRoute('about')}>
             About
           </li>
           <li><i className="material-icons">search</i></li>
@@ -87,7 +51,8 @@ class ChannelNavbar extends React.Component {
 }
 
 ChannelNavbar.propTypes = {
-  currentRoute: PropTypes.string.isRequired
+  currentRoute: PropTypes.string.isRequired,
+  updateRoute: PropTypes.func.isRequired
 };
 
 export { ChannelNavbar };
