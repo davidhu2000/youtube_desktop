@@ -12,7 +12,7 @@ class ChannelNavbar extends React.Component {
   }
 
   activeLink(route) {
-    let menus = ["home", "videos", "playlists", "channels", "about"];
+    let menus = ["home", "videos", "playlists", "about"];
 
     for (let i = 0; i < menus.length; i++) {
       if (route === menus[i]) {
@@ -36,9 +36,6 @@ class ChannelNavbar extends React.Component {
           </li>
           <li role="presentation" id="channel-playlists" onClick={() => updateRoute('playlists')}>
             Playlists
-          </li>
-          <li role="presentation" id="channel-channels" onClick={() => updateRoute('channels')}>
-            Channels
           </li>
           <li role="presentation" id="channel-about" onClick={() => updateRoute('about')}>
             About

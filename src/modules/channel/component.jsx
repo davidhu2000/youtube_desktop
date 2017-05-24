@@ -9,7 +9,9 @@ import {
   ChannelNavbar,
   ChannelVideos,
   FeaturedVideo,
-  ChannelHome
+  ChannelHome,
+  ChannelPlaylists,
+  ChannelAbout
 } from './subcomponents';
 
 class Channel extends React.Component {
@@ -121,6 +123,10 @@ class Channel extends React.Component {
     switch (this.state.currentRoute) {
       case 'videos':
         return <ChannelVideos />;
+      case 'playlists':
+        return <ChannelPlaylists />;
+      case 'about':
+        return <ChannelAbout />;
       default:
         return <ChannelHome />;
     }
