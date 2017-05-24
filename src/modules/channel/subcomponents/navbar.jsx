@@ -64,11 +64,21 @@ class ChannelNavbar extends React.Component {
     return (
       <div className="channel-navbar-container">
         <ul className="channel-navbar-lists">
-          <li id="channel-home" onClick={this.renderHome}>Home</li>
-          <li id="channel-videos" onClick={this.renderVideos}>Videos</li>
-          <li id="channel-playlists" onClick={this.renderPlaylists}>Playlists</li>
-          <li id="channel-channels" onClick={this.renderChannels}>Channels</li>
-          <li id="channel-about" onClick={this.renderAbout}>About</li>
+          <li role="presentation" id="channel-home" onClick={this.renderHome}>
+            Home
+          </li>
+          <li role="presentation" id="channel-videos" onClick={this.renderVideos}>
+            Videos
+          </li>
+          <li role="presentation" id="channel-playlists" onClick={this.renderPlaylists}>
+            Playlists
+          </li>
+          <li role="presentation" id="channel-channels" onClick={this.renderChannels}>
+            Channels
+          </li>
+          <li role="presentation" id="channel-about" onClick={this.renderAbout}>
+            About
+          </li>
           <li><i className="material-icons">search</i></li>
         </ul>
       </div>
