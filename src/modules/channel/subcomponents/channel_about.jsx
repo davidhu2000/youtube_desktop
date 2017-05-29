@@ -25,7 +25,7 @@ class ChannelAbout extends React.Component {
     return this.props.description.split('\n').map(line => (
       <li
         key={Math.random()}
-        dangerouslySetInnerHTML={{ __html: `${parseStringForLinks(line)}` }}
+        dangerouslySetInnerHTML={{ __html: `${parseStringForLinks(line || '\n')}` }}
       />
     ));
   }
@@ -40,6 +40,7 @@ class ChannelAbout extends React.Component {
 
         <div className="channel-about-right">
           <h1>Stats</h1>
+          <span>Joined</span>
           <span>{ formatNumber(this.props.viewCount) } views</span>
         </div>
       </div>
