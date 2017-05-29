@@ -8,7 +8,6 @@ import { SubscribeButton, VideoBox } from 'common/components';
 import {
   ChannelNavbar,
   ChannelVideos,
-  FeaturedVideo,
   ChannelHome,
   ChannelPlaylists,
   ChannelAbout
@@ -123,7 +122,7 @@ class Channel extends React.Component {
 
     switch (this.state.currentRoute) {
       case 'videos':
-        return <ChannelVideos />;
+        return <ChannelVideos videos={channelDetails.videos} />;
       case 'playlists':
         return <ChannelPlaylists />;
       case 'about':
