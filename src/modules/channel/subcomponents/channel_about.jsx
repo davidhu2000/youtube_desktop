@@ -1,13 +1,33 @@
+/* global window, document */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { formatNumber, parseStringForLinks } from 'helpers';
+
+const { ipcRenderer } = window.require('electron');
 
 class ChannelAbout extends React.Component {
+  componentDidMount() {
+    let container = document.getElementsByClassName('channel-about-left')[0];
+    container.onclick = event => {
+      if (event.target.tagName === 'A') {
+        let url = event.target.innerHTML;
+        ipcRenderer.send('open-url', url);
+      }
+    };
+  }
+
+  componentWillUnMount() {
+    let container = document.getElementsByClassName('channel-about-left')[0];
+    container.onclick = null;
+  }
 
   renderDescription() {
-    console.log(this.props.description.split('\n'))
-    return this.props.description.split('\n').map(line => {
-      return <li>{ line }</li>
-    });
+    return this.props.description.split('\n').map(line => (
+      <li
+        key={Math.random()}
+        dangerouslySetInnerHTML={{ __html: `${parseStringForLinks(line)}` }}
+      />
+    ));
   }
 
   render() {
@@ -20,7 +40,7 @@ class ChannelAbout extends React.Component {
 
         <div className="channel-about-right">
           <h1>Stats</h1>
-          { this.props.viewCount }
+          <span>{ formatNumber(this.props.viewCount) } views</span>
         </div>
       </div>
     );
@@ -29,7 +49,7 @@ class ChannelAbout extends React.Component {
 
 ChannelAbout.propTypes = {
   description: PropTypes.string.isRequired,
-  viewCount: PropTypes.number.isRequired
+  viewCount: PropTypes.string.isRequired
 };
 
 export { ChannelAbout };
