@@ -60,7 +60,7 @@ class SubscribeButton extends React.Component {
     }
 
     return (
-      <div className="subscriber-button button-span">
+      <div className="subscriber-button">
         <button
           id={`channel-subscribers-button${cssClass}`}
           onClick={this.clickSubscribe}
