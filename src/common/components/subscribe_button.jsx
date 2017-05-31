@@ -34,8 +34,10 @@ class SubscribeButton extends React.Component {
     let subscriptionId;
 
     for (let i = 0; i < subscriptions.length; i++) {
-      if (this.props.subscriptions[subscriptions[i]].resourceId.channelId === channelId) {
-        subscriptionId = this.props.subscriptions[subscriptions[i]].subscriptionId;
+      let subscription = this.props.subscriptions[subscriptions[i]];
+      if (subscription.resourceId.channelId === channelId) {
+        subscriptionId = subscription.subscriptionId;
+        break;
       }
     }
 
