@@ -9,9 +9,10 @@ const Details = props => {
     return null;
   }
 
-  const { details, rating, width } = props;
+  const { details, rating, width, subscriptions } = props;
   const { subs } = details;
   const channelImg = details.channelSnippet.thumbnails.default.url;
+  const channelId = details.snippet.channelId;
 
   const { title, channelTitle, publishedAt, description } = details.snippet;
   const { viewCount, likeCount, dislikeCount } = details.statistics;
@@ -36,6 +37,10 @@ const Details = props => {
         publishedAt={publishedAt}
         description={description}
         channelImg={channelImg}
+        channelId={channelId}
+        insertSubscription={props.insertSubscription}
+        deleteSubscription={props.deleteSubscription}
+        subscriptions={subscriptions}
       />
     </div>
   );
@@ -46,7 +51,10 @@ Details.propTypes = {
   width: PropTypes.number.isRequired,
   videosRate: PropTypes.func.isRequired,
   details: PropTypes.shape().isRequired,
-  videoId: PropTypes.string.isRequired
+  videoId: PropTypes.string.isRequired,
+  insertSubscription: PropTypes.func.isRequired,
+  deleteSubscription: PropTypes.func.isRequired,
+  subscriptions: PropTypes.shape().isRequired
 };
 
 export { Details };

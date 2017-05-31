@@ -1,7 +1,8 @@
 /* global window, document */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { parseDate, formatNumber, parseStringForLinks } from 'helpers';
+import { parseDate, parseStringForLinks } from 'helpers';
+import { SubscribeButton } from 'common/components';
 
 const { ipcRenderer } = window.require('electron');
 
@@ -10,7 +11,7 @@ class DetailsLower extends React.Component {
     super(props);
 
     this.state = {
-      showAllDecription: false
+      showAllDescription: false
     };
   }
 
@@ -38,7 +39,7 @@ class DetailsLower extends React.Component {
   addDescription() {
     if (this.props.description) {
       let descript;
-      if (this.state.showAllDecription) {
+      if (this.state.showAllDescription) {
         descript = this.props.description.split('\n');
       } else {
         descript = [this.props.description.slice(0, 200)];
@@ -53,7 +54,16 @@ class DetailsLower extends React.Component {
   }
 
   render() {
-    let { subs, channelTitle, channelImg } = this.props;
+    let {
+      subs,
+      channelId,
+      channelImg,
+      channelTitle,
+      subscriptions,
+      insertSubscription,
+      deleteSubscription } = this.props;
+
+    subs = parseInt(subs, 10);
 
     return (
       <div className="details-lower-container">
@@ -69,12 +79,13 @@ class DetailsLower extends React.Component {
               </h3>
             </div>
             <div className="details-lower-container-upper-right">
-              <div className="button-span">
-                <button type="button" className="sub-button">
-                  <span>SUBSCRIBE</span>
-                  <span className="sub-span">{formatNumber(subs, true)}</span>
-                </button>
-              </div>
+              <SubscribeButton
+                subscriberNum={subs}
+                channelId={channelId}
+                insertSubscription={insertSubscription}
+                deleteSubscription={deleteSubscription}
+                subscriptions={subscriptions}
+              />
             </div>
           </div>
 
@@ -82,9 +93,9 @@ class DetailsLower extends React.Component {
             {this.addDescription()}
             <button
               className='details-description-button'
-              onClick={() => this.setState({ showAllDecription: !this.state.showAllDecription })}
+              onClick={() => this.setState({ showAllDescription: !this.state.showAllDescription })}
             >
-              { this.state.showAllDecription ? 'Show less' : 'Show more' }
+              { this.state.showAllDescription ? 'Show less' : 'Show more' }
             </button>
           </div>
         </div>
@@ -98,7 +109,11 @@ DetailsLower.propTypes = {
   subs: PropTypes.string.isRequired,
   publishedAt: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  channelImg: PropTypes.string.isRequired
+  channelImg: PropTypes.string.isRequired,
+  insertSubscription: PropTypes.func.isRequired,
+  deleteSubscription: PropTypes.func.isRequired,
+  channelId: PropTypes.string.isRequired,
+  subscriptions: PropTypes.shape().isRequired
 };
 
 export default DetailsLower;

@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import { videosRate } from 'common/interaction/actions';
 import { receiveSetting } from 'common/setting/actions';
-
+import { insertSubscription,
+        deleteSubscription } from 'modules/channel/actions';
 import PlayerDetails from './component';
 import { fetchDetails,
          fetchRelated,
@@ -9,10 +10,11 @@ import { fetchDetails,
          fetchVideoRating,
          switchAutoplay } from './actions';
 
-const mapStateToProps = ({ playerDetails, setting, user }) => ({
+const mapStateToProps = ({ playerDetails, setting, user, subscriptions }) => ({
   playerDetails,
   setting,
   user,
+  subscriptions,
   loggedIn: Boolean(user)
 });
 
@@ -23,7 +25,9 @@ const mapDispatchToProps = dispatch => ({
   fetchVideoRating: videoId => dispatch(fetchVideoRating(videoId)),
   videosRate: (videoId, rating) => dispatch(videosRate(videoId, rating)),
   receiveSetting: setting => dispatch(receiveSetting(setting)),
-  switchAutoplay: status => dispatch(switchAutoplay(status))
+  switchAutoplay: status => dispatch(switchAutoplay(status)),
+  insertSubscription: channelId => dispatch(insertSubscription(channelId)),
+  deleteSubscription: subscriptionId => dispatch(deleteSubscription(subscriptionId))
 });
 
 export default connect(
