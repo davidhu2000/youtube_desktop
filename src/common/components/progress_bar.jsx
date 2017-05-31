@@ -13,15 +13,11 @@ class ProgressBar extends React.Component {
 
   componentDidMount() {
     this.animate = setInterval(() => {
-      if (this.props.progress >= 100) {
-        clearInterval(this.animate);
-      } else {
-        this.props.updateProgress();
-      }
+      this.props.updateProgress();
     }, 33);
   }
 
-  componentWillUnMount() {
+  componentWillUnmount() {
     clearInterval(this.animate);
   }
 

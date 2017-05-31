@@ -132,7 +132,10 @@ class PlayerDetails extends React.Component {
                 rating={rating}
                 width={width}
                 videoId={videoId}
+                subscriptions={this.props.subscriptions}
                 videosRate={this.props.videosRate}
+                insertSubscription={this.props.insertSubscription}
+                deleteSubscription={this.props.deleteSubscription}
               />
 
               { this.renderRelated() }
@@ -164,14 +167,18 @@ PlayerDetails.propTypes = {
   videosRate: PropTypes.func.isRequired,
   receiveSetting: PropTypes.func.isRequired,
   switchAutoplay: PropTypes.func.isRequired,
+  insertSubscription: PropTypes.func.isRequired,
+  deleteSubscription: PropTypes.func.isRequired,
   playerDetails: propChecker.playerDetails().isRequired,
   setting: propChecker.setting().isRequired,
   user: PropTypes.shape(),
-  loggedIn: PropTypes.bool.isRequired
+  loggedIn: PropTypes.bool.isRequired,
+  subscriptions: PropTypes.shape()
 };
 
 PlayerDetails.defaultProps = {
-  user: {}
+  user: {},
+  subscriptions: {}
 };
 
 export default withRouter(PlayerDetails);
