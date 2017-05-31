@@ -13,6 +13,10 @@ class SubscribeButton extends React.Component {
     this.clickSubscribe = this.clickSubscribe.bind(this);
   }
 
+  componentDidMount() {
+    this.isSubscribed();
+  }
+
   isSubscribed() {
     let subscribed = Object.keys(this.props.subscriptions);
     let channelId = this.props.channelId;
@@ -56,10 +60,11 @@ class SubscribeButton extends React.Component {
     }
 
     return (
-      <div className="subscriber-button">
+      <div className="subscriber-button button-span">
         <button
           id={`channel-subscribers-button${cssClass}`}
           onClick={this.clickSubscribe}
+          className="sub-button"
         >
           {text} {formatNumber(subscriberNum, true)}
         </button>
