@@ -2,32 +2,78 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { formatNumber } from 'helpers';
 
-const SubscribeButton = ({ clickSubscribe, subscriberNum, isSubscribed }) => {
-  let cssClass = '';
-  let text = 'Subscribe';
+class SubscribeButton extends React.Component {
+  constructor(props) {
+    super(props);
 
-  if (isSubscribed) {
-    cssClass = '-sub';
-    text = 'Subscribed';
-    subscriberNum++;
+    this.state = {
+      subscribed: false
+    };
+
+    this.clickSubscribe = this.clickSubscribe.bind(this);
   }
 
-  return (
-    <div className="subscriber-button">
-      <button
-        id={`channel-subscribers-button${cssClass}`}
-        onClick={clickSubscribe}
-      >
-        {text} {formatNumber(subscriberNum, true)}
-      </button>
-    </div>
-  );
-};
+  isSubscribed() {
+    let subscribed = Object.keys(this.props.subscriptions);
+    let channelId = this.props.channelId;
+
+    if (subscribed.includes(channelId)) {
+      this.setState({ subscribed: true });
+    } else {
+      this.setState({ subscribed: false });
+    }
+  }
+
+  clickSubscribe() {
+    let channelId = this.props.channelId;
+    let subscriptions = Object.keys(this.props.subscriptions);
+    let subscriptionId;
+
+    for (let i = 0; i < subscriptions.length; i++) {
+      if (this.props.subscriptions[subscriptions[i]].resourceId.channelId === channelId) {
+        subscriptionId = this.props.subscriptions[subscriptions[i]].subscriptionId;
+      }
+    }
+
+    if (this.state.subscribed) {
+      this.props.deleteSubscription(subscriptionId);
+      this.setState({ subscribed: false });
+    } else {
+      this.props.insertSubscription(channelId);
+      this.setState({ subscribed: true });
+    }
+  }
+
+  render() {
+    let cssClass = '';
+    let text = 'Subscribe';
+    let { subscriberNum } = this.props;
+
+    if (this.state.subscribed) {
+      cssClass = '-sub';
+      text = 'Subscribed';
+      subscriberNum++;
+    }
+
+    return (
+      <div className="subscriber-button">
+        <button
+          id={`channel-subscribers-button${cssClass}`}
+          onClick={this.clickSubscribe}
+        >
+          {text} {formatNumber(subscriberNum, true)}
+        </button>
+      </div>
+    );
+  }
+}
 
 SubscribeButton.propTypes = {
-  clickSubscribe: PropTypes.func.isRequired,
   subscriberNum: PropTypes.number.isRequired,
-  isSubscribed: PropTypes.bool.isRequired
+  channelId: PropTypes.string.isRequired,
+  subscriptions: PropTypes.shape().isRequired,
+  insertSubscription: PropTypes.func.isRequired,
+  deleteSubscription: PropTypes.func.isRequired
 };
 
 export { SubscribeButton };
