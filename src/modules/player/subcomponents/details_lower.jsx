@@ -1,7 +1,7 @@
 /* global window, document */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { parseDate, formatNumber, parseStringForLinks } from 'helpers';
+import { parseDate, parseStringForLinks } from 'helpers';
 import { SubscribeButton } from 'common/components';
 
 const { ipcRenderer } = window.require('electron');
@@ -11,7 +11,7 @@ class DetailsLower extends React.Component {
     super(props);
 
     this.state = {
-      showAllDecription: false
+      showAllDescription: false
     };
   }
 
@@ -39,7 +39,7 @@ class DetailsLower extends React.Component {
   addDescription() {
     if (this.props.description) {
       let descript;
-      if (this.state.showAllDecription) {
+      if (this.state.showAllDescription) {
         descript = this.props.description.split('\n');
       } else {
         descript = [this.props.description.slice(0, 200)];
@@ -93,9 +93,9 @@ class DetailsLower extends React.Component {
             {this.addDescription()}
             <button
               className='details-description-button'
-              onClick={() => this.setState({ showAllDecription: !this.state.showAllDecription })}
+              onClick={() => this.setState({ showAllDescription: !this.state.showAllDescription })}
             >
-              { this.state.showAllDecription ? 'Show less' : 'Show more' }
+              { this.state.showAllDescription ? 'Show less' : 'Show more' }
             </button>
           </div>
         </div>
