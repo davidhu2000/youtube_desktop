@@ -151,6 +151,7 @@
   justify-content: flex-start;
   height: 40px;
   cursor: pointer;
+  width: 225px;
 }
 
 .sidebar-item:hover {
