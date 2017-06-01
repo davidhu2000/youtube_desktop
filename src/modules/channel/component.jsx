@@ -140,14 +140,18 @@ class Channel extends React.Component {
     let profileImg;
     let channelName;
     let subscriberNum;
-    let videos;
+    let channelId;
 
-    if (this.props.channelDetails.detail) {
-      bannerImg = this.props.channelDetails.detail.brandingSettings.image.bannerImageUrl;
-      profileImg = this.props.channelDetails.detail.snippet.thumbnails.default.url;
-      channelName = this.props.channelDetails.detail.snippet.title;
-      subscriberNum = parseInt(this.props.channelDetails.detail.statistics.subscriberCount, 10);
-      videos = this.props.channelDetails.videos;
+    let { channelDetails, subscriptions, deleteSubscription, insertSubscription } = this.props;
+
+    if (channelDetails.detail) {
+      let { detail } = channelDetails;
+
+      bannerImg = detail.brandingSettings.image.bannerImageUrl;
+      profileImg = detail.snippet.thumbnails.default.url;
+      channelName = detail.snippet.title;
+      subscriberNum = parseInt(detail.statistics.subscriberCount, 10);
+      channelId = detail.id;
     }
 
     if (this.props.setting.isLoading) {
@@ -176,9 +180,11 @@ class Channel extends React.Component {
                 </div>
 
                 <SubscribeButton
-                  clickSubscribe={this.clickSubscribe}
+                  insertSubscription={insertSubscription}
+                  deleteSubscription={deleteSubscription}
+                  subscriptions={subscriptions}
                   subscriberNum={subscriberNum}
-                  isSubscribed={this.state.subscribed}
+                  channelId={channelId}
                 />
               </div>
             </div>

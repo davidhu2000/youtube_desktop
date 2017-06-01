@@ -1,17 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { VideoBoxItem, Videobox } from 'common/components';
+import { VideoBoxItem } from 'common/components';
 
 class ChannelVideos extends React.Component {
-
   render() {
-    console.log(this.props)
     const { videos } = this.props;
 
     return (
       <div className="channel-videos">
         { videos.map(video => (
-          <VideoBoxItem vid={video} />
+          <VideoBoxItem key={Math.random()} vid={video} />
         ))}
       </div>
     );
@@ -19,7 +17,7 @@ class ChannelVideos extends React.Component {
 }
 
 ChannelVideos.propTypes = {
-  videos: PropTypes.arrayOf(PropTypes.shape())
+  videos: PropTypes.arrayOf(PropTypes.shape()).isRequired
 };
 
 export { ChannelVideos };
