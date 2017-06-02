@@ -8,17 +8,25 @@ import { FeaturedVideo } from './';
 class ChannelHome extends React.Component {
 
   renderPlaylists() {
-    return values(this.props.playlists).map(playlist => (
-      <VideoBox
-        key={playlist.id}
-        title={playlist.snippet.title}
-        vids={playlist.items}
-        maxNumber={playlist.items.length}
-        windowWidth={this.props.setting.windowWidth}
-        sidebarVisible={this.props.setting.sidebarVisible}
-        widthDeduction={120}
-      />
-    ));
+    function notPrivateVideo(vid) {
+      return vid.snippet.title !== 'Private video';
+    }
+
+    return values(this.props.playlists).map(playlist => {
+      let vids = playlist.items.filter(notPrivateVideo);
+
+      return (
+        <VideoBox
+          key={playlist.id}
+          title={playlist.snippet.title}
+          vids={vids}
+          maxNumber={playlist.items.length}
+          windowWidth={this.props.setting.windowWidth}
+          sidebarVisible={this.props.setting.sidebarVisible}
+          widthDeduction={120}
+        />
+      );
+    });
   }
 
   render() {
