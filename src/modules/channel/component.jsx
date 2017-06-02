@@ -75,8 +75,8 @@ class Channel extends React.Component {
     switch (this.state.currentRoute) {
       case 'videos':
         return <ChannelVideos videos={channelDetails.videos} />;
-      case 'playlists':
-        return <ChannelPlaylists />;
+      // case 'playlists':
+      //   return <ChannelPlaylists />;
       case 'about':
         let { description } = channelDetails.detail.brandingSettings.channel;
         let { viewCount } = channelDetails.detail.statistics;
