@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { values } from 'lodash';
 import { propChecker } from 'helpers';
 import { VideoBox, VideoList } from 'common/components';
-import { FeaturedVideo } from './';
 
 class ChannelHome extends React.Component {
 
@@ -40,8 +39,7 @@ class ChannelHome extends React.Component {
             shouldShowSpinner={false}
           />
         </div>
-        
-        {/*<FeaturedVideo videos={this.props.videos} />*/}
+
         <div className="channel-playlists">
           { this.renderPlaylists() }
         </div>

@@ -9,7 +9,6 @@ import {
   ChannelNavbar,
   ChannelVideos,
   ChannelHome,
-  ChannelPlaylists,
   ChannelAbout
 } from './subcomponents';
 
