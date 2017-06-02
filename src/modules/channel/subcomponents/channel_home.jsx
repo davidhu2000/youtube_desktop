@@ -20,7 +20,7 @@ class ChannelHome extends React.Component {
           key={playlist.id}
           title={playlist.snippet.title}
           vids={vids}
-          maxNumber={playlist.items.length}
+          maxNumber={vids.length}
           windowWidth={this.props.setting.windowWidth}
           sidebarVisible={this.props.setting.sidebarVisible}
           widthDeduction={120}
