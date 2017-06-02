@@ -25,7 +25,7 @@ class Navbar extends React.Component {
     if (this.props.loggedIn) {
       return (
         <div className='navbar-right-menu'>
-          <i onClick={() => this.toggleDropdown('bugForm')} className="material-icons navbar-bug-icon" style={{ paddingRight: 20 }}>
+          <i onClick={() => this.toggleDropdown('bugForm')} className="material-icons navbar-bug-icon">
             bug_report
           </i>
           <a onClick={() => this.toggleDropdown('dropDown')} style={{ cursor: 'pointer' }} role="presentation">
@@ -57,7 +57,7 @@ class Navbar extends React.Component {
     } else {
       return (
         <div className='navbar-right-menu'>
-          <i onClick={() => this.toggleDropdown('bugForm')} className="material-icons" style={{ paddingRight: 20 }}>
+          <i onClick={() => this.toggleDropdown('bugForm')} className="material-icons">
             bug_report
           </i>
           <a onClick={this.props.loginUser} role='presentation' style={{ cursor: 'pointer' }}>

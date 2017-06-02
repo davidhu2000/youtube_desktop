@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(refreshToken, 3400000);
 
     ReactDOM.render(<Root store={store} />, root);
+
+    // TODO: remove for production
     window.store = store;
     window.s = store.getState;
   });

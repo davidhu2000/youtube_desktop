@@ -1,0 +1,11 @@
+.channel-videos {
+  padding: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 107px;
+  margin-right: 20px;
+}
+
+.channel-videos > * {
+  margin: 5px;
+}

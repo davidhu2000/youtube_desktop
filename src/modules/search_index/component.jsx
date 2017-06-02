@@ -59,8 +59,6 @@ class SearchIndex extends React.Component {
         videos,
         pageInfo } = this.props.searchResult;
 
-      console.log(videos.length)
-
       let { searchVideos } = this.props;
 
       let volume;

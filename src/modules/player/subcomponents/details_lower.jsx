@@ -1,6 +1,7 @@
 /* global window, document */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link, hashHistory } from 'react-router';
 import { parseDate, parseStringForLinks } from 'helpers';
 import { SubscribeButton } from 'common/components';
 
@@ -67,13 +68,13 @@ class DetailsLower extends React.Component {
 
     return (
       <div className="details-lower-container">
-        <div className="details-lower-container-left">
+        <div className="details-lower-container-left" onClick={() => hashHistory.push(`channels/${channelId}`)}>
           <img src={channelImg} alt={channelTitle} />
         </div>
         <div className="details-lower-container-right">
           <div className="details-lower-container-upper">
             <div className="details-lower-container-upper-left">
-              <a href="" className="channel-name">{channelTitle}</a>
+              <Link to={`channels/${channelId}`} className="channel-name">{channelTitle}</Link>
               <h3 className="details-date">
                 Published on {parseDate(this.props.publishedAt)}
               </h3>

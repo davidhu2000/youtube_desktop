@@ -1,13 +1,15 @@
 /* global Promise */
 import React from 'react';
-import { values } from 'lodash';
+import autoBind from 'react-autobind';
 import PropTypes from 'prop-types';
 import { formatNumber, propChecker } from 'helpers';
-import { SubscribeButton, VideoBox } from 'common/components';
+import { SubscribeButton } from 'common/components';
 
 import {
   ChannelNavbar,
-  ChannelVideos
+  ChannelVideos,
+  ChannelHome,
+  ChannelAbout
 } from './subcomponents';
 
 class Channel extends React.Component {
@@ -21,8 +23,7 @@ class Channel extends React.Component {
       subscribed: null
     };
 
-    this.clickSubscribe = this.clickSubscribe.bind(this);
-    this._getNewChannelInfo = this._getNewChannelInfo.bind(this);
+    autoBind(this);
   }
 
   componentDidMount() {
@@ -46,7 +47,6 @@ class Channel extends React.Component {
     dataNeeded.push(this.props.fetchChannelPlaylists(channelId));
 
     if (this.props.loggedIn) {
-      dataNeeded.push(this.isSubscribed());
       if (Object.keys(this.props.subscriptions).length === 0) {
         dataNeeded.push(this.props.fetchSubscriptions(userId));
       }
@@ -64,48 +64,32 @@ class Channel extends React.Component {
     });
   }
 
-  isSubscribed() {
-    let subscribed = Object.keys(this.props.subscriptions);
-    let channelId = this.props.params.channelId;
-
-    if (subscribed.includes(channelId)) {
-      this.setState({ subscribed: true });
-    } else {
-      this.setState({ subscribed: false });
-    }
+  updateRoute(currentRoute) {
+    this.setState({ currentRoute });
   }
 
-  clickSubscribe() {
-    let channelId = this.state.channelId;
-    let subscriptions = Object.keys(this.props.subscriptions);
-    let subscriptionId;
+  renderRoute() {
+    let { channelDetails, playlists, setting } = this.props;
 
-    for (let i = 0; i < subscriptions.length; i++) {
-      if (this.props.subscriptions[subscriptions[i]].resourceId.channelId === channelId) {
-        subscriptionId = this.props.subscriptions[subscriptions[i]].subscriptionId;
-      }
+    switch (this.state.currentRoute) {
+      case 'videos':
+        return <ChannelVideos videos={channelDetails.videos} />;
+      // case 'playlists':
+      //   return <ChannelPlaylists />;
+      case 'about':
+        let { description } = channelDetails.detail.brandingSettings.channel;
+        let { viewCount } = channelDetails.detail.statistics;
+
+        return <ChannelAbout description={description} viewCount={viewCount} />;
+      default:
+        return (
+          <ChannelHome
+            videos={channelDetails.videos}
+            playlists={playlists}
+            setting={setting}
+          />
+        );
     }
-
-    if (this.state.subscribed) {
-      this.props.deleteSubscription(subscriptionId);
-      this.setState({ subscribed: false });
-    } else {
-      this.props.insertSubscription(channelId);
-      this.setState({ subscribed: true });
-    }
-  }
-
-  renderPlaylists() {
-    return values(this.props.playlists).map(playlist => (
-      <VideoBox
-        key={playlist.id}
-        title={playlist.snippet.title}
-        vids={playlist.items}
-        maxNumber={playlist.items.length}
-        windowWidth={this.props.setting.windowWidth}
-        sidebarVisible={this.props.setting.sidebarVisible}
-      />
-    ));
   }
 
   render() {
@@ -113,14 +97,18 @@ class Channel extends React.Component {
     let profileImg;
     let channelName;
     let subscriberNum;
-    let videos;
+    let channelId;
 
-    if (this.props.channelDetails.detail) {
-      bannerImg = this.props.channelDetails.detail.brandingSettings.image.bannerImageUrl;
-      profileImg = this.props.channelDetails.detail.snippet.thumbnails.default.url;
-      channelName = this.props.channelDetails.detail.snippet.title;
-      subscriberNum = parseInt(this.props.channelDetails.detail.statistics.subscriberCount, 10);
-      videos = this.props.channelDetails.videos;
+    let { channelDetails, subscriptions, deleteSubscription, insertSubscription } = this.props;
+
+    if (channelDetails.detail) {
+      let { detail } = channelDetails;
+
+      bannerImg = detail.brandingSettings.image.bannerImageUrl;
+      profileImg = detail.snippet.thumbnails.default.url;
+      channelName = detail.snippet.title;
+      subscriberNum = parseInt(detail.statistics.subscriberCount, 10);
+      channelId = detail.id;
     }
 
     if (this.props.setting.isLoading) {
@@ -132,14 +120,14 @@ class Channel extends React.Component {
         <div className="main-content">
           <div className="channels-container">
             <div className="channel-banner-container">
-              <img id="channel-banner" src={bannerImg} />
+              <img id="channel-banner" src={bannerImg} alt={channelName} />
             </div>
 
             <div className="channel-banner-header">
               <div className="channel-detail-container">
                 <div className="channel-detail-left">
                   <div className="channel-profile-container">
-                    <img id="channel-profile-img" src={profileImg} />
+                    <img id="channel-profile-img" src={profileImg} alt={channelName} />
                   </div>
 
                   <div className="channel-detail">
@@ -149,18 +137,21 @@ class Channel extends React.Component {
                 </div>
 
                 <SubscribeButton
-                  clickSubscribe={this.clickSubscribe}
+                  insertSubscription={insertSubscription}
+                  deleteSubscription={deleteSubscription}
+                  subscriptions={subscriptions}
                   subscriberNum={subscriberNum}
-                  isSubscribed={this.state.subscribed}
+                  channelId={channelId}
                 />
               </div>
             </div>
 
-            <ChannelNavbar currentRoute={this.state.currentRoute} />
+            <ChannelNavbar
+              updateRoute={this.updateRoute}
+              currentRoute={this.state.currentRoute}
+            />
 
-            <ChannelVideos videos={videos} />
-
-            { this.renderPlaylists() }
+            { this.renderRoute() }
 
           </div>
         </div>

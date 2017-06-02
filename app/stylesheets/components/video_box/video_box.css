@@ -18,7 +18,7 @@
 
 .video-box-videos{
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-direction: row;
   position: relative;
   align-items: flex-start;

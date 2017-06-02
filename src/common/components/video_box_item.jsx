@@ -45,7 +45,7 @@ const VideoBoxItem = ({ vid }) => {
         </Link>
 
         <Link to={`watch/${videoId}`} className="video-box-item-title">
-          <h1 className='video-title'>{title}</h1>
+          <h1 className='video-title'>{shortenString(title, 60)}</h1>
         </Link>
       </div>
 

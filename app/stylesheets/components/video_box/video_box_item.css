@@ -4,6 +4,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-right: 4px;
+}
+
+.video-box-item:last-of-type {
+  margin-right: 0px;
 }
 
 .video-box-item-image {

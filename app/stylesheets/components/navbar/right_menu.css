@@ -20,3 +20,12 @@
   font-weight: bold;
 }
 
+.navbar-bug-icon {
+  padding: 5px;
+}
+
+@media screen and (min-width: 750px) {
+  .navbar-bug-icon {
+    padding: 20px;
+  }
+}

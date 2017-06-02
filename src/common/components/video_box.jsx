@@ -47,6 +47,8 @@ class VideoBox extends React.Component {
       width -= 240;
     }
 
+    width -= this.props.widthDeduction;
+
     if (width > 1312) {
       numVideosPerRow = 6;
       boxWidth = 1284;
@@ -170,12 +172,14 @@ VideoBox.propTypes = {
   windowWidth: PropTypes.number.isRequired,
   vids: PropTypes.arrayOf(PropTypes.object).isRequired,
   sidebarVisible: PropTypes.bool.isRequired,
-  maxNumber: PropTypes.number
+  maxNumber: PropTypes.number,
+  widthDeduction: PropTypes.number
 };
 
 VideoBox.defaultProps = {
   multiline: false,
-  maxNumber: 15
+  maxNumber: 15,
+  widthDeduction: 0
 };
 
 export { VideoBox };
