@@ -118,7 +118,7 @@ class Channel extends React.Component {
   }
 
   renderRoute() {
-    let { channelDetails } = this.props;
+    let { channelDetails, playlists, setting } = this.props;
 
     switch (this.state.currentRoute) {
       case 'videos':
@@ -131,7 +131,13 @@ class Channel extends React.Component {
 
         return <ChannelAbout description={description} viewCount={viewCount} />;
       default:
-        return <ChannelHome />;
+        return (
+          <ChannelHome
+            videos={channelDetails.videos}
+            playlists={playlists}
+            setting={setting}
+          />
+        );
     }
   }
 
@@ -195,13 +201,6 @@ class Channel extends React.Component {
             />
 
             { this.renderRoute() }
-
-            {/*<div className='channel-home'>
-              <FeaturedVideo videos={videos} />
-              <div className="channel-playlists">
-                { this.renderPlaylists() }
-              </div>
-            </div>*/}
 
           </div>
         </div>
