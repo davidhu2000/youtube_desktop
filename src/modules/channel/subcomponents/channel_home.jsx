@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { values } from 'lodash';
 import { propChecker } from 'helpers';
-import { VideoBox } from 'common/components';
+import { VideoBox, VideoList } from 'common/components';
 import { FeaturedVideo } from './';
 
 class ChannelHome extends React.Component {
@@ -32,7 +32,16 @@ class ChannelHome extends React.Component {
   render() {
     return (
       <div className="channel-home">
-        <FeaturedVideo videos={this.props.videos} />
+        <div style={{ marginLeft: 120, marginTop: 10 }}>
+          <VideoList
+            shouldShowVolume={false}
+            windowWidth={this.props.setting.windowWidth - 120}
+            videos={this.props.videos.slice(0, 1)}
+            showSpinner={false}
+          />
+        </div>
+        
+        {/*<FeaturedVideo videos={this.props.videos} />*/}
         <div className="channel-playlists">
           { this.renderPlaylists() }
         </div>

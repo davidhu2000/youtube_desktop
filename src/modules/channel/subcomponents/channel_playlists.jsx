@@ -1,12 +1,12 @@
-import React from 'react';
+// import React from 'react';
 
-class ChannelPlaylists extends React.Component {
+// class ChannelPlaylists extends React.Component {
 
-  render() {
-    return (
-      <div>Playlists</div>
-    );
-  }
-}
+//   render() {
+//     return (
+//       <div>Playlists</div>
+//     );
+//   }
+// }
 
-export { ChannelPlaylists };
+// export { ChannelPlaylists };
