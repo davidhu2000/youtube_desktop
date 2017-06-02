@@ -37,7 +37,7 @@ class ChannelHome extends React.Component {
             shouldShowVolume={false}
             windowWidth={this.props.setting.windowWidth - 120}
             videos={this.props.videos.slice(0, 1)}
-            showSpinner={false}
+            shouldShowSpinner={false}
           />
         </div>
         

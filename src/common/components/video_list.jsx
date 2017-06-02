@@ -79,7 +79,7 @@ class VideoList extends React.Component {
       <div className="search-index-container" id='search-container'>
         {this.addSearchVolume()}
         {this.addSearchResults()}
-        { this.props.showSpinner ? <Spinner /> : null }
+        { this.props.shouldShowSpinner ? <Spinner /> : null }
       </div>
     );
   }
@@ -90,7 +90,7 @@ VideoList.propTypes = {
   videos: PropTypes.arrayOf(PropTypes.object),
   windowWidth: PropTypes.number,
   volume: PropTypes.number,
-  showSpinner: PropTypes.bool
+  shouldShowSpinner: PropTypes.bool
 };
 
 VideoList.defaultProps = {
@@ -98,7 +98,7 @@ VideoList.defaultProps = {
   volume: null,
   videos: [],
   windowWidth: window.innerWidth,
-  showSpinner: true
+  shouldShowSpinner: true
 };
 
 export { VideoList };

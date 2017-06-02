@@ -22,6 +22,7 @@ class TrendingIndex extends React.Component {
     return (
       <div className="main-content">
         <VideoList
+          shouldShowSpinner={false}
           shouldShowVolume={false}
           shouldShowPageNumber={false}
           videos={this.props.trending.videos}
