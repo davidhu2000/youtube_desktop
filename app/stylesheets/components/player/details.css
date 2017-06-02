@@ -159,6 +159,7 @@
 
 .details-lower-container-left {
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .details-lower-container-left img {
