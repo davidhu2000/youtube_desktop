@@ -30,12 +30,15 @@ describe('SettingReducer', () => {
       testSetting = 'test';
       action = {
         type: 'RECEIVE_SETTING',
-        setting: testSetting
+        setting: {
+          testSetting
+        }
       };
     });
 
     it('should update with the test setting', () => {
-      expect(SettingReducer(undefined, action).setting).toEqual('test');
+      console.log(SettingReducer(undefined, action));
+      expect(SettingReducer(undefined, action).testSetting).toEqual('test');
     });
   });
 });
