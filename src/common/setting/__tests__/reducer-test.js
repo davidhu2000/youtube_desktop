@@ -37,8 +37,16 @@ describe('SettingReducer', () => {
     });
 
     it('should update with the test setting', () => {
-      console.log(SettingReducer(undefined, action));
       expect(SettingReducer(undefined, action).testSetting).toEqual('test');
+    });
+
+    it('should not modify the old state', () => {
+      const oldState = SettingReducer(undefined, {});
+      SettingReducer(oldState, action);
+      expect(oldState).toMatchObject({
+        windowWidth: null,
+        isLoading: true
+      });
     });
   });
 });
