@@ -1,15 +1,12 @@
 /* global window */
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import autoBind from 'react-autobind';
 import { VideoBoxItem } from './video_box_item';
 
 class VideoBox extends React.Component {
   constructor(props) {
     super(props);
-
-    this.calcBoxWidthAndNumVideos = this.calcBoxWidthAndNumVideos.bind(this);
-    this.toggleMoreVideos = this.toggleMoreVideos.bind(this);
 
     let data = this.calcBoxWidthAndNumVideos(props.sidebarVisible);
 
@@ -20,6 +17,8 @@ class VideoBox extends React.Component {
       numRows: 2,
       boxWidth: data.boxWidth
     };
+
+    autoBind(this);
   }
 
   componentWillReceiveProps(newProps) {

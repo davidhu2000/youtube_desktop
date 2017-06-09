@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import autoBind from 'react-autobind';
 import { formatNumber } from 'helpers';
 
 class SubscribeButton extends React.Component {
@@ -10,7 +11,7 @@ class SubscribeButton extends React.Component {
       subscribed: false
     };
 
-    this.clickSubscribe = this.clickSubscribe.bind(this);
+    autoBind(this);
   }
 
   componentDidMount() {
