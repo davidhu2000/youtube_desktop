@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { hashHistory, Link } from 'react-router';
+import autoBind from 'react-autobind';
 
 class RelatedListItem extends React.Component {
   constructor(props) {
     super(props);
 
-    this.linkVideo = this.linkVideo.bind(this);
+    autoBind(this);
   }
 
   linkVideo() {

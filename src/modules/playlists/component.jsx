@@ -1,6 +1,7 @@
 /* global Promise */
 import React from 'react';
 import PropTypes from 'prop-types';
+import autoBind from 'react-autobind';
 import { propChecker } from 'helpers';
 import { PlaylistVideos } from './subcomponents';
 
@@ -8,7 +9,7 @@ class Playlists extends React.Component {
   constructor(props) {
     super(props);
 
-    this.getPlaylistsItems = this.getPlaylistsItems.bind(this);
+    autoBind(this);
   }
 
   componentDidMount() {
