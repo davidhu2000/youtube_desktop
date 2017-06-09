@@ -1,6 +1,7 @@
 /* global fetch */
 import React from 'react';
 import PropTypes from 'prop-types';
+import autoBind from 'react-autobind';
 import { createUrlParams } from 'helpers';
 import enhanceWithClickOutside from 'react-click-outside';
 
@@ -13,8 +14,7 @@ class BugForm extends React.Component {
       submitted: false
     };
 
-    this.updateInput = this.updateInput.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    autoBind(this):
   }
 
   handleClickOutside(e) {

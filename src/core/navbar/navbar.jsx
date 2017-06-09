@@ -1,10 +1,11 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router';
 import PropTypes from 'prop-types';
-import { SearchBar } from 'common/components';
+import autoBind from 'react-autobind';
 import { toggleSidebar } from 'helpers';
-import DropdownMenu from './dropdown_menu';
-import BugForm from './bug_form';
+import { SearchBar } from 'common/components';
+
+import { BugForm, DropdownMenu } from './';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class Navbar extends React.Component {
       bugForm: false
     };
 
-    this.toggleDropdown = this.toggleDropdown.bind(this);
+    autoBind(this);
   }
 
   toggleDropdown(type) {

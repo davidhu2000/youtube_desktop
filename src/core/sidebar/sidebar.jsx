@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router';
+import autoBind from 'react-autobind';
 import { propChecker, toggleSidebar } from 'helpers';
 
 import SidebarItem from './sidebar_item';
@@ -18,8 +19,7 @@ class Sidebar extends React.Component {
       icon: 'keyboard_arrow_down'
     };
 
-    this.handleClick = this.handleClick.bind(this);
-    this.togglePlaylists = this.togglePlaylists.bind(this);
+    autoBind(this);
   }
 
   componentDidMount() {
