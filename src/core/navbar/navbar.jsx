@@ -5,7 +5,8 @@ import autoBind from 'react-autobind';
 import { toggleSidebar } from 'helpers';
 import { SearchBar } from 'common/components';
 
-import { BugForm, DropdownMenu } from './';
+import DropdownMenu from './dropdown_menu';
+import BugForm from './bug_form';
 
 class Navbar extends React.Component {
   constructor(props) {

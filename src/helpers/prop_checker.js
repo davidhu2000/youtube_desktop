@@ -15,7 +15,7 @@ const homeChannels = () => (
 const playerDetails = () => (
   PropTypes.shape({
     autoplay: PropTypes.bool,
-    comments: PropTypes.arrayOf(PropTypes.object),
+    comments: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.shape()), PropTypes.string]),
     details: PropTypes.object,
     rating: PropTypes.string,
     related: PropTypes.arrayOf(PropTypes.object)

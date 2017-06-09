@@ -14,7 +14,7 @@ class BugForm extends React.Component {
       submitted: false
     };
 
-    autoBind(this):
+    autoBind(this);
   }
 
   handleClickOutside(e) {
