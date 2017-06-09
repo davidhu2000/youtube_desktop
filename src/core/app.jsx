@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
+import autoBind from 'react-autobind';
 
 import { fetchSubscriptions } from 'modules/subscriptions/actions';
 import { receiveSetting } from 'common/setting/actions';
@@ -20,7 +21,8 @@ class App extends React.Component {
       addition: 0.5,
       pathname: this.props.location.pathname
     };
-    this.updateProgress = this.updateProgress.bind(this);
+
+    autoBind(this);
   }
 
   componentDidMount() {

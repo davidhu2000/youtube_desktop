@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { formatNumber } from 'helpers';
+import autoBind from 'react-autobind';
 
 import LikeDislikeRatio from './like_dislike_ratio';
 
 class DetailsUpper extends React.Component {
   constructor(props) {
     super(props);
-    this.ratingVideo = this.ratingVideo.bind(this);
-    this.ratingButtonColor = this.ratingButtonColor.bind(this);
+    autoBind(this);
   }
 
   ratingVideo(rating) {

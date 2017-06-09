@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
 import PropTypes from 'prop-types';
+import autoBind from 'react-autobind';
 import { shortenString } from 'helpers';
 
 class SidebarItem extends React.Component {
   constructor(props) {
     super(props);
-
-    this.redirectChannel = this.redirectChannel.bind(this);
+    autoBind(this);
   }
 
   redirectChannel(link) {

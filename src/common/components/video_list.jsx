@@ -1,6 +1,7 @@
 /* global window */
 import React from 'react';
 import PropTypes from 'prop-types';
+import autoBind from 'react-autobind';
 import { formatNumber } from 'helpers';
 
 import { VideoListItem, Spinner } from '../components';
@@ -30,7 +31,7 @@ class VideoList extends React.Component {
       }
     };
 
-    this.addSearchResults = this.addSearchResults.bind(this);
+    autoBind(this);
   }
 
   determineListItemSize() {

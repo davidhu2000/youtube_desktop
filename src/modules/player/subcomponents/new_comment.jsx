@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import autoBind from 'react-autobind';
+
 import { submitCommentThread } from 'core/youtube_api';
 
 class NewComment extends React.Component {
@@ -11,9 +13,7 @@ class NewComment extends React.Component {
       active: false
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.clearInput = this.clearInput.bind(this);
+    autoBind(this);
   }
 
   handleChange(event) {

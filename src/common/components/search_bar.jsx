@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import autoBind from 'react-autobind';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -8,9 +9,7 @@ class SearchBar extends React.Component {
       query: ''
     };
 
-    this.update = this.update.bind(this);
-    this.submit = this.submit.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
+    autoBind(this);
   }
 
   update(e) {

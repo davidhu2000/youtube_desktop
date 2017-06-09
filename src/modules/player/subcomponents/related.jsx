@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import autoBind from 'react-autobind';
+
 import RelatedListItem from './related_list_item';
 
 class Related extends React.Component {
   constructor(props) {
     super(props);
 
-    this.updateAutoplay = this.updateAutoplay.bind(this);
+    autoBind(this);
   }
 
   updateAutoplay() {

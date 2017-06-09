@@ -3,11 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import enhanceWithClickOutside from 'react-click-outside';
 import { Link } from 'react-router';
+import autoBind from 'react-autobind';
 
 class DropdownMenu extends React.Component {
   constructor(props) {
     super(props);
-    this.clearUser = this.clearUser.bind(this);
+    autoBind(this);
   }
 
   handleClickOutside(e) {
