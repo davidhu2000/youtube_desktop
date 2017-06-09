@@ -8,7 +8,6 @@ import LikeDislikeRatio from './like_dislike_ratio';
 class DetailsUpper extends React.Component {
   constructor(props) {
     super(props);
- 
     autoBind(this);
   }
 
