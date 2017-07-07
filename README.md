@@ -1,6 +1,6 @@
 # Youtube Desktop
 
-[![CircleCI](https://circleci.com/gh/davidhu2000/youtube_desktop.svg?style=svg)](https://circleci.com/gh/davidhu2000/youtube_desktop)
+[![CircleCI](https://circleci.com/gh/davidhu2000/youtube_desktop.svg?style=shield)](https://circleci.com/gh/davidhu2000/youtube_desktop)
 ![license](https://img.shields.io/github/license/davidhu2000/youtube_desktop.svg)
 
 [![dependencies Status](https://david-dm.org/davidhu2000/youtube_desktop/status.svg)](https://david-dm.org/davidhu2000/react-spinners)
