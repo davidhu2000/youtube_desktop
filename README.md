@@ -1,5 +1,12 @@
 # Youtube Desktop
 
+[![CircleCI](https://circleci.com/gh/davidhu2000/youtube_desktop.svg?style=svg)](https://circleci.com/gh/davidhu2000/youtube_desktop)
+![license](https://img.shields.io/github/license/davidhu2000/youtube_desktop.svg)
+
+[![dependencies Status](https://david-dm.org/davidhu2000/youtube_desktop/status.svg)](https://david-dm.org/davidhu2000/react-spinners)
+[![devDependencies Status](https://david-dm.org/davidhu2000/youtube_desktop/dev-status.svg)](https://david-dm.org/davidhu2000/react-spinners?type=dev)
+[![peerDependencies Status](https://david-dm.org/davidhu2000/youtube_desktop/peer-status.svg)](https://david-dm.org/davidhu2000/react-spinners?type=peer)
+
 ![Home Page](/docs/images/home_page.png)
 
 A desktop client of [youtube](https://www.youtube.com) that allows the user to browse the site without the need of a browser.
