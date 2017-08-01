@@ -2,6 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/davidhu2000/youtube_desktop.svg?style=shield)](https://circleci.com/gh/davidhu2000/youtube_desktop)
 ![license](https://img.shields.io/github/license/davidhu2000/youtube_desktop.svg)
+[![Code Triagers Badge](https://www.codetriage.com/davidhu2000/youtube_desktop/badges/users.svg)](https://www.codetriage.com/davidhu2000/youtube_desktop)
 
 [![dependencies Status](https://david-dm.org/davidhu2000/youtube_desktop/status.svg)](https://david-dm.org/davidhu2000/youtube_desktop)
 [![devDependencies Status](https://david-dm.org/davidhu2000/youtube_desktop/dev-status.svg)](https://david-dm.org/davidhu2000/youtube_desktop?type=dev)
