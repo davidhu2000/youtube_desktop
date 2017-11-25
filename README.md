@@ -11,10 +11,6 @@
 
 A desktop client of [youtube](https://www.youtube.com) that allows the user to browse the site without the need of a browser.
 
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/YsWPXzR7ZbjnxKCaLbuyR61q/davidhu2000/youtube_desktop'>
-  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/YsWPXzR7ZbjnxKCaLbuyR61q/davidhu2000/youtube_desktop.svg' />
-</a>
-
 ## Demo
 
 This project is still currently in development. A link will appear here upon our first release.
