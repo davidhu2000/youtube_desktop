@@ -8,6 +8,18 @@ Fork then clone the repo:
 
     git clone git@github.com:your-username/youtube_desktop.git
 
+You will need to create your own Youtube Api Key. Here is the [link](https://developers.google.com/youtube/v3/getting-started) on how to get your own keys.
+
+Below is a sample `api_keys.js` file that is in `.gitignore`. Please make your own version of this javascript file and name it `api_keys.js` and you will be able to run this project.
+
+```js
+module.exports = {
+  publicDataKey: 'your public data key',
+  clientId: 'your client id',
+  clientSecret: 'your client secret'
+};
+```
+
 Create a new branch:
 
     git checkout -b awesome-feature
