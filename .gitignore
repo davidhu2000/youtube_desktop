@@ -3,3 +3,4 @@ config
 frontend
 app/javascripts
 .yarnclean
+dist
