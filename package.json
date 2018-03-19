@@ -1,8 +1,12 @@
 {
   "name": "youtube-desktop",
+  "productName": "Youtube Desktop",
   "website": "http://www.youtubefordesktop.com/",
-  "version": "1.0.0",
-  "files": ["**/*", "app/assets/*"],
+  "version": "0.0.1",
+  "files": [
+    "**/*",
+    "app/assets/*"
+  ],
   "description": "Youtube Desktop Application",
   "electronVersion": "1.7.10",
   "main": "main.js",
@@ -21,13 +25,13 @@
     "prod": "NODE_ENV=production webpack --progress --env.prod",
     "lint": "./node_modules/.bin/eslint . --ext .js,.jsx",
     "lint-file": "./node_modules/.bin/eslint",
-    "test": "echo 0",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
-    "dist-all": "electron-builder -mwl",
+    "dist-all": "NODE_ENV=production electron-builder -mwl",
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
+    "electron-packager": "^11.1.0",
     "lodash": "^4.17.4",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
@@ -48,7 +52,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "electron": "^1.7.10",
-    "electron-builder": "^19.54.0",
+    "electron-builder": "^20.5.1",
     "electron-builder-squirrel-windows": "^19.55.1",
     "eslint": "^4.16.0",
     "eslint-config-airbnb": "^16.1.0",
@@ -67,20 +71,23 @@
       "target": [
         {
           "target": "deb",
-          "arch": ["x64"]
-        },
-        {
-          "target": "rpm",
-          "arch": ["x64"]
+          "arch": [
+            "x64"
+          ]
         }
-      ]
+      ],
+      "icon": "./assets/icons/png/"
     },
     "win": {
-      "target": ["squirrel"]
+      "target": [
+        "squirrel"
+      ],
+      "iconUrl": "https://github.com/davidhu2000/youtube_desktop/blob/master/assets/icons/ico/icon.ico?raw=true"
     },
     "mac": {
       "category": "public.app-category.video",
-      "target": "dmg"
+      "target": "dmg",
+      "icon": "./assets/icons/mac/icon.icns"
     }
   }
 }

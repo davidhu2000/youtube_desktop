@@ -1,3 +1,4 @@
+/* global NODE_ENV */
 const { app, BrowserWindow, ipcMain, shell } = require('electron');
 const path = require('path');
 const url = require('url');
@@ -9,7 +10,8 @@ const createWindow = () => {
     minWidth: 530,
     minHeight: 330,
     width: 800,
-    height: 600
+    height: 600,
+    icon: path.join(__dirname, 'assets/icons/png/64x64.png')
   });
 
   win.loadURL(url.format({
