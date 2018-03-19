@@ -15,11 +15,12 @@ import {
 class Channel extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props)
 
     this.state = {
       channelId: this.props.params.channelId,
       currentRoute: "home",
-      userId: this.props.user.channelId,
+      userId: this.props.loggedIn ? this.props.user.channelId : null,
       subscribed: null
     };
 
@@ -33,7 +34,7 @@ class Channel extends React.Component {
 
   componentWillReceiveProps(newProps) {
     let channelId = newProps.params.channelId;
-    let userId = newProps.user.channelId;
+    let userId = newProps.loggedIn ? newProps.user.channelId : null;
     if (this.state.channelId !== channelId) {
       this.setState({ channelId, userId });
       this._getNewChannelInfo(channelId, userId);
