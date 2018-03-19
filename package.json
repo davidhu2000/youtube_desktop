@@ -28,7 +28,8 @@
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "dist-all": "NODE_ENV=production electron-builder -mwl",
-    "postinstall": "electron-builder install-app-deps"
+    "postinstall": "electron-builder install-app-deps",
+    "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
     "electron-packager": "^11.1.0",
