@@ -76,18 +76,18 @@
           ]
         }
       ],
-      "icon": "./assets/icons/png/"
+      "icon": "./icons/png/"
     },
     "win": {
       "target": [
         "squirrel"
       ],
-      "iconUrl": "https://github.com/davidhu2000/youtube_desktop/blob/master/assets/icons/ico/icon.ico?raw=true"
+      "icon": "./icons/ico/icon.ico"
     },
     "mac": {
       "category": "public.app-category.video",
       "target": "dmg",
-      "icon": "./assets/icons/mac/icon.icns"
+      "icon": "./icons/mac/icon.icns"
     }
   }
 }
