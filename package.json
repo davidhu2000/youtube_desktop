@@ -27,12 +27,11 @@
     "lint-file": "./node_modules/.bin/eslint",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
-    "dist-all": "NODE_ENV=production electron-builder -mwl",
+    "dist-all": "rm -rf ./dist && NODE_ENV=production webpack --progress --env.prod && electron-builder -mwl",
     "postinstall": "electron-builder install-app-deps",
     "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
-    "electron-packager": "^11.1.0",
     "lodash": "^4.17.4",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
@@ -54,7 +53,6 @@
     "babel-preset-react": "^6.24.1",
     "electron": "^1.7.10",
     "electron-builder": "^20.5.1",
-    "electron-builder-squirrel-windows": "^19.55.1",
     "eslint": "^4.16.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-friendly-formatter": "^3.0.0",
@@ -69,20 +67,11 @@
     "appId": "com.youtubeforedesktop.www",
     "linux": {
       "category": "VideoApp",
-      "target": [
-        {
-          "target": "deb",
-          "arch": [
-            "x64"
-          ]
-        }
-      ],
+      "target": "deb",
       "icon": "./icons/png/"
     },
     "win": {
-      "target": [
-        "squirrel"
-      ],
+      "target": "nsis",
       "icon": "./icons/ico/icon.ico"
     },
     "mac": {
